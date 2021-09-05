@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="price_list_update_view_tree" model="ir.ui.view">
+            <field name="name">price_list_tags_view_tree</field>
+            <field name="model">pricelist.update</field>
+            <field name="arch" type="xml">
+                <tree string="price_list_tags_tree">
+                    <field name="name"/>
+                    <field name="write_date" readonly="1" />
+                    <field name="percentage" />
+                    <field name="company_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="price_list_update_view_form" model="ir.ui.view">
+            <field name="name">price_update_tags_view_form</field>
+            <field name="model">pricelist.update</field>
+            <field name="arch" type="xml">
+                <form string="Price List Update">
+                    <header>
+                        <button type="object"  name="update_price_list_price" string="Process" attrs="{'invisible': [('state','=','processed')]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible='draft,processed' />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1" attrs="{'readonly': [('state','=','processed')]}"/>
+                                <field name="company_id" required="1"  attrs="{'readonly': [('state','=','processed')]}"/>
+                                <field name="write_date" readonly="1" />
+                            </group>
+                            <group>
+                                <field name="price_list_tag_ids" widget="many2many_tags" required="1" attrs="{'readonly': [('state','=','processed')]}"/>
+                                <field name="percentage" required="1" attrs="{'readonly': [('state','=','processed')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="price_list_update_update_action" model="ir.actions.act_window">
+            <field name="name">PriceList Update</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pricelist.update</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="price_list_update_main_menu"
+                  name="Price List Update"
+                  parent="sale.product_menu_catalog"
+                  action="price_list_update_update_action"
+
+                  />
+    </data>
+</odoo>

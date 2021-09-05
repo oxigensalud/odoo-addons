@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_price_list_tags_sale_user,price.list.tags.sale.user,model_pricelist_tags,sales_team.group_sale_salesman,1,0,0,0
+access_price_list_tags_sale_manager,price.list.tags.sale.manager,model_pricelist_tags,sales_team.group_sale_manager,1,1,1,1
+access_price_list_sale_user,price.list.update.sale.user,model_pricelist_update,sales_team.group_sale_salesman,1,0,0,0
+access_price_list_update_sale_manager,price.list.update.sale.manager,model_pricelist_update,sales_team.group_sale_manager,1,1,1,1
