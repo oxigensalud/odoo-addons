@@ -1,1 +1,1 @@
-from . import stock_barcodes_read_picking_info
+from . import stock_barcodes_read_picking
