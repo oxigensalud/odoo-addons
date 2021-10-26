@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_repair_order_form" model="ir.ui.view">
+        <field name="name">mrp.repair.form - oxigen_mrp_repair</field>
+        <field name="model">mrp.repair</field>
+        <field name="inherit_id" ref="mrp_repair.view_repair_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_repair_cancel_draft']" position="after">
+                <button
+                    name="action_repair_cancel_draft"
+                    string="Set to Draft"
+                    type="object"
+                    attrs="{'invisible':['|',('invoice_method','=','b4repair'), ('state', 'not in',('under_repair'))]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
