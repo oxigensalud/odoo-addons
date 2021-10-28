@@ -11,4 +11,5 @@
     "depends": ["mrp_repair"],
     "installable": True,
     "license": "AGPL-3",
+    "data": ["views/mrp_repair_views.xml"],
 }
