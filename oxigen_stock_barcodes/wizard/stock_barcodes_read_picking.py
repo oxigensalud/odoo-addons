@@ -77,7 +77,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                     if ml.stock_barcodes_sequence == SEQUENCE_DO_NOT_DISPLAY:
                         continue
                     if (
-                        ml.qty_done < ml.product_uom_qty
+                        self._get_qty_done_next_move_line(ml) < ml.product_uom_qty
                         or ml.stock_barcodes_sequence == SEQUENCE_FORCE_OPERATION
                     ):
                         rec.next_move_line_id = ml
@@ -85,7 +85,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                         rec.next_location_src_id = ml.location_id
                         rec.next_location_dest_id = ml.location_dest_id
                         rec.next_product_uom_qty = ml.product_uom_qty
-                        rec.next_product_done_qty = ml.qty_done
+                        rec.next_product_done_qty = self._get_qty_done_next_move_line(
+                            ml
+                        )
                         rec.next_lot_id = ml.lot_id
                         return
             rec.next_product_id = False
@@ -94,6 +96,19 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             rec.next_product_uom_qty = False
             rec.next_product_done_qty = False
             rec.next_lot_id = False
+
+    def _get_qty_done_next_move_line(self, ml):
+        if (
+            ml.picking_id.picking_type_id.code == "incoming"
+            and ml.product_id.tracking == "lot"
+        ):
+            move_lines = ml.picking_id.move_line_ids.filtered(
+                lambda ml2: ml2.product_id == ml.product_id
+                and ml2.qty_done > 0
+                and ml2.product_uom_qty == 0
+            )
+            return ml.qty_done + sum(move_lines.mapped("qty_done"))
+        return ml.qty_done
 
     def check_done_conditions(self):
         res = super().check_done_conditions()
@@ -166,12 +181,20 @@ class WizStockBarcodesReadPicking(models.TransientModel):
 
         if product:
             if product == self.next_product_id:
-                if product.tracking != "none":
+                if product.tracking != "none" and self.picking_type_code != "incoming":
                     self._set_messagge_info(
                         "info", _("Please, scan the Lot/Serial number.")
                     )
                     return False
-                self.product_and_lot_scanned = True
+                elif product.tracking == "none":
+                    self.product_and_lot_scanned = True
+                    self.product_qty = 1
+                else:
+                    self.product_id = product
+                    self._set_messagge_info(
+                        "not_found", _("Please, scan the Lot/Serial number.")
+                    )
+                    return False
             else:
                 self._set_messagge_info("not_found", _("Product does not match."))
                 return False
@@ -180,7 +203,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             return False
 
     def _process_barcode_03_dest_loc(self, location, product, lot):
-        if product == self.product_id or lot == self.lot_id:
+        if self.next_product_id == product or (
+            self.next_lot_id and self.next_lot_id == lot
+        ):
             if self.next_product_id.tracking != "serial":
                 if self.product_qty + 1 > self.next_product_uom_qty:
                     self._set_messagge_info(
@@ -188,14 +213,26 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                     )
                     return False
                 self.product_qty += 1
-            self._set_messagge_info("info", _("Qty increased."))
+            self._set_messagge_info(
+                "info",
+                _(
+                    "Qty increased. Scan more products to increase quantity or "
+                    "the destination location to finish the operation."
+                ),
+            )
             return False
         if location:
             if location == self.next_location_dest_id:
                 self.location_dest_scanned = True
-                self._set_messagge_info(
-                    "info", _("Operation recorded. Scan next source location")
-                )
+                self.location_id = location
+                if self.picking_type_code == "incoming":
+                    self._set_messagge_info(
+                        "info", _("Operation recorded. Scan next Product or lot")
+                    )
+                else:
+                    self._set_messagge_info(
+                        "info", _("Operation recorded. Scan next source location")
+                    )
                 res = self.action_done()
                 return res
             else:
@@ -218,7 +255,10 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             return self._process_barcode_01_source_loc(location)
         # 2nd - scan product /lot.
         elif self.location_src_scanned and not self.product_and_lot_scanned:
-            return self._process_barcode_02_lot_and_product(product, lot)
+            res = self._process_barcode_02_lot_and_product(product, lot)
+            # Do not return when `res` is None.
+            if isinstance(res, bool):
+                return res
         # 3rd - scan dest location.
         elif (
             self.location_src_scanned
@@ -229,7 +269,8 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         return super().process_barcode(barcode)
 
     def _clean_operation_progress(self):
-        self.location_src_scanned = False
+        if self.picking_type_code != "incoming":
+            self.location_src_scanned = False
         self.product_and_lot_scanned = False
         self.location_dest_scanned = False
         self.with_context(__barcodes_reset_qty=True).reset_qty()

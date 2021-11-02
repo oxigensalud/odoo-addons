@@ -23,6 +23,7 @@ class StockPicking(models.Model):
             ctx = action.get("context", {})
             ctx["default_message"] = _("Scan a Product or Lot/Serial number")
             ctx["default_message_type"] = "info"
+            ctx["default_location_src_scanned"] = True
             action["context"] = ctx
         return action
 

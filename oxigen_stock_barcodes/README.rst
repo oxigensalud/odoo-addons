@@ -2,7 +2,12 @@
 Stock barcodes
 ==============
 
-TO DO: Describe...
+Implements specific workflow in stock barcodes for Oxigen.
+
+Roadmap
+=======
+
+* Add translations to spanish.
 
 Credits
 =======
