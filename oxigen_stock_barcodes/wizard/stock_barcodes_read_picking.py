@@ -133,6 +133,80 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             lot = self.env["stock.production.lot"].search(lot_domain)
         return location, product, lot, {}
 
+    def _process_barcode_01_source_loc(self, location):
+        if location:
+            if location == self.next_location_src_id:
+                self.location_src_scanned = True
+                self._set_messagge_info(
+                    "info", _("Waiting product or Lot/Serial number")
+                )
+                return False
+            else:
+                self._set_messagge_info(
+                    "location_no_match", _("Source Location does not match.")
+                )
+                return False
+        self._set_messagge_info("not_found", _("No location found."))
+        return False
+
+    def _process_barcode_02_lot_and_product(self, product, lot):
+        if self.env.user.has_group("stock.group_production_lot"):
+            if self.picking_type_code != "incoming" and lot != self.next_lot_id:
+                self._set_messagge_info(
+                    "not_found", _("Lot/Serial Number does not match.")
+                )
+                return False
+            if len(lot) == 1:
+                self.product_id = lot.product_id
+            if lot:
+                self.product_and_lot_scanned = True
+                self.action_lot_scaned_post(lot)
+                res = self.action_done()
+                return res
+
+        if product:
+            if product == self.next_product_id:
+                if product.tracking != "none":
+                    self._set_messagge_info(
+                        "info", _("Please, scan the Lot/Serial number.")
+                    )
+                    return False
+                self.product_and_lot_scanned = True
+            else:
+                self._set_messagge_info("not_found", _("Product does not match."))
+                return False
+        else:
+            self._set_messagge_info("not_found", _("No product found."))
+            return False
+
+    def _process_barcode_03_dest_loc(self, location, product, lot):
+        if product == self.product_id or lot == self.lot_id:
+            if self.next_product_id.tracking != "serial":
+                if self.product_qty + 1 > self.next_product_uom_qty:
+                    self._set_messagge_info(
+                        "not_found", _("You cannot add more quantity.")
+                    )
+                    return False
+                self.product_qty += 1
+            self._set_messagge_info("info", _("Qty increased."))
+            return False
+        if location:
+            if location == self.next_location_dest_id:
+                self.location_dest_scanned = True
+                self._set_messagge_info(
+                    "info", _("Operation recorded. Scan next source location")
+                )
+                res = self.action_done()
+                return res
+            else:
+                self._set_messagge_info(
+                    "location_no_match", _("Destination Location does not match.")
+                )
+                return False
+        else:
+            self._set_messagge_info("not_found", _("No location found."))
+            return False
+
     def process_barcode(self, barcode):
         location, product, lot, _extra = self._pre_process_barcode(barcode)
         if self.picking_type_code == "incoming":
@@ -141,87 +215,18 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             self.location_dest_scanned = True
         # 1st - scan src location.
         if not self.location_src_scanned:
-            if location:
-                if location == self.next_location_src_id:
-                    self.location_src_scanned = True
-                    self._set_messagge_info(
-                        "info", _("Waiting product or Lot/Serial number")
-                    )
-                    return False
-                else:
-                    self._set_messagge_info(
-                        "location_no_match", _("Source Location does not match.")
-                    )
-                    return False
-            else:
-                self._set_messagge_info("not_found", _("No location found."))
-                return False
-
+            return self._process_barcode_01_source_loc(location)
         # 2nd - scan product /lot.
         elif self.location_src_scanned and not self.product_and_lot_scanned:
-            if self.env.user.has_group("stock.group_production_lot"):
-                if self.picking_type_code != "incoming" and lot != self.next_lot_id:
-                    self._set_messagge_info(
-                        "not_found", _("Lot/Serial Number does not match.")
-                    )
-                    return False
-                if len(lot) == 1:
-                    self.product_id = lot.product_id
-                if lot:
-                    self.product_and_lot_scanned = True
-                    self.action_lot_scaned_post(lot)
-                    res = self.action_done()
-                    return res
-
-            if product:
-                if product == self.next_product_id:
-                    if product.tracking != "none":
-                        self._set_messagge_info(
-                            "info", _("Please, scan the Lot/Serial number.")
-                        )
-                        return False
-                    self.product_and_lot_scanned = True
-                else:
-                    self._set_messagge_info("not_found", _("Product does not match."))
-                    return False
-            else:
-                self._set_messagge_info("not_found", _("No product found."))
-                return False
-
+            return self._process_barcode_02_lot_and_product(product, lot)
         # 3rd - scan dest location.
         elif (
             self.location_src_scanned
             and self.product_and_lot_scanned
             and not self.location_dest_scanned
         ):
-            if product == self.product_id or lot == self.lot_id:
-                if self.next_product_id.tracking != "serial":
-                    if self.product_qty + 1 > self.next_product_uom_qty:
-                        self._set_messagge_info(
-                            "not_found", _("You cannot add more quantity.")
-                        )
-                        return False
-                    self.product_qty += 1
-                self._set_messagge_info("info", _("Qty increased."))
-                return False
-            if location:
-                if location == self.next_location_dest_id:
-                    self.location_dest_scanned = True
-                    self._set_messagge_info(
-                        "info", _("Operation recorded. Scan next source location")
-                    )
-                    res = self.action_done()
-                    return res
-                else:
-                    self._set_messagge_info(
-                        "location_no_match", _("Destination Location does not match.")
-                    )
-                    return False
-            else:
-                self._set_messagge_info("not_found", _("No location found."))
-                return False
-
-        return super(WizStockBarcodesReadPicking, self).process_barcode(barcode)
+            return self._process_barcode_03_dest_loc(location, product, lot)
+        return super().process_barcode(barcode)
 
     def _clean_operation_progress(self):
         self.location_src_scanned = False
