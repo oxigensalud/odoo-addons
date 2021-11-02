@@ -2,8 +2,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 import logging
+from datetime import datetime
 
-from odoo import models
+from odoo import _, models
 
 _logger = logging.getLogger(__name__)
 
@@ -45,7 +46,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                 [("name", "=", lot_barcode), ("product_id", "=", lot_product.id)]
             )
             if not lot:
-                lot = self._create_lot(barcode_decoded)
+                self._set_messagge_info(
+                    "not_found", _("Lot/Serial Number not found. Please, create it.")
+                )
 
         if product_qty:
             self.product_qty = product_qty
@@ -57,12 +60,12 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             lot_no_gs1,
             extra_data,
         ) = super()._pre_process_barcode(barcode)
-        life_date = barcode_decoded.get("17", False)
+        removal_date = barcode_decoded.get("17", False)
         extra_data.update(
             {
                 "packaging": packaging,
                 "product_qty": product_qty,
-                "life_date": life_date,
+                "removal_date": removal_date,
             }
         )
         return location_no_gs1, product or product_no_gs1, lot or lot_no_gs1, extra_data
@@ -78,4 +81,11 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             )
             if product:
                 res["product_id"] = product.id
+        removal_date_str = barcode_decoded.get("17", False)
+        if removal_date_str:
+            try:
+                removal_datetime = datetime.strptime(removal_date_str, "%Y-%m-%d")
+                res["removal_date"] = removal_datetime
+            except ValueError:
+                _logger.error("Cannot convert GS1 removal date.")
         return res

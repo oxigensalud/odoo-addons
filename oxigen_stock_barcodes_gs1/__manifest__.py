@@ -8,7 +8,7 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Extra Tools",
-    "depends": ["stock_barcodes_gs1", "oxigen_stock_barcodes"],
+    "depends": ["stock_barcodes_gs1_expiry", "oxigen_stock_barcodes"],
     "data": [],
     "installable": True,
     "license": "AGPL-3",
