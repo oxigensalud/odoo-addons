@@ -6,7 +6,7 @@
     "summary": "Custumizations for Oxigen in Purchase application",
     "version": "11.0.1.0.0",
     "author": "ForgeFlow",
-    "website": "https://www.forgeflow.com",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Purchases",
     "depends": ["purchase"],
     "installable": True,

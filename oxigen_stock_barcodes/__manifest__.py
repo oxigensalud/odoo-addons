@@ -6,7 +6,7 @@
     "summary": "It allows to see picking information when scanning barcodes",
     "version": "11.0.1.0.0",
     "author": "ForgeFlow",
-    "website": "https://odoo-community.org/",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Extra Tools",
     "depends": ["stock_barcodes"],
     "data": [
