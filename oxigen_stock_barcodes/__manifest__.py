@@ -3,7 +3,7 @@
 
 {
     "name": "Oxigen stock barcodes",
-    "summary": "It allows to see picking information when scanning barcodes",
+    "summary": "Specific workflow in stock barcodes for Oxigen.",
     "version": "11.0.1.0.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
@@ -11,6 +11,7 @@
     "depends": ["stock_barcodes"],
     "data": [
         "views/barcodes_assets_backend.xml",
+        "views/stock_picking_type_views.xml",
         "wizard/stock_barcodes_read_picking_views.xml",
     ],
     "installable": True,
