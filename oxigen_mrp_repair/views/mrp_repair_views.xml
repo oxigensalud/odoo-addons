@@ -13,6 +13,30 @@
                     attrs="{'invisible':['|',('invoice_method','=','b4repair'), ('state', 'not in',('under_repair'))]}"
                 />
             </xpath>
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="distance_km" />
+            </xpath>
+            <xpath expr="//field[@name='guarantee_limit']" position="after">
+                 <field name="list_date" />
+            </xpath>
         </field>
     </record>
+
+     <record id="view_repair_order_tree" model="ir.ui.view">
+        <field name="name">mrp.repair.tree- oxigen_mrp_repair</field>
+        <field name="model">mrp.repair</field>
+        <field name="inherit_id" ref="mrp_repair.view_repair_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='guarantee_limit']" position="attributes">
+                 <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="lot_id" />
+                <field name="distance_km" />
+                <field name="list_date" />
+                <field name="guarantee_limit" />
+
+        </xpath>
+        </field>
+     </record>
 </odoo>
