@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_stock_barcodes_new_lot" model="ir.ui.view">
+        <field name="model">wiz.stock.barcodes.new.lot</field>
+        <field name="inherit_id" ref="stock_barcodes.view_stock_barcodes_new_lot" />
+        <field name="arch" type="xml">
+            <field name="use_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
