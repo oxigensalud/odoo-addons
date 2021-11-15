@@ -125,11 +125,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         if not self.product_and_lot_scanned:
             self._set_messagge_info("info", _("Scan a Product or Lot/Serial number"))
             return False
-        if (
-            self.picking_type_code != "outgoing"
-            and self.next_location_dest_id
-            and not self.location_dest_scanned
-        ):
+        if self.next_location_dest_id and not self.location_dest_scanned:
             self._set_messagge_info(
                 "info", _("Scan more units or the Destination Location")
             )
@@ -249,8 +245,6 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         location, product, lot, _extra = self._pre_process_barcode(barcode)
         if self.picking_type_code == "incoming":
             self.location_src_scanned = True
-        elif self.picking_type_code == "outgoing":
-            self.location_dest_scanned = True
         # 1st - scan src location.
         if not self.location_src_scanned:
             return self._process_barcode_01_source_loc(location)
