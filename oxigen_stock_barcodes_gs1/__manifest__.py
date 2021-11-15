@@ -9,7 +9,7 @@
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Extra Tools",
     "depends": ["stock_barcodes_gs1_expiry", "oxigen_stock_barcodes"],
-    "data": [],
+    "data": ["wizard/stock_barcodes_new_lot_views.xml"],
     "installable": True,
     "license": "AGPL-3",
 }
