@@ -192,7 +192,8 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                 else:
                     self.product_id = product
                     self._set_messagge_info(
-                        "not_found", _("Please, scan the Lot/Serial number.")
+                        "not_found",
+                        _("Please, scan the Lot/Serial number or create it."),
                     )
                     return False
             else:
