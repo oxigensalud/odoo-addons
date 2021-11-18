@@ -7,8 +7,6 @@ from odoo import _, models
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
-    # TODO: translations to spanish.
-
     def action_barcode_scan(self):
         self._prepare_stock_barcodes_sequence()
         action = super().action_barcode_scan()
