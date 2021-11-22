@@ -9,7 +9,7 @@ class OxigenRepair(models.Model):
     _description = "Repair Order"
     _inherit = ["mrp.repair"]
 
-    distance_km = fields.Integer(string="Kilometers")
+    distance_km = fields.Integer(string="Kilometers", group_operator="max")
     list_date = fields.Datetime(string="Lists date")
     operations = fields.One2many(
         states={
