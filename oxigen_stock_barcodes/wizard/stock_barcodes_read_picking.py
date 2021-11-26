@@ -166,6 +166,14 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             return
         return super()._set_messagge_info(type, message)
 
+    def _prepare_move_line_values(self, candidate_move, available_qty):
+        res = super()._prepare_move_line_values(candidate_move, available_qty)
+        # Standard module forces the purchase UoM, why? I don't know...
+        res["product_uom_id"] = (
+            candidate_move.product_uom.id or self.product_id.uom_id.id
+        )
+        return res
+
     def _pre_process_barcode(self, barcode):
         domain = self._barcode_domain(barcode)
         location = self.env["stock.location"].search(domain)
