@@ -8,7 +8,7 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Purchases",
-    "depends": ["purchase"],
+    "depends": ["purchase", "stock_picking_partner_ref"],
     "installable": True,
     "license": "AGPL-3",
 }
