@@ -1,1 +1,2 @@
 stock-logistics-barcode
+nuobit-odoo-addons https://github.com/nuobit/odoo-addons.git
