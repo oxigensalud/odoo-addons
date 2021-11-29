@@ -57,6 +57,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     message_type = fields.Selection(
         selection_add=[("location_no_match", "Incorrect Location")]
     )
+    show_button_mark_location_dest = fields.Boolean(
+        compute="_compute_show_button_mark_location_dest",
+    )
 
     @api.depends(
         "picking_id",
@@ -97,6 +100,22 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             rec.next_product_done_qty = False
             rec.next_lot_id = False
 
+    @api.depends(
+        "location_src_scanned",
+        "product_and_lot_scanned",
+        "location_dest_scanned",
+        "next_location_dest_id",
+    )
+    def _compute_show_button_mark_location_dest(self):
+        for rec in self:
+            rec.show_button_mark_location_dest = (
+                self.location_src_scanned
+                and self.product_and_lot_scanned
+                and not self.location_dest_scanned
+                and self.next_location_dest_id
+                and self.next_location_dest_id.usage != "internal"
+            )
+
     def _get_qty_done_next_move_line(self, ml):
         if (
             ml.picking_id.picking_type_id.code == "incoming"
@@ -109,6 +128,15 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             )
             return ml.qty_done + sum(move_lines.mapped("qty_done"))
         return ml.qty_done
+
+    def _can_complete_without_scanning_dest_location(self):
+        return (
+            self.next_location_dest_id.usage != "internal"
+            and self.next_product_uom_qty
+            - self.next_product_done_qty
+            - self.product_qty
+            == 0
+        )
 
     def check_done_conditions(self):
         res = super().check_done_conditions()
@@ -132,6 +160,20 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             return False
         return res
 
+    def _set_messagge_info(self, type, message):
+        if type == "success" and message == _("Barcode read correctly"):
+            # we want full control on when to post a success msg.
+            return
+        return super()._set_messagge_info(type, message)
+
+    def _prepare_move_line_values(self, candidate_move, available_qty):
+        res = super()._prepare_move_line_values(candidate_move, available_qty)
+        # Standard module forces the purchase UoM, why? I don't know...
+        res["product_uom_id"] = (
+            candidate_move.product_uom.id or self.product_id.uom_id.id
+        )
+        return res
+
     def _pre_process_barcode(self, barcode):
         domain = self._barcode_domain(barcode)
         location = self.env["stock.location"].search(domain)
@@ -142,7 +184,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             if self.next_product_id:
                 lot_domain.append(("product_id", "=", self.next_product_id.id))
             lot = self.env["stock.production.lot"].search(lot_domain)
-        return location, product, lot, {}
+        return location, product, lot, {"raw_barcode": barcode}
 
     def _process_barcode_01_source_loc(self, location):
         if location:
@@ -172,6 +214,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             if lot:
                 self.product_and_lot_scanned = True
                 self.action_lot_scaned_post(lot)
+                # Skip scan of dest location in some situations:
+                if self._can_complete_without_scanning_dest_location():
+                    return self._mark_location_dest_done()
                 res = self.action_done()
                 return res
 
@@ -199,17 +244,24 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             self._set_messagge_info("not_found", _("No product found."))
             return False
 
-    def _process_barcode_03_dest_loc(self, location, product, lot):
+    def _process_barcode_03_dest_loc(self, location, product, lot, extra_data):
         if self.next_product_id == product or (
             self.next_lot_id and self.next_lot_id == lot
         ):
             if self.next_product_id.tracking != "serial":
-                if self.product_qty + 1 > self.next_product_uom_qty:
+                if (
+                    self.product_qty + 1
+                    > self.next_product_uom_qty - self.next_product_done_qty
+                ):
                     self._set_messagge_info(
                         "not_found", _("You cannot add more quantity.")
                     )
                     return False
                 self.product_qty += 1
+                # Skip scan of dest location in some situations:
+                if self._can_complete_without_scanning_dest_location():
+                    return self._mark_location_dest_done()
+
             self._set_messagge_info(
                 "info",
                 _(
@@ -218,20 +270,15 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                 ),
             )
             return False
+        raw_barcode = extra_data.get("raw_barcode", "")
+        if (
+            raw_barcode == "OXIBARCODES00LOCDEST"
+            and self.show_button_mark_location_dest
+        ):
+            return self._mark_location_dest_done()
         if location:
             if location == self.next_location_dest_id:
-                self.location_dest_scanned = True
-                self.location_id = location
-                if self.picking_type_code == "incoming":
-                    self._set_messagge_info(
-                        "info", _("Operation recorded. Scan next Product or lot")
-                    )
-                else:
-                    self._set_messagge_info(
-                        "info", _("Operation recorded. Scan next source location")
-                    )
-                res = self.action_done()
-                return res
+                return self._mark_location_dest_done(location=location)
             else:
                 self._set_messagge_info(
                     "location_no_match", _("Destination Location does not match.")
@@ -241,8 +288,22 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             self._set_messagge_info("not_found", _("No location found."))
             return False
 
+    def _mark_location_dest_done(self, location=False):
+        self.location_dest_scanned = True
+        self.location_id = location or self.next_location_dest_id
+        res = self.action_done()
+        if self.picking_type_code == "incoming":
+            self._set_messagge_info(
+                "success", _("Operation recorded. Scan next Product or lot")
+            )
+        else:
+            self._set_messagge_info(
+                "success", _("Operation recorded. Scan next source location")
+            )
+        return res
+
     def process_barcode(self, barcode):
-        location, product, lot, _extra = self._pre_process_barcode(barcode)
+        location, product, lot, extra = self._pre_process_barcode(barcode)
         if self.picking_type_code == "incoming":
             self.location_src_scanned = True
         # 1st - scan src location.
@@ -260,7 +321,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             and self.product_and_lot_scanned
             and not self.location_dest_scanned
         ):
-            return self._process_barcode_03_dest_loc(location, product, lot)
+            return self._process_barcode_03_dest_loc(location, product, lot, extra)
         return super().process_barcode(barcode)
 
     def _clean_operation_progress(self):
@@ -292,6 +353,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
 
     def button_picked_qty_all(self):
         self.product_qty = self.next_product_uom_qty - self.next_product_done_qty
+        # Skip scan of dest location in some situations:
+        if self._can_complete_without_scanning_dest_location():
+            return self._mark_location_dest_done()
         res = self.action_done()
         return res
 
@@ -319,6 +383,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         else:
             # current action is the last one, mark to not be displayed
             self.next_move_line_id.stock_barcodes_sequence = SEQUENCE_DO_NOT_DISPLAY
+
+    def button_mark_location_dest_done(self):
+        return self._mark_location_dest_done()
 
     def action_change_location(self):
         self.ensure_one()

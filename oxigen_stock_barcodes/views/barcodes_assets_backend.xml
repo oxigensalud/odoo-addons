@@ -6,6 +6,10 @@
         inherit_id="web.assets_backend"
     >
         <xpath expr="." position="inside">
+            <script
+                type="application/javascript"
+                src="/oxigen_stock_barcodes/static/src/js/stock_barcodes.js"
+            />
             <link
                 rel="stylesheet"
                 type="text/scss"
