@@ -1,0 +1,1 @@
+odoo11-addon-stock_picking_partner_ref@git+https://github.com/ForgeFlow/odoo-addons.git@11.0-with-pip-setup#subdirectory=setup/stock_picking_partner_ref
