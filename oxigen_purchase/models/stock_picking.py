@@ -16,9 +16,17 @@ class Picking(models.Model):
 
                 else:
                     l_pref = rec.purchase_id.partner_ref.split(", ")
-                    if rec.partner_ref in l_pref:
+                    refs = [
+                        x.partner_ref
+                        for x in rec.purchase_id.picking_ids
+                        if x.id != rec.id
+                    ]
+                    if rec.partner_ref in l_pref and rec.partner_ref not in refs:
                         l_pref.remove(rec.partner_ref)
-                    l_pref.append(vals["partner_ref"])
+
+                    if vals["partner_ref"] not in l_pref:
+                        l_pref.append(vals["partner_ref"])
+
                     rec.purchase_id.partner_ref = ", ".join(l_pref)
 
         return super(Picking, self).write(vals)
