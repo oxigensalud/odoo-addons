@@ -16,6 +16,7 @@ odoo.define("oxigen_stock_barcodes.ControlPanel", function(require) {
             Migration Note: likely not needed in versions >11.0
             */
             if (
+                !bc.action.action_descr.res_model ||
                 !bc.action.action_descr.res_model.includes("wiz.stock.barcodes.read.")
             ) {
                 return this._super(bc, index, length);
