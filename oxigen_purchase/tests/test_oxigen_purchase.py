@@ -96,3 +96,87 @@ class TestOxigenPurchase(common.TransactionCase):
         self.assertEqual(po_line.product_qty, 20.0)
         in_progress = self.op1._quantity_in_progress().get(self.op1.id)
         self.assertEqual(in_progress, 20.0)
+
+    def test_03_picking_ref_in_po(self):
+        # Draft purchase order created
+        self.po = self.po_obj.create(
+            {
+                "partner_id": self.vendor_1.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.test_product.id,
+                            "product_qty": 8.0,
+                            "name": self.test_product.name,
+                            "product_uom": self.test_product.uom_id.id,
+                            "price_unit": 3.0,
+                            "date_planned": fields.Date.today(),
+                        },
+                    )
+                ],
+            }
+        )
+        # Purchase order confirm
+        self.po.button_confirm()
+
+        # Validate first shipment and add reference
+        self.picking = self.po.picking_ids[0]
+        self.picking.partner_ref = "ref 12"
+        self.assertEqual(self.po.partner_ref, "ref 12", "PO doesn't have a reference")
+
+        # Change referene again
+        self.picking.partner_ref = "ref 11"
+        self.assertEqual(self.po.partner_ref, "ref 11", "PO reference doesn't match")
+
+    def test_04_picking_ref_in_po_backorder(self):
+        # Draft purchase order created
+        self.po = self.po_obj.create(
+            {
+                "partner_id": self.vendor_1.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.test_product.id,
+                            "product_qty": 8.0,
+                            "name": self.test_product.name,
+                            "product_uom": self.test_product.uom_id.id,
+                            "price_unit": 3.0,
+                            "date_planned": fields.Date.today(),
+                        },
+                    )
+                ],
+            }
+        )
+        # Purchase order confirm
+        self.po.button_confirm()
+
+        # Validate first shipment and add reference
+        self.picking = self.po.picking_ids[0]
+        self.picking.partner_ref = "ref 12"
+        self.picking.move_lines.quantity_done = 2
+
+        # create the backorder
+        backorder_wizard_dict = self.picking.button_validate()
+        backorder_wizard = self.env[backorder_wizard_dict["res_model"]].browse(
+            backorder_wizard_dict["res_id"]
+        )
+        backorder_wizard.process()
+
+        self.assertTrue(
+            self.env["stock.picking"].search([("backorder_id", "=", self.picking.id)]),
+            "no back order created",
+        )
+        self.picking2 = self.env["stock.picking"].search(
+            [("backorder_id", "=", self.picking.id)]
+        )
+
+        # Change backorder reference
+        self.picking2.partner_ref = "ref 13"
+
+        self.assertEqual(
+            self.po.partner_ref, "ref 12, ref 13", "PO reference doesn't match"
+        )
