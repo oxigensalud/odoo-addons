@@ -398,8 +398,10 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         """
         if location_field == "src":
             move_location = self.next_move_line_id.move_id.location_id
+            user_word = _("source")
         elif location_field == "dest":
             move_location = self.next_move_line_id.move_id.location_dest_id
+            user_word = _("destination")
         else:
             raise ValidationError(
                 _("Invalid value '%s' in arguments.") % location_field
@@ -412,10 +414,10 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             if raise_error:
                 raise ValidationError(
                     _(
-                        "The selected location '%s' cannot be set as the source location "
+                        "The selected location '%s' cannot be set as the %s location "
                         "of this operation. Only sublocations of '%s' are allowed."
                     )
-                    % (location.name, move_location.name)
+                    % (location.name, user_word, move_location.name)
                 )
             return False
         return True
