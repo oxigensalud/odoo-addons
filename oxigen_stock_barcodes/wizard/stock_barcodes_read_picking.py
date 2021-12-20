@@ -4,6 +4,7 @@
 import logging
 
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 from odoo.addons import decimal_precision as dp
 
@@ -291,7 +292,8 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     def _mark_location_dest_done(self, location=False):
         self.location_dest_scanned = True
         self.location_id = location or self.next_location_dest_id
-        res = self.action_done()
+        res = self.check_done_conditions()
+        self.action_done()
         if self.picking_type_code == "incoming":
             self._set_messagge_info(
                 "success", _("Operation recorded. Scan next Product or lot")
@@ -387,6 +389,37 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     def button_mark_location_dest_done(self):
         return self._mark_location_dest_done()
 
+    def _allow_change_location(self, location, location_field="src", raise_error=True):
+        """
+        Is the scanned location allowed to be the new source or destination location?
+        :param location: the scanned location
+        :param location_field: 2 options, source ('src') or destination ('dest')
+        :return: a boolean. True if allowed, False if not.
+        """
+        if location_field == "src":
+            move_location = self.next_move_line_id.move_id.location_id
+        elif location_field == "dest":
+            move_location = self.next_move_line_id.move_id.location_dest_id
+        else:
+            raise ValidationError(
+                _("Invalid value '%s' in arguments.") % location_field
+            )
+        # TODO: migration note. Use `is_sublocation_of` in stock_helper OCA module.
+        child_locations = self.env["stock.location"].search(
+            [("id", "child_of", [move_location.id])]
+        )
+        if location not in child_locations:
+            if raise_error:
+                raise ValidationError(
+                    _(
+                        "The selected location '%s' cannot be set as the source location "
+                        "of this operation. Only sublocations of '%s' are allowed."
+                    )
+                    % (location.name, move_location.name)
+                )
+            return False
+        return True
+
     def action_change_location(self):
         self.ensure_one()
         location = self.env["stock.location"].search(
@@ -394,6 +427,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         )
         if location and self.next_move_line_id:
             if not self.location_src_scanned:
+                self._allow_change_location(
+                    location, location_field="src", raise_error=True
+                )
                 self.next_move_line_id.write(
                     {
                         "location_id": location.id,
@@ -401,6 +437,9 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                     }
                 )
             elif not self.location_dest_scanned:
+                self._allow_change_location(
+                    location, location_field="dest", raise_error=True
+                )
                 self.next_move_line_id.write(
                     {
                         "location_dest_id": location.id,
