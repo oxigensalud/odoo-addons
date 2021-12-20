@@ -292,7 +292,8 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     def _mark_location_dest_done(self, location=False):
         self.location_dest_scanned = True
         self.location_id = location or self.next_location_dest_id
-        res = self.action_done()
+        res = self.check_done_conditions()
+        self.action_done()
         if self.picking_type_code == "incoming":
             self._set_messagge_info(
                 "success", _("Operation recorded. Scan next Product or lot")
