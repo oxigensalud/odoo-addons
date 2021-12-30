@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright NuoBiT Solutions, S.L. (<https://www.nuobit.com>)
      Eric Antones <eantones@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
@@ -6,7 +6,7 @@
     <record id="view_company_report_form_inherit_custom_gj" model="ir.ui.view">
         <field name="name">res.company.report.form.inherit.custom.gj</field>
         <field name="model">res.company</field>
-        <field name="inherit_id" ref="base.view_company_report_form"/>
+        <field name="inherit_id" ref="base.view_company_report_form" />
         <!--field name="mode">primary</field>
         <field name="priority">1024</field-->
         <field name="arch" type="xml">
