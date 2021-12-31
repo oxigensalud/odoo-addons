@@ -1,2 +1,3 @@
 stock-logistics-barcode
 account-invoicing
+partner-contact
