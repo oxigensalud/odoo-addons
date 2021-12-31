@@ -4,12 +4,12 @@
 {
     "name": "Oxigen Mrp Repair",
     "summary": "Custumizations for Oxigen in Repairs application",
-    "version": "11.0.1.0.0",
+    "version": "14.0.1.0.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
-    "category": "Manufacturing",
-    "depends": ["mrp_repair"],
+    "category": "Inventory/Inventory",
+    "depends": ["repair"],
     "installable": True,
     "license": "AGPL-3",
-    "data": ["views/mrp_repair_views.xml"],
+    "data": ["views/repair_views.xml"],
 }
