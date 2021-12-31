@@ -3,50 +3,42 @@
      Eric Antones <eantones@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
 <odoo>
-    <template id="external_layout_inherit_custom_gj" inherit_id="web.external_layout">
-        <xpath expr="." position="inside">
-            <t t-if="company.external_report_layout in (False, 'gj')">
-                <t t-call="custom_gj.external_layout_gj">
-                    <t t-raw="0" />
-                </t>
-            </t>
-            <t t-if="company.external_report_layout in (False, 'adda')">
-                <t t-call="custom_gj.external_layout_adda">
-                    <t t-raw="0" />
-                </t>
-            </t>
-        </xpath>
-    </template>
 
     <template id="external_layout_gj">
-        <div class="header">
+        <div t-attf-class="header o_company_#{company.id}_layout">
             <div class="row">
                 <div class="col-xs-6" name="company_address">
                     <p>
                         <h3 t-field="company.name" />
-                        <div t-if="company.street" t-field="company.street" />
-                        <div t-if="company.street2" t-field="company.street2" />
+                        <div
+                            t-if="company.partner_id.street"
+                            t-field="company.partner_id.street"
+                        />
+                        <div
+                            t-if="company.partner_id.street2"
+                            t-field="company.partner_id.street2"
+                        />
                         <div>
-                            <span t-field="company.zip" />
-                            <span t-field="company.city" />
-                            <span>(<span t-field="company.country_id" />)
+                            <span t-field="company.partner_id.zip" />
+                            <span t-field="company.partner_id.city" />
+                            <span>(<span t-field="company.partner_id.country_id" />)
                             </span>
                         </div>
                     </p>
-                    <p t-if="company.vat"><t
-                            t-esc="company.country_id.vat_label or 'TIN'"
+                    <p t-if="company.partner_id.vat"><t
+                            t-esc="company.partner_id.country_id.vat_label or 'TIN'"
                         />:
-                        <span t-field="company.vat" />
+                        <span t-field="company.partner_id.vat" />
                     </p>
                     <p>
-                        <div t-if="company.phone">Tel:
-                            <span t-field="company.phone" />
+                        <div t-if="company.partner_id.phone">Tel:
+                            <span t-field="company.partner_id.phone" />
                         </div>
                         <div t-if="company.partner_id.fax">Fax:
                             <span t-field="company.partner_id.fax" />
                         </div>
-                        <div t-if="company.email">e-mail:
-                            <span t-field="company.email" />
+                        <div t-if="company.partner_id.email">e-mail:
+                            <span t-field="company.partner_id.email" />
                         </div>
                     </p>
                 </div>
@@ -60,7 +52,9 @@
             </div>
         </div>
 
-        <div class="article o_report_layout_standard">
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+        >
             <t t-raw="0" />
         </div>
 
@@ -69,7 +63,7 @@
     </template>
 
     <template id="external_layout_adda">
-        <div class="header">
+        <div t-attf-class="header o_company_#{company.id}_layout">
             <div class="row">
                 <div class="col-xs-3 mb4">
                     <img
@@ -104,26 +98,28 @@
             </div>
         </div>
 
-        <div class="article o_report_layout_standard">
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+        >
             <t t-raw="0" />
         </div>
 
         <div class="footer">
             <div class="text-center" style="border-top: 1px solid black;">
                 <ul class="list-inline mb4">
-                    <li t-if="company.phone">Phone:
+                    <li t-if="company.partner_id.phone">Phone:
                         <span t-field="company.phone" />
                     </li>
-                    <li t-if="company.email">Email:
+                    <li t-if="company.partner_id.email">Email:
                         <span t-field="company.email" />
                     </li>
-                    <li t-if="company.website">Web:
+                    <li t-if="company.partner_id.website">Web:
                         <span t-field="company.website" />
                     </li>
-                    <li t-if="company.vat"><t
+                    <li t-if="company.partner_id.vat"><t
                             t-esc="company.country_id.vat_label or 'TIN'"
                         />:
-                        <span t-field="company.vat" />
+                        <span t-field="company.partner_id.vat" />
                     </li>
                 </ul>
 
@@ -140,4 +136,17 @@
             </div>
         </div>
     </template>
+
+    <record id="report_layout_custom_gj" model="report.layout">
+        <field name="name">Custom GJ</field>
+        <field name="sequence">100</field>
+        <field name="view_id" ref="custom_gj.external_layout_gj" />
+    </record>
+
+    <record id="report_layout_custom_adda" model="report.layout">
+        <field name="name">Custom ADDA</field>
+        <field name="sequence">110</field>
+        <field name="view_id" ref="custom_gj.external_layout_adda" />
+    </record>
+
 </odoo>

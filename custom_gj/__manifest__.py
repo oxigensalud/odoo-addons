@@ -4,8 +4,7 @@
 
 {
     "name": "GJ Customizations",
-    "description": "GJ Customizations",
-    "version": "11.0.0.1.1",
+    "version": "14.0.1.0.0",
     "author": "NuoBiT Solutions, S.L., Eric Antones",
     "license": "AGPL-3",
     "category": "Custom",
@@ -14,7 +13,6 @@
     "data": [
         "views/templates.xml",
         "views/report_templates.xml",
-        "views/res_company_view.xml",
         "views/report_invoice.xml",
         "views/invoice_report_templates.xml",
     ],
