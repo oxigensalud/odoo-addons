@@ -1,13 +1,13 @@
 # Copyright 2021 ForgeFlow, S.L.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
 class OxigenRepair(models.Model):
     _description = "Repair Order"
-    _inherit = ["mrp.repair"]
+    _inherit = ["repair.order"]
 
     distance_km = fields.Integer(string="Kilometers", group_operator="max")
     list_date = fields.Datetime(string="Lists date")
@@ -27,7 +27,6 @@ class OxigenRepair(models.Model):
         }
     )
 
-    @api.multi
     def action_repair_cancel_draft(self):
         """ if MO in under_repair or cancelled states, it can be set again to draft"""
 
