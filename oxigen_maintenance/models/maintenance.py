@@ -8,6 +8,8 @@ class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
     location_id = fields.Many2one("stock.location", string="Location")
+    # Rename standard `location` label to not have duplicated labels
+    location = fields.Char(string="Used in location")
 
     def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
 
