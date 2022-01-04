@@ -4,11 +4,11 @@
 {
     "name": "Oxigen Purchase",
     "summary": "Custumizations for Oxigen in Purchase application",
-    "version": "11.0.1.0.0",
+    "version": "14.0.1.0.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Purchases",
-    "depends": ["purchase", "stock_picking_partner_ref"],
+    "depends": ["purchase_stock", "stock_picking_partner_ref"],
     "installable": True,
     "license": "AGPL-3",
 }

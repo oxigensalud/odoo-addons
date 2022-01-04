@@ -1,13 +1,14 @@
 # Copyright 2021 ForgeFlow S.L.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
+from odoo import fields, models
 
 
 class Picking(models.Model):
     _inherit = "stock.picking"
+    # Rename standard `Reference` label to not have duplicated labels
+    name = fields.Char(string="Name")
 
-    @api.multi
     def write(self, vals):
         if "partner_ref" in vals:
             for rec in self.filtered(lambda r: r.purchase_id):
