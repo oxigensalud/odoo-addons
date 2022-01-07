@@ -2,7 +2,9 @@
 Oxigen Maintenance
 ==================
 
-* This module changes Maintenance Request's name and makes possible to link Maintenance Equipments with Locations.
+* This module changes Maintenance Request's name
+* Link Maintenance Equipments with Locations.
+* New employee field in maintenance plan
 
 Credits
 =======

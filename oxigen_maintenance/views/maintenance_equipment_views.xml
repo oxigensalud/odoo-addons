@@ -8,7 +8,6 @@
             <xpath expr="//field[@name='owner_user_id']" position="after">
                 <field name="location_id" />
             </xpath>
-
         </field>
     </record>
 
@@ -20,7 +19,13 @@
           <xpath expr="//field[@name='category_id']" position="after">
               <field name="location_id" />
           </xpath>
-
+          <xpath
+                expr="//group[@name='maintenance']//field[@name='name']"
+                position="after"
+            >
+              <field name="employee_id" />
+          </xpath>
         </field>
     </record>
+
 </odoo>

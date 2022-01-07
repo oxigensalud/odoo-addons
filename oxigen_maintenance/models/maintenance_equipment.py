@@ -16,4 +16,8 @@ class MaintenanceEquipment(models.Model):
         )
         kind = maintenance_plan.maintenance_kind_id.name or _("Unspecified kind")
         res["name"] = _("%s - %s - %s") % (kind, self.name, maintenance_plan.name)
+
+        if maintenance_plan.employee_id:
+            res["employee_id"] = maintenance_plan.employee_id.id
+
         return res
