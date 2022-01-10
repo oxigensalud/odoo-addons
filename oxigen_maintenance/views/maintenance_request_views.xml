@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="maintenance_request_view_form_inherit" model="ir.ui.view">
+        <field name="name">maintenance.request.view.form.inherit - oxigen</field>
+        <field name="model">maintenance.request</field>
+        <field
+            name="inherit_id"
+            ref="hr_maintenance.maintenance_request_view_form_inherit_hr"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="attributes">
+                <attribute name="string">Employee</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

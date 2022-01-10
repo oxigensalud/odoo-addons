@@ -1,1 +1,1 @@
-from . import maintenance, stock_location
+from . import maintenance_equipment, maintenance_plan, stock_location

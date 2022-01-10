@@ -8,8 +8,6 @@ class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
     location_id = fields.Many2one("stock.location", string="Location")
-    # Rename standard `location` label to not have duplicated labels
-    location = fields.Char(string="Used in location")
 
     def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
 
@@ -18,4 +16,8 @@ class MaintenanceEquipment(models.Model):
         )
         kind = maintenance_plan.maintenance_kind_id.name or _("Unspecified kind")
         res["name"] = _("%s - %s - %s") % (kind, self.name, maintenance_plan.name)
+
+        if maintenance_plan.employee_id:
+            res["employee_id"] = maintenance_plan.employee_id.id
+
         return res
