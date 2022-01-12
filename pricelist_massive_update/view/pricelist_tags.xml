@@ -6,7 +6,7 @@
             <field name="model">pricelist.tags</field>
             <field name="arch" type="xml">
                 <tree string="price_list_tags_tree">
-                    <field name="name"/>
+                    <field name="name" />
                     <field name="active" />
                 </tree>
             </field>
@@ -19,7 +19,7 @@
                 <form string="price_list_tags_form">
                         <group>
                             <group>
-                                <field name="name" required="1"/>
+                                <field name="name" required="1" />
                                 <field name="active" />
                             </group>
                             <group>
@@ -37,11 +37,12 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem id="price_list_tags_main_menu"
-                  name="PriceList Tags"
-                  parent="sale.prod_config_main"
-                  action="price_list_tag_menu_action"
-                  sequence="18"
-                  />
+        <menuitem
+            id="price_list_tags_main_menu"
+            name="PriceList Tags"
+            parent="sale.prod_config_main"
+            action="price_list_tag_menu_action"
+            sequence="18"
+        />
     </data>
 </odoo>
