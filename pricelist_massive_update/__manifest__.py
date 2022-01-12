@@ -1,20 +1,18 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 {
     "name": "Price List Massive Update",
-    "version": "11.0.15.03.2020",
+    "summary": "Update pricelists according to pricelist tags",
+    "version": "14.0.1.0.0",
     "category": "Sale",
-    "license": "OPL-1",
+    "license": "AGPL-3",
     "author": "Vraja Technologies",
     "website": "https://github.com/oxigensalud/odoo-addons",
-    "description": """ update price according pricelist tags
-    """,
     "depends": ["base", "sale"],
     "data": [
         "security/ir.model.access.csv",
-        "view/pricelist_tags.xml",
-        "view/product_pricelist.xml",
-        "view/pricelist_update.xml",
+        "views/pricelist_tags.xml",
+        "views/product_pricelist.xml",
+        "views/pricelist_update.xml",
     ],
     "installable": True,
-    "active": False,
 }

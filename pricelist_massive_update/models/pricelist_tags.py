@@ -1,3 +1,4 @@
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
@@ -9,26 +10,28 @@ class PriceListTags(models.Model):
     name = fields.Char(string="Name")
     active = fields.Boolean(string="Active", default=True)
     parent_id = fields.Many2one(
-        "pricelist.tags", string="Parent Id", ondelete="restrict", index=True
+        comodel_name="pricelist.tags",
+        string="Parent Id",
+        ondelete="restrict",
     )
 
     _sql_constraints = [("name", "unique (name)", "The name must be unique !")]
 
     @api.constrains("parent_id")
     def _check_hierarchy(self):
-        if not self._check_recursion():
-            raise ValidationError(_("Error! You cannot add recursive categories."))
+        for record in self:
+            if not record._check_recursion():
+                raise ValidationError(_("Error! You cannot add recursive categories."))
 
-    @api.multi
     def name_get(self):
         res = []
-        for pricelist_tag in self:
+        for record in self:
             names = []
-            current = pricelist_tag
+            current = record
             while current:
-                names.append(pricelist_tag.name)
-                current = pricelist_tag.parent_id
-            res.append((pricelist_tag.id, " / ".join(reversed(names))))
+                names.append(record.name)
+                current = current.parent_id
+            res.append((record.id, " / ".join(reversed(names))))
         return res
 
     @api.model
