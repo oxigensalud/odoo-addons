@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_partner_property_form" model="ir.ui.view">
+        <field name="name"> res.partner.property.form - Oxigen</field>
+        <field name="model">res.partner</field>
+        <field
+            name="inherit_id"
+            ref="sale_order_invoicing_grouping_criteria.view_partner_property_form"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//page[@name='sales_purchases']//group[@name='sale']"
+                position="inside"
+            >
+                 <field
+                    name="sale_invoicing_grouping_criteria_id"
+                    string="Sales Invoicing Grouping Criteria"
+                />
+            </xpath>
+            <xpath
+                expr="//page[@name='accounting']//group[@name='sale_invoicing']//field[@name='sale_invoicing_grouping_criteria_id']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
