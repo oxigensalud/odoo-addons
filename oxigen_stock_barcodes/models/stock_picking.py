@@ -10,7 +10,10 @@ class StockPicking(models.Model):
     def action_barcode_scan(self):
         self._prepare_stock_barcodes_sequence()
         action = super().action_barcode_scan()
-        if self.picking_type_code != "incoming":
+        if (
+            self.picking_type_code in ["internal", "outgoing"]
+            and self.location_id.usage != "transit"
+        ):
             # Ask to scan the source location
             ctx = action.get("context", {})
             ctx["default_message"] = _("Scan the Source Location")
