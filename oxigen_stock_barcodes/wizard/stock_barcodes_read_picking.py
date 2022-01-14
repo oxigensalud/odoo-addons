@@ -132,7 +132,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
 
     def _can_complete_without_scanning_dest_location(self):
         return (
-            self.next_location_dest_id.usage != "internal"
+            self.next_location_dest_id.usage not in ["internal", "view"]
             and self.next_product_uom_qty
             - self.next_product_done_qty
             - self.product_qty
@@ -289,12 +289,18 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             self._set_messagge_info("not_found", _("No location found."))
             return False
 
+    def _should_skip_scan_source_location(self):
+        return (
+            self.picking_type_code == "incoming"
+            or self.next_location_src_id.usage == "transit"
+        )
+
     def _mark_location_dest_done(self, location=False):
         self.location_dest_scanned = True
         self.location_id = location or self.next_location_dest_id
         res = self.check_done_conditions()
         self.action_done()
-        if self.picking_type_code == "incoming":
+        if self._should_skip_scan_source_location():
             self._set_messagge_info(
                 "success", _("Operation recorded. Scan next Product or lot")
             )
@@ -306,7 +312,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
 
     def process_barcode(self, barcode):
         location, product, lot, extra = self._pre_process_barcode(barcode)
-        if self.picking_type_code == "incoming":
+        if self._should_skip_scan_source_location():
             self.location_src_scanned = True
         # 1st - scan src location.
         if not self.location_src_scanned:
@@ -327,7 +333,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         return super().process_barcode(barcode)
 
     def _clean_operation_progress(self):
-        if self.picking_type_code != "incoming":
+        if not self._should_skip_scan_source_location():
             self.location_src_scanned = False
         self.product_and_lot_scanned = False
         self.location_dest_scanned = False
@@ -411,14 +417,13 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             [("id", "child_of", [move_location.id])]
         )
         if location not in child_locations:
+            error_msg = _(
+                "The selected location '%s' cannot be set as the %s location "
+                "of this operation. Only sublocations of '%s' are allowed."
+            ) % (location.name, user_word, move_location.name)
             if raise_error:
-                raise ValidationError(
-                    _(
-                        "The selected location '%s' cannot be set as the %s location "
-                        "of this operation. Only sublocations of '%s' are allowed."
-                    )
-                    % (location.name, user_word, move_location.name)
-                )
+                raise ValidationError(error_msg)
+            self._set_messagge_info("location_no_match", error_msg)
             return False
         return True
 
@@ -429,23 +434,23 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         )
         if location and self.next_move_line_id:
             if not self.location_src_scanned:
-                self._allow_change_location(
-                    location, location_field="src", raise_error=True
-                )
-                self.next_move_line_id.write(
-                    {
-                        "location_id": location.id,
-                        "stock_barcodes_sequence": SEQUENCE_FORCE_OPERATION,
-                    }
-                )
+                if self._allow_change_location(
+                    location, location_field="src", raise_error=False
+                ):
+                    self.next_move_line_id.write(
+                        {
+                            "location_id": location.id,
+                            "stock_barcodes_sequence": SEQUENCE_FORCE_OPERATION,
+                        }
+                    )
             elif not self.location_dest_scanned:
-                self._allow_change_location(
-                    location, location_field="dest", raise_error=True
-                )
-                self.next_move_line_id.write(
-                    {
-                        "location_dest_id": location.id,
-                        "stock_barcodes_sequence": SEQUENCE_FORCE_OPERATION,
-                    }
-                )
-                self._set_messagge_info("info", _("Scan the destination location."))
+                if self._allow_change_location(
+                    location, location_field="dest", raise_error=False
+                ):
+                    self.next_move_line_id.write(
+                        {
+                            "location_dest_id": location.id,
+                            "stock_barcodes_sequence": SEQUENCE_FORCE_OPERATION,
+                        }
+                    )
+                    self._set_messagge_info("info", _("Scan the destination location."))
