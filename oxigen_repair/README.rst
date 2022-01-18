@@ -1,6 +1,6 @@
-=================
-Oxigen Mrp Repair
-=================
+=============
+Oxigen Repair
+=============
 
 * This module makes operations and fee_lines editable in Repair Orders
 * If RO in under_repair or cancelled states, it can be set again to draft
