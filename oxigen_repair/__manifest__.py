@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Oxigen Mrp Repair",
+    "name": "Oxigen Repair",
     "summary": "Custumizations for Oxigen in Repairs application",
     "version": "14.0.1.0.0",
     "author": "ForgeFlow",
