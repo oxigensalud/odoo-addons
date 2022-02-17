@@ -8,5 +8,6 @@ class StockPicking(models.Model):
     _inherit = "stock.move.line"
 
     stock_barcodes_sequence = fields.Integer(
-        default=10, help="Technical field to order operations on barcode scanner",
+        default=10,
+        help="Technical field to order operations on barcode scanner",
     )
