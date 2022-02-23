@@ -1,6 +1,6 @@
-==================
-Oxigen Maintenance
-==================
+================================
+Oxigen Partner Grouping Criteria
+================================
 
 * This module moves the 'Sales Invoicing Grouping Criteria' field from the Invoicing page to Sales page in the partner view.
 
