@@ -47,3 +47,9 @@ msgstr ""
 msgid "Set to Draft"
 msgstr ""
 
+#. module: oxigen_mrp_repair
+#: code:addons/oxigen_mrp_repair/models/mrp_repair.py:59
+#, python-format
+msgid "Repair %s with lot %s of product %s must be finished before creating a new Repair order for the same lot."
+msgstr ""
+
