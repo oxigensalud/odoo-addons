@@ -72,3 +72,9 @@ msgstr "La reparación tiene que estar cancelada para poder volver a borrador"
 msgid "Set to Draft"
 msgstr "Volver a borrador"
 
+#. module: oxigen_mrp_repair
+#: code:addons/oxigen_mrp_repair/models/mrp_repair.py:59
+#, python-format
+msgid "Repair %s with lot %s of product %s must be finished before creating a new Repair order for the same lot."
+msgstr "La reparación %s con el lote %s del producto %s tiene que estar finalizada antes de abrir una nueva orden de reparación para el mismo lote"
+
