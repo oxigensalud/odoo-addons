@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT Solutions, S.L. (<https://www.nuobit.com>)
+     Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+
+    <template id="external_layout_gj">
+        <div
+            t-attf-class="header o_company_#{company.id}_layout"
+            t-att-style="report_header_style"
+        >
+            <div class="row">
+                <div class="col-6" name="company_address">
+                    <p>
+                        <h3 t-field="company.name" />
+                        <div
+                            t-if="company.partner_id.street"
+                            t-field="company.partner_id.street"
+                        />
+                        <div
+                            t-if="company.partner_id.street2"
+                            t-field="company.partner_id.street2"
+                        />
+                        <div>
+                            <span t-field="company.partner_id.zip" />
+                            <span t-field="company.partner_id.city" />
+                            <span>(<span t-field="company.partner_id.country_id" />)
+                            </span>
+                        </div>
+                    </p>
+                    <p t-if="company.partner_id.vat"><t
+                            t-esc="company.partner_id.country_id.vat_label or 'TIN'"
+                        />:
+                        <span t-field="company.partner_id.vat" />
+                    </p>
+                    <p>
+                        <div t-if="company.partner_id.phone">Tel:
+                            <span t-field="company.partner_id.phone" />
+                        </div>
+                        <div t-if="company.partner_id.fax">Fax:
+                            <span t-field="company.partner_id.fax" />
+                        </div>
+                        <div t-if="company.partner_id.email">e-mail:
+                            <span t-field="company.partner_id.email" />
+                        </div>
+                    </p>
+                </div>
+                <div class="col-1" />
+                <div class="col-5" name="company_logo">
+                    <img
+                        t-if="company.logo"
+                        t-att-src="image_data_uri(company.logo)"
+                        style="max-height: 85px;"
+                        alt="Logo"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <div class="pt-5">
+                <!-- This div ensures that the address is not cropped by the header. -->
+                <t t-call="web.address_layout" />
+            </div>
+            <t t-raw="0" />
+        </div>
+
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+        </div>
+    </template>
+
+    <template id="external_layout_adda">
+        <div
+            t-attf-class="header o_company_#{company.id}_layout"
+            t-att-style="report_header_style"
+        >
+            <div class="row">
+                <div class="col-xs-3 mb4">
+                    <img
+                        t-if="company.logo"
+                        t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
+                        style="max-height: 45px;"
+                    />
+                </div>
+                <div
+                    class="col-xs-9 text-right"
+                    style="margin-top:22px;"
+                    t-field="company.report_header"
+                    name="moto"
+                />
+            </div>
+            <div
+                t-if="company.logo or company.report_header"
+                class="row zero_min_height"
+            >
+                <div class="col-xs-12">
+                    <div style="border-bottom: 1px solid black;" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6" name="company_address">
+                    <span
+                        t-field="company.partner_id"
+                        t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                        style="border-bottom: 1px solid black; display:inline-block;"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <div class="pt-5">
+                <!-- This div ensures that the address is not cropped by the header. -->
+                <t t-call="web.address_layout" />
+            </div>
+            <t t-raw="0" />
+        </div>
+
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="font-size: 10px;">
+                <ul class="list-inline mb4">
+                    <li t-if="company.name" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.name"
+                        /></li>
+                    <li t-if="company.phone" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.phone"
+                        /></li>
+                    <li t-if="company.email" class="list-inline-item d-inline"><span
+                            t-field="company.email"
+                        /></li>
+                    <li t-if="company.website" class="list-inline-item d-inline"><span
+                            t-field="company.website"
+                        /></li>
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t
+                            t-esc="company.country_id.vat_label or 'TIN'"
+                        />: <span t-field="company.vat" /></li>
+                </ul>
+                <ul class="list-inline mb4">
+                    <li t-if="company.street" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.street"
+                        /></li>
+                    <li t-if="company.zip" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.zip"
+                        /></li>
+                    <li t-if="company.state_id" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.state_id"
+                        /></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer" />
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page" /> / <span class="topage" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <record id="report_layout_custom_gj" model="report.layout">
+        <field name="name">Custom GJ</field>
+        <field name="sequence">100</field>
+        <field name="view_id" ref="custom_gj.external_layout_gj" />
+    </record>
+
+    <record id="report_layout_custom_adda" model="report.layout">
+        <field name="name">Custom ADDA</field>
+        <field name="sequence">110</field>
+        <field name="view_id" ref="custom_gj.external_layout_adda" />
+    </record>
+
+</odoo>
