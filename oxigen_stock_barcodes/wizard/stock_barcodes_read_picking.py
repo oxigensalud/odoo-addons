@@ -94,6 +94,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                         )
                         rec.next_lot_id = ml.lot_id
                         return
+            rec.next_move_line_id = False
             rec.next_product_id = False
             rec.next_location_src_id = False
             rec.next_location_dest_id = False
@@ -405,6 +406,20 @@ class WizStockBarcodesReadPicking(models.TransientModel):
         if location_field == "src":
             move_location = self.next_move_line_id.move_id.location_id
             user_word = _("source")
+            available_quantity = self.env["stock.quant"]._get_available_quantity(
+                self.next_product_id,
+                location,
+                lot_id=self.next_lot_id,
+            )
+            if available_quantity < self.next_product_uom_qty:
+                error_msg = _(
+                    "The selected location '%s' cannot be set as the %s location "
+                    "of this operation. Not enough available stock at '%s'."
+                ) % (location.name, user_word, location.name)
+                if raise_error:
+                    raise ValidationError(error_msg)
+                self._set_messagge_info("location_no_match", error_msg)
+                return False
         elif location_field == "dest":
             move_location = self.next_move_line_id.move_id.location_dest_id
             user_word = _("destination")
@@ -425,6 +440,11 @@ class WizStockBarcodesReadPicking(models.TransientModel):
                 raise ValidationError(error_msg)
             self._set_messagge_info("location_no_match", error_msg)
             return False
+        self._set_messagge_info(
+            "info",
+            _("%s location changed. Scan it again to continue the operation")
+            % user_word,
+        )
         return True
 
     def action_change_location(self):
