@@ -5,9 +5,12 @@
 <odoo>
 
     <template id="external_layout_gj">
-        <div t-attf-class="header o_company_#{company.id}_layout">
+        <div
+            t-attf-class="header o_company_#{company.id}_layout"
+            t-att-style="report_header_style"
+        >
             <div class="row">
-                <div class="col-xs-6" name="company_address">
+                <div class="col-6" name="company_address">
                     <p>
                         <h3 t-field="company.name" />
                         <div
@@ -42,11 +45,13 @@
                         </div>
                     </p>
                 </div>
-                <div class="col-xs-offset-1 col-xs-5" name="company_logo">
+                <div class="col-1" />
+                <div class="col-5" name="company_logo">
                     <img
                         t-if="company.logo"
-                        t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
-                        style="max-width:100%;"
+                        t-att-src="image_data_uri(company.logo)"
+                        style="max-height: 85px;"
+                        alt="Logo"
                     />
                 </div>
             </div>
@@ -54,16 +59,26 @@
 
         <div
             t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
         >
+            <div class="pt-5">
+                <!-- This div ensures that the address is not cropped by the header. -->
+                <t t-call="web.address_layout" />
+            </div>
             <t t-raw="0" />
         </div>
 
-        <div class="footer">
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
         </div>
     </template>
 
     <template id="external_layout_adda">
-        <div t-attf-class="header o_company_#{company.id}_layout">
+        <div
+            t-attf-class="header o_company_#{company.id}_layout"
+            t-att-style="report_header_style"
+        >
             <div class="row">
                 <div class="col-xs-3 mb4">
                     <img
@@ -100,38 +115,59 @@
 
         <div
             t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
         >
+            <div class="pt-5">
+                <!-- This div ensures that the address is not cropped by the header. -->
+                <t t-call="web.address_layout" />
+            </div>
             <t t-raw="0" />
         </div>
 
-        <div class="footer">
-            <div class="text-center" style="border-top: 1px solid black;">
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="font-size: 10px;">
                 <ul class="list-inline mb4">
-                    <li t-if="company.partner_id.phone">Phone:
-                        <span t-field="company.phone" />
-                    </li>
-                    <li t-if="company.partner_id.email">Email:
-                        <span t-field="company.email" />
-                    </li>
-                    <li t-if="company.partner_id.website">Web:
-                        <span t-field="company.website" />
-                    </li>
-                    <li t-if="company.partner_id.vat"><t
+                    <li t-if="company.name" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.name"
+                        /></li>
+                    <li t-if="company.phone" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.phone"
+                        /></li>
+                    <li t-if="company.email" class="list-inline-item d-inline"><span
+                            t-field="company.email"
+                        /></li>
+                    <li t-if="company.website" class="list-inline-item d-inline"><span
+                            t-field="company.website"
+                        /></li>
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t
                             t-esc="company.country_id.vat_label or 'TIN'"
-                        />:
-                        <span t-field="company.partner_id.vat" />
-                    </li>
+                        />: <span t-field="company.vat" /></li>
+                </ul>
+                <ul class="list-inline mb4">
+                    <li t-if="company.street" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.street"
+                        /></li>
+                    <li t-if="company.zip" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.zip"
+                        /></li>
+                    <li t-if="company.state_id" class="list-inline-item d-inline"><span
+                            class="o_force_ltr"
+                            t-field="company.state_id"
+                        /></li>
                 </ul>
 
                 <div name="financial_infos">
                     <span t-field="company.report_footer" />
                 </div>
 
-                <div class="text-muted">
-                    Page:
-                    <span class="page" />
-                    /
-                    <span class="topage" />
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page" /> / <span class="topage" />
                 </div>
             </div>
         </div>
