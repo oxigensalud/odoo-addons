@@ -7,17 +7,6 @@
         id="report_invoice_document_inherit_custom_gj"
         inherit_id="account.report_invoice_document"
     >
-        <xpath expr="//t[@t-set='address']/address" position="replace">
-            <t t-call="custom_gj.report_partner_address" />
-        </xpath>
-
-        <xpath
-            expr="//t[@t-set='address']/div[@t-if='o.partner_id.vat']"
-            position="replace"
-        >
-            <t t-call="custom_gj.report_partner_vat" />
-        </xpath>
-
         <xpath expr="//p[@t-field='o.invoice_origin']/.." position="attributes">
             <attribute name="class">col-xs-2 hidden</attribute>
         </xpath>
