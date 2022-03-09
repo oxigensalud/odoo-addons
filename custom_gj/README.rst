@@ -24,3 +24,4 @@ Contributors
 
 * Eric Antones <eantones@nuobit.com>
 * Christopher Ormaza <chris.ormaza@forgeflow.com>
+* Lois Rilo <lois.rilo@forgeflow.com>

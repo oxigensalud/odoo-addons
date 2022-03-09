@@ -9,7 +9,6 @@
     >
         <xpath expr="//div[@t-field='o.partner_id']" position="replace">
             <t t-call="custom_gj.report_partner_address" />
-            <t t-call="custom_gj.report_partner_vat" />
         </xpath>
 
     </template>
