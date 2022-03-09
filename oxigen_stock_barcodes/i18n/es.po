@@ -4,220 +4,273 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-20 15:17+0000\n"
-"PO-Revision-Date: 2021-12-20 16:20+0100\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2022-03-11 10:27+0000\n"
+"PO-Revision-Date: 2022-03-11 10:27+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 3.0\n"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
+#, python-format
+msgid "%s location changed. Scan it again to continue the operation"
+msgstr "Ubicación de %s cambiada. Escanéela de nuevo para continuar con la operación"
+
+#. module: oxigen_stock_barcodes
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
 msgid "<span>Change Location</span>"
 msgstr "<span>Cambiar Ubicación</span>"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
 msgid "<span>Dest. OK</span>"
 msgstr "<span>Dest. OK</span>"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
 msgid "All"
 msgstr "Todos"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:165
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Barcode read correctly"
 msgstr "Código de Barras leído correctamente"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_location_dest_id
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_location_dest_id
 msgid "Destination Location"
 msgstr "Ubicación de destino"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:285
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Destination Location does not match."
 msgstr "La ubicación de destino no coincide."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_product_done_qty
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: oxigen_stock_barcodes
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_product_done_qty
 msgid "Done Quantity"
 msgstr "Cantidad Hecha"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:407
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_move_line__id
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_picking__id
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: oxigen_stock_barcodes
+#: model:ir.model.fields.selection,name:oxigen_stock_barcodes.selection__wiz_stock_barcodes_read_picking__message_type__location_no_match
+msgid "Incorrect Location"
+msgstr "Ubicación Incorrecta"
+
+#. module: oxigen_stock_barcodes
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Invalid value '%s' in arguments."
 msgstr "Valor no soportado '%s' en los argumentos."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_location_dest_scanned
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: oxigen_stock_barcodes
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__location_dest_scanned
 msgid "Location Dest Scanned"
 msgstr "Ubicación de Destino Escaneada"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_location_src_scanned
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__location_src_scanned
 msgid "Location Src Scanned"
 msgstr "Ubicación de Origen Escaneada"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_lot_id
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_lot_id
 msgid "Lot/Serial Number"
 msgstr "Lote/Número de serie"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:210
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Lot/Serial Number does not match."
 msgstr "El lote/número de serie no coincide."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_move_line_id
-#: model:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__message_type
+msgid "Message Type"
+msgstr "Tipo de mensaje"
+
+#. module: oxigen_stock_barcodes
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_move_line_id
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
 msgid "Next Operation"
 msgstr "Siguiente Operación"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:203
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:289
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "No location found."
 msgstr "Ubicación no encontrada."
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:245
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "No product found."
 msgstr "Producto no encontrado."
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:299
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Operation recorded. Scan next Product or lot"
 msgstr "Operación registrada. Escanea el siguiente producto o lote"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:303
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Operation recorded. Scan next source location"
 msgstr "Operación registrada. Escanea la siguiente ubicación de origen"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model,name:oxigen_stock_barcodes.model_stock_move_line
-msgid "Packing Operation"
-msgstr "Operación de empaquetado"
-
-#. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:238
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Please, scan the Lot/Serial number or create it."
 msgstr "Por favor, escanee el lote/número de serie o créelo."
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:228
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Please, scan the Lot/Serial number."
 msgstr "Por favor, escanee el lote/número de serie."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_product_id
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_product_id
 msgid "Product"
 msgstr "Producto"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_product_and_lot_scanned
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__product_and_lot_scanned
 msgid "Product And Lot Scanned"
 msgstr "Producto y Lote Escaneados"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:242
+#: model:ir.model,name:oxigen_stock_barcodes.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: oxigen_stock_barcodes
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Product does not match."
 msgstr "El producto no coincide."
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:268
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
-msgid "Qty increased. Scan more products to increase quantity or the destination location to finish the operation."
-msgstr "Cantidad incrementada. Escanea más productos para aumentar la cantidad o la ubicación de destino para finalizar la operación."
+msgid ""
+"Qty increased. Scan more products to increase quantity or the destination "
+"location to finish the operation."
+msgstr ""
+"Cantidad incrementada. Escanea más productos para aumentar la cantidad o la "
+"ubicación de destino para finalizar la operación."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_product_uom_qty
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_product_uom_qty
 msgid "Reserved Quantity"
 msgstr "Cantidad Reservada"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/models/stock_picking.py:22
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:155
+#: code:addons/oxigen_stock_barcodes/models/stock_picking.py:0
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Scan a Product or Lot/Serial number"
 msgstr "Escanea un producto o lote/número de serie"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:159
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Scan more units or the Destination Location"
 msgstr "Escanea más unidades o la ubicación de destino"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/models/stock_picking.py:16
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:152
+#: code:addons/oxigen_stock_barcodes/models/stock_picking.py:0
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Scan the Source Location"
 msgstr "Escanea la ubicación de origen"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:451
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Scan the destination location."
 msgstr "Escanea la ubicación de destino."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_show_button_mark_location_dest
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__show_button_mark_location_dest
 msgid "Show Button Mark Location Dest"
 msgstr "Mostrar Botón Marcar Ubicación de Destino"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
 msgid "Skip operation"
 msgstr "Saltar operación"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking_next_location_src_id
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_wiz_stock_barcodes_read_picking__next_location_src_id
 msgid "Source Location"
 msgstr "Ubicación origen"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:200
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Source Location does not match."
 msgstr "La ubicación origen no coincide."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_move_line_stock_barcodes_sequence
+#: model:ir.model.fields,field_description:oxigen_stock_barcodes.field_stock_move_line__stock_barcodes_sequence
 msgid "Stock Barcodes Sequence"
 msgstr "Secuencia de Código de Barras de Inventario"
 
 #. module: oxigen_stock_barcodes
-#: model:ir.model.fields,help:oxigen_stock_barcodes.field_stock_move_line_stock_barcodes_sequence
+#: model:ir.model.fields,help:oxigen_stock_barcodes.field_stock_move_line__stock_barcodes_sequence
 msgid "Technical field to order operations on barcode scanner"
-msgstr "Technical field to order operations on barcode scanner"
+msgstr ""
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:416
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
-msgid "The selected location '%s' cannot be set as the %s location of this operation. Only sublocations of '%s' are allowed."
-msgstr "La ubicación '%s' seleccionada no se puede marcar como ubicación de %s de esta operación. Solamente se permiten sub-ubicaciones de '%s'."
+msgid ""
+"The selected location '%s' cannot be set as the %s location of this "
+"operation. Not enough available stock at '%s'."
+msgstr ""
+"La ubicación '%s' seleccionada no se puede marcar como ubicación de %s de "
+"esta operación. No hay suficiente inventario disponible en '%s'."
+
+#. module: oxigen_stock_barcodes
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
+#, python-format
+msgid ""
+"The selected location '%s' cannot be set as the %s location of this "
+"operation. Only sublocations of '%s' are allowed."
+msgstr ""
+"La ubicación '%s' seleccionada no se puede marcar como ubicación de %s de "
+"esta operación. Solamente se permiten sub-ubicaciones de '%s'."
 
 #. module: oxigen_stock_barcodes
 #: model:ir.model,name:oxigen_stock_barcodes.model_stock_picking
@@ -225,7 +278,7 @@ msgid "Transfer"
 msgstr "Albarán"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:195
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "Waiting product or Lot/Serial number"
 msgstr "Esperando producto o lote/número de serie"
@@ -236,24 +289,24 @@ msgid "Wizard to read barcode on picking"
 msgstr "Asistente para leer códigos de barras desde los albaranes"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:258
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "You cannot add more quantity."
 msgstr "No puedes añadir más cantidad."
 
 #. module: oxigen_stock_barcodes
-#: model:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_barcodes.view_stock_barcodes_read_picking_form
 msgid "debug..."
 msgstr "debug..."
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:404
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "destination"
 msgstr "destino"
 
 #. module: oxigen_stock_barcodes
-#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:401
+#: code:addons/oxigen_stock_barcodes/wizard/stock_barcodes_read_picking.py:0
 #, python-format
 msgid "source"
 msgstr "origen"
