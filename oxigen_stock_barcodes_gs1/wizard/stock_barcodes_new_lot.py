@@ -8,12 +8,12 @@ class WizStockBarcodesNewLot(models.TransientModel):
     _inherit = "wiz.stock.barcodes.new.lot"
 
     # override string.
-    life_date = fields.Datetime(string="Removal Date")
+    expiration_date = fields.Datetime(string="Removal Date")
 
     def _prepare_lot_values(self):
         vals = super()._prepare_lot_values()
-        if "life_date" in vals:
+        if "expiration_date" in vals:
             # Oxigen wants the group 17 to be removal date.
-            vals.update({"removal_date": self.life_date})
-            vals.pop("life_date")
+            vals.update({"removal_date": self.expiration_date})
+            vals.pop("expiration_date")
         return vals
