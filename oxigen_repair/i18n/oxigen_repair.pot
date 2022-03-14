@@ -78,3 +78,9 @@ msgstr ""
 msgid "Repair %s with lot %s of product %s must be finished before creating a new Repair order for the same lot."
 msgstr ""
 
+#. module: oxigen_repair
+#: code:addons/oxigen_repair/models/repair_fee.py:0
+#: code:addons/oxigen_repair/models/repair_line.py:0
+#, python-format
+msgid "Please select a Customer"
+msgstr ""
