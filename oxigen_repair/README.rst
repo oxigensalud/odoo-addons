@@ -7,6 +7,7 @@ Oxigen Repair
 * New fields: km, list_date
 * Cannot delete/cancel a finished Repair Order (state Done or To be Invoiced)
 * If there is an unfinished RO with a certain product and lot, a new one for the same lot can't be created until the previous one is finished.
+* Cannot add Parts/Operations in RO if no Customer is defined
 
 
 Credits
