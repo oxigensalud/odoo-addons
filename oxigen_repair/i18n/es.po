@@ -78,3 +78,9 @@ msgstr "Volver a borrador"
 msgid "Repair %s with lot %s of product %s must be finished before creating a new Repair order for the same lot."
 msgstr "La reparación %s con el lote %s del producto %s tiene que estar finalizada antes de abrir una nueva orden de reparación para el mismo lote"
 
+#. module: oxigen_repair
+#: code:addons/oxigen_repair/models/repair_fee.py:0
+#: code:addons/oxigen_repair/models/repair_line.py:0
+#, python-format
+msgid "Please select a Customer"
+msgstr "Por favor seleccione un Cliente"
