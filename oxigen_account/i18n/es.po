@@ -1,0 +1,159 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-16 10:38+0000\n"
+"PO-Revision-Date: 2022-03-16 10:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/res_company.py:0
+#, python-format
+msgid "Change/Show draft entries"
+msgstr "Cambiar/Mostrar asientos en borrador"
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_account_update_lock_date
+msgid "Account Update Lock_date"
+msgstr "Actualización de fecha de bloqueo contable"
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid "Cancel"
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid "Change dates"
+msgstr "Modificar fechas"
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/res_company.py:0
+#, python-format
+msgid "Change draft entries date?"
+msgstr "Modificar fecha de las facturas en borrador?"
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,field_description:oxigen_account.field_account_journal__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_account_move__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_res_company__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid ""
+"Change draft entries date to \"Lock Date for All Users\" +"
+" 1 day?"
+msgstr "Cambiar fecha de los asientos en borrador a Fecha de bloqueo + 1 día? "
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_account_update_lock_date_form_view
+msgid "Draft entries date changed successfully!"
+msgstr "Fecha de los asientos en borrador cambiada!"
+
+#. module: oxigen_account
+#: model:ir.model.fields,field_description:oxigen_account.field_account_journal__id
+#: model:ir.model.fields,field_description:oxigen_account.field_account_move__id
+#: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__id
+#: model:ir.model.fields,field_description:oxigen_account.field_res_company__id
+msgid "ID"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,help:oxigen_account.field_account_journal__payment_debit_account_id
+msgid ""
+"Incoming payments entries triggered by invoices/refunds will be posted on "
+"the Outstanding Receipts Account and displayed as blue lines in the bank "
+"reconciliation widget. During the reconciliation process, concerned "
+"transactions will be reconciled with entries on the Outstanding Receipts "
+"Account instead of the receivable account."
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,field_description:oxigen_account.field_account_journal____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_account_move____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_res_company____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,help:oxigen_account.field_account_journal__payment_credit_account_id
+msgid ""
+"Outgoing payments entries triggered by bills/credit notes will be posted on "
+"the Outstanding Payments Account and displayed as blue lines in the bank "
+"reconciliation widget. During the reconciliation process, concerned "
+"transactions will be reconciled with entries on the Outstanding Payments "
+"Account instead of the payable account."
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,field_description:oxigen_account.field_account_journal__payment_credit_account_id
+msgid "Outstanding Payments Account"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,field_description:oxigen_account.field_account_journal__payment_debit_account_id
+msgid "Outstanding Receipts Account"
+msgstr ""
+
+#. module: oxigen_account
+#: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__show_change_date_msg
+msgid "Show Change Date Msg"
+msgstr ""
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/res_company.py:0
+#, python-format
+msgid "Show Unreconciled Bank Statement Line"
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid "Show unposted entries"
+msgstr ""
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/res_company.py:0
+#, python-format
+msgid "There are still unposted entries in the period you want to lock."
+msgstr ""
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/res_company.py:0
+#, python-format
+msgid ""
+"There are still unreconciled bank statement lines in the period you want to "
+"lock. You should either reconcile or delete them."
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid "Unposted entries"
+msgstr ""

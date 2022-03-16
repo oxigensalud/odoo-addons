@@ -8,7 +8,10 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting",
-    "depends": ["account"],
+    "depends": ["account_lock_date_update"],
     "installable": True,
     "license": "AGPL-3",
+    "data": [
+        "wizards/draft_invoices.xml",
+    ],
 }

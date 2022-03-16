@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2017 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_change_draft_date" model="ir.ui.view">
+        <field name="name">account.update.draft.invoice_date (in oxigen_account)</field>
+        <field name="model">account.update.lock_date</field>
+        <field name="arch" type="xml">
+            <form string='Unposted entries'>
+                <field name="fiscalyear_lock_date" invisible="1" />
+                <sheet>
+                        <p
+                    >Change draft entries date to "Lock Date for All Users" + 1 day?</p>
+                </sheet>
+                <footer>
+                    <button
+                        string="Change dates"
+                        name="change_drafts_date"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button
+                        name="show_unposted_entries"
+                        string="Show unposted entries"
+                        class="btn-secondary"
+                        type="object"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record
+        id="account_lock_date_update.account_update_lock_date_act_window"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Update Lock Dates</field>
+        <field name="res_model">account.update.lock_date</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field
+            name="view_id"
+            ref="account_lock_date_update.account_update_lock_date_form_view"
+        />
+    </record>
+
+    <record id="oxigen_account_update_lock_date_form_view" model="ir.ui.view">
+        <field
+            name="name"
+        >oxigen.account.update.lock_date.form (from oxigen_account)</field>
+        <field name="model">account.update.lock_date</field>
+        <field
+            name="inherit_id"
+            ref="account_lock_date_update.account_update_lock_date_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='main']" position="before">
+                <field name="show_change_date_msg" invisible="1" />
+                <span
+                    class="o_form_label"
+                    attrs="{'invisible':[('show_change_date_msg','=',False)]}"
+                >
+                    <strong><p>Draft entries date changed successfully!</p></strong>
+                </span>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>
