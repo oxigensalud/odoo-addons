@@ -8,7 +8,8 @@ from odoo.exceptions import UserError
 class RepairLine(models.Model):
     _inherit = "repair.line"
 
-    @api.onchange("product_id")
+    @api.onchange("repair_id", "product_id", "product_uom_qty")
     def onchange_product_id(self):
         if not self.repair_id.partner_id:
             raise UserError(_("Please select a Customer"))
+        super(RepairLine, self).onchange_product_id()
