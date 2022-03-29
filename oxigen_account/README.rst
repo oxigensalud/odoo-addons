@@ -7,6 +7,7 @@ Oxigen Invoicing
 * Allow any account as outstanding receipt/payment account in journals. This allows
   to configure SEPA payment order and return flow more easily.
 * Change draft entries date when their date is before fiscalyear_period_date.
+* Make Bill Reference field required in Vendor Bills
 
 Credits
 =======

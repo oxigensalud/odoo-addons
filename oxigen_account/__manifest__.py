@@ -13,5 +13,6 @@
     "license": "AGPL-3",
     "data": [
         "wizards/draft_invoices.xml",
+        "views/account_move_views.xml",
     ],
 }

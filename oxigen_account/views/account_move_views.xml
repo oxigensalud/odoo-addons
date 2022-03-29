@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="oxigen_view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form - oxigen</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible':[('move_type', 'not in', ('in_invoice', 'in_receipt', 'in_refund'))], 'required':[('move_type', 'in', ('in_invoice', 'in_receipt', 'in_refund'))]}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
