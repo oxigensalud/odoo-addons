@@ -28,7 +28,7 @@ class OxigenRepair(models.Model):
     )
 
     def action_repair_cancel_draft(self):
-        """ if MO in under_repair or cancelled states, it can be set again to draft"""
+        """if MO in under_repair or cancelled states, it can be set again to draft"""
 
         if self.filtered(lambda repair: repair.state not in ["cancel", "under_repair"]):
             raise UserError(_("Repair must be canceled in order to reset it to draft."))
