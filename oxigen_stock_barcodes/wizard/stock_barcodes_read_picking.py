@@ -162,11 +162,11 @@ class WizStockBarcodesReadPicking(models.TransientModel):
             return False
         return res
 
-    def _set_messagge_info(self, type, message):
-        if type == "success" and message == _("Barcode read correctly"):
+    def _set_messagge_info(self, msg_type, message):
+        if msg_type == "success" and message == _("Barcode read correctly"):
             # we want full control on when to post a success msg.
             return
-        return super()._set_messagge_info(type, message)
+        return super()._set_messagge_info(msg_type, message)
 
     def _prepare_move_line_values(self, candidate_move, available_qty):
         res = super()._prepare_move_line_values(candidate_move, available_qty)
