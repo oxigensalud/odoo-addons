@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- ************************************************************* -->
+    <!-- No deducibles -->
+    <!-- ************************************************************* -->
+
+    <!--     4% -->
+    <record id="account_tax_template_p_iva4_nd_s" model="account.tax.template">
+        <field name="description">P_IVA4_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 4% (servicios corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_p_iva4_nd_bc" model="account.tax.template">
+        <field name="description">P_IVA4_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 4% (bienes corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_p_iva4_nd_bi" model="account.tax.template">
+        <field name="description">P_IVA4_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 4% (bienes inversión)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <!--     10% -->
+    <record id="account_tax_template_p_iva10_nd_s" model="account.tax.template">
+        <field name="description">P_IVA10_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 10% (servicios corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_p_iva10_nd_bc" model="account.tax.template">
+        <field name="description">P_IVA10_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 10% (bienes corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_p_iva10_nd_bi" model="account.tax.template">
+        <field name="description">P_IVA10_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 10% (bienes inversión)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <!--     21% -->
+     <record
+        id="account_tax_template_p_iva0_nd"
+        model="account.tax.template"
+    > <!--same external id as standard -->
+        <field name="description">P_IVA0_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 21% (servicios corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_p_iva0_nd_bc" model="account.tax.template">
+        <field name="description">P_IVA0_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">	IVA Soportado no deducible 21% (bienes corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_p_iva0_nd_bi" model="account.tax.template">
+        <field name="description">P_IVA0_ND</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 21% (bienes inversión)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
+    <!-- ************************************************************* -->
+    <!-- Intracomunitarios -->
+    <!-- ************************************************************* -->
+
+    <!--     4% -->
+     <record id="account_tax_template_p_iva4_sp_in_1" model="account.tax.template">
+        <field name="description">P_IVA4_SP_IN_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field
+            name="name"
+        >IVA 4% Inversión del sujeto pasivo intracomunitario (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <record id="account_tax_template_p_iva4_sp_in_2" model="account.tax.template">
+        <field name="description">P_IVA4_SP_IN_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field
+            name="name"
+        >IVA 4% Inversión del sujeto pasivo intracomunitario (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <record id="account_tax_template_p_iva4_ic_bc_1" model="account.tax.template">
+        <field name="description">P_IVA4_IC_BC_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field name="name">IVA 4% Intracomunitario. Bienes corrientes (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <record id="account_tax_template_p_iva4_ic_bc_2" model="account.tax.template">
+        <field name="description">P_IVA4_IC_BC_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field name="name">IVA 4% Intracomunitario. Bienes corrientes (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <record id="account_tax_template_p_iva4_ic_bi_1" model="account.tax.template">
+        <field name="description">P_IVA4_IC_BI_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field name="name">IVA 4% Intracomunitario. Bienes de inversión (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <record id="account_tax_template_p_iva4_ic_bi_2" model="account.tax.template">
+        <field name="description">P_IVA4_IC_BI_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field name="name">IVA 4% Intracomunitario. Bienes de inversión (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <!--     10% -->
+    <record id="account_tax_template_p_iva10_sp_in_1" model="account.tax.template">
+        <field name="description">P_IVA10_SP_IN_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field
+            name="name"
+        >IVA 10% Inversión del sujeto pasivo intracomunitario (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+    <record id="account_tax_template_p_iva10_sp_in_2" model="account.tax.template">
+        <field name="description">P_IVA10_SP_IN_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field
+            name="name"
+        >IVA 10% Inversión del sujeto pasivo intracomunitario (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <record id="account_tax_template_p_iva10_ic_bc_1" model="account.tax.template">
+        <field name="description">P_IVA10_IC_BC_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field name="name">IVA 10% Intracomunitario. Bienes corrientes (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <record id="account_tax_template_p_iva10_ic_bc_2" model="account.tax.template">
+        <field name="description">P_IVA10_IC_BC_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field name="name">IVA 10% Intracomunitario. Bienes corrientes (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <record id="account_tax_template_p_iva10_ic_bi_1" model="account.tax.template">
+        <field name="description">P_IVA10_IC_BI_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field name="name">IVA 10% Intracomunitario. Bienes de inversión (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <record id="account_tax_template_p_iva10_ic_bi_2" model="account.tax.template">
+        <field name="description">P_IVA10_IC_BI_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field name="name">IVA 10% Intracomunitario. Bienes de inversión (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <!--     21% -->
+    <record id="account_tax_template_p_iva21_sp_in_1" model="account.tax.template">
+        <field name="description">P_IVA21_SP_IN_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field
+            name="name"
+        >IVA 21% Inversión del sujeto pasivo intracomunitario (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_sp_in_2" model="account.tax.template">
+        <field name="description">P_IVA21_SP_IN_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field
+            name="name"
+        >IVA 21% Inversión del sujeto pasivo intracomunitario (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_ic_bc_1" model="account.tax.template">
+        <field name="description">P_IVA21_IC_BC_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field name="name">IVA 21% Intracomunitario. Bienes corrientes (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_ic_bc_2" model="account.tax.template">
+        <field name="description">P_IVA21_IC_BC_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field name="name">IVA 21% Intracomunitario. Bienes corrientes (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_ic_bi_1" model="account.tax.template">
+        <field name="description">P_IVA21_IC_BI_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field name="name">IVA 21% Intracomunitario. Bienes de inversión (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_ic_bi_2" model="account.tax.template">
+        <field name="description">P_IVA21_IC_BI_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field name="name">IVA 21% Intracomunitario. Bienes de inversión (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <!-- ************************************************************* -->
+    <!-- Extracomunitarios -->
+    <!-- ************************************************************* -->
+
+    <!--     4% -->
+    <record id="account_tax_template_p_iva4_sp_ex_1" model="account.tax.template">
+        <field name="description">P_IVA4_SP_EX_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field
+            name="name"
+        >IVA 4% Inversión del sujeto pasivo extracomunitario (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <record id="account_tax_template_p_iva4_sp_ex_2" model="account.tax.template">
+        <field name="description">P_IVA4_SP_EX_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field
+            name="name"
+        >IVA 4% Inversión del sujeto pasivo extracomunitario (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="4" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+    </record>
+
+    <!--     10% -->
+    <record id="account_tax_template_p_iva10_sp_ex_1" model="account.tax.template">
+        <field name="description">P_IVA10_SP_EX_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field
+            name="name"
+        >IVA 10% Inversión del sujeto pasivo extracomunitario (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <record id="account_tax_template_p_iva10_sp_ex_2" model="account.tax.template">
+        <field name="description">P_IVA10_SP_EX_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field
+            name="name"
+        >IVA 10% Inversión del sujeto pasivo extracomunitario (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+    </record>
+
+    <!--     21% -->
+    <record id="account_tax_template_p_iva21_sp_ex_1" model="account.tax.template">
+        <field name="description">P_IVA21_SP_EX_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="10" />
+        <field
+            name="name"
+        >IVA 21% Inversión del sujeto pasivo extracomunitario (1)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="-21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_sp_ex_2" model="account.tax.template">
+        <field name="description">P_IVA21_SP_EX_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="sequence" eval="20" />
+        <field
+            name="name"
+        >IVA 21% Inversión del sujeto pasivo extracomunitario (2)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="21" />
+        <field name="amount_type">percent</field>
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+    </record>
+
+    <!-- ************************************************************* -->
+    <!-- Compra con Inversión del Sujeto Pasivo Nacional -->
+    <!-- ************************************************************* -->
+
+     <!--     4% -->
+    <record id="account_tax_template_p_iva4_isp_1" model="account.tax.template">
+        <field
+            name="name"
+        >IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
+        <field name="description">P_IVA4_ISP_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">percent</field>
+        <field name="amount" eval="4" />
+        <field name="sequence" eval="10" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+    </record>
+     <record id="account_tax_template_p_iva4_isp_2" model="account.tax.template">
+        <field
+            name="name"
+        >IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
+        <field name="description">P_IVA4_ISP_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">percent</field>
+        <field name="amount" eval="-4" />
+        <field name="sequence" eval="20" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+    </record>
+
+     <!--     10% -->
+    <record id="account_tax_template_p_iva10_isp_1" model="account.tax.template">
+        <field
+            name="name"
+        >IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
+        <field name="description">P_IVA10_ISP_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">percent</field>
+        <field name="amount" eval="10" />
+        <field name="sequence" eval="10" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+    </record>
+
+     <record id="account_tax_template_p_iva10_isp_2" model="account.tax.template">
+        <field
+            name="name"
+        >IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
+        <field name="description">P_IVA10_ISP_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">percent</field>
+        <field name="amount" eval="-10" />
+        <field name="sequence" eval="20" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+     </record>
+
+     <!--     21% -->
+     <record id="account_tax_template_p_iva21_isp_1" model="account.tax.template">
+        <field
+            name="name"
+        >IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
+        <field name="description">P_IVA21_ISP_1</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">percent</field>
+        <field name="amount" eval="21" />
+        <field name="sequence" eval="10" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+    </record>
+
+    <record id="account_tax_template_p_iva21_isp_2" model="account.tax.template">
+        <field
+            name="name"
+        >IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
+        <field name="description">P_IVA21_ISP_2</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="amount_type">percent</field>
+        <field name="amount" eval="-21" />
+        <field name="sequence" eval="20" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+    </record>
+
+</odoo>
