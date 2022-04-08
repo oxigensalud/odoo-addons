@@ -8,7 +8,12 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting/Localizations/Account Charts",
-    "depends": ["l10n_es", "l10n_es_aeat_mod303", "l10n_es_special_prorate"],
+    "depends": [
+        "l10n_es",
+        "l10n_es_aeat_mod303",
+        "l10n_es_special_prorate",
+        "account_chart_update",
+    ],
     "installable": True,
     "license": "AGPL-3",
     "data": [
