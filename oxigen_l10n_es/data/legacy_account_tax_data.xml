@@ -323,7 +323,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -339,7 +339,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -365,7 +365,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -381,7 +381,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -449,7 +449,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -465,7 +465,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -580,7 +580,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -596,7 +596,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -622,7 +622,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -638,7 +638,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -706,7 +706,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -722,7 +722,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -837,7 +837,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -853,7 +853,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -879,7 +879,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -895,7 +895,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -963,7 +963,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
         ]"
@@ -979,7 +979,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -1055,7 +1055,7 @@
                 'factor_percent': 100,
                 'repartition_type': 'tax',
                 'tag_ids': [ref('l10n_es.mod_303_29')],
-                'account_id': ref('l10n_es.account_common_472'),
+                'account_id': ref('l10n_es.account_common_477'),
             }),
         ]"
         />
@@ -1071,7 +1071,7 @@
                 'factor_percent': 100,
                 'repartition_type': 'tax',
                 'tag_ids': [ref('l10n_es.mod_303_41')],
-                'account_id': ref('l10n_es.account_common_472'),
+                'account_id': ref('l10n_es.account_common_477'),
             }),
         ]"
         />
@@ -1187,7 +1187,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
         ]"
@@ -1203,7 +1203,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -1276,7 +1276,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
         ]"
@@ -1292,7 +1292,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -1325,7 +1325,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
         ]"
@@ -1341,7 +1341,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -1416,7 +1416,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
         ]"
@@ -1432,7 +1432,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
@@ -1505,7 +1505,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
         ]"
@@ -1521,7 +1521,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('l10n_es.account_common_477'),
+                'account_id': ref('l10n_es.account_common_472'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
         ]"
