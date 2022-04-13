@@ -157,3 +157,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
 msgid "Unposted entries"
 msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_invoice_tree
+msgid "Total (currency)"
+msgstr "Total (moneda)"
