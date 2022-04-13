@@ -12,4 +12,25 @@
             </xpath>
         </field>
     </record>
+
+    <record id="oxigen_view_invoice_tree" model="ir.ui.view">
+        <field name="name">oxigen-view_invoice_tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+        <xpath expr="//field[@name='amount_total_signed']" position="attributes">
+        <attribute name="string">Total (€)</attribute>
+            </xpath>
+        <xpath expr="//field[@name='amount_total_signed']" position="after">
+             <field
+                    name="amount_total"
+                    string="Total (currency)"
+                    sum="Total"
+                    decoration-bf="1"
+                    optional="show"
+                />
+        </xpath>
+        </field>
+    </record>
+
 </odoo>

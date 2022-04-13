@@ -8,6 +8,7 @@ Oxigen Invoicing
   to configure SEPA payment order and return flow more easily.
 * Change draft entries date when their date is before fiscalyear_period_date.
 * Make Bill Reference field required in Vendor Bills
+* Show Total with origin currency in invoice tree view
 
 Credits
 =======
