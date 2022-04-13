@@ -20,41 +20,8 @@
     <!-- ************************************************************* -->
 
     <!--     4% -->
-    <record id="account_tax_template_p_iva4_nd_s" model="account.tax.template">
-        <field name="description">P_IVA4_ND</field>
-        <field name="type_tax_use">purchase</field>
+    <record id="l10n_es.account_tax_template_p_iva4_nd" model="account.tax.template">
         <field name="name">IVA Soportado no deducible 4% (servicios corrientes)</field>
-        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="amount" eval="4" />
-        <field name="amount_type">percent</field>
-        <field name="analytic" eval="True" />
-        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
-        <field
-            name="invoice_repartition_line_ids"
-            eval="[(5, 0, 0),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'base',
-            }),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'tax',
-            }),
-        ]"
-        />
-        <field
-            name="refund_repartition_line_ids"
-            eval="[(5, 0, 0),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'base',
-            }),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'tax',
-            }),
-        ]"
-        />
     </record>
 
     <record id="account_tax_template_p_iva4_nd_bc" model="account.tax.template">
@@ -132,41 +99,8 @@
     </record>
 
     <!--     10% -->
-    <record id="account_tax_template_p_iva10_nd_s" model="account.tax.template">
-        <field name="description">P_IVA10_ND</field>
-        <field name="type_tax_use">purchase</field>
+    <record id="l10n_es.account_tax_template_p_iva10_nd" model="account.tax.template">
         <field name="name">IVA Soportado no deducible 10% (servicios corrientes)</field>
-        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="amount" eval="10" />
-        <field name="amount_type">percent</field>
-        <field name="analytic" eval="True" />
-        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
-        <field
-            name="invoice_repartition_line_ids"
-            eval="[(5, 0, 0),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'base',
-            }),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'tax',
-            }),
-        ]"
-        />
-        <field
-            name="refund_repartition_line_ids"
-            eval="[(5, 0, 0),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'base',
-            }),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'tax',
-            }),
-        ]"
-        />
     </record>
 
     <record id="account_tax_template_p_iva10_nd_bc" model="account.tax.template">
@@ -245,43 +179,10 @@
 
     <!--     21% -->
      <record
-        id="account_tax_template_p_iva0_nd"
+        id="l10n_es.account_tax_template_p_iva0_nd"
         model="account.tax.template"
     > <!--same external id as standard -->
-        <field name="description">P_IVA0_ND</field>
-        <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 21% (servicios corrientes)</field>
-        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="amount" eval="21" />
-        <field name="amount_type">percent</field>
-        <field name="analytic" eval="True" />
-        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
-        <field
-            name="invoice_repartition_line_ids"
-            eval="[(5, 0, 0),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'base',
-            }),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'tax',
-            }),
-        ]"
-        />
-        <field
-            name="refund_repartition_line_ids"
-            eval="[(5, 0, 0),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'base',
-            }),
-            (0,0, {
-                'factor_percent': 100,
-                'repartition_type': 'tax',
-            }),
-        ]"
-        />
     </record>
 
     <record id="account_tax_template_p_iva0_nd_bc" model="account.tax.template">
@@ -374,7 +275,9 @@
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -386,8 +289,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -399,7 +305,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva4_sp_in_2" model="account.tax.template">
@@ -413,7 +320,9 @@
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -425,8 +334,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -438,7 +350,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bc_1" model="account.tax.template">
@@ -450,7 +363,9 @@
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -462,8 +377,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -475,7 +393,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bc_2" model="account.tax.template">
@@ -487,7 +406,9 @@
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -499,8 +420,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -512,7 +436,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bi_1" model="account.tax.template">
@@ -524,7 +449,9 @@
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -536,8 +463,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -549,7 +479,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bi_2" model="account.tax.template">
@@ -561,7 +492,9 @@
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -573,8 +506,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -586,7 +522,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <!--     10% -->
@@ -601,7 +538,9 @@
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -613,8 +552,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -626,7 +568,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva10_sp_in_2" model="account.tax.template">
@@ -640,7 +583,9 @@
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -652,8 +597,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -665,7 +613,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bc_1" model="account.tax.template">
@@ -677,7 +626,9 @@
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -689,8 +640,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -702,7 +656,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bc_2" model="account.tax.template">
@@ -714,7 +669,9 @@
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -726,8 +683,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -739,7 +699,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bi_1" model="account.tax.template">
@@ -751,7 +712,9 @@
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -763,8 +726,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -776,7 +742,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bi_2" model="account.tax.template">
@@ -788,7 +755,9 @@
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -800,8 +769,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -813,7 +785,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <!--     21% -->
@@ -828,7 +801,9 @@
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -840,8 +815,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -853,7 +831,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_sp_in_2" model="account.tax.template">
@@ -867,7 +846,9 @@
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -879,8 +860,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -892,7 +876,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bc_1" model="account.tax.template">
@@ -904,7 +889,9 @@
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -916,8 +903,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -929,7 +919,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bc_2" model="account.tax.template">
@@ -941,7 +932,9 @@
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -953,8 +946,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -966,7 +962,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bi_1" model="account.tax.template">
@@ -978,7 +975,9 @@
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -990,8 +989,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1003,7 +1005,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bi_2" model="account.tax.template">
@@ -1015,7 +1018,9 @@
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1027,8 +1032,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_11')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1040,7 +1048,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <!-- ************************************************************* -->
@@ -1059,7 +1068,9 @@
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1071,8 +1082,11 @@
                 'tag_ids': [ref('l10n_es.mod_303_29')],
                 'account_id': ref('l10n_es.account_common_472'),
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1084,7 +1098,8 @@
                 'tag_ids': [ref('l10n_es.mod_303_41')],
                 'account_id': ref('l10n_es.account_common_472'),
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva4_sp_ex_2" model="account.tax.template">
@@ -1098,7 +1113,9 @@
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1110,8 +1127,11 @@
                 'tag_ids': [ref('l10n_es.mod_303_29')],
                 'account_id': ref('l10n_es.account_common_472'),
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1123,7 +1143,8 @@
                 'tag_ids': [ref('l10n_es.mod_303_41')],
                 'account_id': ref('l10n_es.account_common_472'),
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <!--     10% -->
@@ -1138,7 +1159,9 @@
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1150,8 +1173,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1163,7 +1189,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva10_sp_ex_2" model="account.tax.template">
@@ -1177,7 +1204,9 @@
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1189,8 +1218,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1202,7 +1234,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <!--     21% -->
@@ -1217,7 +1250,9 @@
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1229,8 +1264,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1242,7 +1280,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_sp_ex_2" model="account.tax.template">
@@ -1256,7 +1295,9 @@
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1268,8 +1309,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1281,7 +1325,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <!-- ************************************************************* -->
@@ -1300,7 +1345,9 @@
         <field name="sequence" eval="10" />
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_4" />
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1312,8 +1359,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1325,7 +1375,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
      <record id="account_tax_template_p_iva4_isp_2" model="account.tax.template">
@@ -1387,7 +1438,9 @@
         <field name="sequence" eval="10" />
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1399,8 +1452,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1412,7 +1468,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
      <record id="account_tax_template_p_iva10_isp_2" model="account.tax.template">
@@ -1426,7 +1483,9 @@
         <field name="sequence" eval="20" />
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_10" />
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1438,8 +1497,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1451,7 +1513,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
      </record>
 
      <!--     21% -->
@@ -1466,7 +1529,9 @@
         <field name="sequence" eval="10" />
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1478,8 +1543,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1491,7 +1559,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
     <record id="account_tax_template_p_iva21_isp_2" model="account.tax.template">
@@ -1505,7 +1574,9 @@
         <field name="sequence" eval="20" />
         <field name="tax_group_id" ref="l10n_es.tax_group_iva_21" />
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
-        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1517,8 +1588,11 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_13')],
             }),
-        ]"/>
-        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
@@ -1530,7 +1604,8 @@
                 'account_id': ref('l10n_es.account_common_477'),
                 'tag_ids': [ref('l10n_es.mod_303_15')],
             }),
-        ]"/>
+        ]"
+        />
     </record>
 
 </odoo>

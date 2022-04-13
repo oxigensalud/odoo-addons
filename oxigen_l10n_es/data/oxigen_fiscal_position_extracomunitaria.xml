@@ -25,7 +25,7 @@
         model="account.fiscal.position.tax.template"
     >
         <field name="position_id" ref="oxigen_fp_extra" />
-        <field name="tax_src_id" ref="account_tax_template_p_iva4_nd_s" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_nd" />
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
    </record>
 
@@ -53,7 +53,7 @@
         model="account.fiscal.position.tax.template"
     >
         <field name="position_id" ref="oxigen_fp_extra" />
-        <field name="tax_src_id" ref="account_tax_template_p_iva10_nd_s" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_nd" />
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
     </record>
 
