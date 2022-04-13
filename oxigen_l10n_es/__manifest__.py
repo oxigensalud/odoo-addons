@@ -13,6 +13,7 @@
         "l10n_es_aeat_mod303",
         "l10n_es_special_prorate",
         "account_chart_update",
+        "l10n_es_aeat_sii_oca",
     ],
     "installable": True,
     "license": "AGPL-3",
@@ -23,5 +24,6 @@
         "data/tax_code_map_mod303_data.xml",
         "data/account_fiscal_position_template_data.xml",
         "data/oxigen_fiscal_position_extracomunitaria.xml",
+        "data/aeat_sii_map_data.xml",
     ],
 }
