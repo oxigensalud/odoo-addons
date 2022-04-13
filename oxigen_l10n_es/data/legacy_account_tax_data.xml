@@ -25,7 +25,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_nd_bc" model="account.tax.template">
-        <field name="description">P_IVA4_ND</field>
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 4% (bienes corrientes)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
@@ -62,7 +61,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_nd_bi" model="account.tax.template">
-        <field name="description">P_IVA4_ND</field>
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 4% (bienes inversión)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
@@ -104,7 +102,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_nd_bc" model="account.tax.template">
-        <field name="description">P_IVA10_ND</field>
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 10% (bienes corrientes)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
@@ -141,7 +138,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_nd_bi" model="account.tax.template">
-        <field name="description">P_IVA10_ND</field>
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 10% (bienes inversión)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
@@ -186,9 +182,8 @@
     </record>
 
     <record id="account_tax_template_p_iva0_nd_bc" model="account.tax.template">
-        <field name="description">P_IVA0_ND</field>
         <field name="type_tax_use">purchase</field>
-        <field name="name">	IVA Soportado no deducible 21% (bienes corrientes)</field>
+        <field name="name">IVA Soportado no deducible 21% (bienes corrientes)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
@@ -223,7 +218,6 @@
     </record>
 
     <record id="account_tax_template_p_iva0_nd_bi" model="account.tax.template">
-        <field name="description">P_IVA0_ND</field>
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 21% (bienes inversión)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
@@ -265,7 +259,6 @@
 
     <!--     4% -->
      <record id="account_tax_template_p_iva4_sp_in_1" model="account.tax.template">
-        <field name="description">P_IVA4_SP_IN_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field
@@ -310,7 +303,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_sp_in_2" model="account.tax.template">
-        <field name="description">P_IVA4_SP_IN_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field
@@ -355,7 +347,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bc_1" model="account.tax.template">
-        <field name="description">P_IVA4_IC_BC_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field name="name">IVA 4% Intracomunitario. Bienes corrientes (1)</field>
@@ -398,7 +389,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bc_2" model="account.tax.template">
-        <field name="description">P_IVA4_IC_BC_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field name="name">IVA 4% Intracomunitario. Bienes corrientes (2)</field>
@@ -441,7 +431,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bi_1" model="account.tax.template">
-        <field name="description">P_IVA4_IC_BI_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field name="name">IVA 4% Intracomunitario. Bienes de inversión (1)</field>
@@ -484,7 +473,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_ic_bi_2" model="account.tax.template">
-        <field name="description">P_IVA4_IC_BI_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field name="name">IVA 4% Intracomunitario. Bienes de inversión (2)</field>
@@ -528,7 +516,6 @@
 
     <!--     10% -->
     <record id="account_tax_template_p_iva10_sp_in_1" model="account.tax.template">
-        <field name="description">P_IVA10_SP_IN_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field
@@ -573,7 +560,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_sp_in_2" model="account.tax.template">
-        <field name="description">P_IVA10_SP_IN_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field
@@ -618,7 +604,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bc_1" model="account.tax.template">
-        <field name="description">P_IVA10_IC_BC_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field name="name">IVA 10% Intracomunitario. Bienes corrientes (1)</field>
@@ -661,7 +646,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bc_2" model="account.tax.template">
-        <field name="description">P_IVA10_IC_BC_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field name="name">IVA 10% Intracomunitario. Bienes corrientes (2)</field>
@@ -704,7 +688,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bi_1" model="account.tax.template">
-        <field name="description">P_IVA10_IC_BI_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field name="name">IVA 10% Intracomunitario. Bienes de inversión (1)</field>
@@ -747,7 +730,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_ic_bi_2" model="account.tax.template">
-        <field name="description">P_IVA10_IC_BI_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field name="name">IVA 10% Intracomunitario. Bienes de inversión (2)</field>
@@ -791,7 +773,6 @@
 
     <!--     21% -->
     <record id="account_tax_template_p_iva21_sp_in_1" model="account.tax.template">
-        <field name="description">P_IVA21_SP_IN_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field
@@ -836,7 +817,6 @@
     </record>
 
     <record id="account_tax_template_p_iva21_sp_in_2" model="account.tax.template">
-        <field name="description">P_IVA21_SP_IN_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field
@@ -881,7 +861,6 @@
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bc_1" model="account.tax.template">
-        <field name="description">P_IVA21_IC_BC_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field name="name">IVA 21% Intracomunitario. Bienes corrientes (1)</field>
@@ -924,7 +903,6 @@
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bc_2" model="account.tax.template">
-        <field name="description">P_IVA21_IC_BC_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field name="name">IVA 21% Intracomunitario. Bienes corrientes (2)</field>
@@ -967,7 +945,6 @@
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bi_1" model="account.tax.template">
-        <field name="description">P_IVA21_IC_BI_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field name="name">IVA 21% Intracomunitario. Bienes de inversión (1)</field>
@@ -1010,7 +987,6 @@
     </record>
 
     <record id="account_tax_template_p_iva21_ic_bi_2" model="account.tax.template">
-        <field name="description">P_IVA21_IC_BI_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field name="name">IVA 21% Intracomunitario. Bienes de inversión (2)</field>
@@ -1058,7 +1034,6 @@
 
     <!--     4% -->
     <record id="account_tax_template_p_iva4_sp_ex_1" model="account.tax.template">
-        <field name="description">P_IVA4_SP_EX_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field
@@ -1103,7 +1078,6 @@
     </record>
 
     <record id="account_tax_template_p_iva4_sp_ex_2" model="account.tax.template">
-        <field name="description">P_IVA4_SP_EX_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field
@@ -1149,7 +1123,6 @@
 
     <!--     10% -->
     <record id="account_tax_template_p_iva10_sp_ex_1" model="account.tax.template">
-        <field name="description">P_IVA10_SP_EX_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field
@@ -1194,7 +1167,6 @@
     </record>
 
     <record id="account_tax_template_p_iva10_sp_ex_2" model="account.tax.template">
-        <field name="description">P_IVA10_SP_EX_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field
@@ -1240,7 +1212,6 @@
 
     <!--     21% -->
     <record id="account_tax_template_p_iva21_sp_ex_1" model="account.tax.template">
-        <field name="description">P_IVA21_SP_EX_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
         <field
@@ -1285,7 +1256,6 @@
     </record>
 
     <record id="account_tax_template_p_iva21_sp_ex_2" model="account.tax.template">
-        <field name="description">P_IVA21_SP_EX_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
         <field
@@ -1338,7 +1308,6 @@
         <field
             name="name"
         >IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
-        <field name="description">P_IVA4_ISP_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="4" />
@@ -1383,7 +1352,6 @@
          <field
             name="name"
         >IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
-         <field name="description">P_IVA4_ISP_2</field>
          <field name="type_tax_use">purchase</field>
          <field name="amount_type">percent</field>
          <field name="amount" eval="-4" />
@@ -1431,7 +1399,6 @@
         <field
             name="name"
         >IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
-        <field name="description">P_IVA10_ISP_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="10" />
@@ -1476,7 +1443,6 @@
         <field
             name="name"
         >IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
-        <field name="description">P_IVA10_ISP_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="-10" />
@@ -1522,7 +1488,6 @@
         <field
             name="name"
         >IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
-        <field name="description">P_IVA21_ISP_1</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="21" />
@@ -1567,7 +1532,6 @@
         <field
             name="name"
         >IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
-        <field name="description">P_IVA21_ISP_2</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="-21" />
