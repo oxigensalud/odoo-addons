@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- ************************************************************* -->
+    <!-- Fiscal Position Tax Templates -->
+    <!-- ************************************************************* -->
+
+    <record id="fptt_dua_4nd" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_nd" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_10nd" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_nd" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_21nd" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva0_nd" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+</odoo>
