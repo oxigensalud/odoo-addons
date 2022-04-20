@@ -20,4 +20,13 @@
             ])]"
         />
     </record>
+
+    <record id="l10n_es_dua_sii.aeat_sii_map_line_DUA" model="aeat.sii.map.lines">
+         <field
+            name="taxes"
+            eval="[(6, 0, [
+                ref('l10n_es_dua.account_tax_template_p_dua0'),
+            ])]"
+        />
+    </record>
 </odoo>

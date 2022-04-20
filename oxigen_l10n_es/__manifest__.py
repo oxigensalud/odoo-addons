@@ -13,7 +13,7 @@
         "l10n_es_aeat_mod303",
         "l10n_es_special_prorate",
         "account_chart_update",
-        "l10n_es_aeat_sii_oca",
+        "l10n_es_dua_sii",
     ],
     "installable": True,
     "license": "AGPL-3",
