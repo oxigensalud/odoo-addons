@@ -61,7 +61,7 @@
     </record>
 
 
-        <!-- Retención IRPF 15% -->
+    <!-- Retención IRPF 15% -->
 
     <record id="fptt_irpf15_nd4_nd4" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es.fp_irpf15" />
@@ -97,6 +97,66 @@
         <field name="position_id" ref="l10n_es.fp_irpf15" />
         <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva0_nd" />
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_irpf15" />
+    </record>
+
+
+    <!-- DUA -->
+
+     <!--     4% -->
+    <record id="fptt_dua_4nd_s" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_nd" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+   </record>
+
+    <record id="fptt_dua_4nd_bc" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva4_nd_bc" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_4nd_bi" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva4_nd_bi" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <!--     10% -->
+    <record id="fptt_dua_10nd_s" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_nd" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_10nd_bc" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva10_nd_bc" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_10nd_bi" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva10_nd_bi" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <!--     21% -->
+    <record id="fptt_dua_21nd_s" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva0_nd" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_21nd_bc" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva0_nd_bc" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
+    </record>
+
+    <record id="fptt_dua_21nd_bi" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="l10n_es_dua.fp_dua" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva0_nd_bi" />
+        <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
     </record>
 
 </odoo>
