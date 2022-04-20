@@ -263,7 +263,7 @@
         <field name="sequence" eval="10" />
         <field
             name="name"
-        >IVA 4% Inversión del sujeto pasivo intracomunitario (1)</field>
+        >OBSOLETE - IVA 4% Inversión del sujeto pasivo intracomunitario (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
@@ -307,7 +307,7 @@
         <field name="sequence" eval="20" />
         <field
             name="name"
-        >IVA 4% Inversión del sujeto pasivo intracomunitario (2)</field>
+        >OBSOLETE - IVA 4% Inversión del sujeto pasivo intracomunitario (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
@@ -349,7 +349,9 @@
     <record id="account_tax_template_p_iva4_ic_bc_1" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
-        <field name="name">IVA 4% Intracomunitario. Bienes corrientes (1)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 4% Intracomunitario. Bienes corrientes (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
@@ -391,7 +393,9 @@
     <record id="account_tax_template_p_iva4_ic_bc_2" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
-        <field name="name">IVA 4% Intracomunitario. Bienes corrientes (2)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 4% Intracomunitario. Bienes corrientes (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
@@ -433,7 +437,9 @@
     <record id="account_tax_template_p_iva4_ic_bi_1" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
-        <field name="name">IVA 4% Intracomunitario. Bienes de inversión (1)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 4% Intracomunitario. Bienes de inversión (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
@@ -475,7 +481,9 @@
     <record id="account_tax_template_p_iva4_ic_bi_2" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
-        <field name="name">IVA 4% Intracomunitario. Bienes de inversión (2)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 4% Intracomunitario. Bienes de inversión (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
@@ -520,7 +528,7 @@
         <field name="sequence" eval="10" />
         <field
             name="name"
-        >IVA 10% Inversión del sujeto pasivo intracomunitario (1)</field>
+        >OBSOLETE - IVA 10% Inversión del sujeto pasivo intracomunitario (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
@@ -564,7 +572,7 @@
         <field name="sequence" eval="20" />
         <field
             name="name"
-        >IVA 10% Inversión del sujeto pasivo intracomunitario (2)</field>
+        >OBSOLETE - IVA 10% Inversión del sujeto pasivo intracomunitario (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
@@ -606,7 +614,9 @@
     <record id="account_tax_template_p_iva10_ic_bc_1" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
-        <field name="name">IVA 10% Intracomunitario. Bienes corrientes (1)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 10% Intracomunitario. Bienes corrientes (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
@@ -648,7 +658,9 @@
     <record id="account_tax_template_p_iva10_ic_bc_2" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
-        <field name="name">IVA 10% Intracomunitario. Bienes corrientes (2)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 10% Intracomunitario. Bienes corrientes (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
@@ -690,7 +702,9 @@
     <record id="account_tax_template_p_iva10_ic_bi_1" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
-        <field name="name">IVA 10% Intracomunitario. Bienes de inversión (1)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 10% Intracomunitario. Bienes de inversión (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
@@ -732,7 +746,9 @@
     <record id="account_tax_template_p_iva10_ic_bi_2" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
-        <field name="name">IVA 10% Intracomunitario. Bienes de inversión (2)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 10% Intracomunitario. Bienes de inversión (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
@@ -777,7 +793,7 @@
         <field name="sequence" eval="10" />
         <field
             name="name"
-        >IVA 21% Inversión del sujeto pasivo intracomunitario (1)</field>
+        >OBSOLETE - IVA 21% Inversión del sujeto pasivo intracomunitario (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
@@ -821,7 +837,7 @@
         <field name="sequence" eval="20" />
         <field
             name="name"
-        >IVA 21% Inversión del sujeto pasivo intracomunitario (2)</field>
+        >OBSOLETE - IVA 21% Inversión del sujeto pasivo intracomunitario (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
@@ -863,7 +879,9 @@
     <record id="account_tax_template_p_iva21_ic_bc_1" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
-        <field name="name">IVA 21% Intracomunitario. Bienes corrientes (1)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 21% Intracomunitario. Bienes corrientes (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
@@ -905,7 +923,9 @@
     <record id="account_tax_template_p_iva21_ic_bc_2" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
-        <field name="name">IVA 21% Intracomunitario. Bienes corrientes (2)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 21% Intracomunitario. Bienes corrientes (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
@@ -947,7 +967,9 @@
     <record id="account_tax_template_p_iva21_ic_bi_1" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="10" />
-        <field name="name">IVA 21% Intracomunitario. Bienes de inversión (1)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 21% Intracomunitario. Bienes de inversión (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
@@ -989,7 +1011,9 @@
     <record id="account_tax_template_p_iva21_ic_bi_2" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="sequence" eval="20" />
-        <field name="name">IVA 21% Intracomunitario. Bienes de inversión (2)</field>
+        <field
+            name="name"
+        >OBSOLETE - IVA 21% Intracomunitario. Bienes de inversión (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
@@ -1038,7 +1062,7 @@
         <field name="sequence" eval="10" />
         <field
             name="name"
-        >IVA 4% Inversión del sujeto pasivo extracomunitario (1)</field>
+        >OBSOLETE - IVA 4% Inversión del sujeto pasivo extracomunitario (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-4" />
         <field name="amount_type">percent</field>
@@ -1082,7 +1106,7 @@
         <field name="sequence" eval="20" />
         <field
             name="name"
-        >IVA 4% Inversión del sujeto pasivo extracomunitario (2)</field>
+        >OBSOLETE - IVA 4% Inversión del sujeto pasivo extracomunitario (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="4" />
         <field name="amount_type">percent</field>
@@ -1127,7 +1151,7 @@
         <field name="sequence" eval="10" />
         <field
             name="name"
-        >IVA 10% Inversión del sujeto pasivo extracomunitario (1)</field>
+        >OBSOLETE - IVA 10% Inversión del sujeto pasivo extracomunitario (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-10" />
         <field name="amount_type">percent</field>
@@ -1171,7 +1195,7 @@
         <field name="sequence" eval="20" />
         <field
             name="name"
-        >IVA 10% Inversión del sujeto pasivo extracomunitario (2)</field>
+        >OBSOLETE - IVA 10% Inversión del sujeto pasivo extracomunitario (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="10" />
         <field name="amount_type">percent</field>
@@ -1216,7 +1240,7 @@
         <field name="sequence" eval="10" />
         <field
             name="name"
-        >IVA 21% Inversión del sujeto pasivo extracomunitario (1)</field>
+        >OBSOLETE - IVA 21% Inversión del sujeto pasivo extracomunitario (1)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="-21" />
         <field name="amount_type">percent</field>
@@ -1260,7 +1284,7 @@
         <field name="sequence" eval="20" />
         <field
             name="name"
-        >IVA 21% Inversión del sujeto pasivo extracomunitario (2)</field>
+        >OBSOLETE - IVA 21% Inversión del sujeto pasivo extracomunitario (2)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
         <field name="amount" eval="21" />
         <field name="amount_type">percent</field>
@@ -1307,7 +1331,7 @@
     <record id="account_tax_template_p_iva4_isp_1" model="account.tax.template">
         <field
             name="name"
-        >IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
+        >OBSOLETE - IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="4" />
@@ -1351,7 +1375,7 @@
      <record id="account_tax_template_p_iva4_isp_2" model="account.tax.template">
          <field
             name="name"
-        >IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
+        >OBSOLETE - IVA 4% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
          <field name="type_tax_use">purchase</field>
          <field name="amount_type">percent</field>
          <field name="amount" eval="-4" />
@@ -1398,7 +1422,7 @@
     <record id="account_tax_template_p_iva10_isp_1" model="account.tax.template">
         <field
             name="name"
-        >IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
+        >OBSOLETE - IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="10" />
@@ -1442,7 +1466,7 @@
      <record id="account_tax_template_p_iva10_isp_2" model="account.tax.template">
         <field
             name="name"
-        >IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
+        >OBSOLETE - IVA 10% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="-10" />
@@ -1487,7 +1511,7 @@
      <record id="account_tax_template_p_iva21_isp_1" model="account.tax.template">
         <field
             name="name"
-        >IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
+        >OBSOLETE - IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (1)</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="21" />
@@ -1531,7 +1555,7 @@
     <record id="account_tax_template_p_iva21_isp_2" model="account.tax.template">
         <field
             name="name"
-        >IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
+        >OBSOLETE - IVA 21% Compra con Inversión del Sujeto Pasivo Nacional (2)</field>
         <field name="type_tax_use">purchase</field>
         <field name="amount_type">percent</field>
         <field name="amount" eval="-21" />
