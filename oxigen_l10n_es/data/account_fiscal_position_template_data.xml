@@ -93,7 +93,7 @@
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_irpf15" />
     </record>
 
-    <record id="fptt_irpf15_nd21__irpf15" model="account.fiscal.position.tax.template">
+    <record id="fptt_irpf15_nd21_irpf15" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es.fp_irpf15" />
         <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva0_nd" />
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_irpf15" />
