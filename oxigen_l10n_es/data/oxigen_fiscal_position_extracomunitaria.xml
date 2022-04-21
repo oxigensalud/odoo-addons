@@ -344,4 +344,40 @@
             <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21isp" />
             <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
         </record>
+
+    <!-- ************************************************************* -->
+    <!-- Fiscal Position Account Templates -->
+    <!-- ************************************************************* -->
+
+
+    <record id="fpat_extra_acc_1" model="account.fiscal.position.account.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="account_src_id" ref="l10n_es.account_common_7000" />
+        <field name="account_dest_id" ref="l10n_es.account_common_7002" />
+    </record>
+    <record id="fpat_extra_acc_2" model="account.fiscal.position.account.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="account_src_id" ref="l10n_es.account_common_7010" />
+        <field name="account_dest_id" ref="l10n_es.account_common_7012" />
+    </record>
+    <record id="fpat_extra_acc_3" model="account.fiscal.position.account.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="account_src_id" ref="l10n_es.account_common_7020" />
+        <field name="account_dest_id" ref="l10n_es.account_common_7022" />
+    </record>
+    <record id="fpat_extra_acc_4" model="account.fiscal.position.account.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="account_src_id" ref="l10n_es.account_common_7030" />
+        <field name="account_dest_id" ref="l10n_es.account_common_7032" />
+    </record>
+    <record id="fpat_extra_acc_5" model="account.fiscal.position.account.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="account_src_id" ref="l10n_es.account_common_7040" />
+        <field name="account_dest_id" ref="l10n_es.account_common_7042" />
+    </record>
+    <record id="fpat_extra_acc_6" model="account.fiscal.position.account.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="account_src_id" ref="l10n_es.account_common_7050" />
+        <field name="account_dest_id" ref="l10n_es.account_common_7052" />
+    </record>
 </odoo>
