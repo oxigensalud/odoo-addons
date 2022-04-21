@@ -25,5 +25,6 @@
         "data/account_fiscal_position_template_data.xml",
         "data/oxigen_fiscal_position_extracomunitaria.xml",
         "data/aeat_sii_map_data.xml",
+        "data/fiscal_position_rege.xml",
     ],
 }
