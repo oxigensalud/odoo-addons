@@ -2,3 +2,5 @@ openupgradelib@git+https://github.com/OCA/openupgradelib.git@master
 odoo14-addon-sale_order_service@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/sale_order_service
 odoo14-addon-account_invoice_report_service@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_invoice_report_service
 odoo14-addon-account_invoice_batches@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_invoice_batches
+odoo14-addon-l10n_es_special_prorate@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_special_prorate
+odoo14-addon-account_template_view@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_template_view
