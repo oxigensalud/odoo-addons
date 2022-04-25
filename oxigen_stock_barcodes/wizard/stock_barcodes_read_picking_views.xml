@@ -13,6 +13,7 @@
             <xpath expr="//div[hasclass('text-center')]" position="inside">
                 <div
                     class="alert alert-danger"
+                    role="alert"
                     attrs="{'invisible': [('message_type', '!=', 'location_no_match')]}"
                 >
                     <field name="message" />

@@ -6,8 +6,6 @@ import logging
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
-from odoo.addons import decimal_precision as dp
-
 _logger = logging.getLogger(__name__)
 
 SEQUENCE_FORCE_OPERATION = 1
@@ -34,7 +32,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     )
     next_product_id = fields.Many2one(
         comodel_name="product.product",
-        string="Product",
+        string="Next Product",
         compute="_compute_next_operation",
     )
     next_lot_id = fields.Many2one(
@@ -44,12 +42,12 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     )
     next_product_uom_qty = fields.Float(
         string="Reserved Quantity",
-        digits=dp.get_precision("Product Unit of Measure"),
+        digits="Product Unit of Measure",
         compute="_compute_next_operation",
     )
     next_product_done_qty = fields.Float(
         string="Done Quantity",
-        digits=dp.get_precision("Product Unit of Measure"),
+        digits="Product Unit of Measure",
         compute="_compute_next_operation",
     )
     location_src_scanned = fields.Boolean()
