@@ -10,3 +10,7 @@ class AccountMove(models.Model):
     @api.onchange("invoice_date")
     def _onchange_invoice_date(self):
         self.date = self.invoice_date
+
+    @api.onchange("ref")
+    def _onchange_ref(self):
+        self.payment_reference = self.ref
