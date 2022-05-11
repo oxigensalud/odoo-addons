@@ -9,6 +9,8 @@ Oxigen Invoicing
 * Change draft entries date when their date is before fiscalyear_period_date.
 * Make Bill Reference field required in Vendor Bills
 * Show Total with origin currency in invoice tree view
+* In a contract, when clicking in the invoice/bill smart button, show invoice/bill date
+  in the tree view.
 
 Credits
 =======

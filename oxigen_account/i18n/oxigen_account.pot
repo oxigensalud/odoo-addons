@@ -162,3 +162,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_invoice_tree
 msgid "Total (currency)"
 msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_invoice_tree
+msgid "Invoice/Bill Date"
+msgstr ""
