@@ -18,18 +18,26 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-        <xpath expr="//field[@name='amount_total_signed']" position="attributes">
-        <attribute name="string">Total (€)</attribute>
+            <xpath expr="//field[@name='amount_total_signed']" position="attributes">
+                <attribute name="string">Total (€)</attribute>
             </xpath>
-        <xpath expr="//field[@name='amount_total_signed']" position="after">
-             <field
+            <xpath expr="//field[@name='amount_total_signed']" position="after">
+                 <field
                     name="amount_total"
                     string="Total (currency)"
                     sum="Total"
                     decoration-bf="1"
                     optional="show"
                 />
-        </xpath>
+            </xpath>
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field
+                    name="invoice_date"
+                    optional="show"
+                    invisible="context.get('default_move_type') != 'contract'"
+                    string="Invoice/Bill Date"
+                />
+            </xpath>
         </field>
     </record>
 
