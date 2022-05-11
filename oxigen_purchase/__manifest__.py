@@ -11,4 +11,5 @@
     "depends": ["purchase_stock", "stock_picking_partner_ref"],
     "installable": True,
     "license": "AGPL-3",
+    "data": ["views/purchase_views.xml"],
 }
