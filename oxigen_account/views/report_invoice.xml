@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_assets_common" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='informations']" position="after">
+             <div t-if="o.invoice_origin and len(o.invoice_origin)>12" name="origin">
+                <strong>Source:</strong>
+                <p class="m-0" t-field="o.invoice_origin" />
+            </div>
+            <div t-if="o.ref and len(o.ref)>12" name="reference">
+                <strong>Reference:</strong>
+                <p class="m-0" t-field="o.ref" />
+            </div>
+        </xpath>
+        <xpath
+            expr="//div[@id='informations']/div[@name='origin']"
+            position="attributes"
+        >
+            <attribute
+                name="t-if"
+            >o.invoice_origin and 12>=len(o.invoice_origin)</attribute>
+        </xpath>
+        <xpath
+            expr="//div[@id='informations']/div[@name='reference']"
+            position="attributes"
+        >
+            <attribute name="t-if">o.ref and 12>=len(o.ref)</attribute>
+        </xpath>
+    </template>
+</odoo>

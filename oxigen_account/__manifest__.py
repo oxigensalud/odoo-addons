@@ -14,5 +14,6 @@
     "data": [
         "wizards/draft_invoices.xml",
         "views/account_move_views.xml",
+        "views/report_invoice.xml",
     ],
 }
