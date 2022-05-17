@@ -14,3 +14,4 @@ class AccountMove(models.Model):
     @api.onchange("ref")
     def _onchange_ref(self):
         self.payment_reference = self.ref
+        self._onchange_payment_reference()
