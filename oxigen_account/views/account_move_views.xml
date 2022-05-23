@@ -30,14 +30,6 @@
                     optional="show"
                 />
             </xpath>
-            <xpath expr="//field[@name='invoice_date']" position="after">
-                <field
-                    name="invoice_date"
-                    optional="show"
-                    invisible="context.get('default_move_type') != 'contract'"
-                    string="Invoice/Bill Date"
-                />
-            </xpath>
         </field>
     </record>
 
