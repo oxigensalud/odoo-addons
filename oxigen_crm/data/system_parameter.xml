@@ -1,0 +1,6 @@
+<odoo noupdate="1">
+    <record id="generic_crm_customer" model="ir.config_parameter">
+        <field name="key">generic_crm_customer</field>
+        <field name="value">60769</field> <!-- partner_id of PRESUPUESTO GENÉRICO -->
+    </record>
+</odoo>
