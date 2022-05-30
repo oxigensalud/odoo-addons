@@ -67,4 +67,18 @@
         </xpath>
         </field>
      </record>
+    <record id="oxigen_view_repair_order_form_filter" model="ir.ui.view">
+        <field name="name">repair.select</field>
+        <field name="model">repair.order</field>
+        <field name="inherit_id" ref="repair.view_repair_order_form_filter" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+            <filter
+                    string="Not Draft"
+                    domain="[('state', 'not in', ('draft','cancel'))]"
+                    name="not_draft"
+                />
+            </field>
+        </field>
+    </record>
 </odoo>
