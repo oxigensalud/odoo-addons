@@ -84,3 +84,27 @@ msgstr "La reparación %s con el lote %s del producto %s tiene que estar finaliz
 #, python-format
 msgid "Please select a Customer"
 msgstr "Por favor seleccione un Cliente"
+
+#. module: oxigen_repair
+#: model:ir.model.fields,field_description:oxigen_repair.field_product_product__repair_count
+#: model:ir.model.fields,field_description:oxigen_repair.field_product_template__repair_count
+msgid "Repairs"
+msgstr "Reparaciones"
+
+#. module: oxigen_repair
+#: model:ir.model.fields,help:oxigen_repair.field_product_product__repair_count
+#: model:ir.model.fields,help:oxigen_repair.field_product_template__repair_count
+msgid "Number of Repair Orders where the product appears as a Part"
+msgstr "Número de Órdenes de Reparación donde el producto aparece como Pieza"
+
+#. module: oxigen_repair
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.oxigen_view_repair_order_form_filter
+msgid "Not Draft"
+msgstr "No Borrador"
+
+#. module: oxigen_repair
+#: code:addons/oxigen_repair/models/product_product.py:0
+#: code:addons/oxigen_repair/models/product_template.py:0
+#, python-format
+msgid "Repair Orders"
+msgstr "Órdenes de Reparación"
