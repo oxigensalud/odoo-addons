@@ -19,7 +19,7 @@ class Lead(models.Model):
     def _get_partner_phone_update(self):
         self.ensure_one()
         generic_crm_customer = int(
-            self.env["ir.config_parameter"].get_param("generic_crm_customer")
+            self.env["ir.config_parameter"].sudo().get_param("generic_crm_customer")
         )
         if self.partner_id.id == generic_crm_customer:
             return False
