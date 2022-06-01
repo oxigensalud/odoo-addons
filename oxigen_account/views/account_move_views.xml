@@ -10,6 +10,16 @@
                     name="attrs"
                 >{'invisible':[('move_type', 'not in', ('in_invoice', 'in_receipt', 'in_refund'))], 'required':[('move_type', 'in', ('in_invoice', 'in_receipt', 'in_refund'))]}</attribute>
             </xpath>
+            <xpath expr="//button[@name='button_draft']" position="after">
+                <button
+                    name="button_draft"
+                    string="Reset to Draft (maintaining reconciled items)"
+                    type="object"
+                    groups="account.group_account_invoice"
+                    attrs="{'invisible' : [('show_reset_to_draft_button', '=', False)]}"
+                    context="{'dont_unreconcile_items': True}"
+                />
+            </xpath>
         </field>
     </record>
 

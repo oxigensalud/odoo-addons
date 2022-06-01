@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 10:38+0000\n"
-"PO-Revision-Date: 2022-03-16 10:38+0000\n"
+"POT-Creation-Date: 2022-06-01 15:01+0000\n"
+"PO-Revision-Date: 2022-06-01 15:01+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: oxigen_account
-#: code:addons/oxigen_account/models/res_company.py:0
-#, python-format
-msgid "Change/Show draft entries"
+#: model_terms:ir.ui.view,arch_db:oxigen_account.report_assets_common
+msgid "<strong>Reference:</strong>"
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.report_assets_common
+msgid "<strong>Source:</strong>"
 msgstr ""
 
 #. module: oxigen_account
@@ -37,9 +41,20 @@ msgid "Change dates"
 msgstr ""
 
 #. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid "Change draft entries date to \"Lock Date for All Users\" + 1 day?"
+msgstr ""
+
+#. module: oxigen_account
 #: code:addons/oxigen_account/models/res_company.py:0
 #, python-format
 msgid "Change draft entries date?"
+msgstr ""
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/res_company.py:0
+#, python-format
+msgid "Change/Show draft entries"
 msgstr ""
 
 #. module: oxigen_account
@@ -50,16 +65,10 @@ msgstr ""
 #. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_journal__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_res_company__display_name
 msgid "Display Name"
-msgstr ""
-
-#. module: oxigen_account
-#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
-msgid ""
-"Change draft entries date to \"Lock Date for All Users\" +"
-" 1 day?"
 msgstr ""
 
 #. module: oxigen_account
@@ -70,6 +79,7 @@ msgstr ""
 #. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_journal__id
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move__id
+#: model:ir.model.fields,field_description:oxigen_account.field_account_move_line__id
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__id
 #: model:ir.model.fields,field_description:oxigen_account.field_res_company__id
 msgid "ID"
@@ -96,11 +106,23 @@ msgid "Journal Entry"
 msgstr ""
 
 #. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_journal____last_update
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date____last_update
 #: model:ir.model.fields,field_description:oxigen_account.field_res_company____last_update
 msgid "Last Modified on"
+msgstr ""
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/models/account_move.py:0
+#, python-format
+msgid "Less Payment"
 msgstr ""
 
 #. module: oxigen_account
@@ -121,6 +143,11 @@ msgstr ""
 #. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_journal__payment_debit_account_id
 msgid "Outstanding Receipts Account"
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_move_form
+msgid "Reset to Draft (maintaining reconciled items)"
 msgstr ""
 
 #. module: oxigen_account
@@ -154,8 +181,8 @@ msgid ""
 msgstr ""
 
 #. module: oxigen_account
-#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
-msgid "Unposted entries"
+#: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_invoice_tree
+msgid "Total"
 msgstr ""
 
 #. module: oxigen_account
@@ -165,5 +192,10 @@ msgstr ""
 
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_invoice_tree
-msgid "Invoice/Bill Date"
+msgid "Total (€)"
+msgstr ""
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
+msgid "Unposted entries"
 msgstr ""
