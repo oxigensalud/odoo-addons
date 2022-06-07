@@ -9,6 +9,11 @@ class OxigenRepair(models.Model):
     _description = "Repair Order"
     _inherit = ["repair.order"]
 
+    @api.model
+    def _default_name(self):
+        return self.env["ir.sequence"].next_by_code("repair.order")
+
+    name = fields.Char(default=_default_name)
     distance_km = fields.Integer(string="Kilometers", group_operator="max")
     list_date = fields.Datetime(string="Lists date")
     operations = fields.One2many(
