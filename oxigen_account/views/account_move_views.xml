@@ -43,4 +43,15 @@
         </field>
     </record>
 
+    <record id="oxigen_view_account_invoice_filter" model="ir.ui.view">
+        <field name="name">account.invoice.select - oxigen</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="line_ids" string="Invoice Line" />
+            </field>
+        </field>
+    </record>
+
 </odoo>
