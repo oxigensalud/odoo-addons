@@ -5,6 +5,7 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     repair_count = fields.Float(
+        compute_sudo=True,
         compute="_compute_repair",
         string="Repairs",
         help="Number of Repair Orders where the product appears as a Part",
