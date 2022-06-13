@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="crm_lead_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//group[@name='opportunity_partner']/label[@for='email_from']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'invisible': [('partner_name', '=', 'PRESUPUESTO GENÉRICO')]}</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='opportunity_partner']/div/field[@name='email_from']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'invisible': [('partner_name', '=', 'PRESUPUESTO GENÉRICO')]}</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='opportunity_partner']/label[@for='phone']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'invisible': [('partner_name', '=', 'PRESUPUESTO GENÉRICO')]}</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='opportunity_partner']/div/field[@name='phone']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'invisible': [('partner_name', '=', 'PRESUPUESTO GENÉRICO')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="quick_create_opportunity_form" model="ir.ui.view">
+        <field name="name">crm.lead.form.quick_create</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form" />
+        <field name="arch" type="xml">
+            <field name="email_from" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('partner_name', '=', 'PRESUPUESTO GENÉRICO')]}</attribute>
+            </field>
+            <field name="phone" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('partner_name', '=', 'PRESUPUESTO GENÉRICO')]}</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
