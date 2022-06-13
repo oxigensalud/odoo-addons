@@ -15,6 +15,7 @@
     "data": [
         "views/stock_production_lot_views.xml",
         "views/stock_orderpoint_views.xml",
+        "views/stock_inventory_views.xml",
         "report/report_stockpicking_operations.xml",
         "report/report_deliveryslip.xml",
     ],
