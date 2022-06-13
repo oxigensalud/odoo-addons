@@ -11,5 +11,5 @@
     "depends": ["crm"],
     "installable": True,
     "license": "AGPL-3",
-    "data": ["data/system_parameter.xml"],
+    "data": ["data/system_parameter.xml", "views/crm_lead_views.xml"],
 }
