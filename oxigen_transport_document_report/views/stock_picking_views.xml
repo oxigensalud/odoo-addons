@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <notebook position="before">
+                <group name="transport_info">
+                    <group>
+                        <field
+                            name="transport_company_id"
+                            context="{'show_address': 1, 'show_vat': True}"
+                            options='{"no_quick_create": True}'
+                        />
+                        <field
+                            name="transport_shipper_id"
+                            domain="[('transport_company_id', '=', transport_company_id)]"
+                            attrs="{'invisible':[('transport_company_id','=',False)]}"
+                        />
+                        <field
+                            name="transport_vehicle_id"
+                            attrs="{'invisible':[('transport_company_id','=',False)]}"
+                        />
+                    </group>
+                </group>
+            </notebook>
+            <field name="is_locked" position="after">
+                <field name="has_gases" invisible="1" />
+            </field>
+            <xpath expr="//tree/field[@name='description_picking']" position="after">
+                <field name="onu_no" attrs="{'invisible':[('onu_no','=',0)]}" />
+                <field
+                    name="adr_tag"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                    optional="show"
+                />
+                <field
+                    name="tunel_code"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                    optional="show"
+                />
+                <field
+                    name="transport_category"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                    optional="show"
+                />
+                <field
+                    name="container_id"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                />
+                <field
+                    name="filled_weight"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                    optional="show"
+                />
+                <field
+                    name="total_weight"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                    optional="show"
+                />
+                <field
+                    name="delivered_quantity"
+                    attrs="{'column_invisible':[('parent.has_gases','=',False)], 'invisible':[('onu_no','=',0)]}"
+                    optional="show"
+                />
+            </xpath>
+            <xpath
+                expr="//group/field[@name='description_picking']/.."
+                position="after"
+            >
+                <group attrs="{'invisible': [('onu_no','=',0)]}">
+                    <field name="onu_no" />
+                    <field name="adr_tag" />
+                    <field name="tunel_code" />
+                    <field name="transport_category" />
+                    <field name="container_id" />
+                    <field name="filled_weight" />
+                    <field name="total_weight" />
+                    <field name="delivered_quantity" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

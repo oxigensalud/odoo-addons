@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_transport_company_filter" model="ir.ui.view">
+        <field name="name">transport.company.filter</field>
+        <field name="model">transport.company</field>
+        <field name="arch" type="xml">
+            <search string="Transport Company">
+                <field name="name" />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active','=',False)]"
+                />
+                <group expand="0" string="Group By">
+                    <!-- <filter string="..." name="groupby_..." domain="[]" context="{'group_by': '...'}"/> -->
+                </group>
+            </search>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_transport_company_tree">
+        <field name="name">Transport Companies</field>
+        <field name="model">transport.company</field>
+        <field name="arch" type="xml">
+            <tree string="Transport Companies">
+                <field name="display_name" />
+                <field name="partner_id" invisible="1" />
+                <field name="active" invisible="1" />
+                <field name="city" optional="show" />
+                <field name="state_id" optional="hide" readonly="1" />
+                <field name="country_id" optional="show" readonly="1" />
+                <field name="vat" optional="hide" readonly="1" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_transport_company_form">
+        <field name="name">Transport Company</field>
+        <field name="model">transport.company</field>
+        <field name="arch" type="xml">
+            <form string="Transport Company">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <!-- add buttons for shippers / vehicles -->
+                    </div>
+                    <field name="active" invisible="1" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <field
+                        name="image_1920"
+                        widget='image'
+                        class="oe_avatar"
+                        options='{"preview_image": "image_128"}'
+                        readonly="1"
+                        attrs="{'invisible': [('partner_id','=', False)]}"
+                    />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field
+                                name="partner_id"
+                                widget="res_partner_many2one"
+                                context="{'show_address': 1, 'show_vat': True}"
+                                options='{"always_reload": True, "no_quick_create": True}'
+                            />
+                        </group>
+                    </group>
+                    <group attrs="{'invisible': [('partner_id','=', False)]}">
+                        <group>
+                            <label for="street" string="Address" />
+                            <div class="o_address_format">
+                                <field
+                                    name="street"
+                                    placeholder="Street..."
+                                    class="o_address_street"
+                                />
+                                <field
+                                    name="street2"
+                                    placeholder="Street 2..."
+                                    class="o_address_street"
+                                />
+                                <field
+                                    name="city"
+                                    placeholder="City"
+                                    class="o_address_city"
+                                />
+                                <field
+                                    name="state_id"
+                                    class="o_address_state"
+                                    placeholder="State"
+                                    options="{'no_open': True, 'no_quick_create': True}"
+                                    context="{'default_country_id': country_id}"
+                                />
+                                <field
+                                    name="zip"
+                                    placeholder="ZIP"
+                                    class="o_address_zip"
+                                />
+                                <field
+                                    name="country_id"
+                                    placeholder="Country"
+                                    class="o_address_country"
+                                    options='{"no_open": True, "no_create": True}'
+                                />
+                            </div>
+                            <field
+                                name="website"
+                                widget="url"
+                                placeholder="e.g. https://www.odoo.com"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="transport_company_action" model="ir.actions.act_window">
+        <field name="name">Transport Companies</field>
+        <field name="res_model">transport.company</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No transport company found. Let's create one!
+            </p><p>
+                Transport companies contains shippers and vehicles.
+            </p>
+        </field>
+
+    </record>
+
+    <menuitem
+        id="menu_transport_config"
+        name="Transport Management"
+        parent="stock.menu_stock_config_settings"
+        groups="stock.group_stock_user"
+        sequence="4"
+    />
+
+    <menuitem
+        action="transport_company_action"
+        id="transport_company_menu"
+        parent="menu_transport_config"
+        sequence="8"
+        name="Transport Companies"
+    />
+</odoo>

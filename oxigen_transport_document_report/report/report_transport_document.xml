@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_transport_document_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                <t
+                    t-set="partner"
+                    t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"
+                />
+                <!--<t t-if="partner" name="partner_header">
+                    <t t-set="address">
+                        <div
+                            t-esc="partner"
+                            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'
+                        />
+                   </t>
+                </t>-->
+                <div class="page">
+                    <table>
+                        <tr>
+                            <td>
+                                <t t-if="o.state" name="div_sched_date">
+                                    <strong>Shipping Date:</strong>
+                                    <t t-if="o.state == 'done'">
+                                        <p t-field="o.date_done" />
+                                    </t>
+                                    <t t-if="o.state != 'done'">
+                                        <p t-field="o.scheduled_date" />
+                                    </t>
+                                </t>
+                            </td>
+                            <td rowspan="2" valign="top">
+                                <t t-if="o.state" name="div_transp_vehicle">
+                                    <strong>Vehicle Identification:</strong>
+                                    <p
+                                        t-field="o.transport_vehicle_id.vehicle_identification"
+                                    />
+                                    <p t-field="o.transport_vehicle_id.license_plate" />
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <t t-if="o.state" name="div_transp_company">
+                                    <strong>Transport Company:</strong>
+                                    <t t-if="o.transport_company_id.contact_address">
+                                        <p
+                                            t-field="o.transport_company_id.contact_address"
+                                        />
+                                    </t>
+                                    <t t-else="">
+                                        <p t-field="o.transport_company_id" />
+                                    </t>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                    <h2 style="text-align: center;font-size: 13px;">
+                        <i>Transport Document:</i> <span
+                            t-field="o.name"
+                        /> (5.4.1. ADR)
+                    </h2>
+                    <div class="row mt16 mb16">
+                        <div t-if="o.origin" class="col-auto" name="div_origin">
+                            <strong>Order:</strong>
+                            <p t-field="o.origin" />
+                        </div>
+                        <div class="col-auto" name="locations">
+                            <strong>From:</strong>
+                            <p t-field="o.location_id" />
+                            <strong>To:</strong>
+                            <p t-field="o.location_dest_id" />
+                        </div>
+                    </div>
+                    <h3
+                        style="text-align: center;font-size: 14px;"
+                    >&#9633; VENTA EN RUTA <i
+                        >(En caso de destinos múltiples, ver documentación adjunta, según 5.4.1.4.1. del ADR)</i>.</h3>
+                    <h3
+                        style="text-align: center;"
+                    >Transported goods and delivery note</h3>
+                    <table
+                        class="table table-sm"
+                        name="stock_move_table"
+                        style="border: 1px solid lightGrey;border-color: lightGrey;"
+                        border="1"
+                    >
+                        <thead>
+                            <tr>
+                                <th
+                                    name="th_sm_onu_no"
+                                    style="border-color: lightGrey;"
+                                ><strong>ONU No</strong></th>
+                                <th
+                                    name="th_sm_product"
+                                    style="border-color: lightGrey;"
+                                ><strong>Product Name</strong></th>
+                                <th
+                                    name="th_sm_adr_tag"
+                                    style="border-color: lightGrey;"
+                                ><strong>ADR Tag</strong></th>
+                                <th
+                                    name="th_sm_tunnel_code"
+                                    style="border-color: lightGrey;"
+                                ><strong>Tunnel Code</strong></th>
+                                <th
+                                    name="th_sm_transport_category"
+                                    style="border-color: lightGrey;"
+                                ><strong>Transport Category</strong></th>
+                                <th
+                                    name="th_sm_container_type"
+                                    style="border-color: lightGrey;"
+                                ><strong>Container Type</strong></th>
+                                <th
+                                    name="th_sm_void_weight"
+                                    style="border-color: lightGrey;"
+                                ><strong>Void Weight</strong></th>
+                                <th
+                                    name="th_sm_filled_weight"
+                                    style="border-color: lightGrey;"
+                                ><strong>Filled Weight</strong></th>
+                                <th
+                                    name="th_sm_quantity"
+                                    style="border-color: lightGrey;"
+                                ><strong>Quantity</strong></th>
+                                <th
+                                    name="th_sm_total_weight"
+                                    style="border-color: lightGrey;"
+                                ><strong>Total Weight</strong></th>
+                                <th
+                                    name="th_sm_delivered_quantity"
+                                    style="border-color: lightGrey;"
+                                ><strong>Delivery Quantity</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t
+                                t-set="lines"
+                                t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)"
+                            />
+                            <tr
+                                t-foreach="lines"
+                                t-as="move"
+                                t-if="move.product_id.product_tmpl_id.is_gas"
+                            >
+                                <td style="border-color: lightGrey;">
+                                    <p t-if="move.product_id.onu_no">
+                                        UN <span t-field="move.product_id.onu_no" />
+                                    </p>
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.product_id" />
+                                    <p
+                                        t-if="move.description_picking != move.product_id.name"
+                                    >
+                                        <span t-field="move.description_picking" />
+                                    </p>
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.adr_tag" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.tunel_code" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.transport_category" />
+                                </td>
+                                <td style="color:Red;border-color: lightGrey;">
+                                    <span t-field="move.container_id.name" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.container_id.void_weight" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.filled_weight" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.product_uom_qty" />
+                                    <span t-field="move.product_uom" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.total_weight" />
+                                    <span t-field="move.product_id.weight_uom_name" />
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    <span t-field="move.delivered_quantity" />
+                                    <span t-field="move.product_id.volume_uom_name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-color: lightGrey;" />
+                                <td style="border-color: lightGrey;">
+                                    <b>TOTAL</b>
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    Cat. Transport 1
+                                </td>
+                                <td style="border-color: lightGrey;" colspan="2">
+                                </td>
+                                <td style="border-color: lightGrey;">
+                                    Cat. Transport 2
+                                </td>
+                                <td style="border-color: lightGrey;" />
+                                <td style="border-color: lightGrey;">
+                                    Cat. Transport 3
+                                </td>
+                                <td style="border-color: lightGrey;" />
+                                <td style="border-color: lightGrey;">
+                                    <b>TOTAL</b>
+                                </td>
+                                <td style="border-color: lightGrey;" />
+                            </tr>
+                        </tbody>
+                    </table>
+                    <t
+                        t-set="backorders"
+                        t-value="o.backorder_ids.filtered(lambda x: x.state not in ('done', 'cancel'))"
+                    />
+
+                    <table
+                        class="table table-sm"
+                        name="modifications"
+                        style="border: 1px solid lightGrey;font-size: 12px;"
+                        border="1"
+                    >
+                        <thead>
+                            <tr>
+                                <th
+                                    colspan="7"
+                                    style="border-color: lightGrey;"
+                                >MODIFICACIONES EN EL NÚMERO DE RECIPIENTES Y CARGA LIBRE ÚTIL AUTORIZADA (EN RUTA):</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td
+                                    colspan="7"
+                                    style="border-color: lightGrey;"
+                                >Peso Cargado (en origen):</td>
+
+                            </tr>
+                            <tr>
+                                <td
+                                    colspan="7"
+                                    style="border-color: lightGrey;"
+                                >Peso añadido(+) / Peso descontado(-)</td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="border-color: lightGrey;"
+                                >RECIPIENTES Y PESO RESULTANTE:</td>
+                                <td style="border-color: lightGrey;">Recip. Kg.</td>
+                                <td style="border-color: lightGrey;">Recip. Kg.</td>
+                                <td style="border-color: lightGrey;">Recip. Kg.</td>
+                                <td style="border-color: lightGrey;">Recip. Kg.</td>
+                                <td style="border-color: lightGrey;">Recip. Kg.</td>
+                                <td style="border-color: lightGrey;">Recip. Kg.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table
+                        class="table table-sm"
+                        name="table_adr"
+                        style="border: 1px solid lightGrey;font-size: 10px;"
+                        border="1"
+                    >
+                        <tbody>
+                            <tr>
+                                <td
+                                    style="border-color: lightGrey;"
+                                >&#9633;BOTELLAS CADUCADAS: <b
+                                    >TRANSPORTE SEGÚN 4.1.6.10 ADR</b><br
+                                    />&#9633;RECIPIENTES VACÍOS SIN LIMPIAR: <b
+                                    >TRANSPORTE SEGÚN 5.4.1.1.6 ADR</b></td>
+                                <td style="border-color: lightGrey;">&#9633;<b
+                                    >TRANSPORTE QUE NO EXCEDE LOS LÍMITES PRESCRITOS EN EL 1.1.3.6 ADR</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table
+                        class="table table-sm"
+                        name="signatures"
+                        style="border: 1px solid lightGrey;font-size: 10px;"
+                        border="1"
+                    >
+                        <tbody>
+                            <tr>
+                                <td style="border-color: lightGrey;"><b
+                                    >CERTIFICADO DEL EXPEDIDOR</b><br />
+                                Certificado que la materia presentada se admite al transporte por carretera según las
+                                disposiciones del ADR, y que su estado, su acondicionamien to, y en su caso, el envase,
+                                así como el etiquetado están conforme a las prescripciones P-200, del ADR. El expedidor,
+                                manteniendo suresponsabilidad, delega expresamente en el cargador, la firma del
+                                presente documento.<br />
+                                <b>POR EL CARGADOR: </b></td>
+                                <td rowspan="2" style="border-color: lightGrey;"><b
+                                    >CERTIFICADO DEL TRANSPORTISTA</b><br />
+                                    D.<span
+                                        style="background-color:lightGrey;"
+                                    >__________________________________</span> con D.N.I. <span
+                                        style="background-color:lightGrey;"
+                                    >___________________</span><br />
+                                Conductor del vehículo indicado, DECLARA:<br />
+                                Que ha cumplimentado la lista de comprobaciones y ha recibido y leído las instrucciones
+                                escritas para el conductor, ambas al dorso, así como la Carta de Porte. Que la carga
+                                libre útil autorizada es de <span
+                                        style="background-color:lightGrey;"
+                                    >________</span> Kg. Y que en el curso del recorrido amparado por
+                                esta Carta de Porte, no sobrepasará el P.M.A. del vehículo. Que conoce y cumple las
+                                disposiciones generales y particulares sobre vehículos, carga y descarga, manipulación
+                                y circulación que para estas Materias establece el ADR.<br
+                                    />
+                                <b>POR EL TRANSPORTISTA – EL CONDUCTOR:</b>
+                                <!-- <div t-if="o.signature" class="mt32 ml64 mr4" name="signature">
+                                    <img t-att-src="image_data_uri(o.signature)" style="max-height: 4cm; max-width: 8cm;"/>
+                                </div> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-color: lightGrey;"><b
+                                    >CONDICIONES PARA EL TRANSPORTE DE CARGAS DE MENOS DE 1000 Kg/L DE PRODUCTO.1.1.3.6.2 ADR.</b>
+                                CONDUCTOR Y VEHÍCULO: EXENTO DEL ADR, PARTE-1.<br />
+                                IDENTIFICACIÓN VEHÍCULO: NO NECESARIO. 5.3 ADR<br />
+                                CARGA DEBIDAMENTE SUJETA Y EN VEHÍCULO VENTILADO. 7.5.11 ADR<br
+                                    />
+                                NO SON NECESARIAS LAS  INSTRUCCIONES ESCRITAS. 5.4.3 ADR<br
+                                    />
+                                NO HAY RESTRICCIONES EN EL DE PASO EN TÚNELES. 8.6.3.3 ADR<br
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <t
+                        t-if="o.transport_vehicle_id.vehicle_identification in ('van', False)"
+                    >
+                        <table
+                            class="table table-sm"
+                            name="table_van"
+                            style="border: 1px solid lightGrey;font-size: 12px;"
+                            border="1"
+                        >
+                            <thead>
+                                <th style="border-color: lightGrey;">
+                                    <b>LISTA DE COMPROBACIONES (PARA FURGONETA)</b>
+                                </th>
+                                <th style="border-color: lightGrey;">Fecha:</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td
+                                        style="border-color: lightGrey;"
+                                    >Comprobaciones del Cargador</td>
+                                    <td
+                                        style="border-color: lightGrey;"
+                                    >Comprobaciones del transportista</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-color: lightGrey;">
+                                        <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Comprobaciones previas a la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Motor parado y llaves bajo control del cargador .................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Existencia de los equipos de seguridad pertinentes ............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table>
+                                    <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Comprobaciones durante la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Conductor fuera de la cabina y en lugar próximo ................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table>
+                                    <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Controles después de la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Ausencia de fugas y derrame ...............................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Carta de porte/instrucciones escritas de seguridad .............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Comprobación ocular final ....................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table></td>
+                                    <td style="border-color: lightGrey;">
+                                        <table border="0" style="font-size: 15px;">
+                                        <tr><td><u>Documentación</u></td><td>Si</td><td
+                                                >No</td></tr>
+                                        <tr><td
+                                                >Tarjeta ITV ............................................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Autorización Especial Conductor .........................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Certificado/s ADR vehículo/s ...............................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Permiso especial para circular en días prohibidos ..............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table><table border="0" style="font-size: 15px;">
+                                        <tr><td><u>Estado del equipamiento</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Extintores ..............................................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Señales triangulares de advertencia ...................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <t
+                        t-if="o.transport_vehicle_id.vehicle_identification in ('truck', False)"
+                    >
+                        <table
+                            class="table table-sm"
+                            name="table_truck"
+                            style="border: 1px solid lightGrey;font-size: 12px;"
+                            border="1"
+                        >
+                            <thead>
+                                <th style="border-color: lightGrey;">
+                                    <b>LISTA DE COMPROBACIONES (PARA CAMIÓN)</b>
+                                </th>
+                                <th style="border-color: lightGrey;">Fecha:</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td
+                                        style="border-color: lightGrey;"
+                                    >Comprobaciones del Cargador</td>
+                                    <td
+                                        style="border-color: lightGrey;"
+                                    >Comprobaciones del transportista</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-color: lightGrey;">
+                                        <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Comprobaciones previas a la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Inmovilización de vehículo mediante calzos ............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Motor parado y llaves bajo control del cargador ......</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Señalización de la operación ..................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Existencia de los equipos de seguridad pertinentes .</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Ausencia de trabajos incompatibles ........................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Atmósfera interior adecuada ...................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table>
+                                    <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Comprobaciones durante la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Conductor fuera de la cabina y en lugar próximo .....</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Ausencia de fugas y derrames ................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Presencia permanente del operador de carga .........</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Prohibición de fumar ..............................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table>
+                                    <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Controles después de la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Ausencia de fugas y derrames ................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Colocación etiquetas de peligro ..............................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Carta de porte/instrucciones escritas de seguridad ..</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Documentación de las unidades de transporte ........</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Comprobación ocular final ......................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table></td>
+                                    <td style="border-color: lightGrey;">
+                                        <table border="0" style="font-size: 15px;">
+                                        <tr><td><u>Documentación</u></td><td>Si</td><td
+                                                >No</td></tr>
+                                        <tr><td
+                                                >Tarjeta ITV ............................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Autorización Especial Conductor ............................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Certificado/s ADR vehículo/s ..................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Permiso especial para circular en días prohibidos ...</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table><table border="0" style="font-size: 15px;">
+                                        <tr><td><u>Estado del equipamiento</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Extintores ..............................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Caja de herramientas .............................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Calzos ...................................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Señales triangulares de advertencia .......................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Luces portátiles .....................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Equipo de protección personal ...............................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Paneles naranja con numeración adecuada ...........</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <t
+                        t-if="o.transport_vehicle_id.vehicle_identification in ('tanker', False)"
+                    >
+                        <table
+                            class="table table-sm"
+                            name="table_tanker"
+                            style="border: 1px solid lightGrey;font-size: 12px;"
+                            border="1"
+                        >
+                            <thead>
+                                <th style="border-color: lightGrey;">
+                                    <b>LISTA DE COMPROBACIONES (PARA CISTERNA)</b>
+                                </th>
+                                <th style="border-color: lightGrey;">Fecha:</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td
+                                        style="border-color: lightGrey;"
+                                    >Comprobaciones del Cargador</td>
+                                    <td
+                                        style="border-color: lightGrey;"
+                                    >Comprobaciones del transportista</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-color: lightGrey;">
+                                        <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Comprobaciones previas a la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Inmovilización de vehículo mediante calzos ............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Motor parado y llaves bajo control del cargador ......</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Señalización de la operación ..................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Existencia de los equipos de seguridad pertinentes .</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Ausencia de trabajos incompatibles ........................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Atmósfera interior adecuada ...................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Cálculo del grado de llenado y de la carga máxima .</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Análisis previo de la cisterna ..................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table>
+                                    <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Comprobaciones durante la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Conductor fuera de la cabina y en lugar próximo .....</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Ausencia de fugas y derrames ................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Presencia permanente del operador de carga .........</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Prohibición de fumar ..............................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Brazo de carga o manguera sin tensiones ..............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >No se excede el grado máximo de llenado ..............</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table>
+                                    <table border="0" style="font-size: 15px;">
+                                        <tr><td><u
+                                                    >Controles después de la carga</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Bocas de carga cerradas ........................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Ausencia de fugas y derrames ................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Control por nivel de cisterna ...................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Comprobación de la presión en cisterna .................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Colocación etiquetas de peligro ..............................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Carta de porte/instrucciones escritas de seguridad ..</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Documentación de las unidades de transporte ........</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Comprobación ocular final ......................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table></td>
+                                    <td style="border-color: lightGrey;">
+                                        <table border="0" style="font-size: 15px;">
+                                        <tr><td><u>Documentación</u></td><td>Si</td><td
+                                                >No</td></tr>
+                                        <tr><td
+                                                >Tarjeta ITV ............................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Autorización Especial Conductor ............................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Certificado/s ADR vehículo/s ..................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Permiso especial para circular en días prohibidos ...</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table><table border="0" style="font-size: 15px;">
+                                        <tr><td><u>Estado del equipamiento</u></td><td
+                                                >Si</td><td>No</td></tr>
+                                        <tr><td
+                                                >Extintores ..............................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Caja de herramientas .............................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Calzos ...................................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Señales triangulares de advertencia .......................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Luces portátiles .....................................................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Equipo de protección personal ...............................</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Paneles naranja con numeración adecuada ...........</td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                        <tr><td
+                                                >Comprobación del estado del equipo de servicio de la cisterna </td><td
+                                                >&#9633;</td><td>&#9633;</td></tr>
+                                    </table></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <h3
+                        style="text-align: center;"
+                    >Teléfono emergencias 900 80 80 89</h3>
+
+                    <!-- <div t-if="o.signature" class="mt32 ml64 mr4" name="signature">
+                        <div class="offset-8">
+                            <strong>Signature</strong>
+                        </div>
+                        <div class="offset-8">
+                            <img
+                                t-att-src="image_data_uri(o.signature)"
+                                style="max-height: 4cm; max-width: 8cm;"
+                            />
+                        </div>
+                        <div class="offset-8 text-center">
+                            <p t-field="o.partner_id.name" />
+                        </div>
+                    </div> -->
+                </div>
+            </t>
+         </t>
+    </template>
+
+    <template id="report_transport_document">
+        <t t-foreach="docs" t-as="o">
+            <t
+                t-call="oxigen_transport_document_report.report_transport_document_template"
+                t-lang="o.partner_id.lang"
+            />
+        </t>
+    </template>
+</odoo>
