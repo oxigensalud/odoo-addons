@@ -24,6 +24,7 @@
                 position="after"
             >
               <field name="employee_id" />
+              <field name="contract_ids" />
           </xpath>
         </field>
     </record>
