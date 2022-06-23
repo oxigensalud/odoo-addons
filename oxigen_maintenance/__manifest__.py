@@ -8,7 +8,12 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Maintenance",
-    "depends": ["stock", "maintenance_plan", "hr_maintenance"],
+    "depends": [
+        "stock",
+        "maintenance_plan",
+        "hr_maintenance",
+        "maintenance_equipment_contract",
+    ],
     "installable": True,
     "license": "AGPL-3",
     "data": [
@@ -16,5 +21,6 @@
         "views/maintenance_equipment_views.xml",
         "views/maintenance_plan_views.xml",
         "views/maintenance_request_views.xml",
+        "views/contract_contract.xml",
     ],
 }
