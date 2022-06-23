@@ -57,3 +57,10 @@ msgstr ""
 #: model:ir.ui.view,arch_db:oxigen_maintenance.maintenance_request_view_form_inherit
 msgid "Employee"
 msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_plan__contract_ids
+#: model_terms:ir.ui.view,arch_db:oxigen_maintenance.maintenance_plan_view_form
+msgid "Contracts"
+msgstr ""
+
