@@ -4,7 +4,7 @@
 {
     "name": "Oxigen Localization",
     "summary": "Customizations to PGCE for Oxigen",
-    "version": "14.0.1.0.2",
+    "version": "14.0.1.0.3",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting/Localizations/Account Charts",
