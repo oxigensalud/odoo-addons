@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_container,access_product_container,model_product_container,base.group_user,1,1,1,1
+access_transport_company,access_transport_company,model_transport_company,base.group_user,1,1,1,1
+access_transport_shipper,access_transport_shipper,model_transport_shipper,base.group_user,1,1,1,1

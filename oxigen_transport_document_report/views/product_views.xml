@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- Product Template -->
+
+    <record id="product_template_tree_view" model="ir.ui.view">
+        <field name="name">product.template.tree.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <field name="default_code" position="after">
+                <field name="is_gas" invisible="1" />
+            </field>
+        </field>
+    </record>
+
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pricelist_id']" position="after">
+                <separator />
+                <filter name="is_gas" string="Gases" domain="[('is_gas', '=', True)]" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="is_gas" />
+            </field>
+        </field>
+    </record>
+
+    <!-- Product Variant -->
+
+    <record id="product_search_form_view" model="ir.ui.view">
+        <field name="name">product.product.search.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_search_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="after">
+                <separator />
+                <filter
+                    name="is_gas"
+                    string="Gases"
+                    domain="[('product_tmpl_id.is_gas', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_product_tree_view" model="ir.ui.view">
+        <field name="name">product.product.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="is_gas" invisible="1" />
+                <field name="onu_no" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="onu_no" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_move_tree" model="ir.ui.view">
+        <field name="name">stock.move.tree</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_tree" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="onu_no" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_move_tree" model="ir.ui.view">
+        <field name="name">stock.picking.move.tree</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_picking_move_tree" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="onu_no" optional="show" />
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_stock_move_operations" model="ir.ui.view">
+        <field name="name">stock.move.operations.form</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_stock_move_operations" />
+        <field name="arch" type="xml">
+            <field name="move_line_ids" position="before">
+                <group>
+                    <group>
+                        <field name="onu_no" />
+                        <field
+                            name="adr_tag"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                        <field
+                            name="tunel_code"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                        <field
+                            name="transport_category"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                        <field
+                            name="container_id"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                        <field
+                            name="filled_weight"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                        <field
+                            name="total_weight"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                        <field
+                            name="delivered_quantity"
+                            attrs="{'invisible':[('onu_no','=',0)]}"
+                        />
+                    </group>
+                </group>
+            </field>
+        </field>
+    </record>
+
+</odoo>

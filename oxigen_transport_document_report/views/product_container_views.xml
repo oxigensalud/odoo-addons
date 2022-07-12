@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_product_container_filter" model="ir.ui.view">
+        <field name="name">product.container.filter</field>
+        <field name="model">product.container</field>
+        <field name="arch" type="xml">
+            <search string="Product Container">
+                <field name="name" />
+                <field name="container_type" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_product_container_tree">
+        <field name="name">Product Containers</field>
+        <field name="model">product.container</field>
+        <field name="arch" type="xml">
+            <tree string="Product Containers">
+                <field name="name" invisible="1" />
+                <field name="container_type" />
+                <field name="liter_capacity" />
+                <field name="liter_capacity_str" invisible="1" />
+                <field name="extra_type" />
+                <field name="void_weight" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_product_container_form">
+        <field name="name">Product Container</field>
+        <field name="model">product.container</field>
+        <field name="arch" type="xml">
+            <form string="Transport Shipper">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" width="200" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="container_type" />
+                            <label for="liter_capacity" />
+                            <div class="o_row">
+                                <field name="liter_capacity" />
+                                <span> L</span>
+                            </div>
+                            <field name="liter_capacity_str" invisible="1" />
+                            <field name="extra_type" />
+                            <field name="void_weight" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_container_action" model="ir.actions.act_window">
+        <field name="name">Product Containers</field>
+        <field name="res_model">product.container</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No product container found. Let's create one!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        action="product_container_action"
+        id="product_container_menu"
+        parent="stock.menu_stock_inventory_control"
+        sequence="3"
+        name="Product Containers"
+    />
+
+</odoo>
