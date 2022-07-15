@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="view_production_lot_form" model="ir.ui.view">
+        <field name="name">stock.alternate.lot.form</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form" />
+        <field name="arch" type="xml">
+            <group name="main_group" position="after">
+                <group>
+                    <field name="nos_enabled" invisible="1" />
+                    <field name="dn_enabled" invisible="1" />
+                    <field name="unknown_readonly" invisible="1" />
+                    <group col="4">
+                        <field
+                            name="nos"
+                            attrs="{'invisible': [('nos_enabled', '=', False)],
+                                    'required': [('nos_enabled', '=', True),('nos_unknown', '=', False)],
+                                    'readonly':[('nos_unknown', '=', True)]}"
+                            force_save="1"
+                        />
+                        <field
+                            name="nos_unknown"
+                            string="Unknown"
+                            attrs="{'invisible': [('nos_enabled', '=', False)],
+                                    'required': [('nos_enabled', '=', True)],
+                                    'readonly':[('unknown_readonly', '=', True)]}"
+                        />
+                        <field
+                            name="dn"
+                            attrs="{'invisible': [('dn_enabled', '=', False)],
+                                    'required': [('dn_enabled', '=', True),('dn_unknown', '=', False)],
+                                    'readonly':[('dn_unknown', '=', True)]}"
+                            force_save="1"
+                        />
+                        <field
+                            name="dn_unknown"
+                            string="Unknown"
+                            attrs="{'invisible': [('dn_enabled', '=', False)],
+                                    'required': [('dn_enabled', '=', True)],
+                                    'readonly':[('unknown_readonly', '=', True)]}"
+                        />
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
