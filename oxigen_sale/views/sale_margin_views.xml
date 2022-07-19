@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="oxigen_sale_margin_sale_order">
+        <field name="name">oxigen.sale.order.margin.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//div[@class='text-nowrap']/span[@class='oe_inline']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='margin']" position="after">
+                 <span
+                    class="oe_inline"
+                    attrs="{'invisible': [('amount_untaxed', '=', 0)]}"
+                >
+                        (<field
+                        name="oxigen_margin_percent"
+                        nolabel="1"
+                        class="oe_inline"
+                        widget="percentage"
+                    />)
+                 </span>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="oxigen_sale_margin_sale_order_line_form">
+        <field name="name">oxigen.sale.order.line.tree.margin.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='margin_percent']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='margin_percent']" position="after">
+                <field
+                    name="oxigen_margin_percent"
+                    attrs="{'invisible': [('price_subtotal', '=', 0)]}"
+                    optional="hide"
+                    widget="percentage"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

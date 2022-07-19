@@ -8,8 +8,8 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Sales",
-    "depends": ["sale"],
+    "depends": ["sale", "sale_margin"],
     "installable": True,
     "license": "AGPL-3",
-    "data": ["views/sale_views.xml"],
+    "data": ["views/sale_views.xml", "views/sale_margin_views.xml"],
 }
