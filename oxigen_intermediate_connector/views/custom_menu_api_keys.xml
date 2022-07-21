@@ -1,0 +1,8 @@
+<odoo>
+    <record model="ir.ui.menu" id="res_users_keys_description_menu">
+            <field name="name">API Keys</field>
+            <field name="parent_id" ref="base.menu_custom" />
+            <field name="action" ref="base.action_res_users_keys_description" />
+            <field name="sequence" eval="100" />
+    </record>
+</odoo>

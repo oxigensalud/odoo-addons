@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--change to 1-->
+<odoo noupdate="1">
+    <!-- Current values. They could change, so it's good to have them configurable -->
+    <record id="connection_url" model="ir.config_parameter">
+        <field name="key">oxigen_intermediate_connector.connection_url</field>
+        <field name="value" />
+    </record>
+    <record id="connection_api_key" model="ir.config_parameter">
+        <field name="key">oxigen_intermediate_connector.api_key</field>
+        <field name="value" />
+    </record>
+</odoo>
