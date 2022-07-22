@@ -11,6 +11,7 @@ class SaleOrderLine(models.Model):
         store=True,
         groups="base.group_user",
         group_operator="avg",
+        help="Custom %Margin calculated as Margin/Cost",
     )
 
     @api.depends("price_subtotal", "product_uom_qty", "purchase_price")
@@ -19,7 +20,7 @@ class SaleOrderLine(models.Model):
         # Oxigen wants this % calculated with purchase_price(cost)
         for line in self:
             line.oxigen_margin_percent = (
-                line.price_subtotal and line.margin / line.purchase_price
+                line.purchase_price and line.margin / line.purchase_price
             )
 
 
@@ -30,10 +31,14 @@ class SaleOrder(models.Model):
         "Margin (%)", compute="_compute_oxigen_margin_percent", store=True
     )
 
+    total_purchase_price = fields.Float(
+        compute="_compute_oxigen_margin_percent", store=True
+    )
+
     @api.depends("order_line.margin", "amount_untaxed")
     def _compute_oxigen_margin_percent(self):
         for order in self:
-            order_purchase_price = sum(order.order_line.mapped("purchase_price"))
+            order.total_purchase_price = sum(order.order_line.mapped("purchase_price"))
             order.oxigen_margin_percent = (
-                order.amount_untaxed and order.margin / order_purchase_price
+                order.total_purchase_price and order.margin / order.total_purchase_price
             )
