@@ -16,6 +16,7 @@ class Lead(models.Model):
         # transform id fields to their names
         vals["partner_id"] = self.env["res.partner"].browse(vals["partner_id"]).name
         vals["country_id"] = self.env["res.country"].browse(vals["country_id"]).name
+        vals["id"] = new_lead.id
         # keep all received values in new field google_ads_data
         new_lead.with_user(uid).sudo().update({"google_ads_data": vals})
         return ("CRM Lead with the following data Successfully created!", vals)
@@ -30,7 +31,7 @@ class Lead(models.Model):
             uid, new_dict.get("COMPANY_NAME", ""), country, city
         )
         return {
-            "name": "Lead Created from Google Ads",
+            "description": "Lead Created from Google Ads",
             "contact_name": new_dict.get("FULL_NAME", "")
             or new_dict.get("FIRST_NAME ", "") + new_dict.get("LAST_NAME ", ""),
             "partner_id": partner.id,
@@ -45,6 +46,9 @@ class Lead(models.Model):
             # specific contact fields
             "email_from": new_dict.get("EMAIL", ""),
             "phone": new_dict.get("PHONE_NUMBER", ""),
+            # questions
+            # Which product/service are you interested in?
+            "name": new_dict.get("PRODUCT", "") or new_dict.get("SERVICE", ""),
         }
 
     def get_country(self, str_country):
