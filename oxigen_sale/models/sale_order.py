@@ -19,8 +19,9 @@ class SaleOrderLine(models.Model):
         # In odoo, margin_percent is calculated as line.margin/line.price_subtotal
         # Oxigen wants this % calculated with purchase_price(cost)
         for line in self:
-            line.oxigen_margin_percent = line.purchase_price and line.margin / (
+            line.oxigen_margin_percent = (
                 line.purchase_price * line.product_uom_qty
+                and line.margin / (line.purchase_price * line.product_uom_qty)
             )
 
 
