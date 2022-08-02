@@ -615,7 +615,7 @@
         <field name="amount" eval="21.45" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -659,7 +659,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r134a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r134a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -672,7 +672,7 @@
         <field name="amount" eval="31.31" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -716,7 +716,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r410a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r410a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -729,7 +729,7 @@
         <field name="amount" eval="33.97" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -773,7 +773,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r438a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r438a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -786,7 +786,7 @@
         <field name="amount" eval="29.41" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -830,7 +830,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r404a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r404a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -843,7 +843,7 @@
         <field name="amount" eval="40.93" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -887,7 +887,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r422d_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r422d_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -900,7 +900,7 @@
         <field name="amount" eval="47.14" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -944,7 +944,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r422a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r422a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -957,7 +957,7 @@
         <field name="amount" eval="20.94" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -1001,7 +1001,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r449a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r449a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -1014,7 +1014,7 @@
         <field name="amount" eval="26.61" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -1058,7 +1058,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r407c_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r407c_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -1071,7 +1071,7 @@
         <field name="amount" eval="32.09" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -1115,7 +1115,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r452a_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r452a_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
@@ -1128,7 +1128,7 @@
         <field name="amount" eval="10.13" />
         <field name="amount_type">fixed</field>
         <field name="include_base_amount" eval="True" />
-        <field name="sequence" eval="10" />
+        <field name="sequence" eval="-10" />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
         <field
             name="invoice_repartition_line_ids"
@@ -1172,7 +1172,7 @@
         <field name="amount" eval="0" />
         <field
             name="children_tax_ids"
-            eval="[(6, 0, [ref('l10n_es.account_tax_template_s_iva21b'), ref('account_tax_template_s_igf21_r32_1')])]"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r32_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
         />
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
