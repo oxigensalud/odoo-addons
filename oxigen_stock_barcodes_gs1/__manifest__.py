@@ -4,7 +4,7 @@
 {
     "name": "Oxigen stock barcodes GS1",
     "summary": "Specific GS1 barcode scanning logic for Oxigen.",
-    "version": "14.0.1.0.0",
+    "version": "14.0.2.0.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Extra Tools",
