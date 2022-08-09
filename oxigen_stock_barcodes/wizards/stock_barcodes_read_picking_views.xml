@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_barcodes_read_picking_form" model="ir.ui.view">
+        <field
+            name="name"
+        >stock.barcodes.read.picking.form - oxigen_stock_barcodes</field>
+        <field name="model">wiz.stock.barcodes.read.picking</field>
+        <field
+            name="inherit_id"
+            ref="stock_barcodes.view_stock_barcodes_read_picking_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_validate_picking']" position="before">
+                <field name="do_show_action_confirm" invisible="1" />
+                <button
+                    name="action_confirm_picking"
+                    type="object"
+                    t-att-class="'btn pull-right' + (record.is_pending.raw_value == false ? ' btn-primary' : ' btn-secondary')"
+                    attrs="{'invisible': [('do_show_action_confirm', '=', False)]}"
+                    context="{'wiz_barcode_id': parent.id, 'picking_id': picking_id}"
+                >Confirm and Validate</button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
