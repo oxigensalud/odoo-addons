@@ -96,6 +96,46 @@
         />
     </record>
 
+    <!--     5% -->
+    <record id="account_tax_template_p_iva5_nd" model="account.tax.template">
+        <field name="type_tax_use">purchase</field>
+        <field name="name">IVA Soportado no deducible 5% (servicios corrientes)</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="5" />
+        <field name="amount_type">percent</field>
+        <field name="analytic" eval="True" />
+        <field name="tax_group_id" ref="l10n_es.tax_group_iva_nd" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+
     <!--     10% -->
     <record id="l10n_es.account_tax_template_p_iva10_nd" model="account.tax.template">
         <field name="name">IVA Soportado no deducible 10% (servicios corrientes)</field>
