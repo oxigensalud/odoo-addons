@@ -664,6 +664,66 @@
         <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
     </record>
 
+    <record
+        id="account_tax_template_s_igf21_r134a_regen_1"
+        model="account.tax.template"
+    >
+        <field name="description" /> <!-- for resetting the value on existing DBs -->
+        <field name="type_tax_use">sale</field>
+        <field name="name">Parte Fija I.G.F. R134A REGENERADO Repercutido</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount" eval="10.73" />
+        <field name="amount_type">fixed</field>
+        <field name="include_base_amount" eval="True" />
+        <field name="sequence" eval="-10" />
+        <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_common_igf'),
+            }),
+
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_common_igf'),
+            }),
+        ]"
+        />
+    </record>
+
+    <record id="account_tax_template_s_igf21_r134a_regen" model="account.tax.template">
+        <field name="name">IGF R134A REGENERADO Repercutido</field>
+        <field name="description" /> <!-- for resetting the value on existing DBs -->
+        <field name="type_tax_use">sale</field>
+        <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
+        <field name="amount_type">group</field>
+        <field name="amount" eval="0" />
+        <field
+            name="children_tax_ids"
+            eval="[(6, 0, [ref('account_tax_template_s_igf21_r134a_regen_1'), ref('l10n_es.account_tax_template_s_iva21b')])]"
+        />
+        <field name="tax_group_id" ref="tax_group_gases_refrigerantes" />
+    </record>
+
     <record id="account_tax_template_s_igf21_r410a_1" model="account.tax.template">
         <field name="description" /> <!-- for resetting the value on existing DBs -->
         <field name="type_tax_use">sale</field>
