@@ -80,7 +80,7 @@ class ProductionLot(models.Model):
                     _("D/N must be less or equal than %i characters long") % DN_MAX_SIZE
                 )
 
-    @api.constrains("nos", "dn")
+    @api.constrains("nos", "nos_unknown", "dn", "dn_unknown")
     def _check_alternate_lot(self):
         for rec in self:
             if rec.nos_enabled:
@@ -108,10 +108,7 @@ class ProductionLot(models.Model):
                         % self.product_id.display_name
                     )
 
-    @api.constrains(
-        "nos",
-        "dn",
-    )
+    @api.constrains("nos", "nos_unknown", "dn", "dn_unknown")
     def _check_unique_alternate_lot(self):
         for rec in self:
             if rec.nos and not rec.nos_unknown:
