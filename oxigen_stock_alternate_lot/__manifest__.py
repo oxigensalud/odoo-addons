@@ -4,7 +4,7 @@
 {
     "name": "Oxigen Stock Alternate Lot",
     "summary": "Alternative serial numbers",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "author": "NuoBiT",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Warehouse",
