@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Kilian Niubo <kniubo@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="account_asset_view_form" model="ir.ui.view">
+        <field name="model">account.asset</field>
+        <field
+            name="inherit_id"
+            ref="account_asset_management_extension.account_asset_view_form"
+        />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page
+                    string="Capital Asset"
+                    name="capital_asset"
+                    attrs="{'invisible': [('capital_asset_type_id', '=', False)]}"
+                >
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                        </group>
+                        <group>
+                            <field name="date_start" />
+                            <field name="date_remove" />
+                            <field name="capital_asset_type_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="invoice_ref" />
+                            <field name="invoice_date" />
+                        </group>
+                        <group>
+                            <field name="tax_ids" widget="many2many_tags" />
+                            <field
+                                name="tax_base_amount"
+                                widget="monetary"
+                                options="{'currency_field': 'company_currency_id'}"
+                            />
+                            <field
+                                name="vat_tax_amount"
+                                widget="monetary"
+                                options="{'currency_field': 'company_currency_id'}"
+                            />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field
+                                name="temp_prorate_percent"
+                                attrs="{'invisible': [('prorate_tax_id', '=', False)]}"
+                            />
+                            <field
+                                name="temp_deductible_tax_amount"
+                                attrs="{'invisible': [('prorate_tax_id', '=', False)]}"
+                                widget="monetary"
+                                options="{'currency_field': 'company_currency_id'}"
+                            />
+                            <field
+                                name="temp_non_deductible_tax_amount"
+                                attrs="{'invisible': [('prorate_tax_id', '=', False)]}"
+                                widget="monetary"
+                                options="{'currency_field': 'company_currency_id'}"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="final_prorate_percent"
+                                attrs="{'invisible': [('prorate_tax_id', '=', False)]}"
+                            />
+                            <field
+                                name="final_deductible_tax_amount"
+                                attrs="{'invisible': [('prorate_tax_id', '=', False)]}"
+                                widget="monetary"
+                                options="{'currency_field': 'company_currency_id'}"
+                            />
+                            <field
+                                name="final_non_deductible_tax_amount"
+                                attrs="{'invisible': [('prorate_tax_id', '=', False)]}"
+                                widget="monetary"
+                                options="{'currency_field': 'company_currency_id'}"
+                            />
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
