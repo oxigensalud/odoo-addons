@@ -1,0 +1,105 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_delivery_mrw_receipt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-18 14:34+0000\n"
+"PO-Revision-Date: 2022-10-18 14:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_delivery_mrw_receipt
+#: model_terms:ir.ui.view,arch_db:oxigen_delivery_mrw_receipt.view_immediate_transfer_mrw_in
+#: model_terms:ir.ui.view,arch_db:oxigen_delivery_mrw_receipt.view_picking_withcarrier_in_form2
+msgid "Cancel"
+msgstr ""
+
+#. module: oxigen_delivery_mrw_receipt
+#: model_terms:ir.ui.view,arch_db:oxigen_delivery_mrw_receipt.view_immediate_transfer_mrw_in
+msgid ""
+"Check that the addresses sent to MRW is correct, otherwise you should\n"
+"                    change them in the partner form. Try to put street and number in the\n"
+"                    first address line, and floor and door number in the second one."
+msgstr ""
+"Comprueba que las direcciones enviadas a MRW son correctaa, en caso contrario debería\n"
+"             cambiarlas en el formulario de contacto. Prueba de poner calle y número\n"
+"             en la primera línea de dirección, y piso y puerta en la segunda"
+
+#. module: oxigen_delivery_mrw_receipt
+#: code:addons/oxigen_delivery_mrw_receipt/models/stock_picking.py:0
+#: model_terms:ir.ui.view,arch_db:oxigen_delivery_mrw_receipt.view_immediate_transfer_mrw_in
+#, python-format
+msgid "Create MRW Receipt"
+msgstr ""
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_delivery_carrier__display_name
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_immediate_transfer__display_name
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_delivery_carrier__id
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_immediate_transfer__id
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model,name:oxigen_delivery_mrw_receipt.model_stock_immediate_transfer
+msgid "Immediate Transfer"
+msgstr "Transferencia inmediata"
+
+#. module: oxigen_delivery_mrw_receipt
+#: model_terms:ir.ui.view,arch_db:oxigen_delivery_mrw_receipt.view_immediate_transfer_mrw_in
+msgid "Immediate transfer?"
+msgstr ""
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_delivery_carrier____last_update
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_immediate_transfer____last_update
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: oxigen_delivery_mrw_receipt
+#: model_terms:ir.ui.view,arch_db:oxigen_delivery_mrw_receipt.view_picking_form
+msgid "Manage MRW incoming"
+msgstr "Gestionar Recepción de MRW"
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model.fields,field_description:oxigen_delivery_mrw_receipt.field_stock_immediate_transfer__mrw_is_in_picking
+msgid "Mrw Is In Picking"
+msgstr ""
+
+#. module: oxigen_delivery_mrw_receipt
+#: code:addons/oxigen_delivery_mrw_receipt/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Shipment sent to carrier %(carrier_name)s for shipping with tracking number "
+"%(ref)s<br/>Cost: %(price).2f %(currency)s"
+msgstr ""
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model,name:oxigen_delivery_mrw_receipt.model_delivery_carrier
+msgid "Shipping Methods"
+msgstr "Métodos de envío"
+
+#. module: oxigen_delivery_mrw_receipt
+#: model:ir.model,name:oxigen_delivery_mrw_receipt.model_stock_picking
+msgid "Transfer"
+msgstr "Albarán"
+
+#. module: oxigen_delivery_mrw_receipt
+#: code:addons/oxigen_delivery_mrw_receipt/wizards/stock_immediate_transfer.py:0
+#, python-format
+msgid "You cannot create more than one MRW pick up at a time"
+msgstr "No se puede crear más de unaa recogida de MRW  a la vez."
