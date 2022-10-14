@@ -8,8 +8,8 @@ class ContractContract(models.Model):
 
     _inherit = "contract.contract"
 
-    maintenance_plan_id = fields.Many2one(
-        "maintenance.plan",
+    maintenance_plan_ids = fields.Many2many(
+        comodel_name="maintenance.plan",
         string="Maintenance Plan",
         domain="[('equipment_id', 'in', equipment_ids)]",
     )
@@ -23,3 +23,10 @@ class ContractContract(models.Model):
             rec.maintenance_plan_visible = any(
                 map(lambda x: x.maintenance_plan_ids, rec.equipment_ids)
             )
+
+    @api.onchange("equipment_ids")
+    def onchange_equipment_ids(self):
+        plans = self.maintenance_plan_ids
+        for plan in plans:
+            if plan.equipment_id and plan.equipment_id.id not in self.equipment_ids.ids:
+                self.maintenance_plan_ids -= plan
