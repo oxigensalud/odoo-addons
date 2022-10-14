@@ -11,8 +11,9 @@
             <field name="equipment_ids" position="after">
                 <field name="maintenance_plan_visible" invisible="1" />
                 <field
-                    name="maintenance_plan_id"
+                    name="maintenance_plan_ids"
                     attrs="{'invisible': [('maintenance_plan_visible','=',False)]}"
+                    widget="many2many_tags"
                 />
             </field>
         </field>
@@ -23,7 +24,7 @@
         <field name="inherit_id" ref="contract.contract_contract_search_view" />
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="maintenance_plan_id" />
+                <field name="maintenance_plan_ids" />
             </field>
         </field>
     </record>

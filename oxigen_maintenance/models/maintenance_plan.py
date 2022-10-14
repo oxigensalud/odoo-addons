@@ -15,9 +15,8 @@ class MaintenancePlan(models.Model):
         "hr.employee", string="Employee", default=_default_employee_get
     )
 
-    contract_ids = fields.One2many(
+    contract_ids = fields.Many2many(
         comodel_name="contract.contract",
-        inverse_name="maintenance_plan_id",
         string="Contracts",
     )
     contract_count = fields.Integer(
@@ -39,7 +38,7 @@ class MaintenancePlan(models.Model):
             ]
             action["res_id"] = self.contract_ids.id
         action["context"] = {
-            "default_maintenance_plan_id": self.id,
+            "default_maintenance_plan_ids": self.ids,
             "is_contract": 1,
             "search_default_not_finished": 1,
             "search_default_recurring_invoices": 1,
