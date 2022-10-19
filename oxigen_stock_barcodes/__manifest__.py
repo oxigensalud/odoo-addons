@@ -8,7 +8,7 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Extra Tools",
-    "depends": ["stock_barcodes"],
+    "depends": ["stock_barcodes", "oxigen_stock_alternate_lot"],
     "data": [
         "views/stock_picking_type_views.xml",
         "wizards/stock_barcodes_read_picking_views.xml",
