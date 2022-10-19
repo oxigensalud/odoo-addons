@@ -26,7 +26,10 @@ class DeliveryCarrier(models.Model):
                     receiving_partner, self.international_shipping
                 ),
                 "Nif": receiving_partner.vat or "",
-                "Nombre": receiving_partner.name,
+                # if module added to OCA, this field is custom for Oxigen
+                "Nombre": receiving_partner.parent_id.name
+                if receiving_partner.parent_id
+                else receiving_partner.name,
                 "Telefono": receiving_partner.phone or "",
                 "ALaAtencionDe": "",
                 "Observaciones": picking.note or "",
