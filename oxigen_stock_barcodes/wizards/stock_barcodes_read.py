@@ -17,3 +17,10 @@ class WizStockBarcodesRead(models.AbstractModel):
         if not lot:
             domain = super()._prepare_lot_domain()
         return domain
+
+    def open_actions(self):
+        super().open_actions()
+        action = self.env["ir.actions.actions"]._for_xml_id(
+            "stock.stock_picking_type_action"
+        )
+        return action
