@@ -2,14 +2,14 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 {
-    "name": "Oxigen Delivery MRW receipt",
-    "summary": "Customizations for Oxigen for MRW incoming shipments",
+    "name": "Oxigen Delivery MRW ",
+    "summary": "Customizations for Oxigen in MRW deliveries",
     "version": "14.0.1.0.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Stock",
-    "depends": ["oxigen_delivery_mrw"],
+    "depends": ["delivery_mrw"],
     "installable": True,
     "license": "AGPL-3",
-    "data": ["views/stock_picking.xml", "wizards/stock_immediate_transfer_views.xml"],
+    "data": ["wizards/stock_immediate_transfer_views.xml"],
 }
