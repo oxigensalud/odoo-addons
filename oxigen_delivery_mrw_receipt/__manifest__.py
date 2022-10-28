@@ -8,7 +8,7 @@
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Stock",
-    "depends": ["delivery_mrw"],
+    "depends": ["oxigen_delivery_mrw"],
     "installable": True,
     "license": "AGPL-3",
     "data": ["views/stock_picking.xml", "wizards/stock_immediate_transfer_views.xml"],

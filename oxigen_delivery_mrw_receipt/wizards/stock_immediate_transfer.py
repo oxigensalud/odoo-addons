@@ -1,7 +1,6 @@
 # Copyright 2022 ForgeFlow, S.L.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import _, fields, models
-from odoo.exceptions import UserError
+from odoo import api, fields, models
 
 
 class StockImmediateTransfer(models.TransientModel):
@@ -9,6 +8,7 @@ class StockImmediateTransfer(models.TransientModel):
 
     mrw_is_in_picking = fields.Boolean()
 
+    @api.model
     def default_get(self, fields):
         res = super().default_get(fields)
         immediate_line = res.get("immediate_transfer_line_ids", False)
@@ -39,6 +39,12 @@ class StockImmediateTransfer(models.TransientModel):
         return res
 
     def mrw_send_shipping(self):
-        if len(self.pick_ids) > 1:
-            raise UserError(_("You cannot create more than one MRW pick up at a time"))
-        self.pick_ids[0].sudo().send_to_shipper()
+        if self.pick_ids.picking_type_code == "incoming" and len(self.pick_ids) == 1:
+            self.pick_ids.write({"number_of_packages": self.number_of_packages})
+            return (
+                self.pick_ids[0]
+                .sudo()
+                .with_context(mrw_is_in_picking=True)
+                .send_to_shipper()
+            )
+        return super().mrw_send_shipping()

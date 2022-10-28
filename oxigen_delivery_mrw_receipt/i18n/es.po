@@ -103,3 +103,4 @@ msgstr "Albarán"
 #, python-format
 msgid "You cannot create more than one MRW pick up at a time"
 msgstr "No se puede crear más de unaa recogida de MRW  a la vez."
+

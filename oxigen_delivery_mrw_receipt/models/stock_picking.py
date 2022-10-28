@@ -8,29 +8,8 @@ from odoo import _, models
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
-    def action_open_immediate_mrw_wizard(self):
-        self.ensure_one()
-        view_id = self.env.ref(
-            "oxigen_delivery_mrw_receipt.view_immediate_transfer_mrw_in"
-        ).id
-        ctx = self._context.copy()
-        ctx["default_pick_ids"] = [(4, p.id) for p in self]
-        ctx["default_immediate_transfer_line_ids"] = []
-        return {
-            "name": _("Create MRW Receipt"),
-            "type": "ir.actions.act_window",
-            "view_mode": "form",
-            "res_model": "stock.immediate.transfer",
-            "view_id": view_id,
-            "views": [(view_id, "form")],
-            "target": "new",
-            "context": ctx,
-        }
-
     def send_to_shipper(self):
-        if self.sale_id:
-            super().send_to_shipper()
-        else:
+        if self.env.context.get("mrw_is_in_picking", False) and not self.sale_id:
             self.ensure_one()
             res = self.carrier_id.send_shipping(self)[0]
             if res["tracking_number"]:
@@ -45,12 +24,15 @@ class StockPicking(models.Model):
                 currency=order_currency.name,
             )
             self.message_post(body=msg)
+        else:
+            super().send_to_shipper()
 
     def pricelist_send_shipping(self, pickings):
-        res = []
-        for picking in pickings:
-            carrier = picking.carrier_id
-            sale = picking.sale_id
-            price = carrier._pricelist_get_price(sale) if sale else 0.0
-            res = res + [{"exact_price": price, "tracking_number": False}]
+        res = super().pricelist_send_shipping()
+        if self.env.context.get("mrw_is_in_picking", False):
+            for picking in pickings:
+                carrier = picking.carrier_id
+                sale = picking.sale_id
+                price = carrier._pricelist_get_price(sale) if sale else 0.0
+                res = res + [{"exact_price": price, "tracking_number": False}]
         return res
