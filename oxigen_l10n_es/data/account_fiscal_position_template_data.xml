@@ -149,13 +149,13 @@
 
     <record id="fptt_dua_21nd_bc" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es_dua.fp_dua" />
-        <field name="tax_src_id" ref="account_tax_template_p_iva0_nd_bc" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva21_nd_bc" />
         <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
     </record>
 
     <record id="fptt_dua_21nd_bi" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es_dua.fp_dua" />
-        <field name="tax_src_id" ref="account_tax_template_p_iva0_nd_bi" />
+        <field name="tax_src_id" ref="account_tax_template_p_iva21_nd_bi" />
         <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
     </record>
 

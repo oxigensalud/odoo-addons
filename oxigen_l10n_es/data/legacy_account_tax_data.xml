@@ -221,7 +221,7 @@
         <field name="name">IVA Soportado no deducible 21% (servicios corrientes)</field>
     </record>
 
-    <record id="account_tax_template_p_iva0_nd_bc" model="account.tax.template">
+    <record id="account_tax_template_p_iva21_nd_bc" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 21% (bienes corrientes)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />
@@ -257,7 +257,7 @@
         />
     </record>
 
-    <record id="account_tax_template_p_iva0_nd_bi" model="account.tax.template">
+    <record id="account_tax_template_p_iva21_nd_bi" model="account.tax.template">
         <field name="type_tax_use">purchase</field>
         <field name="name">IVA Soportado no deducible 21% (bienes inversión)</field>
         <field name="chart_template_id" ref="l10n_es.account_chart_template_common" />

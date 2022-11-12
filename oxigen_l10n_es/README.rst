@@ -13,3 +13,4 @@ Contributors
 
 * Lois Rilo <lois.rilo@forgeflow.com>
 * Eric Antones <eantones@nuobit.com>
+* Kilian Niubo <kniubo@nuobit.com>
