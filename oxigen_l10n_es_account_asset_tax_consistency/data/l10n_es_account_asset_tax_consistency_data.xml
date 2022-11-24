@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Kilian Niubo <kniubo@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <!--    	IVA 4% NO DEDUCIBLE Adquisición Intracomunitario. Bienes de inversión-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    IVA 4% NO DEDUCIBLE Adquisición Intracomunitario. Bienes corrientes-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    IVA 4% NO DEDUCIBLE Adquisición de servicios intracomunitarios-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">never</field>
+    </record>
+    <!--	IVA 10% NO DEDUCIBLE Adquisición Intracomunitario. Bienes de inversión-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--IVA 10% NO DEDUCIBLE Adquisición Intracomunitario. Bienes corrientes-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    IVA 10% NO DEDUCIBLE Adquisición de servicios intracomunitarios-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">never</field>
+    </record>
+    <!--	IVA 21% NO DEDUCIBLE Adquisición Intracomunitario. Bienes de inversión-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--IVA 21% NO DEDUCIBLE Adquisición Intracomunitario. Bienes corrientes-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    	IVA 21% NO DEDUCIBLE Adquisición de servicios intracomunitarios-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">never</field>
+    </record>
+    <!--	IGF Exento Soportado-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_igf0"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">ignore</field>
+    </record>
+    <!--	IVA Soportado no deducible 4% (bienes corrientes)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva4_nd_bc"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    	IVA Soportado no deducible 4% (bienes inversión)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva4_nd_bi"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    	IVA Soportado no deducible 10% (bienes corrientes)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva10_nd_bc"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    IVA Soportado no deducible 10% (bienes inversión)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva10_nd_bi"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    IVA Soportado no deducible 21% (bienes corrientes)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva0_nd_bc"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    IVA Soportado no deducible 21% (bienes inversión)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva0_nd_bi"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">always</field>
+    </record>
+    <!--    	IVA Soportado no deducible 5% (servicios corrientes)-->
+    <record
+        id="oxigen_l10n_es.account_tax_template_p_iva5_nd"
+        model="account.tax.template"
+    >
+        <field name="apply_to_asset">never</field>
+    </record>
+</odoo>
