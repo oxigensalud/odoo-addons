@@ -15,3 +15,5 @@ odoo14-addon-l10n_es_asset_extension@git+https://github.com/nuobit/odoo-addons.g
 odoo14-addon-l10n_es_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_extension
 odoo14-addon-account_asset_management_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_management_extension
 odoo14-addon-account_asset_tax_consistency@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_tax_consistency
+odoo14-addon-l10n_es_aeat_prorate_asset@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_aeat_prorate_asset
+odoo14-addon-l10n_es_aeat_vat_special_prorrate@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_aeat_vat_special_prorrate
