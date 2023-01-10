@@ -10,3 +10,8 @@ odoo14-addon-payroll_sage@git+https://github.com/nuobit/odoo-addons.git@14.0#sub
 odoo14-addon-connector_sage@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/connector_sage
 odoo14-addon-stock_rest@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/stock_rest
 odoo14-addon-stock_location_code@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/stock_location_code
+odoo14-addon-l10n_es_account_capital_asset@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_account_capital_asset
+odoo14-addon-l10n_es_asset_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_asset_extension
+odoo14-addon-l10n_es_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_extension
+odoo14-addon-account_asset_management_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_management_extension
+odoo14-addon-account_asset_tax_consistency@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_tax_consistency
