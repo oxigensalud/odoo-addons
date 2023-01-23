@@ -21,3 +21,4 @@ Contributors
 
 * Maria de Luna <maria.de.luna@forgeflow.com>
 * Lois Rilo <lois.rilo@forgeflow.com>
+* Eric Antones <eantones@nuobit.com>

@@ -9,10 +9,6 @@ from odoo.tools import date_utils
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    @api.onchange("invoice_date")
-    def _onchange_invoice_date(self):
-        self.date = self.invoice_date
-
     @api.onchange("ref")
     def _onchange_ref(self):
         for move in self.filtered(lambda m: m.move_type != "entry"):
