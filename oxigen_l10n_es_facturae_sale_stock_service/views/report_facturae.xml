@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <template
+        id="template_facturae"
+        inherit_id="l10n_es_facturae_sale_stock.template_facturae"
+    >
+        <xpath
+            expr="//DeliveryNotesReferences/t/DeliveryNote/DeliveryNoteNumber"
+            position="attributes"
+        >
+            <attribute
+                name="t-esc"
+            >' - '.join(filter(None, [picking.name, str(picking.sale_id.service_number)
+            if picking.sale_id.service_number else None]))</attribute>
+        </xpath>
+    </template>
+</odoo>
