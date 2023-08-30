@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="view_production_lot_form" model="ir.ui.view">
+        <field name="name">oxigen.mrp.production.lot.form</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form" />
+        <field name="arch" type="xml">
+            <group name="main_group" position="after">
+                <field name="mrp_fields_allowed" invisible="1" />
+                <group>
+                    <group>
+                    <field
+                            name="manufacturer"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['manufacturer'])]}"
+                        />
+                    <field
+                            name="weight"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['weight'])]}"
+                        />
+                    <field
+                            name="manufacture_date"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['manufacture_date'])]}"
+                        />
+                    <field
+                            name="retesting_date"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['retesting_date'])]}"
+                        />
+                    <field
+                            name="next_retesting_date"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['next_retesting_date'])]}"
+                        />
+                    <field
+                            name="valid_until_date"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['valid_until_date'])]}"
+                        />
+                </group>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
