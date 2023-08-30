@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
 <odoo>
-    <data>
-        <record id="price_list_tags_product_price_list_form_view" model="ir.ui.view">
-            <field name="name">price.list.tags.product.price.list.form.view</field>
-            <field name="model">product.pricelist</field>
-            <field name="inherit_id" ref="product.product_pricelist_view" />
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='country_group_ids']" position="before">
-                    <field name="price_list_tag_ids" widget="many2many_tags" />
-                    <field name="write_date" readonly="1" />
-                </xpath>
-            </field>
-        </record>
-    </data>
+    <record id="price_list_tags_product_price_list_form_view" model="ir.ui.view">
+        <field name="name">price.list.tags.product.price.list.form.view</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='country_group_ids']" position="before">
+                <field name="price_list_tag_ids" widget="many2many_tags" />
+                <field name="write_date" readonly="1" />
+            </xpath>
+        </field>
+    </record>
 </odoo>

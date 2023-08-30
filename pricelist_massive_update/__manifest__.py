@@ -2,7 +2,7 @@
 {
     "name": "Price List Massive Update",
     "summary": "Update pricelists according to pricelist tags",
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.0.2",
     "category": "Sale",
     "license": "AGPL-3",
     "author": "Vraja Technologies",
