@@ -31,10 +31,6 @@
                             name="next_retesting_date"
                             attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['next_retesting_date'])]}"
                         />
-                    <field
-                            name="valid_until_date"
-                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['valid_until_date'])]}"
-                        />
                 </group>
                 </group>
             </group>

@@ -24,7 +24,7 @@ class StockPickingImportSerials(models.TransientModel):
                         "manufacture_date",
                         "retesting_date",
                         "next_retesting_date",
-                        "valid_until_date",
+                        "removal_date",
                     ],
                     data,
                 )
@@ -56,7 +56,7 @@ class StockPickingImportSerials(models.TransientModel):
             "manufacture_date",
             "retesting_date",
             "next_retesting_date",
-            "valid_until_date",
+            "removal_date",
         ]
         for field in fields_to_check:
             field_type = self.env["stock.production.lot"].fields_get()[field]["type"]

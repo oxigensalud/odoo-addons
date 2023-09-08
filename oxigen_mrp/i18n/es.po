@@ -85,11 +85,6 @@ msgid "Retesting Date"
 msgstr "Fecha retimbrado"
 
 #. module: oxigen_mrp
-#: model:ir.model.fields,field_description:oxigen_mrp.field_stock_production_lot__valid_until_date
-msgid "Valid Until Date"
-msgstr "Fecha límite de uso"
-
-#. module: oxigen_mrp
 #: model:ir.model.fields.selection,name:oxigen_mrp.selection__product_template__mrp_type__valve
 msgid "Valve"
 msgstr "Válvula"

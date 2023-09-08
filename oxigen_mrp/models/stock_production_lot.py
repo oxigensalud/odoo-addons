@@ -20,7 +20,7 @@ class ProductionLot(models.Model):
                 "retesting_date",
                 "next_retesting_date",
             },
-            "valve": {"manufacturer", "manufacture_date", "valid_until_date"},
+            "valve": {"manufacturer", "manufacture_date", "removal_date"},
             "empty_cylinder": {
                 "manufacturer",
                 "manufacture_date",
@@ -36,7 +36,6 @@ class ProductionLot(models.Model):
     manufacture_date = fields.Date()
     retesting_date = fields.Date()
     next_retesting_date = fields.Date()
-    valid_until_date = fields.Date()
 
     mrp_fields_allowed = Serialized(compute="_compute_mrp_fields_allowed")
 
@@ -57,7 +56,7 @@ class ProductionLot(models.Model):
         "manufacture_date",
         "retesting_date",
         "next_retesting_date",
-        "valid_until_date",
+        "removal_date",
     )
     def _check_mrp_lot(self):
         for rec in self:
@@ -65,6 +64,18 @@ class ProductionLot(models.Model):
                 raise ValidationError(
                     _("The product %s has not a type (MRP) defined")
                     % rec.product_id.display_name
+                )
+            if (
+                rec.removal_date
+                and not rec.product_id.use_expiration_date
+                and rec.product_id.mrp_type
+                and rec.product_id.mrp_type != "valve"
+            ):
+                raise ValidationError(
+                    _(
+                        "The product %s is not a valve and has not expiration date"
+                        % rec.product_id.display_name
+                    )
                 )
             if rec.product_id.mrp_type:
                 original_fields = rec._get_product_mrp_workflow()
