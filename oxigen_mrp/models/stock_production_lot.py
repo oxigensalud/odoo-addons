@@ -2,7 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import json
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 from odoo.addons.base_sparse_field.models.fields import Serialized
 
@@ -49,3 +50,39 @@ class ProductionLot(models.Model):
 
     # TODO: write and create methods to check the fields allowed and/or
     # constraints to check the fields allowed
+
+    @api.constrains(
+        "manufacturer",
+        "weight",
+        "manufacture_date",
+        "retesting_date",
+        "next_retesting_date",
+        "valid_until_date",
+    )
+    def _check_mrp_lot(self):
+        for rec in self:
+            if not rec.product_id.mrp_type:
+                raise ValidationError(
+                    _("The product %s has not a type (MRP) defined")
+                    % rec.product_id.display_name
+                )
+            if rec.product_id.mrp_type:
+                original_fields = rec._get_product_mrp_workflow()
+                allowed_fields = original_fields[rec.product_id.mrp_type]
+                diff_fields = set()
+                for key, value in original_fields.items():
+                    if key != rec.product_id.mrp_type:
+                        diff_fields.update(value - allowed_fields)
+                for field in diff_fields:
+                    if rec[field]:
+                        raise ValidationError(
+                            _(
+                                "The field %s is not allowed for the product"
+                                " %s in the type MRP %s"
+                                % (
+                                    field,
+                                    rec.product_id.display_name,
+                                    rec.product_id.mrp_type,
+                                )
+                            )
+                        )
