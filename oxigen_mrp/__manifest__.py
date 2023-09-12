@@ -8,7 +8,7 @@
     "author": "NuoBiT Solutions SL",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Manufacturing/Manufacturing",
-    "depends": ["mrp", "product_expiry"],
+    "depends": ["mrp", "product_expiry", "oxigen_stock"],
     "installable": True,
     "license": "AGPL-3",
     "data": [
