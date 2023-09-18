@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="product_template_form_view">
+        <field
+            name="name"
+        >product.template.form (in maintenance_equipment_stock)</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.view_template_property_form" />
+        <field name="arch" type="xml">
+            <field name="tracking" position="after">
+                <field
+                    name="maintenance_lot"
+                    attrs="{'invisible': [('tracking', '!=', 'serial')]}"
+                />
+            </field>
+            <notebook position="inside">
+                <page
+                    name="maintenance"
+                    string="Maintenance"
+                    attrs="{'invisible': ['|','|', ('maintenance_lot', '=', False), ('type', '!=', 'product'), ('tracking', '!=', 'serial')]}"
+                >
+                    <grpup>
+                        <group>
+                            <field name="maintenance_category_id" />
+                            <field name="maintenance_team_id" />
+                        </group>
+                    </grpup>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+
+</odoo>
