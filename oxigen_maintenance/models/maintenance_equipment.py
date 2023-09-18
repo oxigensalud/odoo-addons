@@ -7,7 +7,35 @@ from odoo import _, fields, models
 class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
-    location_id = fields.Many2one("stock.location", string="Location")
+    stock_location_id = fields.Many2one("stock.location", string="Location")
+    my_team_equipment = fields.Boolean(
+        search="_search_my_team_equipment", compute="_compute_my_team_equipment"
+    )
+
+    def _search_my_team_equipment(self, operator, value):
+        if operator != "=" or not value:
+            return []
+        return [
+            (
+                "maintenance_team_id",
+                "in",
+                [False]
+                + self.env["maintenance.team"]
+                .search([("member_ids", "=", self.env.user.id)])
+                ._get_parent_teams()
+                .ids,
+            )
+        ]
+
+    def _compute_my_team_equipment(self):
+        for record in self:
+            record.my_team_equipment = (
+                not record.maintenance_team_id
+                or record.maintenance_team_id
+                in self.env["maintenance.team"]
+                .search([("member_ids", "=", self.env.user.id)])
+                ._get_parent_teams()
+            )
 
     def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
 
