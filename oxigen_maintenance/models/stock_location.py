@@ -9,7 +9,7 @@ class StockLocation(models.Model):
 
     equipment_ids = fields.One2many(
         comodel_name="maintenance.equipment",
-        inverse_name="location_id",
+        inverse_name="stock_location_id",
         string="Maintenance Equipment",
     )
 
