@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="maintenance_equipment_operating_system_form_view">
+        <field
+            name="name"
+        >maintenance.equipment.operating.system.form (in oxigen_maintenance)</field>
+        <field name="model">maintenance.equipment.operating.system</field>
+        <field name="arch" type="xml">
+            <form>
+                <header />
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <group>
+                        <field name="name" />
+                        <field name="active" invisible="1" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter" />
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_equipment_operating_system_search_view">
+        <field
+            name="name"
+        >maintenance.equipment.operating.system.search (in oxigen_maintenance)</field>
+        <field name="model">maintenance.equipment.operating.system</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="maintenance_equipment_operating_system_tree_view">
+        <field
+            name="name"
+        >maintenance.equipment.operating.system.tree (in oxigen_maintenance)</field>
+        <field name="model">maintenance.equipment.operating.system</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record
+        model="ir.actions.act_window"
+        id="maintenance_equipment_operating_system_act_window"
+    >
+        <field name="name">Operating Systems</field>
+        <field name="res_model">maintenance.equipment.operating.system</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="maintenance_equipment_operating_system_menu">
+        <field name="name">Operating System</field>
+        <field name="parent_id" ref="maintenance.menu_maintenance_configuration" />
+        <field name="action" ref="maintenance_equipment_operating_system_act_window" />
+        <field name="sequence" eval="99" />
+    </record>
+
+</odoo>
