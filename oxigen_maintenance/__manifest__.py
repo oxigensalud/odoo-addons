@@ -20,6 +20,8 @@
     "data": [
         "data/maintenance_data.xml",
         "security/security.xml",
+        "security/ir.model.access.csv",
+        "views/maintenance_equipment_operating_system.xml",
         "views/stock_location_views.xml",
         "views/maintenance_equipment_views.xml",
         "views/maintenance_plan_views.xml",
@@ -27,4 +29,5 @@
         "views/contract_contract.xml",
         "views/maintenance_team_views.xml",
     ],
+    "demo": ["demo/data.xml"],
 }
