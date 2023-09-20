@@ -11,6 +11,16 @@ class MaintenanceEquipment(models.Model):
     my_team_equipment = fields.Boolean(
         search="_search_my_team_equipment", compute="_compute_my_team_equipment"
     )
+    # Specific fields only for IT
+    imei_1 = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
+    imei_2 = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
+    mac_address = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
+    operating_system_id = fields.Many2one(
+        "maintenance.equipment.operating.system",
+        groups="oxigen_maintenance.group_maintenance_it",
+    )
+    it_phone = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
+    icc_code = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
 
     def _search_my_team_equipment(self, operator, value):
         if operator != "=" or not value:
