@@ -3,6 +3,7 @@
 import json
 
 from odoo import _, api, models
+from odoo.exceptions import ValidationError
 from odoo.tools import date_utils
 
 
@@ -14,6 +15,37 @@ class AccountMove(models.Model):
         for move in self.filtered(lambda m: m.move_type != "entry"):
             move.payment_reference = move.ref
             move._onchange_payment_reference()
+
+    @api.constrains("ref")
+    def _check_move_supplier_ref(self):
+        """
+        Check if an other vendor bill has the same ref
+        and the same commercial_partner_id than the current instance
+        """
+        for rec in self:
+            if rec.ref and rec.is_purchase_document(include_receipts=True):
+                same_supplier_inv_num = rec.search(
+                    [
+                        ("commercial_partner_id", "=", rec.commercial_partner_id.id),
+                        ("move_type", "in", ("in_invoice", "in_refund")),
+                        ("ref", "=ilike", rec.ref),
+                        ("id", "!=", rec.id),
+                    ],
+                    limit=1,
+                )
+                if same_supplier_inv_num:
+                    raise ValidationError(
+                        _(
+                            "The invoice/refund with supplier invoice number '%s' "
+                            "already exists in Odoo under the number '%s' "
+                            "for supplier '%s'."
+                        )
+                        % (
+                            same_supplier_inv_num.ref,
+                            same_supplier_inv_num.name or "-",
+                            same_supplier_inv_num.partner_id.display_name,
+                        )
+                    )
 
     @api.depends("move_type", "line_ids.amount_residual")
     def _compute_payments_widget_reconciled_info(self):
