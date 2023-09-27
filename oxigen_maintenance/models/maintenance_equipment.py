@@ -8,6 +8,7 @@ class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
     stock_location_id = fields.Many2one("stock.location", string="Location")
+    company_id = fields.Many2one(default=lambda r: False)
     my_team_equipment = fields.Boolean(
         search="_search_my_team_equipment", compute="_compute_my_team_equipment"
     )
