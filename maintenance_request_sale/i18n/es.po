@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* maintenance_request_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-18 16:27+0000\n"
+"PO-Revision-Date: 2023-10-18 16:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: maintenance_request_sale
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_sale_order__maintenance_request_count
+msgid "# Maintenances"
+msgstr "# Mantenimientos"
+
+#. module: maintenance_request_sale
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_maintenance_request__display_name
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: maintenance_request_sale
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_maintenance_request__id
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: maintenance_request_sale
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_maintenance_request____last_update
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: maintenance_request_sale
+#: model:ir.model,name:maintenance_request_sale.model_maintenance_request
+msgid "Maintenance Request"
+msgstr "Petición de mantenimiento"
+
+#. module: maintenance_request_sale
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_sale_order__maintenance_request_ids
+msgid "Maintenance Requests"
+msgstr "Peticiones de Mantenimiento"
+
+#. module: maintenance_request_sale
+#: model_terms:ir.ui.view,arch_db:maintenance_request_sale.sale_order_form_view
+msgid "Maintenances"
+msgstr "Mantenimientos"
+
+#. module: maintenance_request_sale
+#: model:ir.model.fields,field_description:maintenance_request_sale.field_maintenance_request__sale_order_id
+msgid "Sale Order"
+msgstr "Pedidos de Venta"
+
+#. module: maintenance_request_sale
+#: model:ir.model,name:maintenance_request_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
