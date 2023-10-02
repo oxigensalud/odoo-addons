@@ -16,36 +16,69 @@ class AccountMove(models.Model):
             move.payment_reference = move.ref
             move._onchange_payment_reference()
 
-    @api.constrains("ref")
+    @api.constrains("ref", "move_type", "partner_id", "journal_id", "state")
     def _check_move_supplier_ref(self):
         """
         Check if an other vendor bill has the same ref
-        and the same commercial_partner_id than the current instance
+        and the same commercial_partner_id than the current instance.
+        The check only makes sense when validating it
+        The code has been takend from `_check_duplicate_supplier_reference` function of odoo
         """
-        for rec in self:
-            if rec.ref and rec.is_purchase_document(include_receipts=True):
-                same_supplier_inv_num = rec.search(
-                    [
-                        ("commercial_partner_id", "=", rec.commercial_partner_id.id),
-                        ("move_type", "in", ("in_invoice", "in_refund")),
-                        ("ref", "=ilike", rec.ref),
-                        ("id", "!=", rec.id),
-                    ],
-                    limit=1,
+        moves = self.filtered(
+            lambda move: move.state == "posted"
+            and move.is_purchase_document()
+            and move.ref
+        )
+        if not moves:
+            return
+
+        self.env["account.move"].flush(
+            [
+                "ref",
+                "move_type",
+                "journal_id",
+                "company_id",
+                "partner_id",
+                "commercial_partner_id",
+            ]
+        )
+        self.env["account.journal"].flush(["company_id"])
+        self.env["res.partner"].flush(["commercial_partner_id"])
+
+        # /!\ Computed stored fields are not yet inside the database.
+        self._cr.execute(
+            """
+            SELECT move2.id
+            FROM account_move move
+            JOIN account_journal journal ON journal.id = move.journal_id
+            JOIN res_partner partner ON partner.id = move.partner_id
+            INNER JOIN account_move move2 ON
+                move2.ref = move.ref
+                AND move2.company_id = journal.company_id
+                AND move2.commercial_partner_id = partner.commercial_partner_id
+                AND move2.move_type = move.move_type
+                AND move2.id != move.id
+            WHERE move.id IN %s
+        """,
+            [tuple(moves.ids)],
+        )
+        duplicated_moves = self.browse([r[0] for r in self._cr.fetchall()])
+        if duplicated_moves:
+            raise ValidationError(
+                _(
+                    "Duplicated vendor reference detected. "
+                    "You probably encoded twice the same vendor bill/credit note:\n%s"
                 )
-                if same_supplier_inv_num:
-                    raise ValidationError(
-                        _(
-                            "The invoice/refund with supplier invoice number '%s' "
-                            "already exists in Odoo under the number '%s' "
-                            "for supplier '%s'."
-                        )
-                        % (
-                            same_supplier_inv_num.ref,
-                            same_supplier_inv_num.name or "-",
-                            same_supplier_inv_num.partner_id.display_name,
-                        )
+                % "\n".join(
+                    duplicated_moves.mapped(
+                        lambda m: "%(partner)s - %(ref)s"
+                        % {
+                            "ref": m.ref,
+                            "partner": m.partner_id.display_name,
+                        }
                     )
+                )
+            )
 
     @api.depends("move_type", "line_ids.amount_residual")
     def _compute_payments_widget_reconciled_info(self):
