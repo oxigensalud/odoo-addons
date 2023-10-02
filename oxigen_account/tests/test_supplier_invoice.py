@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from odoo import fields
 from odoo.exceptions import ValidationError
 from odoo.tests import tagged
@@ -43,14 +45,17 @@ class TestSupplierInvoice(AccountTestInvoicingCommon):
 
     def test_check_unique_supplier_invoice_number_insensitive(self):
         # A new invoice instance with an existing supplier_invoice_number
+        move = self.account_move.create(
+            {
+                "partner_id": self.partner.id,
+                "move_type": "in_invoice",
+                "invoice_date": fields.Date.today() + timedelta(days=-1),
+                "ref": "ABC123",
+                "invoice_line_ids": [(0, 0, {})],
+            }
+        )
         with self.assertRaises(ValidationError):
-            self.account_move.create(
-                {
-                    "partner_id": self.partner.id,
-                    "move_type": "in_invoice",
-                    "ref": "ABC123",
-                }
-            )
+            move.action_post()
         # A new invoice instance with a new supplier_invoice_number
         self.account_move.create(
             {
