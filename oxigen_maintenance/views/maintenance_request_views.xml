@@ -11,6 +11,19 @@
             <xpath expr="//field[@name='employee_id']" position="attributes">
                 <attribute name="string">Employee</attribute>
             </xpath>
+            <field name="equipment_id" position="after">
+                <field name="customer_id" />
+            </field>
+        </field>
+    </record>
+    <record id="hr_equipment_request_view_search" model="ir.ui.view">
+        <field name="name">maintenance.request.view.search.inherit - oxigen</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search" />
+        <field name="arch" type="xml">
+            <field name="equipment_id" position="after">
+                <field name="customer_id" />
+            </field>
         </field>
     </record>
 </odoo>
