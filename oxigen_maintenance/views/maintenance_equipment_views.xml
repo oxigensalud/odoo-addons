@@ -55,4 +55,21 @@
         </field>
     </record>
 
+    <record id="maintenance_equipment_view_form_inherit_hr" model="ir.ui.view">
+        <field name="name">equipment.form</field>
+        <field name="model">maintenance.equipment</field>
+        <field
+            name="inherit_id"
+            ref="hr_maintenance.maintenance_equipment_view_form_inherit_hr"
+        />
+        <field name="arch" type="xml">
+            <field name="equipment_assign_to" position="after">
+                <field
+                    name="customer_id"
+                    attrs="{'invisible': [('equipment_assign_to', '!=', 'customer')], 'required': [('equipment_assign_to', '=', 'customer')]}"
+                />
+            </field>
+        </field>
+    </record>
+
 </odoo>

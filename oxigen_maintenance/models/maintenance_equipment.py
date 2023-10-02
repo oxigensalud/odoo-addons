@@ -48,6 +48,11 @@ class MaintenanceEquipment(models.Model):
                 ._get_parent_teams()
             )
 
+    equipment_assign_to = fields.Selection(
+        selection_add=[("customer", "Customer")], ondelete={"customer": "set default"}
+    )
+    customer_id = fields.Many2one("res.partner")
+
     def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
 
         res = super(MaintenanceEquipment, self)._prepare_request_from_plan(
