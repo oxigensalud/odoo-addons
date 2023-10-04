@@ -11,7 +11,16 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
         <field name="arch" type="xml">
             <field name="serial_no" position="after">
-                <field name="lot_id" attrs="{'invisible': [('lot_id', '=', False)]}" />
+                <field name="lot_id" invisible="1" />
+                <field
+                    name="supplier_product_id"
+                    attrs="{'required': ['|', ('lot_id', '!=', False), ('supplier_lot_number', '!=', False)]}"
+                    options="{'no_create': True}"
+                />
+                <field
+                    name="supplier_lot_number"
+                    attrs="{'required': ['|', ('lot_id', '!=', False), ('supplier_product_id', '!=', False)]}"
+                />
                 <field
                     name="picking_id"
                     attrs="{'invisible': [('picking_id', '=', False)]}"
@@ -35,7 +44,14 @@
             </field>
         </field>
     </record>
-
-
-
+    <record model="ir.ui.view" id="hr_equipment_view_tree">
+        <field name="name">maintenance.equipment.tree</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree" />
+        <field name="arch" type="xml">
+            <field name="serial_no" position="after">
+                <field name="lot_id" />
+            </field>
+        </field>
+    </record>
 </odoo>
