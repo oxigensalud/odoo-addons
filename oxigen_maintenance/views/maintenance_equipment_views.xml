@@ -72,5 +72,14 @@
             </field>
         </field>
     </record>
-
+    <record id="hr_equipment_view_tree" model="ir.ui.view">
+        <field name="name">equipment.form</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree" />
+        <field name="arch" type="xml">
+            <field name="serial_no" position="before">
+                <field name="model" />
+            </field>
+        </field>
+    </record>
 </odoo>
