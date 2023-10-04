@@ -22,6 +22,10 @@ class MaintenanceEquipment(models.Model):
     )
     it_phone = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
     icc_code = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
+    maintenance_team_id = fields.Many2one(tracking=True)
+    category_id = fields.Many2one(tracking=True)
+    model = fields.Char(tracking=True)
+    name = fields.Char(tracking=True)
 
     def _search_my_team_equipment(self, operator, value):
         if operator != "=" or not value:
