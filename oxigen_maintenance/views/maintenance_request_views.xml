@@ -26,4 +26,14 @@
             </field>
         </field>
     </record>
+    <record id="hr_equipment_request_view_tree" model="ir.ui.view">
+        <field name="name">maintenance.request.view.tree.inherit - oxigen</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree" />
+        <field name="arch" type="xml">
+            <field name="request_date" position="after">
+                <field name="equipment_id" />
+            </field>
+        </field>
+    </record>
 </odoo>
