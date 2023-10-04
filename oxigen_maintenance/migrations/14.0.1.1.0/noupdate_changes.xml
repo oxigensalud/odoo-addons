@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="maintenance.equipment_rule_admin_user" model="ir.rule">
+        <field
+            name="domain_force"
+        >['|', ('maintenance_team_id', '=', False), ('maintenance_team_id.member_ids', 'in', [user.id])]</field>
+    </record>
+</odoo>

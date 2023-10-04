@@ -15,3 +15,6 @@ def migrate(env, version):
                 ),
             ],
         )
+    openupgrade.load_data(
+        env.cr, "oxigen_maintenance", "migrations/14.0.1.1.0/noupdate_changes.xml"
+    )
