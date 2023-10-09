@@ -8,7 +8,9 @@ class MaintenanceRequest(models.Model):
     _inherit = "maintenance.request"
 
     company_id = fields.Many2one(default=lambda r: False)
-    customer_id = fields.Many2one(compute="_compute_customer", store=True)
+    customer_id = fields.Many2one(
+        "res.partner", compute="_compute_customer", store=True
+    )
 
     @api.depends("equipment_id")
     def _compute_customer(self):
