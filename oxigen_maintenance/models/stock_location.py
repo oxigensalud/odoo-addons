@@ -14,8 +14,9 @@ class StockLocation(models.Model):
     )
 
     def action_view_equipment(self):
-        action = self.env.ref("maintenance.hr_equipment_action")
-        result = action.read()[0]
+        result = self.env["ir.actions.act_window"]._for_xml_id(
+            "maintenance.hr_equipment_action"
+        )
         equipment_ids = self.equipment_ids.ids
 
         if len(equipment_ids) != 1:
