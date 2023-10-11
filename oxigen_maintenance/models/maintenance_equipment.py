@@ -26,6 +26,7 @@ class MaintenanceEquipment(models.Model):
     category_id = fields.Many2one(tracking=True)
     model = fields.Char(tracking=True)
     name = fields.Char(tracking=True)
+    partner_id = fields.Many2one(check_company=False)
 
     def _search_my_team_equipment(self, operator, value):
         if operator != "=" or not value:
