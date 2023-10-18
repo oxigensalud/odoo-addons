@@ -39,6 +39,20 @@
             <field name="request_date" position="after">
                 <field name="equipment_id" />
             </field>
+            <field name="category_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
         </field>
+    </record>
+    <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" eval="False" />
+    </record>
+    <record
+        id="maintenance.hr_equipment_todo_request_action_from_dashboard"
+        model="ir.actions.act_window"
+    >
+        <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+        <field name="view_id" eval="False" />
     </record>
 </odoo>
