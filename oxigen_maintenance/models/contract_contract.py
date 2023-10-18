@@ -30,3 +30,8 @@ class ContractContract(models.Model):
         for plan in plans:
             if plan.equipment_id and plan.equipment_id.id not in self.equipment_ids.ids:
                 self.maintenance_plan_ids -= plan
+
+    def _action_show_maintenance_requests_domain(self):
+        if self.maintenance_plan_ids:
+            return [("maintenance_plan_id", "in", self.maintenance_plan_ids.ids)]
+        return super()._action_show_maintenance_requests_domain()
