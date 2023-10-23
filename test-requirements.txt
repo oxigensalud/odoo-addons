@@ -19,3 +19,4 @@ odoo14-addon-l10n_es_aeat_prorate_asset@git+https://github.com/nuobit/odoo-addon
 odoo14-addon-l10n_es_aeat_vat_special_prorrate@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/l10n_es_aeat_vat_special_prorrate
 odoo14-addon-account_asset_report_category@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_report_category
 odoo14-addon-account_asset_transfer_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_transfer_extension
+odoo14-addon-l10n_es_aeat_mod322@git+https://github.com/dixmit/l10n-spain.git@14.0-mod322#subdirectory=setup/l10n_es_aeat_mod322
