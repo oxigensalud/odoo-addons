@@ -11,6 +11,7 @@
     "depends": [
         "l10n_es",
         "l10n_es_aeat_mod303",
+        "l10n_es_aeat_mod322",
         "l10n_es_aeat_mod349",
         "l10n_es_special_prorate",
         "account_chart_update",
@@ -24,6 +25,7 @@
         "data/legacy_account_tax_data.xml",
         "data/tax_code_map_mod303_202107_data.xml",
         "data/tax_code_map_mod303_2023_data.xml",
+        "data/tax_code_map_mod322_2023_data.xml",
         "data/aeat_349_map_data.xml",
         "data/account_fiscal_position_template_data.xml",
         "data/oxigen_fiscal_position_extracomunitaria.xml",
