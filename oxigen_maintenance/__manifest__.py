@@ -4,7 +4,7 @@
 {
     "name": "Oxigen Maintenance",
     "summary": "Customizations for Oxigen in Maintenance",
-    "version": "14.0.1.1.0",
+    "version": "14.0.1.2.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Maintenance",
@@ -13,6 +13,7 @@
         "maintenance_plan",
         "hr_maintenance",
         "maintenance_equipment_contract",
+        "maintenance_equipment_hierarchy",
         "maintenance_team_hierarchy",
     ],
     "installable": True,
