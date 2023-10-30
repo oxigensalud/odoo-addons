@@ -7,6 +7,7 @@ from odoo import _, fields, models
 class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
+    name = fields.Char(translate=False)
     stock_location_id = fields.Many2one("stock.location", string="Stock Location")
     company_id = fields.Many2one(default=lambda r: False)
     my_team_equipment = fields.Boolean(
@@ -15,7 +16,6 @@ class MaintenanceEquipment(models.Model):
     # Specific fields only for IT
     imei_1 = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
     imei_2 = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
-    mac_address = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
     operating_system_id = fields.Many2one(
         "maintenance.equipment.operating.system",
         groups="oxigen_maintenance.group_maintenance_it",

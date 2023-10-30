@@ -10,7 +10,6 @@
                 <field name="customer_id" />
                 <field name="imei_1" />
                 <field name="imei_2" />
-                <field name="mac_address" />
                 <field name="operating_system_id" />
                 <field name="it_phone" />
                 <field name="icc_code" />
@@ -41,7 +40,6 @@
                 >
                 <group>
                     <group>
-                        <field name="mac_address" />
                         <field name="operating_system_id" />
                     </group>
                     <group>
@@ -75,12 +73,21 @@
     <record id="hr_equipment_view_tree" model="ir.ui.view">
         <field name="name">equipment.form</field>
         <field name="model">maintenance.equipment</field>
-        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree" />
+        <field
+            name="inherit_id"
+            ref="maintenance_equipment_hierarchy.hr_equipment_view_tree"
+        />
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="model" optional="hide" />
             </field>
             <field name="category_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="company_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="parent_id" position="attributes">
                 <attribute name="optional">hide</attribute>
             </field>
         </field>
