@@ -40,7 +40,7 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_view_search" />
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="lot_id" />
+                <field name="lot_id" string="Supplier Lot Number" />
             </field>
         </field>
     </record>
@@ -50,7 +50,7 @@
         <field name="inherit_id" ref="maintenance.hr_equipment_view_tree" />
         <field name="arch" type="xml">
             <field name="serial_no" position="after">
-                <field name="lot_id" />
+                <field name="lot_id" string="Supplier Lot Number" />
             </field>
         </field>
     </record>
