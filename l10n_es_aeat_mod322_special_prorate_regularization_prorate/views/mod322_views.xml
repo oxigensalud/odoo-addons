@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="l10n_es_aeat_mod322_report_form_view" model="ir.ui.view">
+        <field name="name">l10n_es.aeat.mod322.report.prorate.form</field>
+        <field name="model">l10n.es.aeat.mod322.report</field>
+        <field
+            name="inherit_id"
+            ref="l10n_es_aeat_mod322.l10n_es_aeat_mod322_report_form_view"
+        />
+        <field name="arch" type="xml">
+            <group name="group_declaration" position="inside">
+                <group
+                    string="Prorate Regularization Parameters"
+                    name="Regularization Prorate Parameters"
+                    attrs="{'invisible': [('period_type', 'not in', ('4T', '12'))]}"
+                >
+                    <field
+                        name="counterpart_prorate_receivable_account_id"
+                        string="Counterpart Account Receivable"
+                        attrs="{'required': [('period_type', 'in', ('4T', '12'))]}"
+                    />
+                    <field
+                        name="counterpart_prorate_payable_account_id"
+                        string="Counterpart Account Payable"
+                        attrs="{'required': [('period_type', 'in', ('4T', '12'))]}"
+                    />
+                </group>
+            </group>
+            <field name="casilla_63" position="after">
+                <field
+                    name="field_61"
+                    widget="monetary"
+                    options="{'currency_field': 'currency_id'}"
+                    attrs="{'invisible': [('period_type', 'not in', ('4T', '12'))]}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
