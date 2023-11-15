@@ -1,7 +1,8 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.17.2
+_commit: v1.19.2
 _src_path: gh:oca/oca-addons-repo-template
 ci: GitHub
+convert_readme_fragments_to_markdown: false
 generate_requirements_txt: true
 github_check_license: true
 github_ci_extra_env: {}
@@ -14,9 +15,12 @@ odoo_test_flavor: Both
 odoo_version: 14.0
 org_name: Oxigen Salud
 org_slug: oxigensalud
-rebel_module_groups: []
+rebel_module_groups:
+- l10n_es_aeat_mod322_special_prorate_regularization_capital_asset,l10n_es_aeat_mod322_special_prorate_regularization_capital_asset_auc,l10n_es_aeat_mod322_special_prorate_regularization_capital_asset_legacy
 repo_description: Customization addons for Oxigen Salud.
 repo_name: Oxigensalud Odoo Addons
 repo_slug: odoo-addons
 repo_website: https://github.com/oxigensalud/odoo-addons
+use_pyproject_toml: false
+use_ruff: false
 
