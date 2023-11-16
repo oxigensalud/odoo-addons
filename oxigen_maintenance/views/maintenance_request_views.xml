@@ -19,6 +19,9 @@
                     name="domain"
                 >[('maintenance_team_ids', '=', maintenance_team_id)]</attribute>
             </field>
+            <field name="user_id" position="attributes">
+                <attribute name="string" />
+            </field>
         </field>
     </record>
     <record id="hr_equipment_request_view_search" model="ir.ui.view">
