@@ -7,12 +7,13 @@ from odoo import api, fields, models
 class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
-    lot_id = fields.Many2one("stock.production.lot", readonly=True, copy=False)
+    lot_id = fields.Many2one(
+        "stock.production.lot", readonly=True, copy=False, tracking=True
+    )
     supplier_lot_number = fields.Char(
         compute="_compute_supplier_number",
         inverse="_inverse_supplier_lot_number",
         readonly=False,
-        tracking=True,
         store=True,
     )
     supplier_product_id = fields.Many2one(
@@ -25,6 +26,7 @@ class MaintenanceEquipment(models.Model):
             ("maintenance_lot", "=", True),
         ],
         readonly=False,
+        tracking=True,
     )
     picking_id = fields.Many2one("stock.picking", readonly=True, copy=False)
     stock_move_line_id = fields.Many2one("stock.move.line", readonly=True, copy=False)
