@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="maintenance_request_form_view">
+        <field
+            name="name"
+        >maintenance.request.form (in oxigen_maintenance_gitlab)</field>
+        <field name="model">maintenance.request</field>
+        <field
+            name="inherit_id"
+            ref="maintenance_project.hr_equipment_request_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//header/button[@name='archive_equipment_request']"
+                position="before"
+            >
+                <button
+                    name="send_to_gitlab"
+                    type="object"
+                    icon="fa-gitlab"
+                    string="Send to Gitlab"
+                    attrs="{'invisible': ['|', ('gitlab_issue_url', '!=', False), ('gitlab_id', '=', 0)]}"
+                />
+            </xpath>
+            <field name="project_id" position="after">
+                <field name="gitlab_id" invisible="1" />
+                <field name="gitlab_issue_id" invisible="1" />
+                <field
+                    name="gitlab_issue_url"
+                    attrs="{'invisible':[('gitlab_issue_url', '=', False)]}"
+                    widget="url"
+                />
+            </field>
+        </field>
+    </record>
+
+</odoo>
