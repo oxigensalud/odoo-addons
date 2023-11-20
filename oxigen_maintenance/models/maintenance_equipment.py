@@ -14,14 +14,43 @@ class MaintenanceEquipment(models.Model):
         search="_search_my_team_equipment", compute="_compute_my_team_equipment"
     )
     # Specific fields only for IT
-    imei_1 = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
-    imei_2 = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
     operating_system_id = fields.Many2one(
         "maintenance.equipment.operating.system",
         groups="oxigen_maintenance.group_maintenance_it",
+        tracking=True,
     )
-    it_phone = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
-    icc_code = fields.Char(groups="oxigen_maintenance.group_maintenance_it")
+    phone_imei_1 = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it", tracking=True, string="IMEI 1"
+    )
+    phone_imei_2 = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it", tracking=True, string="IMEI 2"
+    )
+    phone_pin = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it", tracking=True, string="PIN"
+    )
+    phone_puk = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it", tracking=True, string="PUK"
+    )
+    phone_line = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it",
+        tracking=True,
+        string="Phone Line",
+    )
+    phone_extension = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it",
+        tracking=True,
+        string="Extension",
+    )
+    phone_active_pin = fields.Boolean(
+        groups="oxigen_maintenance.group_maintenance_it",
+        tracking=True,
+        string="Active PIN",
+    )
+    phone_icc_code = fields.Char(
+        groups="oxigen_maintenance.group_maintenance_it",
+        tracking=True,
+        string="ICC Code",
+    )
     maintenance_team_id = fields.Many2one(tracking=True)
     category_id = fields.Many2one(tracking=True)
     model = fields.Char(tracking=True)
