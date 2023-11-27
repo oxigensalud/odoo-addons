@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record
+        id="action_report_trial_balance_consolidated_qweb"
+        model="ir.actions.report"
+    >
+        <field name="name">Trial Balance</field>
+        <field name="model">trial.balance.multicompany.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >oxigen_account.report_trial_balance_consolidated</field>
+        <field
+            name="report_file"
+        >oxigen_account.report_trial_balance_consolidated</field>
+        <field
+            name="paperformat_id"
+            ref="account_financial_report.report_qweb_paperformat"
+        />
+    </record>
+    <record
+        id="action_report_trial_balance_consolidated_html"
+        model="ir.actions.report"
+    >
+        <field name="name">Trial Balance</field>
+        <field name="model">trial.balance.multicompany.report.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field
+            name="report_name"
+        >oxigen_account.report_trial_balance_consolidated</field>
+        <field
+            name="report_file"
+        >oxigen_account.report_trial_balance_consolidated</field>
+    </record>
+    <record
+        id="action_report_trial_balance_consolidated_xlsx"
+        model="ir.actions.report"
+    >
+        <field name="name">Trial Balance Consolidated XLSX</field>
+        <field name="model">trial.balance.multicompany.report.wizard</field>
+        <field name="type">ir.actions.report</field>
+        <field
+            name="report_name"
+        >oxigen_account.report_trial_balance_consolidated_xlsx</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_file">report_trial_balance</field>
+    </record>
+</odoo>
