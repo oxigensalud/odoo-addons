@@ -4,7 +4,7 @@
 {
     "name": "Oxigen MRP",
     "summary": "Customizations for Oxigen in MRP application",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "author": "NuoBiT Solutions SL",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Manufacturing/Manufacturing",

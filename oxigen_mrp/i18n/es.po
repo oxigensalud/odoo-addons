@@ -93,3 +93,17 @@ msgstr "Válvula"
 #: model:ir.model.fields,field_description:oxigen_mrp.field_stock_production_lot__weight
 msgid "Weight"
 msgstr "Peso"
+
+#. module: oxigen_mrp
+#: code:addons/oxigen_mrp/models/product_template.py:0
+#, python-format
+msgid "You cannot change the tracking of the product, if you have an assigned type mrp [%s]"
+msgstr "No puedes cambiar el seguimiento del producto, si tienes asignado un tipo mrp [%s]"
+
+#. module: oxigen_mrp
+#: code:addons/oxigen_mrp/models/product_template.py:0
+#, python-format
+msgid "You cannot change the type (MRP), if you have fields with "
+"values in the lot related with to the previous type (MRP) [%s]"
+msgstr "No puedes cambiar el tipo (MRP), si tienes campos con "
+"valores en el lote relacionados con el anterior tipo (MRP) [%s]"

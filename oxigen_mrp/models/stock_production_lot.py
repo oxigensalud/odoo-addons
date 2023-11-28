@@ -29,6 +29,12 @@ class ProductionLot(models.Model):
             },
         }
 
+    def get_all_product_mrp_fields(self):
+        all_product_mrp_fields = set()
+        for mrp_fields in self._get_product_mrp_workflow().values():
+            all_product_mrp_fields.update(mrp_fields)
+        return all_product_mrp_fields
+
     manufacturer = fields.Many2one(
         comodel_name="res.partner",
     )
@@ -60,7 +66,9 @@ class ProductionLot(models.Model):
     )
     def _check_mrp_lot(self):
         for rec in self:
-            if not rec.product_id.mrp_type:
+            if not rec.product_id.mrp_type and any(
+                [rec[field] for field in rec.get_all_product_mrp_fields()]
+            ):
                 raise ValidationError(
                     _("The product %s has not a type (MRP) defined")
                     % rec.product_id.display_name
