@@ -17,6 +17,7 @@
                     attrs="{'required': ['|', ('lot_id', '!=', False), ('supplier_lot_number', '!=', False)]}"
                     options="{'no_create': True}"
                 />
+                <field name="product_brand_id" />
                 <field
                     name="supplier_lot_number"
                     attrs="{'required': ['|', ('lot_id', '!=', False), ('supplier_product_id', '!=', False)]}"

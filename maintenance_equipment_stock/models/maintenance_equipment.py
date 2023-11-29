@@ -31,6 +31,9 @@ class MaintenanceEquipment(models.Model):
     picking_id = fields.Many2one("stock.picking", readonly=True, copy=False)
     stock_move_line_id = fields.Many2one("stock.move.line", readonly=True, copy=False)
     purchase_id = fields.Many2one("purchase.order", readonly=True, copy=False)
+    product_brand_id = fields.Many2one(
+        "product.brand", related="supplier_product_id.product_brand_id"
+    )
 
     @api.depends("lot_id", "lot_id.name")
     def _compute_supplier_number(self):

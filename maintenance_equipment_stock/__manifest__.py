@@ -12,6 +12,7 @@
     "depends": [
         "maintenance",
         "purchase_stock",
+        "product_brand",
     ],
     "data": [
         "views/stock_picking.xml",
