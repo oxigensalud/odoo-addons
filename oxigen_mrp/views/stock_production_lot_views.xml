@@ -12,8 +12,8 @@
                 <group>
                     <group>
                         <field
-                            name="manufacturer"
-                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['manufacturer'])], 'required': [('mrp_fields_allowed', 'in', ['manufacturer'])]}"
+                            name="manufacturer_id"
+                            attrs="{'invisible': [('mrp_fields_allowed', 'not in', ['manufacturer_id'])], 'required': [('mrp_fields_allowed', 'in', ['manufacturer_id'])]}"
                         />
                         <field
                             name="weight"

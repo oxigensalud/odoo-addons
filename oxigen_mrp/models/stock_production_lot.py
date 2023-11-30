@@ -14,15 +14,15 @@ class ProductionLot(models.Model):
     def _get_product_mrp_workflow(self):
         return {
             "cylinder": {
-                "manufacturer",
+                "manufacturer_id",
                 "weight",
                 "manufacture_date",
                 "retesting_date",
                 "next_retesting_date",
             },
-            "valve": {"manufacturer", "manufacture_date", "removal_date"},
+            "valve": {"manufacturer_id", "manufacture_date", "removal_date"},
             "empty_cylinder": {
-                "manufacturer",
+                "manufacturer_id",
                 "manufacture_date",
                 "retesting_date",
                 "next_retesting_date",
@@ -36,7 +36,7 @@ class ProductionLot(models.Model):
             all_product_mrp_fields |= mrp_fields
         return all_product_mrp_fields
 
-    manufacturer = fields.Many2one(
+    manufacturer_id = fields.Many2one(
         comodel_name="res.partner",
     )
     weight = fields.Float()
@@ -58,7 +58,7 @@ class ProductionLot(models.Model):
     # constraints to check the fields allowed
 
     @api.constrains(
-        "manufacturer",
+        "manufacturer_id",
         "weight",
         "manufacture_date",
         "retesting_date",

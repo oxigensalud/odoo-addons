@@ -60,7 +60,7 @@ msgid "Manufacture Date"
 msgstr "Fecha fabricación"
 
 #. module: oxigen_mrp
-#: model:ir.model.fields,field_description:oxigen_mrp.field_stock_production_lot__manufacturer
+#: model:ir.model.fields,field_description:oxigen_mrp.field_stock_production_lot__manufacturer_id
 msgid "Manufacturer"
 msgstr "Fabricante"
 
