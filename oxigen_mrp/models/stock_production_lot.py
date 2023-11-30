@@ -1,6 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-import json
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -11,6 +10,7 @@ from odoo.addons.base_sparse_field.models.fields import Serialized
 class ProductionLot(models.Model):
     _inherit = "stock.production.lot"
 
+    @api.model
     def _get_product_mrp_workflow(self):
         return {
             "cylinder": {
@@ -29,10 +29,11 @@ class ProductionLot(models.Model):
             },
         }
 
+    @api.model
     def get_all_product_mrp_fields(self):
         all_product_mrp_fields = set()
         for mrp_fields in self._get_product_mrp_workflow().values():
-            all_product_mrp_fields.update(mrp_fields)
+            all_product_mrp_fields |= mrp_fields
         return all_product_mrp_fields
 
     manufacturer = fields.Many2one(
@@ -45,12 +46,12 @@ class ProductionLot(models.Model):
 
     mrp_fields_allowed = Serialized(compute="_compute_mrp_fields_allowed")
 
-    @api.depends("product_id")
+    @api.depends("product_id.mrp_type")
     def _compute_mrp_fields_allowed(self):
         allowed_fields = self._get_product_mrp_workflow()
         for rec in self:
-            rec.mrp_fields_allowed = json.dumps(
-                list(allowed_fields.get(rec.product_id.mrp_type, set()))
+            rec.mrp_fields_allowed = list(
+                allowed_fields.get(rec.product_id.mrp_type, set())
             )
 
     # TODO: write and create methods to check the fields allowed and/or
@@ -86,13 +87,13 @@ class ProductionLot(models.Model):
                     )
                 )
             if rec.product_id.mrp_type:
-                original_fields = rec._get_product_mrp_workflow()
-                allowed_fields = original_fields[rec.product_id.mrp_type]
-                diff_fields = set()
-                for key, value in original_fields.items():
-                    if key != rec.product_id.mrp_type:
-                        diff_fields.update(value - allowed_fields)
-                for field in diff_fields:
+                not_allowed_fields = (
+                    self.get_all_product_mrp_fields()
+                    - self._get_product_mrp_workflow().get(
+                        rec.product_id.mrp_type, set()
+                    )
+                )
+                for field in not_allowed_fields:
                     if rec[field]:
                         raise ValidationError(
                             _(

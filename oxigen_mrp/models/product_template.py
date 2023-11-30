@@ -17,17 +17,19 @@ class ProductTemplate(models.Model):
 
     def write(self, vals):
         for rec in self:
-            if rec.tracking == "serial" and "tracking" in vals:
-                mrp_type = vals.get("mrp_type", rec.mrp_type)
-                if vals["tracking"] != "serial" and mrp_type:
-                    raise ValidationError(
-                        _(
-                            "You cannot change the tracking of the product,"
-                            " if you have an assigned type mrp [%s]"
-                        )
-                        % mrp_type
+            if (
+                "tracking" in vals
+                and rec.tracking == "serial"
+                and vals["tracking"] != rec.tracking
+                and vals.get("mrp_type", rec.mrp_type)
+            ):
+                raise ValidationError(
+                    _(
+                        "You cannot change the tracking of the product,"
+                        " if you have an assigned type (MRP)"
                     )
-            if "mrp_type" in vals:
+                )
+            if "mrp_type" in vals and vals["mrp_type"] != rec.mrp_type:
                 lots = self.env["stock.production.lot"].search(
                     [("product_id.product_tmpl_id", "=", rec.id)]
                 )
