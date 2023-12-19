@@ -13,6 +13,7 @@ class ProductionLot(models.Model):
     @api.model
     def _get_product_mrp_workflow(self):
         return {
+            False: {"removal_date"},
             "cylinder": {
                 "manufacturer_id",
                 "weight",
@@ -67,42 +68,20 @@ class ProductionLot(models.Model):
     )
     def _check_mrp_lot(self):
         for rec in self:
-            if not rec.product_id.mrp_type and any(
-                [rec[field] for field in rec.get_all_product_mrp_fields()]
-            ):
-                raise ValidationError(
-                    _("The product %s has not a type (MRP) defined")
-                    % rec.product_id.display_name
-                )
-            if (
-                rec.removal_date
-                and not rec.product_id.use_expiration_date
-                and rec.product_id.mrp_type
-                and rec.product_id.mrp_type != "valve"
-            ):
-                raise ValidationError(
-                    _(
-                        "The product %s is not a valve and has not expiration date"
-                        % rec.product_id.display_name
-                    )
-                )
-            if rec.product_id.mrp_type:
-                not_allowed_fields = (
-                    self.get_all_product_mrp_fields()
-                    - self._get_product_mrp_workflow().get(
-                        rec.product_id.mrp_type, set()
-                    )
-                )
-                for field in not_allowed_fields:
-                    if rec[field]:
-                        raise ValidationError(
-                            _(
-                                "The field %s is not allowed for the product"
-                                " %s in the type MRP %s"
-                                % (
-                                    field,
-                                    rec.product_id.display_name,
-                                    rec.product_id.mrp_type,
-                                )
+            not_allowed_fields = (
+                self.get_all_product_mrp_fields()
+                - self._get_product_mrp_workflow().get(rec.product_id.mrp_type, set())
+            )
+            for field in not_allowed_fields:
+                if rec[field]:
+                    raise ValidationError(
+                        _(
+                            "The field %s is not allowed for the product"
+                            " %s in the type MRP %s"
+                            % (
+                                field,
+                                rec.product_id.display_name,
+                                rec.product_id.mrp_type,
                             )
                         )
+                    )
