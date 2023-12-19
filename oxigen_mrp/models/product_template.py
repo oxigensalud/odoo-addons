@@ -1,5 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -14,6 +14,14 @@ class ProductTemplate(models.Model):
             ("empty_cylinder", "Empty Cylinder"),
         ],
     )
+
+    @api.constrains("mrp_type")
+    def _check_mrp_type(self):
+        for rec in self:
+            if rec.mrp_type not in (False, "valve") and rec.use_expiration_date:
+                raise ValidationError(
+                    _("Expiration date is not allowed for this type (MRP)")
+                )
 
     def write(self, vals):
         for rec in self:
