@@ -23,7 +23,7 @@
             <xpath expr="//field[@name='use_expiration_date']" position="attributes">
                 <attribute
                     name="attrs"
-                >{'invisible': ['|', ('tracking', '=','none'), ('mrp_type', '!=', 'valve')]}</attribute>
+                >{'invisible': ['|', ('tracking', '=','none'), ('mrp_type', 'not in', (False, 'valve'))]}</attribute>
             </xpath>
         </field>
     </record>

@@ -97,6 +97,12 @@ msgstr "Peso"
 #. module: oxigen_mrp
 #: code:addons/oxigen_mrp/models/product_template.py:0
 #, python-format
+msgid "Expiration date is not allowed for this type (MRP)"
+msgstr "No se permite fecha de caducidad para este tipo (MRP)"
+
+#. module: oxigen_mrp
+#: code:addons/oxigen_mrp/models/product_template.py:0
+#, python-format
 msgid "You cannot change the tracking of the product, if you have an assigned type (MRP)"
 msgstr "No puedes cambiar el seguimiento del producto, si tienes asignado un tipo (MRP)"
 
