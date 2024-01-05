@@ -8,7 +8,7 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     def request_validation(self):
-        self.filtered(lambda r: not r.user_id).write({"user_id": self.env.uid})
+        self._message_auto_subscribe({"user_id": self.env.uid})
         return super().request_validation()
 
     @api.model
