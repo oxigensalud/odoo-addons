@@ -1,4 +1,6 @@
 # Copyright 2021 ForgeFlow S.L.
+# Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
+# Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, models
@@ -8,7 +10,11 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     def request_validation(self):
-        self._message_auto_subscribe({"user_id": self.env.uid})
+        for rec in self:
+            if not rec.user_id:
+                rec.user_id = rec.env.uid
+            else:
+                rec._message_auto_subscribe({"user_id": rec.env.uid})
         return super().request_validation()
 
     @api.model
