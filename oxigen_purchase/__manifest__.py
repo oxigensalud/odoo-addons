@@ -3,7 +3,7 @@
 
 {
     "name": "Oxigen Purchase",
-    "summary": "Custumizations for Oxigen in Purchase application",
+    "summary": "Customizations for Oxigen in Purchase application",
     "version": "14.0.1.0.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
