@@ -15,19 +15,33 @@ _logger = logging.getLogger(__name__)
 class WizStockBarcodesRead(models.AbstractModel):
     _inherit = "wiz.stock.barcodes.read"
 
-    def process_lot(self, barcode_decoded):
-        res = super().process_lot(barcode_decoded)
-        if self.product_id.tracking == "serial":
-            lot_barcode = barcode_decoded.get("21", False)
-            operation = getattr(self, "picking_id", False) or getattr(
-                self, "inventory_id", False
-            )
-            if not operation:
-                raise ValidationError(
-                    _(
-                        "This record has inconsistent data. Delete the record and recreate it."
-                    )
+    def _prepare_serial_lot_values(self, barcode_decoded):
+        lot_barcode = barcode_decoded.get("21", False)
+        ref_barcode = barcode_decoded.get("10", False)
+        return {
+            "name": lot_barcode,
+            "ref": ref_barcode,
+            "product_id": self.product_id.id,
+            "company_id": self.env.company.id,
+        }
+
+    def _create_serial_lot(self, barcode_decoded):
+        return self.env["stock.production.lot"].create(
+            self._prepare_serial_lot_values(barcode_decoded)
+        )
+
+    def process_serial_lot(self, barcode_decoded):
+        operation = getattr(self, "picking_id", False) or getattr(
+            self, "inventory_id", False
+        )
+        if not operation:
+            raise ValidationError(
+                _(
+                    "This record has inconsistent data. Delete the record and recreate it."
                 )
+            )
+        lot_barcode = barcode_decoded.get("21", False)
+        if lot_barcode:
             lot = self.env["stock.production.lot"].search(
                 [
                     ("name", "=", lot_barcode),
@@ -35,22 +49,28 @@ class WizStockBarcodesRead(models.AbstractModel):
                     ("company_id", "=", operation.company_id.id),
                 ]
             )
-            ref_barcode = barcode_decoded.get("10", False)
-            if lot and ref_barcode and lot.ref != ref_barcode:
-                self._set_messagge_info(
-                    "not_found",
-                    _(
-                        "The lot %s has been found but the reference %s does not match."
-                        % (lot_barcode, ref_barcode)
-                    ),
-                )
-                return False
-            if not lot and self.option_group_id.create_lot:
-                lot = self._create_lot(barcode_decoded)
-            self.lot_id = lot
+            if lot:
+                ref_barcode = barcode_decoded.get("10", False)
+                if ref_barcode and lot.ref != ref_barcode:
+                    self._set_messagge_info(
+                        "not_found",
+                        _(
+                            "The lot %s has been found but the reference %s does not match."
+                            % (lot_barcode, ref_barcode)
+                        ),
+                    )
+                    return False
+            else:
+                if self.option_group_id.create_lot:
+                    lot = self._create_serial_lot(barcode_decoded)
+            if lot:
+                self.lot_id = lot
+        return True
+
+    def process_lot(self, barcode_decoded):
+        super().process_lot(barcode_decoded)
         if self.lot_id and (self.manual_entry or self.is_manual_qty):
             self.product_qty += 1
-        return res
 
     # WARNING: override standard method
     def process_barcode(self, barcode):  # noqa: C901
@@ -110,13 +130,14 @@ class WizStockBarcodesRead(models.AbstractModel):
             if value_returned is not None:
                 return value_returned
         if self.product_id.tracking == "serial":
-            lot_barcode = barcode_decoded.get("21", False)
-        else:
-            lot_barcode = barcode_decoded.get("10", False)
-        if lot_barcode and self.product_id.tracking != "none":
-            if not self.process_lot(barcode_decoded):
+            if not self.process_serial_lot(barcode_decoded):
                 return False
             processed = True
+        elif self.product_id.tracking == "lot":
+            lot_barcode = barcode_decoded.get("10", False)
+            if lot_barcode:
+                self.process_lot(barcode_decoded)
+                processed = True
         if product_qty and package_barcode:
             # If we have processed a package, we need to multiply it
             product_qty = self._process_product_qty_gs1(product_qty)
