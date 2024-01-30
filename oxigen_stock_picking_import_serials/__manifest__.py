@@ -14,6 +14,7 @@
     "depends": [
         "stock_picking_import_serials",
         "oxigen_stock_alternate_lot",
+        "oxigen_mrp",
     ],
     "data": [],
     "installable": True,
