@@ -52,8 +52,12 @@ class ProductionLot(models.Model):
         string="D/N Enabled", related="product_id.dn_enabled", readonly=True
     )
 
-    nos_unknown = fields.Boolean(string="NOS Unknown")
-    dn_unknown = fields.Boolean(string="D/N Unknown")
+    nos_unknown = fields.Boolean(
+        string="NOS Unknown", tracking=True, required=True, default=True
+    )
+    dn_unknown = fields.Boolean(
+        string="D/N Unknown", tracking=True, required=True, default=True
+    )
 
     unknown_readonly = fields.Boolean(compute="_compute_unknown_readonly")
 
@@ -90,7 +94,7 @@ class ProductionLot(models.Model):
                         % self.product_id.display_name
                     )
             else:
-                if rec.nos or rec.nos_unknown:
+                if rec.nos:
                     raise ValidationError(
                         _("NOS is not allowed in this product %s")
                         % self.product_id.display_name
@@ -102,7 +106,7 @@ class ProductionLot(models.Model):
                         % self.product_id.display_name
                     )
             else:
-                if rec.dn or rec.dn_unknown:
+                if rec.dn:
                     raise ValidationError(
                         _("D/N is not allowed for this product %s")
                         % self.product_id.display_name
