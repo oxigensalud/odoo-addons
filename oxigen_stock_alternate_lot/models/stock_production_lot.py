@@ -94,19 +94,19 @@ class ProductionLot(models.Model):
     def _check_unique_alternate_lot(self):
         for rec in self:
             if rec.nos and not rec.nos_unknown:
+                domain = [
+                    ("id", "!=", rec.id),
+                    ("nos", "=", rec.nos),
+                ]
                 if rec.dn and not rec.dn_unknown:
-                    domain = [
-                        ("id", "!=", rec.id),
-                        "&",
-                        ("nos", "=", rec.nos),
+                    domain += [
                         ("dn", "=", rec.dn),
                         ("nos_unknown", "=", False),
                         ("dn_unknown", "=", False),
                     ]
                 else:
-                    domain = [
-                        ("id", "!=", rec.id),
-                        ("nos", "=", rec.nos),
+                    domain += [
+                        # to avoid problems with null values
                         ("nos_unknown", "!=", True),
                     ]
                 other = self.env[self._name].search(domain)
