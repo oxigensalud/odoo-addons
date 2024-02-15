@@ -25,30 +25,3 @@ class ProductTemplate(models.Model):
                             "NOS and D/N are not allowed for products without serial number"
                         )
                     )
-
-    def write(self, vals):
-        if "nos_enabled" in vals:
-            if self.nos_enabled and not vals["nos_enabled"]:
-                lots = self.env["stock.production.lot"].search(
-                    [
-                        ("product_id.product_tmpl_id", "=", self.id),
-                        ("nos", "!=", False),
-                    ]
-                )
-                if lots:
-                    raise ValidationError(
-                        _("You cannot disable NOS, it still exists lots with NOS")
-                    )
-        if "dn_enabled" in vals:
-            if self.dn_enabled and not vals["dn_enabled"]:
-                lots = self.env["stock.production.lot"].search(
-                    [
-                        ("product_id.product_tmpl_id", "=", self.id),
-                        ("dn", "!=", False),
-                    ]
-                )
-                if lots:
-                    raise ValidationError(
-                        _("You cannot disable D/N, it still exists lots with D/N")
-                    )
-        return super(ProductTemplate, self).write(vals)
