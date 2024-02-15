@@ -17,33 +17,15 @@ class ProductionLot(models.Model):
         string="NOS",
         tracking=True,
         copy=False,
-        compute="_compute_nos",
-        store=True,
-        readonly=False,
         size=NOS_SIZE,
     )
-
-    @api.depends("nos_unknown")
-    def _compute_nos(self):
-        for rec in self:
-            if rec.nos_unknown:
-                rec.nos = None
 
     dn = fields.Char(
         string="D/N",
         tracking=True,
         copy=False,
-        compute="_compute_dn",
-        store=True,
-        readonly=False,
         size=DN_MAX_SIZE,
     )
-
-    @api.depends("dn_unknown")
-    def _compute_dn(self):
-        for rec in self:
-            if rec.dn_unknown:
-                rec.dn = None
 
     nos_enabled = fields.Boolean(
         string="NOS Enabled", related="product_id.nos_enabled", readonly=True
