@@ -9,8 +9,13 @@ class WizStockBarcodesRead(models.AbstractModel):
 
     def _prepare_lot_domain(self):
         lot = self.env["stock.production.lot"]
-        if len(self.barcode) == 6:
-            domain = [("nos", "=", self.barcode)]
+        nos_size = lot.fields_get("nos", "size")["nos"]["size"]
+        if len(self.barcode) == nos_size:
+            domain = [
+                ("nos", "=", self.barcode),
+                ("product_id.nos_enabled", "=", True),
+                ("nos_unknown", "=", False),
+            ]
             if self.product_id:
                 domain.append(("product_id", "=", self.product_id.id))
             lot = self.env["stock.production.lot"].search(domain)
