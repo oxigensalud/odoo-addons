@@ -119,6 +119,22 @@ class ProductionLot(models.Model):
                         % (other.mapped("name"), self.product_id.display_name)
                     )
 
+    @api.constrains("nos", "nos_unknown")
+    def _check_nos(self):
+        for rec in self:
+            if rec.nos and rec.nos_unknown:
+                raise ValidationError(
+                    _("NOS and NOS Unknown cannot be set at the same time")
+                )
+
+    @api.constrains("dn", "dn_unknown")
+    def _check_dn(self):
+        for rec in self:
+            if rec.dn and rec.dn_unknown:
+                raise ValidationError(
+                    _("D/N and D/N Unknown cannot be set at the same time")
+                )
+
     @api.depends("nos_enabled", "dn_enabled", "nos", "dn")
     def name_get(self):
         res = []
