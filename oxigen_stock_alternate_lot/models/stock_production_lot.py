@@ -34,8 +34,8 @@ class ProductionLot(models.Model):
         string="D/N Enabled", related="product_id.dn_enabled", readonly=True
     )
 
-    nos_unknown = fields.Boolean(string="NOS Unknown")
-    dn_unknown = fields.Boolean(string="D/N Unknown")
+    nos_unknown = fields.Boolean(string="NOS Unknown", tracking=True)
+    dn_unknown = fields.Boolean(string="D/N Unknown", tracking=True)
 
     unknown_readonly = fields.Boolean(compute="_compute_unknown_readonly")
 
