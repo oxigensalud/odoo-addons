@@ -9,8 +9,8 @@ from odoo.exceptions import ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    nos_enabled = fields.Boolean(string="NOS")
-    dn_enabled = fields.Boolean(string="D/N")
+    nos_enabled = fields.Boolean(string="NOS", tracking=True)
+    dn_enabled = fields.Boolean(string="D/N", tracking=True)
 
     @api.constrains("nos_enabled", "dn_enabled", "tracking")
     def _check_alternate_lot(self):
