@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_operating_system_it,access_operating_system_it,model_maintenance_equipment_operating_system,group_maintenance_it,1,1,1,0

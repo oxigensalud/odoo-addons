@@ -66,7 +66,7 @@ class TestOxigenMaintenance(common.TransactionCase):
         self.assertEqual(generated_requests[0].name, "Weekly - Laptop 1 - Test Plan")
 
     def test_02_equipment_location(self):
-        self.equipment_1.location_id = self.location_1.id
+        self.equipment_1.stock_location_id = self.location_1.id
         self.assertEqual(self.location_1.equipment_ids.id, self.equipment_1.id)
 
     def test_03_maintenance_plan_employee(self):
