@@ -129,15 +129,16 @@ class WizStockBarcodesRead(models.AbstractModel):
             value_returned = self.process_barcode_package(package_barcode, processed)
             if value_returned is not None:
                 return value_returned
-        if self.product_id.tracking == "serial":
-            if not self.process_serial_lot(barcode_decoded):
-                return False
-            processed = True
-        elif self.product_id.tracking == "lot":
-            lot_barcode = barcode_decoded.get("10", False)
-            if lot_barcode:
-                self.process_lot(barcode_decoded)
+        if barcode_decoded.get("10", False) or barcode_decoded.get("21", False):
+            if self.product_id.tracking == "serial":
+                if not self.process_serial_lot(barcode_decoded):
+                    return False
                 processed = True
+            elif self.product_id.tracking == "lot":
+                lot_barcode = barcode_decoded.get("10", False)
+                if lot_barcode:
+                    self.process_lot(barcode_decoded)
+                    processed = True
         if product_qty and package_barcode:
             # If we have processed a package, we need to multiply it
             product_qty = self._process_product_qty_gs1(product_qty)
