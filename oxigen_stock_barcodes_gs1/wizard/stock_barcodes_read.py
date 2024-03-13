@@ -93,21 +93,15 @@ class WizStockBarcodesRead(models.AbstractModel):
             product_barcode = barcode_decoded.get("240", False)
         product_qty = barcode_decoded.get("37", False)
         if product_barcode:
-            # Flushing the relevant fields of the involved models
-            self.env["product.product"].flush(["barcode"])
-            self.env["product.template"].flush(["company_id"])
-            self.env.cr.execute(
-                """
-                SELECT pp.id
-                FROM product_product pp
-                JOIN product_template pt ON pp.product_tmpl_id = pt.id
-                WHERE LOWER(LPAD(pp.barcode, 14, '0')) = LOWER(%s)
-                AND (pt.company_id = %s OR pt.company_id IS NULL);
-                """,
-                (product_barcode, self.env.company.id),
+            products = self.env["product.product"].search(
+                [
+                    ("barcode", "=ilike", "%" + product_barcode.lstrip("0")),
+                    ("company_id", "in", (self.env.company.id, False)),
+                ]
             )
-            products = self.env.cr.fetchall()
-            product = self.env["product.product"].browse([x[0] for x in products])
+            product = products.barcode_ids.filtered(
+                lambda x: x.name.zfill(14) == product_barcode
+            ).product_id
             if len(product) > 1:
                 self._set_messagge_info(
                     "not_found",
