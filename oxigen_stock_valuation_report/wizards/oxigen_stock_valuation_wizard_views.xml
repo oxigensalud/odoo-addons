@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Frank Cespedes <fcespedes@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="oxigen_stock_valuation_wizard_view_form" model="ir.ui.view">
+        <field name="name">oxigen.stock.valuation.wizard.form</field>
+        <field name="model">oxigen.stock.valuation.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id" />
+                        <field name="date" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        name="button_export_xlsx"
+                        string="Export XLSX"
+                        type="object"
+                    />
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="oxigen_stock_valuation_wizard_action" model="ir.actions.act_window">
+        <field name="name">Detailed Inventory Valuation</field>
+        <field name="res_model">oxigen.stock.valuation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="oxigen_stock_valuation_wizard_view_form" />
+        <field name="target">new</field>
+    </record>
+</odoo>
