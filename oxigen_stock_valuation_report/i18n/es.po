@@ -1,0 +1,114 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_stock_valuation_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-17 15:18+0000\n"
+"PO-Revision-Date: 2024-05-17 15:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model,name:oxigen_stock_valuation_report.model_report_report_oxigen_stock_valuation_xlsx
+msgid "Abstract XLSX Oxigen Stock Valuation Report"
+msgstr "Informe de valoración de stock abstracto XLSX de Oxigen"
+
+#. module: oxigen_stock_valuation_report
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_valuation_report.oxigen_stock_valuation_wizard_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.actions.act_window,name:oxigen_stock_valuation_report.oxigen_stock_valuation_wizard_action
+#: model:ir.ui.menu,name:oxigen_stock_valuation_report.oxigen_stock_valuation_wizard_menu
+msgid "Detailed Inventory Valuation"
+msgstr "Valoración detallada del inventario"
+
+#. module: oxigen_stock_valuation_report
+#: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
+#: model:ir.actions.report,name:oxigen_stock_valuation_report.report_oxigen_stock_valuation_xlsx_action
+#, python-format
+msgid "Detailed Stock Valuation"
+msgstr "Valoración detallada del stock"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__display_name
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_report_report_oxigen_stock_valuation_xlsx__display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: oxigen_stock_valuation_report
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_valuation_report.oxigen_stock_valuation_wizard_view_form
+msgid "Export XLSX"
+msgstr "Exportar XLSX"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard____last_update
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_report_report_oxigen_stock_valuation_xlsx____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: oxigen_stock_valuation_report
+#: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
+#, python-format
+msgid "Missing required fields %s"
+msgstr "Faltan campos obligatorios %s"
+
+#. module: oxigen_stock_valuation_report
+#: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
+#, python-format
+msgid "Nothing to export."
+msgstr "Nada que exportar."
+
+#. module: oxigen_stock_valuation_report
+#: model:ir.model,name:oxigen_stock_valuation_report.model_oxigen_stock_valuation_wizard
+msgid "Oxigen Stock Valuation Wizard"
+msgstr "Asistente de valoración de stock de Oxigen"
+
+#. module: oxigen_stock_valuation_report
+#: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
+#, python-format
+msgid "You do not have the necessary permissions to view this report."
+msgstr "No tiene los permisos necesarios para ver este informe."
+
+#. module: oxigen_stock_valuation_report
+#: model_terms:ir.ui.view,arch_db:oxigen_stock_valuation_report.oxigen_stock_valuation_wizard_view_form
+msgid "or"
+msgstr "o"
