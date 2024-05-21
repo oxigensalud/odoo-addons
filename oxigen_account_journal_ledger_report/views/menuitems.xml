@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Frank Cespedes <fcespedes@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <menuitem
+        parent="account.account_reports_management_menu"
+        action="oxigen_account_journal_ledger_wizard_action"
+        id="oxigen_account_journal_ledger_wizard_menu"
+        sequence="100"
+        groups="account.group_account_manager"
+    />
+</odoo>

@@ -1,0 +1,131 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_account_journal_ledger_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-22 10:58+0000\n"
+"PO-Revision-Date: 2024-05-22 10:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model,name:oxigen_account_journal_ledger_report.model_report_report_oxigen_account_journal_ledger_csv
+msgid "Abstract CSV Oxigen Account Journal Ledger Report"
+msgstr "Abstracto CSV Oxigen Informe de Libro Mayor de Cuenta"
+
+#. module: oxigen_account_journal_ledger_report
+#: model_terms:ir.ui.view,arch_db:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__company_ids
+msgid "Company"
+msgstr "Compañía"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__date_from
+msgid "Date From"
+msgstr "Fecha Desde"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__date_to
+msgid "Date To"
+msgstr "Fecha Hasta"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.actions.act_window,name:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_action
+#: model:ir.actions.report,name:oxigen_account_journal_ledger_report.report_oxigen_account_journal_ledger_csv_action
+#: model:ir.ui.menu,name:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_menu
+msgid "Detailed Journal Ledger"
+msgstr "Libro Mayor de Diario Detallado"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__display_name
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_report_report_oxigen_account_journal_ledger_csv__display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: oxigen_account_journal_ledger_report
+#: model_terms:ir.ui.view,arch_db:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_view_form
+msgid "Export CSV"
+msgstr "Exportar CSV"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard____last_update
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_report_report_oxigen_account_journal_ledger_csv____last_update
+msgid "Last Modified on"
+msgstr "Última Modificación en"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última Actualización en"
+
+#. module: oxigen_account_journal_ledger_report
+#: code:addons/oxigen_account_journal_ledger_report/report/oxigen_account_journal_ledger.py:0
+#, python-format
+msgid "Missing required fields %s"
+msgstr "Faltan campos requeridos %s"
+
+#. module: oxigen_account_journal_ledger_report
+#: code:addons/oxigen_account_journal_ledger_report/report/oxigen_account_journal_ledger.py:0
+#, python-format
+msgid "Nothing to export."
+msgstr "Nada para exportar."
+
+#. module: oxigen_account_journal_ledger_report
+#: model:ir.model,name:oxigen_account_journal_ledger_report.model_oxigen_account_journal_ledger_wizard
+msgid "Oxigen Account Journal Ledger Wizard"
+msgstr "Asistente de Libro Mayor de Cuenta Oxigen"
+
+#. module: oxigen_account_journal_ledger_report
+#: code:addons/oxigen_account_journal_ledger_report/wizards/oxigen_account_journal_ledger_wizard.py:0
+#, python-format
+msgid "The dates must be in the same year"
+msgstr "Las fechas deben ser del mismo año"
+
+#. module: oxigen_account_journal_ledger_report
+#: code:addons/oxigen_account_journal_ledger_report/report/oxigen_account_journal_ledger.py:0
+#, python-format
+msgid "Wrong Parameters"
+msgstr "Parámetros Incorrectos"
+
+#. module: oxigen_account_journal_ledger_report
+#: code:addons/oxigen_account_journal_ledger_report/report/oxigen_account_journal_ledger.py:0
+#, python-format
+msgid "You do not have the necessary permissions to view this report."
+msgstr "No tiene los permisos necesarios para ver este informe."
+
+#. module: oxigen_account_journal_ledger_report
+#: code:addons/oxigen_account_journal_ledger_report/wizards/oxigen_account_journal_ledger_wizard.py:0
+#, python-format
+msgid "You don't have permission to access the following companies: %s"
+msgstr "No tiene permiso para acceder a las siguientes compañías: %s"
+
+#. module: oxigen_account_journal_ledger_report
+#: model_terms:ir.ui.view,arch_db:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_view_form
+msgid "or"
+msgstr "o"
