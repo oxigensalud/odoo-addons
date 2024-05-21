@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Frank Cespedes <fcespedes@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record
+        id="report_oxigen_account_journal_ledger_csv_action"
+        model="ir.actions.report"
+    >
+        <field name="name">Detailed Journal Ledger</field>
+        <field name="model">oxigen.account.journal.ledger.wizard</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">report_oxigen_account_journal_ledger_csv</field>
+        <field name="report_type">csv</field>
+        <field name="report_file">report_oxigen_account_journal_ledger</field>
+    </record>
+</odoo>
