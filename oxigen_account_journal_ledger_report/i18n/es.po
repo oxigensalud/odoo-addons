@@ -18,7 +18,7 @@ msgstr ""
 #. module: oxigen_account_journal_ledger_report
 #: model:ir.model,name:oxigen_account_journal_ledger_report.model_report_report_oxigen_account_journal_ledger_csv
 msgid "Abstract CSV Oxigen Account Journal Ledger Report"
-msgstr "Abstracto CSV Oxigen Informe de Libro Mayor de Cuenta"
+msgstr "Informe del Libro Diario de Cuentas de Oxígeno en CSV Abstracto"
 
 #. module: oxigen_account_journal_ledger_report
 #: model_terms:ir.ui.view,arch_db:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_view_form
@@ -55,7 +55,7 @@ msgstr "Fecha Hasta"
 #: model:ir.actions.report,name:oxigen_account_journal_ledger_report.report_oxigen_account_journal_ledger_csv_action
 #: model:ir.ui.menu,name:oxigen_account_journal_ledger_report.oxigen_account_journal_ledger_wizard_menu
 msgid "Detailed Journal Ledger"
-msgstr "Libro Mayor de Diario Detallado"
+msgstr "Libro Diario Detallado"
 
 #. module: oxigen_account_journal_ledger_report
 #: model:ir.model.fields,field_description:oxigen_account_journal_ledger_report.field_oxigen_account_journal_ledger_wizard__display_name
@@ -99,7 +99,7 @@ msgstr "Nada para exportar."
 #. module: oxigen_account_journal_ledger_report
 #: model:ir.model,name:oxigen_account_journal_ledger_report.model_oxigen_account_journal_ledger_wizard
 msgid "Oxigen Account Journal Ledger Wizard"
-msgstr "Asistente de Libro Mayor de Cuenta Oxigen"
+msgstr "Asistente del Libro Diario de Cuentas de Oxígeno"
 
 #. module: oxigen_account_journal_ledger_report
 #: code:addons/oxigen_account_journal_ledger_report/wizards/oxigen_account_journal_ledger_wizard.py:0
