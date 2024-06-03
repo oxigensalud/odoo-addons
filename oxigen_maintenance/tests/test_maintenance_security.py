@@ -19,7 +19,12 @@ class TestMaintenanceSecurity(common.SavepointCase):
                 "name": "Admin",
                 "login": "admin_demo",
                 "groups_id": [
-                    (4, cls.env.ref("oxigen_maintenance.group_maintenance_manager").id),
+                    (
+                        4,
+                        cls.env.ref(
+                            "base_maintenance_group.group_maintenance_manager"
+                        ).id,
+                    ),
                     (4, cls.env.ref("base.group_user").id),
                 ],
             }
@@ -39,7 +44,10 @@ class TestMaintenanceSecurity(common.SavepointCase):
                 "name": "maintenance_user",
                 "login": "maintenance_user_demo",
                 "groups_id": [
-                    (4, cls.env.ref("oxigen_maintenance.group_maintenance_user").id),
+                    (
+                        4,
+                        cls.env.ref("base_maintenance_group.group_maintenance_user").id,
+                    ),
                     (4, cls.env.ref("base.group_user").id),
                 ],
             }
