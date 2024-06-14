@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+
+
+    <record
+        model="maintenance.equipment.operating.system"
+        id="maintenance_equipment_operating_system_demo_1"
+    >
+       <field name="name">Windows 3.11</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="maintenance_equipment_form_view">
+        <field
+            name="name"
+        >maintenance.equipment.form (in maintenance_equipment_stock)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <field name="serial_no" position="after">
+                <field name="lot_id" invisible="1" />
+                <field
+                    name="supplier_product_id"
+                    attrs="{'required': ['|', ('lot_id', '!=', False), ('supplier_lot_number', '!=', False)]}"
+                    options="{'no_create': True}"
+                />
+                <field name="product_brand_id" />
+                <field
+                    name="supplier_lot_number"
+                    attrs="{'required': ['|', ('lot_id', '!=', False), ('supplier_product_id', '!=', False)]}"
+                />
+                <field
+                    name="picking_id"
+                    attrs="{'invisible': [('picking_id', '=', False)]}"
+                />
+                <field
+                    name="purchase_id"
+                    attrs="{'invisible': [('purchase_id', '=', False)]}"
+                />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="maintenance_equipment_search_view">
+        <field
+            name="name"
+        >maintenance.equipment.form (in maintenance_equipment_stock)</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_search" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="lot_id" string="Supplier Lot Number" />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="hr_equipment_view_tree">
+        <field name="name">maintenance.equipment.tree</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree" />
+        <field name="arch" type="xml">
+            <field name="serial_no" position="after">
+                <field name="lot_id" string="Supplier Lot Number" />
+            </field>
+        </field>
+    </record>
+</odoo>
