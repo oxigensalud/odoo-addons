@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="maintenance_request_form_view">
+        <field
+            name="name"
+        >maintenance.request.form (in maintenance_request_repair)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+        <field name="arch" type="xml">
+            <field name="priority" position="before">
+                <field name="sale_order_id" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
