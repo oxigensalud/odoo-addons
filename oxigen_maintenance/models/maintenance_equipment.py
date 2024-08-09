@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 from odoo import _, fields, models
+from odoo.exceptions import ValidationError
 
 
 class MaintenanceEquipment(models.Model):
@@ -86,6 +87,17 @@ class MaintenanceEquipment(models.Model):
         selection_add=[("customer", "Customer")], ondelete={"customer": "set default"}
     )
     customer_id = fields.Many2one("res.partner")
+    parent_id = fields.Many2one(
+        "maintenance.equipment",
+        "Parent Equipment",
+        index=True,
+        ondelete="restrict",
+        tracking=True,
+    )
+    create_project_from_equipment = fields.Boolean(default=False, copy=False)
+    project_id = fields.Many2one(
+        comodel_name="project.project", ondelete="restrict", copy=False
+    )
 
     def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
 
@@ -98,4 +110,63 @@ class MaintenanceEquipment(models.Model):
         if maintenance_plan.employee_id:
             res["employee_id"] = maintenance_plan.employee_id.id
 
+        return res
+
+    # def check_create_project_from_equipment_restrictions(self):
+    #     """
+    #         (
+    #             old - create_project_from_equipment,
+    #             old - project_id,
+    #             new - create_project_from_equipment,
+    #             new - project_id,
+    #         )
+    #     """
+    #     return {
+    #         (False, False, True, True): True,
+    #         (False, True, True, True or False): True,
+    #         (True, False, True, True): True,
+    #         (True, True, True, False): True,
+    #     }
+
+    def write(self, values):
+        # key = (
+        #     self.create_project_from_equipment,
+        #     self.project_id,
+        #     values.get("create_project_from_equipment", None),
+        #     values.get("project_id", None)
+        # )
+        # maintenance_error = (
+        #     self.check_create_project_from_equipment_restrictions().get(key, False)
+        # )
+        # if maintenance_error:
+        #     if "project_id" in values:
+        #         if self.project_id == values["project_id"]:
+        #             maintenance_error = False
+        # if maintenance_error:
+        #     raise ValidationError(
+        #         _(
+        #             "You can't change the project of the equipment because "
+        #             "it would generate inconsistencies."
+        #         )
+        #     )
+        if values.get("create_project_from_equipment"):
+            if self.env["project.project"].search_count(
+                [("equipment_ids", "in", self.id)]
+            ):
+                raise ValidationError(
+                    _(
+                        "Cannot create a new project for this equipment because it "
+                        "is already linked to a project."
+                    )
+                )
+            new_project = self.env["project.project"].create(
+                self._prepare_project_from_equipment_values(values)
+            )
+            values["project_id"] = new_project.id
+        return super().write(values)
+
+    def _prepare_project_from_equipment_values(self, values):
+        res = super()._prepare_project_from_equipment_values(values)
+        if self.name:
+            res["name"] = self.name
         return res
