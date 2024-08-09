@@ -10,9 +10,14 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="website_sale.product_template_form_view" />
         <field name="arch" type="xml">
-            <field name="woocommerce_enabled" position="after">
-                <field name="professional_product" />
-                <field name="medical_prescription_required" />
+            <xpath
+                expr="//group[@name='shop']/group/field[@name='is_published']"
+                position="after"
+            >
+
+                <field name="woocommerce_enabled" position="move" />
+                <field name="professional_product" position="move" />
+                <field name="medical_prescription_required" position="move" />
                 <field name="website_ribbon_id" position="move" />
                 <field name="inventory_availability" position="move" />
                 <field name="website_sequence" position="move" />
@@ -26,7 +31,7 @@
                 <field name="alternative_product_ids" position="move" />
                 <field name="accessory_product_ids" position="move" />
                 <field name="slug_name" position="move" />
-            </field>
+            </xpath>
              <xpath expr="//field[@name='public_description']" position="attributes">
                 <attribute name="string">Product description</attribute>
             </xpath>
