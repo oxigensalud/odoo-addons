@@ -8,10 +8,11 @@
     "author": "NuoBiT Solutions SL",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Website",
-    "depends": ["website_sale"],
+    "depends": ["website_sale", "connector_woocommerce"],
     "installable": True,
     "license": "AGPL-3",
     "data": [
         "views/product_template.xml",
+        "views/product_product.xml",
     ],
 }
