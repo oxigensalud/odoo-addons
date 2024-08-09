@@ -16,6 +16,7 @@
         "maintenance_equipment_hierarchy",
         "maintenance_team_hierarchy",
         "base_maintenance_group",
+        "maintenance_project",
     ],
     "installable": True,
     "license": "AGPL-3",
