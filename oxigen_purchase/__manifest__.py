@@ -12,6 +12,7 @@
         "purchase_stock",
         "stock_picking_partner_ref",
         "purchase_tier_validation",
+        "sale_stock",
     ],
     "installable": True,
     "license": "AGPL-3",
