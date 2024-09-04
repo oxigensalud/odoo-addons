@@ -2,13 +2,22 @@
 # Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
-from odoo import _, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.safe_eval import datetime
 
 
 class StockPickingImportSerials(models.TransientModel):
     _inherit = "stock.picking.import.serials"
+
+    datas = fields.Binary(
+        string="File",
+        attachment=True,
+        required=True,
+        help="The fields you can import are:\n -Default Code\n -Serial Number\n -Nos"
+        "\n -DN\n -Manufacturer\n -Weight\n -Manufacture Date\n -Retesting Date"
+        "\n -Next Retesting Date\n -Removal Date",
+    )
 
     def _prepare_additional_tracking_values(self, data, company):
         res = super()._prepare_additional_tracking_values(data, company)
@@ -49,7 +58,11 @@ class StockPickingImportSerials(models.TransientModel):
                 )
             if not manufacturer:
                 raise UserError(
-                    _("The manufacturer %s doesn't exist") % data_dict["manufacturer"]
+                    _(
+                        "The manufacturer name %s in the import file doesn't exist. "
+                        "Please ensure the manufacturer name exists."
+                    )
+                    % data_dict["manufacturer"]
                 )
             data_dict["manufacturer"] = manufacturer.id
         fields_to_check = [
