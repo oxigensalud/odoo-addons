@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="trial_balance_multicompany_report_wizard_form_view">
+        <field
+            name="name"
+        >trial.balance.multicompany.report.wizard.form (in oxigen_account)</field>
+        <field name="model">trial.balance.multicompany.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="main_info">
+                        <field
+                            name="company_ids"
+                            options="{'no_create': True}"
+                            widget="many2many_tags"
+                            groups="base.group_multi_company"
+                        />
+                    </group>
+                    <group name="filters">
+                        <group name="date_range">
+                            <field name="date_range_id" />
+                            <field name="date_from" />
+                            <field name="date_to" />
+                        </group>
+                        <group name="other_filters">
+                            <field name="target_move" widget="radio" />
+                            <field name="merge_companies" />
+                            <field name="hide_account_at_0" />
+                            <field name="show_hierarchy" />
+                            <field
+                                name="limit_hierarchy_level"
+                                attrs="{'invisible':[('show_hierarchy','=',False)]}"
+                            />
+                            <field
+                                name="show_hierarchy_level"
+                                attrs="{'invisible':[('limit_hierarchy_level','=', False)]}"
+                            />
+                            <field
+                                name="hide_parent_hierarchy_level"
+                                attrs="{'invisible':[('limit_hierarchy_level','=', False)]}"
+                            />
+                            <field name="foreign_currency" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        name="button_export_html"
+                        string="View"
+                        type="object"
+                        default_focus="1"
+                        class="oe_highlight"
+                    />
+                    or
+                    <button
+                        name="button_export_pdf"
+                        string="Export PDF"
+                        type="object"
+                    />
+                    or
+                    <button
+                        name="button_export_xlsx"
+                        string="Export XLSX"
+                        type="object"
+                    />
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record
+        model="ir.actions.act_window"
+        id="trial_balance_multicompany_report_wizard_act_window"
+    >
+        <field name="name">Consolidated Trial Balance</field>
+        <field name="res_model">trial.balance.multicompany.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <record model="ir.ui.menu" id="trial_balance_multicompany_report_wizard_menu">
+        <field name="name">Consolidated Trial Balance</field>
+        <field name="parent_id" ref="account_financial_report.menu_oca_reports" />
+        <field
+            name="action"
+            ref="trial_balance_multicompany_report_wizard_act_window"
+        />
+        <field name="sequence" eval="21" />
+    </record>
+</odoo>
