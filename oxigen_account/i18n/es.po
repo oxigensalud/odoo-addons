@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-01 15:02+0000\n"
-"PO-Revision-Date: 2022-06-01 15:02+0000\n"
+"POT-Creation-Date: 2024-09-18 15:32+0000\n"
+"PO-Revision-Date: 2024-09-18 15:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,17 @@ msgstr ""
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.report_assets_common
 msgid "<strong>Reference:</strong>"
-msgstr ""
+msgstr "<strong>Referencia:</strong>"
 
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.report_assets_common
 msgid "<strong>Source:</strong>"
-msgstr ""
+msgstr "<strong>Origen:</strong>"
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_report_account_financial_report_abstract_report
+msgid "Abstract Report"
+msgstr "Informe Extracto"
 
 #. module: oxigen_account
 #: model:ir.model,name:oxigen_account.model_account_update_lock_date
@@ -33,7 +38,7 @@ msgstr "Actualización de fecha de bloqueo contable"
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
@@ -60,15 +65,27 @@ msgstr "Cambiar/Mostrar asientos en borrador"
 
 #. module: oxigen_account
 #: model:ir.model,name:oxigen_account.model_res_company
+#: model:ir.model.fields,field_description:oxigen_account.field_trial_balance_report_wizard__company_ids
 msgid "Companies"
 msgstr "Compañías"
+
+#. module: oxigen_account
+#: code:addons/oxigen_account/report/trial_balance_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:oxigen_account.report_trial_balance_lines_header_oxigen
+#, python-format
+msgid "Company"
+msgstr "Compañía"
 
 #. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_journal__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_report_a_f_r_report_trial_balance_xlsx__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_report_account_financial_report_abstract_report__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_report_account_financial_report_trial_balance__display_name
 #: model:ir.model.fields,field_description:oxigen_account.field_res_company__display_name
+#: model:ir.model.fields,field_description:oxigen_account.field_trial_balance_report_wizard__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
@@ -78,11 +95,25 @@ msgid "Draft entries date changed successfully!"
 msgstr "Fecha de los asientos en borrador cambiada!"
 
 #. module: oxigen_account
+#: code:addons/oxigen_account/models/account_move.py:0
+#, python-format
+msgid ""
+"Duplicated vendor reference detected. You probably encoded twice the same vendor bill/credit note:\n"
+"%s"
+msgstr ""
+"Se ha detectado una referencia de proveedor duplicada. Probablemente haya codificado dos veces la misma factura/nota de crédito de proveedor:\n"
+"%s"
+
+#. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_journal__id
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move__id
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move_line__id
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__id
+#: model:ir.model.fields,field_description:oxigen_account.field_report_a_f_r_report_trial_balance_xlsx__id
+#: model:ir.model.fields,field_description:oxigen_account.field_report_account_financial_report_abstract_report__id
+#: model:ir.model.fields,field_description:oxigen_account.field_report_account_financial_report_trial_balance__id
 #: model:ir.model.fields,field_description:oxigen_account.field_res_company__id
+#: model:ir.model.fields,field_description:oxigen_account.field_trial_balance_report_wizard__id
 msgid "ID"
 msgstr ""
 
@@ -100,6 +131,11 @@ msgstr ""
 "azules en el widget de conciliación bancaria. Durante el proceso de "
 "conciliación, las transacciones en cuestión se conciliarán con los asientos "
 "en la Cuenta de recibos pendientes en lugar de la cuenta por cobrar."
+
+#. module: oxigen_account
+#: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_account_invoice_filter
+msgid "Invoice Line"
+msgstr "Línea de factura"
 
 #. module: oxigen_account
 #: model:ir.model,name:oxigen_account.model_account_journal
@@ -121,7 +157,11 @@ msgstr "Apunte contable"
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move____last_update
 #: model:ir.model.fields,field_description:oxigen_account.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_report_a_f_r_report_trial_balance_xlsx____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_report_account_financial_report_abstract_report____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_report_account_financial_report_trial_balance____last_update
 #: model:ir.model.fields,field_description:oxigen_account.field_res_company____last_update
+#: model:ir.model.fields,field_description:oxigen_account.field_trial_balance_report_wizard____last_update
 msgid "Last Modified on"
 msgstr "Última modificación"
 
@@ -129,7 +169,7 @@ msgstr "Última modificación"
 #: code:addons/oxigen_account/models/account_move.py:0
 #, python-format
 msgid "Less Payment"
-msgstr ""
+msgstr "Pago menor"
 
 #. module: oxigen_account
 #: model:ir.model.fields,help:oxigen_account.field_account_journal__payment_credit_account_id
@@ -165,24 +205,24 @@ msgstr "Restablecer a borrador (manteniendo apuntes conciliados)"
 #. module: oxigen_account
 #: model:ir.model.fields,field_description:oxigen_account.field_account_update_lock_date__show_change_date_msg
 msgid "Show Change Date Msg"
-msgstr ""
+msgstr "Mostrar mensaje de cambio de fecha"
 
 #. module: oxigen_account
 #: code:addons/oxigen_account/models/res_company.py:0
 #, python-format
 msgid "Show Unreconciled Bank Statement Line"
-msgstr ""
+msgstr "Mostrar líneas de extracto bancario no conciliadas"
 
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
 msgid "Show unposted entries"
-msgstr ""
+msgstr "Mostrar asientos sin publicar"
 
 #. module: oxigen_account
 #: code:addons/oxigen_account/models/res_company.py:0
 #, python-format
 msgid "There are still unposted entries in the period you want to lock."
-msgstr ""
+msgstr "Existen asientos sin publicar en el período que desea bloquear."
 
 #. module: oxigen_account
 #: code:addons/oxigen_account/models/res_company.py:0
@@ -191,6 +231,8 @@ msgid ""
 "There are still unreconciled bank statement lines in the period you want to "
 "lock. You should either reconcile or delete them."
 msgstr ""
+"Aún hay líneas de extracto bancario no conciliadas en el período que desea "
+"bloquear. Debería conciliarlas o eliminarlas."
 
 #. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.oxigen_view_invoice_tree
@@ -208,6 +250,21 @@ msgid "Total (€)"
 msgstr ""
 
 #. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_report_account_financial_report_trial_balance
+msgid "Trial Balance Report"
+msgstr "Informe Balance de Sumas y Saldos"
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_trial_balance_report_wizard
+msgid "Trial Balance Report Wizard"
+msgstr "Asistente del informe de balance de sumas y saldos"
+
+#. module: oxigen_account
+#: model:ir.model,name:oxigen_account.model_report_a_f_r_report_trial_balance_xlsx
+msgid "Trial Balance XLSX Report"
+msgstr "Balance de Sumas y Saldos XLSX"
+
+#. module: oxigen_account
 #: model_terms:ir.ui.view,arch_db:oxigen_account.view_change_draft_date
 msgid "Unposted entries"
-msgstr ""
+msgstr "Asientos no contabilizados"
