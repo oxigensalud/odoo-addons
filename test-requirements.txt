@@ -22,8 +22,10 @@ odoo14-addon-account_asset_transfer_extension@git+https://github.com/nuobit/odoo
 odoo14-addon-stock_putaway_no_internal@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/stock_putaway_no_internal
 odoo14-addon-connector_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/connector_extension
 odoo14-addon-connector_woocommerce@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/connector_woocommerce
+odoo14-addon-connector_woocommerce_wpml@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/connector_woocommerce_wpml
 odoo14-addon-connector_extension_woocommerce@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/connector_extension_woocommerce
 odoo14-addon-connector_wordpress@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/connector_wordpress
+odoo14-addon-connector_wordpress_wpml@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/connector_wordpress_wpml
 odoo14-addon-connector_extension_wordpress@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/connector_extension_wordpress
 odoo14-addon-website_sale_product_document@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress3#subdirectory=setup/website_sale_product_document
 odoo14-addon-tools_mimetypes_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/tools_mimetypes_extension
