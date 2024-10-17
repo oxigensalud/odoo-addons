@@ -46,3 +46,9 @@ msgstr "Producto con prescripción médica"
 #: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__professional_product
 msgid "Professional Product"
 msgstr "Producto para profesionales"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_product__technical_features
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__technical_features
+msgid "Tecnical Features"
+msgstr "Características técnicas"

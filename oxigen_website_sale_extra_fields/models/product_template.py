@@ -11,3 +11,4 @@ class ProductTemplate(models.Model):
     medical_prescription_required = fields.Boolean(
         string="Product with medical prescription"
     )
+    technical_features = fields.Text(translate=True)
