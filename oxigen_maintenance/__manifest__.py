@@ -19,6 +19,7 @@
     ],
     "installable": True,
     "license": "AGPL-3",
+    "external_dependencies": {"python": ["openupgradelib"]},
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
