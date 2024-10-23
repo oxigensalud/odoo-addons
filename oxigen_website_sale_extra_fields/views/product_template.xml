@@ -18,7 +18,7 @@
                 <field name="medical_prescription_required" />
             </field>
             <field name="public_short_description" position="after">
-                <field name="technical_features" />
+                <field name="technical_features" widget="html" />
             </field>
         </field>
     </record>
