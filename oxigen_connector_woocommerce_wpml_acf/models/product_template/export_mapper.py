@@ -21,3 +21,22 @@ class WooCommerceProductTemplateExportMapper(Component):
         if technical_features:
             additional_information.append(technical_features)
         return {"additional_information": "\n".join(additional_information) or None}
+
+    def _get_video_gallery_data(self, record):
+        data = {}
+        for i, img in enumerate(
+            record.product_template_image_ids.filtered("video_url")
+        ):
+            data[f"video_gallery_{i}_video"] = img.video_url
+            data[f"video_gallery_{i}_video_description"] = img.title or ""
+        return data
+
+    @mapping
+    def video_gallery(self, record):
+        len_videos = len(record.product_template_image_ids)
+        if len_videos == 0:
+            return {"video_gallery": "0"}
+
+        video_gallery_data = self._get_video_gallery_data(record)
+        video_gallery_data["video_gallery"] = str(len_videos)
+        return video_gallery_data
