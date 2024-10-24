@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record
+        id="website_sale_public_description_product_template_view_form"
+        model="ir.ui.view"
+    >
+        <field name="name">product.template.website.sale.public.description.form</field>
+        <field name="model">product.template</field>
+        <field
+            name="inherit_id"
+            ref="website_sale_extra_fields.website_sale_public_description_product_template_view_form"
+        />
+        <field name="arch" type="xml">
+            <field name="website_sequence" position="before">
+                <field name="professional_product" />
+                <field name="medical_prescription_required" />
+            </field>
+            <field name="public_short_description" position="after">
+                <field name="technical_features" widget="html" />
+            </field>
+        </field>
+    </record>
+</odoo>

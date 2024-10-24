@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_website_sale_extra_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-09 16:59+0000\n"
+"PO-Revision-Date: 2024-08-09 16:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__id
+msgid "ID"
+msgstr ""
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model,name:oxigen_website_sale_extra_fields.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_product__medical_prescription_required
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__medical_prescription_required
+msgid "Product with medical prescription"
+msgstr "Producto con prescripción médica"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_product__professional_product
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__professional_product
+msgid "Professional Product"
+msgstr "Producto para profesionales"
+
+#. module: oxigen_website_sale_extra_fields
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_product__technical_features
+#: model:ir.model.fields,field_description:oxigen_website_sale_extra_fields.field_product_template__technical_features
+msgid "Tecnical Features"
+msgstr "Características técnicas"
