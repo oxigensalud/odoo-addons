@@ -19,3 +19,10 @@ class WooCommerceProductTemplateExportMapper(Component):
             if record.medical_prescription_required
             else "0"
         }
+
+    def _get_product_image_attachments(self, record):
+        product_image_attachments = super()._get_product_image_attachments(record)
+        product_img = record.product_template_image_ids.filtered("video_url")
+        return product_image_attachments.filtered(
+            lambda x: not any(x.attachment_id.res_id == img.id for img in product_img)
+        )
