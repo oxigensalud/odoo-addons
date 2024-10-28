@@ -33,7 +33,7 @@ class WooCommerceProductTemplateExportMapper(Component):
 
     @mapping
     def video_gallery(self, record):
-        len_videos = len(record.product_template_image_ids)
+        len_videos = len(record.product_template_image_ids.filtered("video_url"))
         if len_videos == 0:
             return {"video_gallery": "0"}
 
