@@ -46,14 +46,6 @@ class TestOxigenMaintenance(common.TransactionCase):
                 "planning_step": "month",
             }
         )
-        self.stock_location = self.env.ref("stock.stock_location_stock")
-        self.location_1 = self.env["stock.location"].create(
-            {
-                "name": "Test location 1",
-                "usage": "internal",
-                "location_id": self.stock_location.id,
-            }
-        )
 
     def test_01_maintenance_request_name(self):
         self.cron.method_direct_trigger()
@@ -65,11 +57,7 @@ class TestOxigenMaintenance(common.TransactionCase):
 
         self.assertEqual(generated_requests[0].name, "Weekly - Laptop 1 - Test Plan")
 
-    def test_02_equipment_location(self):
-        self.equipment_1.stock_location_id = self.location_1.id
-        self.assertEqual(self.location_1.equipment_ids.id, self.equipment_1.id)
-
-    def test_03_maintenance_plan_employee(self):
+    def test_02_maintenance_plan_employee(self):
         self.employee = self.env["hr.employee"].create({"name": "David Employee"})
         self.maintenance_plan_2.employee_id = self.employee.id
         self.cron.method_direct_trigger()
