@@ -24,7 +24,6 @@
         "security/security.xml",
         "security/ir.model.access.csv",
         "views/maintenance_equipment_operating_system.xml",
-        "views/stock_location_views.xml",
         "views/maintenance_equipment_views.xml",
         "views/maintenance_plan_views.xml",
         "views/maintenance_request_views.xml",
