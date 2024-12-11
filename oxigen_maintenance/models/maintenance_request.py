@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
+from odoo.exceptions import AccessError
 
 
 class MaintenanceRequest(models.Model):
@@ -21,3 +22,11 @@ class MaintenanceRequest(models.Model):
     def _onchange_maintenance_team(self):
         if self.user_id not in self.maintenance_team_id.member_ids:
             self.user_id = False
+
+    def activity_update(self):
+        if self.env.user.has_group("base_maintenance_group.group_maintenance_user"):
+            try:
+                self.equipment_id.check_access_rule("read")
+            except AccessError:
+                self = self.sudo()
+        return super(MaintenanceRequest, self).activity_update()
