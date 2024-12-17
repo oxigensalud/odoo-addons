@@ -17,12 +17,9 @@ class AccountMove(models.Model):
             move._onchange_payment_reference()
 
     @api.constrains("ref", "move_type", "partner_id", "journal_id", "state")
-    def _check_move_supplier_ref(self):
+    def _check_duplicate_supplier_reference(self):
         """
-        Check if an other vendor bill has the same ref
-        and the same commercial_partner_id than the current instance.
-        The check only makes sense when validating it
-        The code has been takend from `_check_duplicate_supplier_reference` function of odoo
+        The code overrides the _check_duplicate_supplier_reference function of Odoo.
         """
         moves = self.filtered(
             lambda move: move.state == "posted"
@@ -58,6 +55,7 @@ class AccountMove(models.Model):
                 AND move2.commercial_partner_id = partner.commercial_partner_id
                 AND move2.move_type = move.move_type
                 AND move2.id != move.id
+                AND move2.state = 'posted'
             WHERE move.id IN %s
         """,
             [tuple(moves.ids)],
