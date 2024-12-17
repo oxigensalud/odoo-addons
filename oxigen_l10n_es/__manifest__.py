@@ -25,6 +25,7 @@
         "data/legacy_account_tax_data.xml",
         "data/tax_code_map_mod303_202107_data.xml",
         "data/tax_code_map_mod303_2023_data.xml",
+        "data/tax_code_map_mod303_202410_data.xml",
         "data/tax_code_map_mod322_2023_data.xml",
         "data/aeat_349_map_data.xml",
         "data/account_fiscal_position_template_data.xml",
