@@ -199,12 +199,16 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                    p."name" as partner,
                    p.vat as partner_vat,
                    replace(replace(l."ref", CHR(13), ' '), CHR(10), ' ') as "ref",
-                   l.debit, l.credit
+                   (case when l.debit - l.credit >= 0 then
+                        round(l.debit - l.credit, 2) else 0 end) as debit,
+                   (case when l.debit - l.credit < 0 then
+                        round(l.credit - l.debit, 2) else 0 end) as credit
             from grouped_all_entries l
                     left join res_partner p on l.partner_id = p.id
                     left join account_tax t on l.tax_line_id = t.id,
                  account_account a
             where l.account_id = a.id
+                and l.debit != l.credit
             order by l.company_id, l.type, l.entry, l.item_id, a.code
         """
         self.env.cr.execute(
