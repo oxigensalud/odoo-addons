@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.30
+_commit: v1.33
 _src_path: gh:oca/oca-addons-repo-template
 ci: GitHub
 convert_readme_fragments_to_markdown: false
@@ -16,7 +16,8 @@ odoo_test_flavor: Both
 odoo_version: 14.0
 org_name: Oxigen Salud
 org_slug: oxigensalud
-rebel_module_groups: []
+rebel_module_groups:
+- l10n_pt_invoice_spms
 repo_description: Customization addons for Oxigen Salud.
 repo_name: Oxigensalud Odoo Addons
 repo_slug: odoo-addons
