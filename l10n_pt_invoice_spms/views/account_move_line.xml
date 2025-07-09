@@ -6,7 +6,7 @@
     <record model="ir.ui.view" id="account_move_line_form_view">
         <field name="model">account.move.line</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="0">
                 <sheet>
                     <group>
                         <field name="spms_prescription" string="Prescription" />
@@ -15,7 +15,6 @@
                             name="spms_beneficiary_number"
                             string="Beneficiary Number"
                         />
-                        <field name="spms_system_id" string="System" />
                         <field
                             name="spms_prescription_type_id"
                             string="Prescription type"

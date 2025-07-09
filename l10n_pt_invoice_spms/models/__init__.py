@@ -2,9 +2,4 @@ from . import res_partner
 from . import res_company
 from . import account_move_line
 from . import account_move
-from . import spms_suspension_reason
-from . import spms_context
-from . import spms_prescription_type
-from . import spms_lot
-from . import spms_system
 from . import account_edi_format

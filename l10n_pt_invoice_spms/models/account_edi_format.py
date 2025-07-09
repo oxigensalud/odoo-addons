@@ -29,11 +29,11 @@ class AccountEdiXmlSpmsCiusPt211(models.AbstractModel):
                 "InvoiceExtension_spms": "l10n_pt_invoice_spms.spms_cius_pt_211_InvoiceExtension_spms",  # noqa: disable=B950
             }
         )
-        lots = invoice.invoice_line_ids.spms_system_id.lot_id
+        lots = invoice.invoice_line_ids.product_id.spms_lot_id
         lotes = []
         for lot in lots:
             lines = invoice.invoice_line_ids.filtered(
-                lambda l: l.spms_system_id.lot_id == lot
+                lambda l: l.product_id.spms_lot_id == lot
             )
             lotes.append(
                 {
@@ -52,7 +52,7 @@ class AccountEdiXmlSpmsCiusPt211(models.AbstractModel):
                             "quantity": line.quantity,
                             "context": line.spms_context_id.code,
                             "line_number": line.id,
-                            "system": line.spms_system_id.code,
+                            "system": line.product_id.default_code,
                             "suspension_reason": line.spms_suspension_reason_id.code,
                             "start_date": line.spms_start_date
                             and line.spms_start_date.isoformat(),

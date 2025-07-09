@@ -11,16 +11,11 @@
     "depends": [
         "ptplus_edi",
         "edi_account_oca",
+        "l10n_pt_spms",
     ],
     "external_dependencies": {"python": ["zeep", "xmlsig"]},
     "data": [
-        "security/ir.model.access.csv",
         "views/menu.xml",
-        "views/spms_system.xml",
-        "views/spms_lot.xml",
-        "views/spms_prescription_type.xml",
-        "views/spms_context.xml",
-        "views/spms_suspension_reason.xml",
         "views/account_move.xml",
         "views/account_move_line.xml",
         "views/res_company.xml",

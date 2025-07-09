@@ -22,9 +22,6 @@ class AccountMoveLine(models.Model):
     spms_prescription_type_id = fields.Many2one(
         "spms.prescription.type",
     )
-    spms_system_id = fields.Many2one(
-        "spms.system",
-    )
     spms_send_invoice = fields.Boolean(related="partner_id.spms_send_invoice")
 
     def action_spms_send_invoice(self):
