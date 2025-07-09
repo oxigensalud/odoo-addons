@@ -1,0 +1,1 @@
+Generate invocie for SPMS

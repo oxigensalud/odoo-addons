@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="spms_edi_format" model="account.edi.format">
+        <field name="name">SPMS CIUS-PT (File)</field>
+        <field name="code">spms_cius_pt_211</field>
+    </record>
+    <record id="spms_backend_type" model="edi.backend.type">
+        <field name="name">SPMS Backend type</field>
+        <field name="code">l10n_pt_spms</field>
+    </record>
+    <record id="spms_backend" model="edi.backend">
+        <field name="name">SPMS</field>
+        <field name="backend_type_id" ref="spms_backend_type" />
+        <field name="output_sent_processed_auto" eval="True" />
+    </record>
+    <record id="spms_exchange_type" model="edi.exchange.type">
+        <field name="backend_id" ref="spms_backend" />
+        <field name="name">SPMS Electronic invoice</field>
+        <field name="code">l10n_pt_spms</field>
+        <field name="backend_type_id" ref="spms_backend_type" />
+        <field name="direction">output</field>
+        <field name="exchange_filename_pattern">{record_name}--{dt}</field>
+        <field name="exchange_file_ext">xml</field>
+        <field name="exchange_file_auto_generate" eval="True" />
+    </record>
+    <record id="spms_face_exchange_type_rule" model="edi.exchange.type.rule">
+        <field name="name">Default</field>
+        <field name="type_id" ref="spms_exchange_type" />
+        <field name="model_id" ref="account.model_account_move" />
+        <field
+            name="enable_domain"
+        >[('state', '!=', 'draft'), ('partner_id', '!=', False), ('partner_id.spms_send_invoice', '=', True),('move_type', 'in', ['out_invoice', 'out_refund'])]</field>
+        <field
+            name="enable_snippet"
+        >result = not record._has_exchange_record(exchange_type)</field>
+    </record>
+</odoo>

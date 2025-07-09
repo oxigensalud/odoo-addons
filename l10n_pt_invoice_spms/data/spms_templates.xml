@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template
+        id="spms_cius_pt_211_InvoiceType"
+        inherit_id="ptplus_edi.cius_pt_211_InvoiceType"
+        primary="True"
+    >
+        <xpath expr="//*[local-name()='CustomizationID']" position="before">
+            <ext:UBLExtensions
+                xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+            >
+                <ext:UBLExtension>
+                    <t
+                        t-call="l10n_pt_invoice_spms.spms_cius_pt_211_InvoiceExtension_spms"
+                    />
+                </ext:UBLExtension>
+            </ext:UBLExtensions>
+        </xpath>
+    </template>
+
+    <template id="spms_cius_pt_211_InvoiceExtension_spms">
+        <t
+            xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+        >
+            <ext:ExtensionVersionID>ACSS:CCF:CRDExtension:1.0</ext:ExtensionVersionID>
+            <ext:ExtensionContent>
+                <crd:CRDExtension
+                    xmlns:crd="urn:acss:ccf:facturacaoelectronica:schema:xsd:CRD"
+                >
+                    <t t-set="crd" t-value="vals.get('spms_crd_vals', {})" />
+                    <crd:ValorTotalPrestacoes
+                        t-esc="format_float(crd.get('valor_total_prestacoes'), crd.get('currency_dp'))"
+                    />
+                    <crd:QuantidadeTotalPrestacoes
+                        t-esc="crd.get('quantidade_total_prestacoes', 0)"
+                    />
+                    <crd:NumeroLotes t-esc="crd.get('numero_lotes', 0)" />
+                    <crd:Lote t-foreach="crd.get('lotes', [])" t-as="lote">
+                        <crd:Numero t-esc="lote.get('numero', '')" />
+                        <crd:Tipo t-esc="lote.get('tipo', '')" />
+                        <crd:ValorTotal
+                            t-esc="format_float(lote.get('amount', 0), crd.get('currency_dp'))"
+                        />
+                        <crd:NumeroDispensas t-esc="lote.get('total')" />
+                        <crd:Dispensa
+                            t-foreach="lote.get('dispensas', [])"
+                            t-as="dispensa"
+                        >
+                            <crd:NumeroPrescricao
+                                t-esc="dispensa.get('prescription', '')"
+                            />
+                            <crd:NumeroUtente t-esc="dispensa.get('user_number', '')" />
+                            <crd:NumeroBenef
+                                t-esc="dispensa.get('beneficiary_number', '')"
+                            />
+                            <crd:TipoPrescricao
+                                t-esc="dispensa.get('prescription_type', '')"
+                            />
+                            <crd:AreaTratamento t-esc="lote.get('tipo', '')" />
+                            <crd:DataInicio t-esc="dispensa.get('start_date')" />
+                            <crd:DataFin t-esc="dispensa.get('end_date')" />
+                            <crd:ValorPrestado
+                                t-esc="format_float(dispensa.get('price_subtotal', 0), crd.get('currency_dp'))"
+                            />
+                            <crd:LinhaDispensa>
+                                <crd:NumeroLinha
+                                    t-esc="dispensa.get('line_number', '')"
+                                />
+                                <crd:Sistema t-esc="dispensa.get('system', '')" />
+                                <crd:Contexto t-esc="dispensa.get('context', '')" />
+                                <crd:ValorUnitario
+                                    t-esc="format_float(dispensa.get('price_unit', 0), crd.get('currency_dp'))"
+                                />
+                                <crd:Quantidade t-esc="dispensa.get('quantity', 0)" />
+                                <crd:ValorTotal
+                                    t-esc="format_float(dispensa.get('price_subtotal', 0), crd.get('currency_dp'))"
+                                />
+                            </crd:LinhaDispensa>
+                            <crd:MotivoSuspensao
+                                t-esc="dispensa.get('suspension_reason')"
+                            />
+                        </crd:Dispensa>
+                    </crd:Lote>
+                </crd:CRDExtension>
+            </ext:ExtensionContent>
+        </t>
+    </template>
+
+</odoo>

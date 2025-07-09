@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="account_move_line_form_view">
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="spms_prescription" string="Prescription" />
+                        <field name="spms_user_number" string="User Number" />
+                        <field
+                            name="spms_beneficiary_number"
+                            string="Beneficiary Number"
+                        />
+                        <field name="spms_system_id" string="System" />
+                        <field
+                            name="spms_prescription_type_id"
+                            string="Prescription type"
+                        />
+                        <field name="spms_context_id" string="Context" />
+                        <field
+                            name="spms_suspension_reason_id"
+                            string="Suspension reason"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="spms_account_move_line_act_window">
+        <field name="name">SPMS data</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="account_move_line_form_view" />
+        <field name="target">new</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+
+</odoo>
