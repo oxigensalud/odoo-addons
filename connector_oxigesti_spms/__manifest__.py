@@ -11,7 +11,7 @@
     "depends": [
         "connector_extension_mssql",
         "sale_management",
-        "l10n_pt_sale_order_spms",
+        "l10n_pt_sale_spms",
     ],
     "data": [
         "security/ir.model.access.csv",
