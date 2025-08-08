@@ -20,3 +20,8 @@ odoo14-addon-l10n_es_aeat_vat_special_prorrate@git+https://github.com/nuobit/odo
 odoo14-addon-account_asset_report_category@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_report_category
 odoo14-addon-account_asset_transfer_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/account_asset_transfer_extension
 odoo14-addon-stock_putaway_no_internal@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/stock_putaway_no_internal
+odoo14-addon-connector_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/connector_extension
+odoo14-addon-connector_extension-sql@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/connector_extension_sql
+odoo14-addon-connector_extension-mssql@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/connector_extension_mssql
+odoo14-addon-l10n_pt_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@14.0#subdirectory=setup/l10n_pt_spms
+odoo14-addon-l10n_pt_sale_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@14.0#subdirectory=setup/l10n_pt_sale_spms
