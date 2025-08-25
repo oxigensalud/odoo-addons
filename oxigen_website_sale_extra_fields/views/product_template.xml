@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field
+            name="inherit_id"
+            ref="website_sale_extra_fields.product_template_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//group[@name='shop']/group/field[@name='is_published']"
+                position="after"
+            >
+                <field name="professional_product" />
+                <field name="medical_prescription_required" />
+                <field name="website_ribbon_id" position="move" />
+                <field name="inventory_availability" position="move" />
+                <field name="website_sequence" position="move" />
+                <field name="website_name" position="move" />
+                <field name="public_description" position="move" />
+                <field name="public_short_description" position="move" />
+                <field name="technical_features" widget="html" />
+                <field name="public_categ_ids" position="move" />
+                <field name="alternative_product_ids" position="move" />
+                <field name="accessory_product_ids" position="move" />
+                <field name="slug_name" position="move" />
+            </xpath>
+             <field name="public_description" position="attributes">
+                <attribute name="string">Product description</attribute>
+            </field>
+            <field name="public_short_description" position="attributes">
+                <attribute name="string">Product short description</attribute>
+            </field>
+            <field name="public_categ_ids" position="attributes">
+                <attribute name="string">Product categories</attribute>
+            </field>
+            <field name="alternative_product_ids" position="attributes">
+                <attribute
+                    name="string"
+                >Targeted sales (alternative products)</attribute>
+            </field>
+            <field name="accessory_product_ids" position="attributes">
+                <attribute name="string">Cross-selling (accessories)</attribute>
+            </field>
+            <field name="slug_name" position="attributes">
+                <attribute name="string">Permanent link</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
