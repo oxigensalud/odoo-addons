@@ -28,3 +28,14 @@ odoo14-addon-l10n_pt_spms@git+https://github.com/oxigensalud/odoo-community-addo
 odoo14-addon-l10n_pt_sale_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@14.0#subdirectory=setup/l10n_pt_sale_spms
 odoo14-addon-website_sale_variant@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_variant
 odoo14-addon-website_sale_extra_fields@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_extra_fields
+odoo14-addon-tools_mimetypes_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/tools_mimetypes_extension
+odoo14-addon-website_sale_product_document@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_product_document
+odoo14-addon-website_sale_variant@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_variant
+odoo14-addon-website_sale_extra_fields@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_extra_fields
+odoo14-addon-website_sale_stock_variant@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_stock_variant
+odoo14-addon-connector_extension_woocommerce@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress4#subdirectory=setup/connector_extension_woocommerce
+odoo14-addon-connector_woocommerce@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress4#subdirectory=setup/connector_woocommerce
+odoo14-addon-connector_woocommerce_wpml@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress4#subdirectory=setup/connector_woocommerce_wpml
+odoo14-addon-connector_extension_wordpress@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress4#subdirectory=setup/connector_extension_wordpress
+odoo14-addon-connector_wordpress@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress4#subdirectory=setup/connector_wordpress
+odoo14-addon-connector_wordpress_wpml@git+https://github.com/nuobit/odoo-addons.git@14.0-add-connector_woocommerce-connector_wordpress4#subdirectory=setup/connector_wordpress_wpml
