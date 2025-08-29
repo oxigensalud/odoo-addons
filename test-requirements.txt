@@ -25,3 +25,5 @@ odoo14-addon-connector_extension-sql@git+https://github.com/nuobit/odoo-addons.g
 odoo14-addon-connector_extension-mssql@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/connector_extension_mssql
 odoo14-addon-l10n_pt_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@14.0#subdirectory=setup/l10n_pt_spms
 odoo14-addon-l10n_pt_sale_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@14.0#subdirectory=setup/l10n_pt_sale_spms
+odoo14-addon-website_sale_variant@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_variant
+odoo14-addon-website_sale_extra_fields@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_extra_fields
