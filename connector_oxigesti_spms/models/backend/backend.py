@@ -89,11 +89,11 @@ class OxigestiSPMSBackend(models.Model):
 
     # Product import/export fields and methods
     import_product_since_date = fields.Datetime(
-        string="Import Partner Since",
+        string="Import Product since",
         help="The date from which to import partners.",
     )
     export_product_since_date = fields.Datetime(
-        string="Export Partner Since",
+        string="Export Product since",
         help="The date from which to export partners.",
     )
 

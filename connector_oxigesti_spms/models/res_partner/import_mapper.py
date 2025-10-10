@@ -14,16 +14,6 @@ class ConnectorOxigestiSpmsImporterMapper(Component):
     _inherit = "oxigesti.spms.import.mapper"
 
     _apply_on = "oxigesti.spms.res.partner"
-    _usage = "import.mapper"
-
-    # direct = [
-    #     ("UnidadeLocalSalude", "name"),
-    #     ("Cidade", "city"),
-    #     ("CodigoPostal", "zip"),
-    #     ("Domicilio", "street"),
-    #     ("NIF", "vat"),
-    #     ("CodigoConvencao", "ref"),
-    # ]
 
     @only_create
     @mapping

@@ -85,14 +85,14 @@ class OxigestiSPMSSaleOrderRecordDirectImporter(Component):
         binder = self.component(usage="binder")
         sale_order = binder.unwrap_binding(binding)
         if sale_order.state not in ["done", "sale"]:
-            sale_order.onchange_partner_id()
+            sale_order._onchange_partner_id()
             for line in sale_order.order_line:
-                line.product_id_change()
+                line._onchange_product_id()
             sale_order.with_context(
                 skip_reserved_quantity=True, keep_quotation_date=True
             ).action_confirm()
         if sale_order.state == "sale":
-            sale_order.action_done()
+            sale_order.action_lock()
 
     def _must_skip(self, binding):
         if binding:

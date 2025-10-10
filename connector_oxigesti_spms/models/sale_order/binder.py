@@ -12,3 +12,5 @@ class SaleOrderBinder(Component):
 
     external_id = "Id"
     internal_id = "oxigesti_spms_id"
+    internal_alt_id = "client_order_ref"
+    external_alt_id = "Invoice_Id"

@@ -10,7 +10,6 @@ class OxigestiSPMSSPMSSuspensionReasonImporterMapper(Component):
     _inherit = "oxigesti.spms.import.mapper"
 
     _apply_on = "oxigesti.spms.spms.suspension.reason"
-    _usage = "import.mapper"
 
     @only_create
     @mapping

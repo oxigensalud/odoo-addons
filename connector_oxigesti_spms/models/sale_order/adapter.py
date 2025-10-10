@@ -38,7 +38,7 @@ class OxigestiSPMSSaleOrderAdapter(Component):
         if orders:
             order_ids = [x["Id"] for x in orders]
             line_adapter = self.component(
-                usage="backend.adapter", model_name="oxigesti.spms.sale.order.line"
+                usage="adapter", model_name="oxigesti.spms.sale.order.line"
             )
 
             lines = line_adapter.search_read(

@@ -3,11 +3,11 @@
 {
     "name": "Connector Oxigesti Spms",
     "summary": "This module provides a connector for Oxigesti Spms",
-    "version": "14.0.1.0.0",
-    "author": "NuoBiT Solutions, S.L.",
+    "version": "18.0.1.0.0",
+    "author": "NuoBiT Solutions SL",
     "license": "AGPL-3",
     "category": "Connector",
-    "website": "https://github.com/NuoBiT/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "depends": [
         "connector_extension_mssql",
         "sale_management",

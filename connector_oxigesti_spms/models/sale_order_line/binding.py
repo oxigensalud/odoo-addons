@@ -37,11 +37,17 @@ class SaleOrderLineBinding(models.Model):
         ),
     ]
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
-        oxigesti_spms_order_id = vals["oxigesti_spms_order_id"]
-        binding = self.env["oxigesti.spms.sale.order"].browse(oxigesti_spms_order_id)
-        vals["order_id"] = binding.odoo_id.id
+        if not isinstance(vals, list):
+            vals = [vals]
+        for val in vals:
+            if "oxigesti_spms_order_id" in val:
+                oxigesti_spms_order_id = val["oxigesti_spms_order_id"]
+                binding = self.env["oxigesti.spms.sale.order"].browse(
+                    oxigesti_spms_order_id
+                )
+                val["order_id"] = binding.odoo_id.id
         return super().create(vals)
         # FIXME triggers function field
         # The amounts (amount_total, ...) computed fields on 'sale.order' are

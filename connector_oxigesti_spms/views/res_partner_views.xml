@@ -22,48 +22,41 @@
                 <field name="oxigesti_spms_bind_ids" invisible="1" />
             </xpath>
             <xpath expr="//h1//field[@name='name']" position="attributes">
-                <attribute name="attrs">{
-                    'readonly': [('oxigesti_spms_bind_ids', '!=', [])]
-                }</attribute>
+                <attribute name="readonly">oxigesti_spms_bind_ids</attribute>
             </xpath>
             <xpath
                 expr="/form/sheet/group//field[@name='street']"
                 position="attributes"
             >
-                <attribute name="attrs">{
-                    'readonly': ['|', '&amp;', ('type', '=', 'contact'), ('parent_id', '!=', False),
-                                 ('oxigesti_spms_bind_ids', '!=', [])]
-                }</attribute>
+                <attribute
+                    name="readonly"
+                >oxigesti_spms_bind_ids or (type == 'contact' and parent_id)</attribute>
             </xpath>
             <xpath
                 expr="/form/sheet/group//field[@name='street2']"
                 position="attributes"
             >
-                <attribute name="attrs">{
-                    'readonly': ['|', '&amp;', ('type', '=', 'contact'), ('parent_id', '!=', False),
-                                 ('oxigesti_spms_bind_ids', '!=', [])]
-                }</attribute>
+                <attribute
+                    name="readonly"
+                >oxigesti_spms_bind_ids or (type == 'contact' and parent_id)</attribute>
             </xpath>
             <xpath expr="/form/sheet/group//field[@name='zip']" position="attributes">
-                <attribute name="attrs">{
-                    'readonly': ['|', '&amp;', ('type', '=', 'contact'), ('parent_id', '!=', False),
-                                 ('oxigesti_spms_bind_ids', '!=', [])]
-                }</attribute>
+                <attribute
+                    name="readonly"
+                >oxigesti_spms_bind_ids or (type == 'contact' and parent_id)</attribute>
             </xpath>
             <xpath expr="/form/sheet/group//field[@name='city']" position="attributes">
-                <attribute name="attrs">{
-                    'readonly': ['|', '&amp;', ('type', '=', 'contact'), ('parent_id', '!=', False),
-                                 ('oxigesti_spms_bind_ids', '!=', [])]
-                }</attribute>
+                <attribute
+                    name="readonly"
+                >oxigesti_spms_bind_ids or (type == 'contact' and parent_id)</attribute>
             </xpath>
             <xpath
                 expr="/form/sheet/group//field[@name='country_id']"
                 position="attributes"
             >
-                <attribute name="attrs">{
-                    'readonly': ['|', '&amp;', ('type', '=', 'contact'), ('parent_id', '!=', False),
-                                 ('oxigesti_spms_bind_ids', '!=', [])]
-                }</attribute>
+                <attribute
+                    name="readonly"
+                >oxigesti_spms_bind_ids or (type == 'contact' and parent_id)</attribute>
             </xpath>
         </field>
     </record>

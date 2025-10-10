@@ -29,7 +29,6 @@ class OxigestiSpmsSaleOrderImporterMapper(Component):
     _inherit = "oxigesti.spms.import.mapper"
 
     _apply_on = "oxigesti.spms.sale.order"
-    _usage = "import.mapper"
 
     direct = [
         ("Invoice_Id", "client_order_ref"),
@@ -51,7 +50,7 @@ class OxigestiSpmsSaleOrderImporterMapper(Component):
 
         partner = binder.to_internal(external_id, unwrap=True)
         assert partner, (
-            "partner_id %s should have been imported in "
-            "SaleOrderImporter._import_dependencies" % (external_id,)
+            f"partner_id {external_id} should have been imported in "
+            f"SaleOrderImporter._import_dependencies"
         )
         return {"partner_id": partner.id}

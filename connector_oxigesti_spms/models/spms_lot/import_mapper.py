@@ -10,7 +10,6 @@ class OxigestiSPMSSPMSLotImporterMapper(Component):
     _inherit = "oxigesti.spms.import.mapper"
 
     _apply_on = "oxigesti.spms.spms.lot"
-    _usage = "import.mapper"
 
     @only_create
     @mapping

@@ -10,7 +10,6 @@ class OxigestiSPMSSPMSPrescriptionTypeImporterMapper(Component):
     _inherit = "oxigesti.spms.import.mapper"
 
     _apply_on = "oxigesti.spms.spms.prescription.type"
-    _usage = "import.mapper"
 
     @only_create
     @mapping
