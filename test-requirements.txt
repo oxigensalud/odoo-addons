@@ -1,0 +1,5 @@
+odoo-addon-l10n_pt_sale_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@refs/pull/21/head#subdirectory=l10n_pt_sale_spms
+odoo-addon-l10n_pt_spms@git+https://github.com/oxigensalud/odoo-community-addons.git@refs/pull/20/head#subdirectory=l10n_pt_spms
+odoo-addon-connector_extension_mssql@git+https://github.com/nuobit/odoo-addons.git@refs/pull/666/head#subdirectory=connector_extension_mssql
+odoo-addon-connector_extension_sql@git+https://github.com/nuobit/odoo-addons.git@refs/pull/664/head#subdirectory=connector_extension_sql
+odoo-addon-connector_extension@git+https://github.com/nuobit/odoo-addons.git@refs/pull/663/head#subdirectory=connector_extension
