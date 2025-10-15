@@ -6,7 +6,7 @@
     "summary": "Alternative serial numbers",
     "version": "14.0.1.0.1",
     "author": "NuoBiT",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Warehouse",
     "depends": ["stock"],
     "installable": True,
