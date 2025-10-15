@@ -9,6 +9,8 @@ from functools import partial
 
 from requests.exceptions import (
     ConnectionError as RequestConnectionError,
+)
+from requests.exceptions import (
     HTTPError,
     RequestException,
 )
@@ -246,7 +248,7 @@ class GenericAdapter(AbstractComponent):
             uniq.add(id_t)
 
     def id2dict(self, _id):
-        return dict(zip(self._id, _id))
+        return dict(zip(self._id, _id, strict=False))
 
     def dict2id(self, _dict):
         return [_dict[x] for x in self._id]
@@ -278,7 +280,7 @@ class GenericAdapter(AbstractComponent):
             "method read, sql %s id %s, attributes %s", self._sql, _id, attributes
         )
 
-        filters = list(zip(self._id, ["="] * len(self._id), _id))
+        filters = list(zip(self._id, ["="] * len(self._id), _id, strict=False))
 
         res = self._exec_query(filters=filters)
 
@@ -304,7 +306,7 @@ class GenericAdapter(AbstractComponent):
             raise pymssql.InternalError("The schema %s does not exist" % self.schema)
 
         # get id fieldnames and values
-        id_d = dict(zip(self._id, _id))
+        id_d = dict(zip(self._id, _id, strict=False))
         # fix same field on set and on where, change set fields
         qset_map_d = {}
         for k, v in values_d.items():
@@ -445,7 +447,7 @@ class GenericAdapter(AbstractComponent):
         sql = self._sql_delete % dict(schema=self.schema)
 
         # get id fieldnames and values
-        params = dict(zip(self._id, _id))
+        params = dict(zip(self._id, _id, strict=False))
         params = self._convert_dict(params, to_backend=True)
 
         with mssql_connection_retryable():
