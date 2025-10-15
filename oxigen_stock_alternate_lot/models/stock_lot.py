@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -11,7 +12,7 @@ DN_MAX_SIZE = 15
 
 
 class ProductionLot(models.Model):
-    _inherit = "stock.production.lot"
+    _inherit = "stock.lot"
 
     nos = fields.Char(
         string="NOS",
@@ -42,7 +43,7 @@ class ProductionLot(models.Model):
     @api.depends("nos_unknown", "dn_unknown")
     def _compute_unknown_readonly(self):
         for rec in self:
-            rec.unknown_readonly = not rec.user_has_groups(
+            rec.unknown_readonly = not self.env.user.has_group(
                 "oxigen_stock_alternate_lot.group_update_lot_unknown_field"
             )
 
@@ -113,10 +114,14 @@ class ProductionLot(models.Model):
                 if other:
                     raise ValidationError(
                         _(
-                            "This NOS or D/N already exists on another lot %s "
-                            "for this product %s"
+                            "This NOS or D/N already exists "
+                            "on another lot %(lot_name)s "
+                            "for this product %(product_name)s"
                         )
-                        % (other.mapped("name"), self.product_id.display_name)
+                        % {
+                            "lot_name": other.mapped("name"),
+                            "product_name": self.product_id.display_name,
+                        }
                     )
 
     @api.constrains("nos", "nos_unknown")
@@ -136,14 +141,17 @@ class ProductionLot(models.Model):
                 )
 
     @api.depends("nos_enabled", "dn_enabled", "nos", "dn")
-    def name_get(self):
-        res = []
+    def _compute_display_name(self):
         for record in self:
-            name_l = [record.name]
+            name_parts = [record.name or ""]
             if record.nos_enabled:
-                name_l.append((record.nos_unknown and _("Unknown")) or record.nos or "")
+                if record.nos_unknown:
+                    name_parts.append(_("Unknown"))
+                elif record.nos:
+                    name_parts.append(record.nos)
             if record.dn_enabled:
-                name_l.append((record.dn_unknown and _("Unknown")) or record.dn or "")
-            name = " / ".join(name_l)
-            res.append((record.id, name))
-        return res
+                if record.dn_unknown:
+                    name_parts.append(_("Unknown"))
+                elif record.dn:
+                    name_parts.append(record.dn)
+            record.display_name = " / ".join(filter(None, name_parts))

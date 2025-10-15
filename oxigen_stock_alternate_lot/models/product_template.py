@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, fields, models
@@ -22,6 +23,7 @@ class ProductTemplate(models.Model):
                 if rec.nos_enabled or rec.dn_enabled:
                     raise ValidationError(
                         _(
-                            "NOS and D/N are not allowed for products without serial number"
+                            "NOS and D/N are not allowed "
+                            "for products without serial number"
                         )
                     )
