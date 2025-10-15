@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-29 10:13+0000\n"
+"POT-Creation-Date: 2026-10-29 09:32+0000\n"
 "PO-Revision-Date: 2022-07-29 10:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,133 +23,126 @@ msgstr "Permitir modificar el campo 'Desconocido' en los Lotes"
 #. module: oxigen_stock_alternate_lot
 #: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_product__dn_enabled
 #: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_template__dn_enabled
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__dn
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__dn
 msgid "D/N"
 msgstr "D/N"
 
 #. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__dn_enabled
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__dn_enabled
 msgid "D/N Enabled"
 msgstr "D/N Habilitado"
 
 #. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__dn_unknown
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__dn_unknown
 msgid "D/N Unknown"
 msgstr "D/N Desconocido"
 
 #. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
-#, python-format
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
+msgid "D/N and D/N Unknown cannot be set at the same time"
+msgstr ""
+
+#. module: oxigen_stock_alternate_lot
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
 msgid "D/N is not allowed for this product %s"
 msgstr "El código D/N no está permitido para este producto %s"
 
 #. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
-#, python-format
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
 msgid "D/N must be defined in this product %s"
+msgstr "El código D/N debe ser definido en este producto %s"
+
+#. module: oxigen_stock_alternate_lot
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
+msgid "D/N must be less or equal than %i characters long"
 msgstr ""
-"El código D/N debe ser definido en este producto %s"
 
 #. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_template__display_name
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_template__id
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__id
-msgid "ID"
-msgstr "ID"
-
-#. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_template____last_update
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
-
-#. module: oxigen_stock_alternate_lot
-#: model:ir.model,name:oxigen_stock_alternate_lot.model_stock_production_lot
+#: model:ir.model,name:oxigen_stock_alternate_lot.model_stock_lot
 msgid "Lot/Serial"
 msgstr "Lote/Número de serie"
 
 #. module: oxigen_stock_alternate_lot
 #: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_product__nos_enabled
 #: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_product_template__nos_enabled
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__nos
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__nos
 msgid "NOS"
 msgstr "NOS"
 
 #. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__nos_enabled
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__nos_enabled
 msgid "NOS Enabled"
 msgstr "NOS Habilitado"
 
 #. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__nos_unknown
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__nos_unknown
 msgid "NOS Unknown"
 msgstr "NOS Desconocido"
 
 #. module: oxigen_stock_alternate_lot
+#. odoo-python
 #: code:addons/oxigen_stock_alternate_lot/models/product_template.py:0
-#, python-format
 msgid "NOS and D/N are not allowed for products without serial number"
 msgstr ""
 "Los codigos NOS y D/N no estan permitidos para productos sin número de serie"
 
 #. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
-#, python-format
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
+msgid "NOS and NOS Unknown cannot be set at the same time"
+msgstr ""
+
+#. module: oxigen_stock_alternate_lot
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
 msgid "NOS is not allowed in this product %s"
 msgstr "El código NOS no está permitido en este producto %s"
 
 #. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
-#, python-format
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
 msgid "NOS must be defined in this product %s"
-msgstr ""
-"El código NOS debe ser definido en este producto %s"
+msgstr "El código NOS debe ser definido en este producto %s"
 
 #. module: oxigen_stock_alternate_lot
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
+msgid "NOS must be exactly %i characters long"
+msgstr ""
+
+#. module: oxigen_stock_alternate_lot
+#. odoo-python
 #: code:addons/oxigen_stock_alternate_lot/models/product_template.py:0
-#, python-format
 msgid "NOS must be selected if D/N is selected"
 msgstr "El código NOS debe ser seleccionado si el D/N está seleccionado"
 
 #. module: oxigen_stock_alternate_lot
 #: model:ir.model,name:oxigen_stock_alternate_lot.model_product_template
-msgid "Product Template"
-msgstr "Plantilla de producto"
+msgid "Product"
+msgstr "Producto"
 
 #. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
-#, python-format
-msgid "This NOS or D/N already exists on another lot %s for this product %s"
-msgstr "Este código NOS o D/N ya existen en otro lote %s para este producto %s"
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
+msgid ""
+"This NOS or D/N already exists on another lot %(lot_name)s for this product "
+"%(product_name)s"
+msgstr ""
+"Este código NOS o D/N ya existen en otro lote %(lot_name)s para este "
+"producto %(product_name)s"
 
 #. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
-#: code:addons/oxigen_stock_alternate_lot/models/stock_production_lot.py:0
+#. odoo-python
+#: code:addons/oxigen_stock_alternate_lot/models/stock_lot.py:0
 #: model_terms:ir.ui.view,arch_db:oxigen_stock_alternate_lot.view_production_lot_form
-#, python-format
 msgid "Unknown"
 msgstr "Desconocido"
 
 #. module: oxigen_stock_alternate_lot
-#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_production_lot__unknown_readonly
+#: model:ir.model.fields,field_description:oxigen_stock_alternate_lot.field_stock_lot__unknown_readonly
 msgid "Unknown Readonly"
 msgstr ""
-
-#. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/product_template.py:0
-#, python-format
-msgid "You cannot disable D/N, it still exists lots with D/N"
-msgstr ""
-"No puedes deshabilitar el código D/N. Aún existen lotes con el código D/N"
-
-#. module: oxigen_stock_alternate_lot
-#: code:addons/oxigen_stock_alternate_lot/models/product_template.py:0
-#, python-format
-msgid "You cannot disable NOS, it still exists lots with NOS"
-msgstr ""
-"No puedes deshabilitar el código NOS. Aún existen lotes con el código NOS"
