@@ -4,9 +4,9 @@
 from odoo.addons.component.core import Component
 
 
-class OxigestiSPMSSaleOrderGenericRecordDirectExportDeleter(Component):
+class OxigestiSPMSSaleOrderRecordDirectExportDeleter(Component):
     _name = "oxigesti.spms.sale.order.record.direct.export.deleter"
-    _inherit = "oxigesti.spms.generic.record.direct.export.deleter"
+    _inherit = "oxigesti.spms.record.direct.export.deleter"
 
     def _delete(self, external_id, binding):
         return self.backend_adapter.write(

@@ -7,7 +7,7 @@ from odoo.addons.component.core import AbstractComponent
 class OxigestiSPMSRecordDirectExporter(AbstractComponent):
     _name = "oxigesti.spms.record.direct.exporter"
     _inherit = [
-        "connector.extension.generic.record.direct.exporter",
+        "connector.extension.record.direct.exporter",
         "oxigesti.spms.connector",
     ]
 
@@ -15,7 +15,7 @@ class OxigestiSPMSRecordDirectExporter(AbstractComponent):
 class OxigestiSPMSBatchDelayedExporter(AbstractComponent):
     _name = "oxigesti.spms.batch.delayed.exporter"
     _inherit = [
-        "connector.extension.generic.batch.delayed.exporter",
+        "connector.extension.batch.delayed.exporter",
         "oxigesti.spms.connector",
     ]
 
@@ -23,6 +23,6 @@ class OxigestiSPMSBatchDelayedExporter(AbstractComponent):
 class OxigestiSPMSBatchDirectExporter(AbstractComponent):
     _name = "oxigesti.spms.batch.direct.exporter"
     _inherit = [
-        "connector.extension.generic.batch.direct.exporter",
+        "connector.extension.batch.direct.exporter",
         "oxigesti.spms.connector",
     ]

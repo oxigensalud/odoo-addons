@@ -6,4 +6,4 @@ from odoo.addons.component.core import AbstractComponent
 
 class OxigestiSPMStBinder(AbstractComponent):
     _name = "oxigesti.spms.binder"
-    _inherit = ["connector.extension.generic.binder", "oxigesti.spms.connector"]
+    _inherit = ["connector.extension.binder", "oxigesti.spms.connector"]
