@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import datetime
 import logging
@@ -45,25 +46,35 @@ def api_handle_errors(message=""):
     try:
         yield
     except NetworkRetryableError as err:
-        raise exceptions.UserError(_("{}Network Error:\n\n{}").format(message, err))
+        raise exceptions.UserError(
+            _("%(message)sNetwork Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except (HTTPError, RequestException, RequestConnectionError) as err:
         raise exceptions.UserError(
-            _("{}API / Network Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sAPI / Network Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.OperationalError as err:
         raise exceptions.UserError(
-            _("{}DB operational Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sDB operational Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.IntegrityError as err:
         raise exceptions.UserError(
-            _("{}DB integrity Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sDB integrity Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.InternalError as err:
-        raise exceptions.UserError(_("{}DB internal Error:\n\n{}").format(message, err))
+        raise exceptions.UserError(
+            _("%(message)sDB internal Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.InterfaceError as err:
         raise exceptions.UserError(
-            _("{}DB interface Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sDB interface Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
 
 
 @contextmanager
@@ -205,14 +216,14 @@ class GenericAdapter(AbstractComponent):
             "select 1 from sys.schemas where name=%(schema)s", dict(schema=self.schema)
         )
         if not schema_exists:
-            raise pymssql.InternalError("The schema %s does not exist" % self.schema)
+            raise pymssql.InternalError(f"The schema {self.schema} does not exist")
 
         # prepare the sql and execute
         sql = self._sql % dict(schema=self.schema)
 
         values = {}
         if filters or fields:
-            sql_l = ["with t as (%s)" % sql]
+            sql_l = [f"with t as ({sql})"]
 
             fields_l = fields or ["*"]
             if fields:
@@ -221,7 +232,7 @@ class GenericAdapter(AbstractComponent):
                         if f not in fields_l:
                             fields_l.append(f)
 
-            sql_l.append("select %s from t" % (", ".join(fields_l),))
+            sql_l.append(f"select {', '.join(fields_l)} from t")
 
             if filters:
                 values, where = domain_to_where(filters)
@@ -243,7 +254,7 @@ class GenericAdapter(AbstractComponent):
             id_t = tuple([rec[f] for f in self._id])
             if id_t in uniq:
                 raise pymssql.IntegrityError(
-                    "Unexpected error: ID duplicated: %s - %s" % (self._id, id_t)
+                    f"Unexpected error: ID duplicated: {self._id} - {id_t}"
                 )
             uniq.add(id_t)
 
@@ -286,7 +297,9 @@ class GenericAdapter(AbstractComponent):
 
         if len(res) > 1:
             raise pymssql.IntegrityError(
-                "Unexpected error: Returned more the one rows:\n%s" % ("\n".join(res),)
+                "Unexpected error: Returned more the one rows:\n{}".format(
+                    "\n".join(res)
+                )
             )
 
         return res and res[0] or []
@@ -303,7 +316,7 @@ class GenericAdapter(AbstractComponent):
             "select 1 from sys.schemas where name=%(schema)s", dict(schema=self.schema)
         )
         if not schema_exists:
-            raise pymssql.InternalError("The schema %s does not exist" % self.schema)
+            raise pymssql.InternalError(f"The schema {self.schema} does not exist")
 
         # get id fieldnames and values
         id_d = dict(zip(self._id, _id, strict=False))
@@ -322,8 +335,8 @@ class GenericAdapter(AbstractComponent):
         # get the set data
         qset_l = []
         for k, (k9, _v) in qset_map_d.items():
-            qset_l.append("%(field)s = %%(%(field9)s)s" % dict(field=k, field9=k9))
-        qset = "%s" % (", ".join(qset_l),)
+            qset_l.append(f"{k} = %({k9})s")
+        qset = f"{', '.join(qset_l)}"
 
         # prepare the sql with base strucrture
         sql = self._sql_update % dict(schema=self.schema, qset=qset)
@@ -370,7 +383,7 @@ class GenericAdapter(AbstractComponent):
             "select 1 from sys.schemas where name=%(schema)s", dict(schema=self.schema)
         )
         if not schema_exists:
-            raise pymssql.InternalError("The schema %s does not exist" % self.schema)
+            raise pymssql.InternalError(f"The schema {self.schema} does not exist")
 
         # build the sql parts
         fields, phvalues = [], []
@@ -379,7 +392,7 @@ class GenericAdapter(AbstractComponent):
             phvalues.append(f"%({k})s")
 
         # build retvalues
-        retvalues = ["inserted.%s" % x for x in self._id]
+        retvalues = [f"inserted.{x}" for x in self._id]
 
         # prepare the sql with base structure
         sql = self._sql_insert % dict(
@@ -401,27 +414,23 @@ class GenericAdapter(AbstractComponent):
             if e.args[0] == 2627:
                 raise ValidationError(
                     _(
-                        "%s\nThis can be caused by a Microsoft SQL Server "
+                        f"{e}\nThis can be caused by a Microsoft SQL Server "
                         "missbehaviour where a field belonging to a PK or "
                         "UK cannot have trailing spaces."
                         "If it has any then a fake IntegrityViolation can be thrown. "
                         "Please check that there's no other "
                         "record on the database with the same key "
                         "fields but with/without trailing spaces, "
-                        "then fix it and try again." % (e,)
+                        "then fix it and try again."
                     )
-                )
+                ) from e
             raise
 
         if not res:
             raise Exception(_("Unexpected!! Nothing created: %s") % (values_d,))
         elif len(res) > 1:
             raise Exception(
-                "Unexpected!!: Returned more the one row:%s -  %s"
-                % (
-                    res,
-                    values_d,
-                )
+                f"Unexpected!!: Returned more the one row:{res} -  {values_d}"
             )
 
         return res[0]
@@ -437,7 +446,7 @@ class GenericAdapter(AbstractComponent):
             "select 1 from sys.schemas where name=%(schema)s", dict(schema=self.schema)
         )
         if not schema_exists:
-            raise pymssql.InternalError("The schema %s does not exist" % self.schema)
+            raise pymssql.InternalError(f"The schema {self.schema} does not exist")
 
         # prepare the sql with base strucrture
         if not hasattr(self, "_sql_delete"):

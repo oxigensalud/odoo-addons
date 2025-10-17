@@ -1,0 +1,1 @@
+Oxigesti-Odoo connector

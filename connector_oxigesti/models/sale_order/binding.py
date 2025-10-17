@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, fields, models
@@ -33,9 +34,21 @@ class SaleOrder(models.Model):
             if rec.state == "cancel" and rec.oxigesti_bind_ids:
                 raise ValidationError(
                     _(
-                        "It's not possible cancel a sale order when it has oxigesti binding"
+                        "It's not possible cancel a sale "
+                        "order when it has oxigesti binding"
                     )
                 )
+
+    def action_confirm(self):
+        for rec in self:
+            super(SaleOrder, rec).action_confirm()
+            self._event("on_confirm_order").notify(rec)
+        return True
+
+    def action_cancel(self):
+        res = super().action_cancel()
+        self._event("on_cancel_order").notify(self)
+        return res
 
 
 class SaleOrderBinding(models.Model):

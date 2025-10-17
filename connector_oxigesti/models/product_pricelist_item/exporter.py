@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.addons.component.core import Component
@@ -58,7 +59,7 @@ class ProductPricelistItemChunkExporter(Component):
         for p in self.env["res.partner"].with_context(active_test=False).search(domain):
             partner_external_id = partner_binder.to_external(p, wrap=True)
             for pl in p.property_product_pricelist.item_ids.filtered(
-                lambda x: (
+                lambda x, p=p: (
                     not since_date
                     or x.oxigesti_write_date > since_date
                     or p.oxigesti_pricelist_write_date > since_date

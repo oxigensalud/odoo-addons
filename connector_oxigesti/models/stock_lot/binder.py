@@ -1,18 +1,19 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.addons.component.core import Component
 
 
 class StockProductionLotBinder(Component):
-    _name = "oxigesti.stock.production.lot.binder"
+    _name = "oxigesti.stock.lot.binder"
     _inherit = "oxigesti.binder"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
     def _get_external_id(self, binding):
         if not self._is_binding(binding):
-            raise Exception("The source object %s must be a binding" % binding._name)
+            raise Exception(f"The source object {binding._name} must be a binding")
 
         product_binder = self.binder_for("oxigesti.product.product")
         product_external_id = product_binder.to_external(

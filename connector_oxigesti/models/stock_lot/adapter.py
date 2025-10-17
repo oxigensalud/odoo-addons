@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -7,10 +8,10 @@ from odoo.addons.component.core import Component
 
 
 class StockProductionLotAdapter(Component):
-    _name = "oxigesti.stock.production.lot.adapter"
+    _name = "oxigesti.stock.lot.adapter"
     _inherit = "oxigesti.adapter"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
     _sql = """select l.CodigoArticulo, l.Lote, l.nos, l.nos_unknown,
                      l.dn, l.dn_unknown, l.write_date

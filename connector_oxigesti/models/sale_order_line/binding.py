@@ -14,6 +14,17 @@ class SaleOrderLine(models.Model):
         string="Oxigesti Bindings",
     )
 
+    def action_confirm(self):
+        for rec in self:
+            super().action_confirm()
+            self._event("on_confirm_order").notify(rec)
+        return True
+
+    def action_cancel(self):
+        res = super().action_cancel()
+        self._event("on_cancel_order").notify(self)
+        return res
+
 
 class SaleOrderLineBinding(models.Model):
     _name = "oxigesti.sale.order.line"
