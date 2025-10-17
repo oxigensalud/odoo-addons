@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 import json
@@ -35,10 +36,11 @@ class SaleOrderImporter(Component):
             if order.name != odoo_num_alb:
                 raise ValidationError(
                     _(
-                        "Inconsistent state: The Odoo sale order number on Oxigesti '%s' "
-                        "is different than the one it's been trying to update on Odoo '%s'"
+                        f"Inconsistent state: The Odoo sale "
+                        f"order number on Oxigesti '{odoo_num_alb}' "
+                        f"is different than the one it's been "
+                        f"trying to update on Odoo '{order.name}'"
                     )
-                    % (odoo_num_alb, order.name)
                 )
             if order.state != "draft":
                 state_option = dict(
@@ -47,8 +49,9 @@ class SaleOrderImporter(Component):
                     .get("selection")
                 )
                 return _(
-                    "The Order %s is already imported and is in state '%s' "
-                    "-> Update not allowed" % (order.name, state_option[order.state])
+                    f"The Order {order.name} is already "
+                    f"imported and is in state '{state_option[order.state]}' "
+                    f"-> Update not allowed"
                 )
         else:
             if odoo_num_alb:
@@ -116,7 +119,7 @@ class SaleOrderImporter(Component):
             ]
 
         exporter = self.component(
-            usage="direct.batch.exporter", model_name="oxigesti.stock.production.lot"
+            usage="direct.batch.exporter", model_name="oxigesti.stock.lot"
         )
         exporter.run(domain=domain)
 
@@ -129,11 +132,11 @@ class SaleOrderImporter(Component):
         # order validation
         binder = self.component(usage="binder")
         sale_order = binder.unwrap_binding(binding)
-        sale_order.onchange_partner_id()
+        sale_order._onchange_partner_id()
         for line in sale_order.order_line:
-            line.product_id_change()
+            line._onchange_product_id()
         sale_order.with_context(skip_reserved_quantity=True).action_confirm()
-        sale_order.action_done()
+        sale_order.action_lock()
 
         # picking validation
         stock_order_lines = binding.oxigesti_order_line_ids.filtered(
@@ -148,29 +151,30 @@ class SaleOrderImporter(Component):
             for order_line_id in stock_order_lines:
                 if len(order_line_id.move_ids) > 1:
                     raise AssertionError(
-                        "The order line '%s' has more than one move lines. "
-                        "It should be exactly 1. " % (order_line_id,)
+                        f"The order line '{order_line_id}' "
+                        f"has more than one move lines. "
+                        f"It should be exactly 1."
                     )
                 move_id = order_line_id.move_ids
-                if move_id.move_line_ids:
-                    raise AssertionError(
-                        "The movement '%s' already has lines. "
-                        "It should be empty before inserting the new data" % (move_id,)
-                    )
+                # if move_id.move_line_ids:
+                #     raise AssertionError(
+                #         f"The movement '{move_id}' already has lines. "
+                #         f"It should be empty before inserting the new data"
+                #     )
                 if not picking_id:
                     picking_id = move_id.picking_id
                 else:
                     if picking_id != move_id.picking_id:
                         raise AssertionError(
-                            "Unexpected error! The same order contains lines "
-                            "belonging to a different picking '%s' and '%s'"
-                            % (picking_id.name, move_id.picking_id.name)
+                            f"Unexpected error! The same order contains lines "
+                            f"belonging to a different picking '{picking_id.name}"
+                            f"' and '{move_id.picking_id.name}'"
                         )
                 move_line_id_d = {
                     "product_id": move_id.product_id.id,
                     "location_id": move_id.location_id.id,
                     "location_dest_id": move_id.location_dest_id.id,
-                    "qty_done": move_id.product_uom_qty,
+                    "quantity": move_id.product_uom_qty,
                     "product_uom_id": move_id.product_uom.id,
                     "picking_id": picking_id.id,
                 }
@@ -182,7 +186,7 @@ class SaleOrderImporter(Component):
                     tracking_name = "999"
 
                 if tracking_name:
-                    Lot = self.env["stock.production.lot"]
+                    Lot = self.env["stock.lot"]
                     lot_id = Lot.search(
                         [
                             ("company_id", "=", self.backend_record.company_id.id),
