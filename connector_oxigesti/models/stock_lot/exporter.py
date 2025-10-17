@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.addons.component.core import Component
@@ -11,10 +12,10 @@ class StockProductionLotBatchExporter(Component):
     For every product in the list, a delayed job is created.
     """
 
-    _name = "oxigesti.stock.production.lot.delayed.batch.exporter"
+    _name = "oxigesti.stock.lot.delayed.batch.exporter"
     _inherit = "oxigesti.delayed.batch.exporter"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
 
 class StockProductionLotDirectBatchExporter(Component):
@@ -23,17 +24,17 @@ class StockProductionLotDirectBatchExporter(Component):
     For every Lot in the list, execute inmediately.
     """
 
-    _name = "oxigesti.stock.production.lot.direct.batch.exporter"
+    _name = "oxigesti.stock.lot.direct.batch.exporter"
     _inherit = "oxigesti.direct.batch.exporter"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
 
 class StockProductionLotExporter(Component):
-    _name = "oxigesti.stock.production.lot.exporter"
+    _name = "oxigesti.stock.lot.exporter"
     _inherit = "oxigesti.exporter"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
     def _must_skip(self, binding):
         if not binding:

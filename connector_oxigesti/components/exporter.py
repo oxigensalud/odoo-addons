@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 import logging
@@ -7,7 +8,7 @@ import logging
 from odoo import _
 
 from odoo.addons.component.core import AbstractComponent
-from odoo.addons.queue_job.exception import NothingToDoJob
+from odoo.addons.queue_job.exception import FailedJobError
 
 _logger = logging.getLogger(__name__)
 
@@ -61,7 +62,7 @@ class OxigestiExporter(AbstractComponent):
                 )
             try:
                 importer.run(external_id)
-            except NothingToDoJob:
+            except FailedJobError:
                 _logger.info(
                     "Dependency import of %s(%s) has been ignored.",
                     binding_model._name,
@@ -112,10 +113,10 @@ class OxigestiExporter(AbstractComponent):
             self.external_id = self._create(record)
             operation = _("created")
 
-        return _("Export successful: Record %s with ID %s on Backend.") % (
-            operation,
-            self.external_id,
-        )
+        return _(
+            "Export successful: Record "
+            "%(operation)s with ID %(external_id)s on Backend."
+        ) % {"operation": operation, "external_id": self.external_id}
 
 
 class OxigestiBatchExporter(AbstractComponent):

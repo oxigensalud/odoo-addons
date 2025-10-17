@@ -1,2 +1,2 @@
 # generated from manifests external_dependencies
-pymssql>=2.2.5,<2.3
+pymssql>=2.2.5,<3.0

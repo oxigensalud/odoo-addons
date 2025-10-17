@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _
 from odoo.exceptions import ValidationError
@@ -12,10 +13,10 @@ class StockProductionLotDelayedBatchImporter(Component):
     For every stock production lot in the list, a delayed job is created.
     """
 
-    _name = "oxigesti.stock.production.lot.delayed.batch.importer"
+    _name = "oxigesti.stock.lot.delayed.batch.importer"
     _inherit = "oxigesti.delayed.batch.importer"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
 
 class StockProductionLotDirectBatchImporter(Component):
@@ -24,17 +25,17 @@ class StockProductionLotDirectBatchImporter(Component):
     For every stock production lot in the list, import it directly.
     """
 
-    _name = "oxigesti.stock.production.lot.direct.batch.importer"
+    _name = "oxigesti.stock.lot.direct.batch.importer"
     _inherit = "oxigesti.direct.batch.importer"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
 
 class StockProductionLotImporter(Component):
-    _name = "oxigesti.stock.production.lot.importer"
+    _name = "oxigesti.stock.lot.importer"
     _inherit = "oxigesti.importer"
 
-    _apply_on = "oxigesti.stock.production.lot"
+    _apply_on = "oxigesti.stock.lot"
 
     def _import_dependencies(self):
         # Product
