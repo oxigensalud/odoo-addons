@@ -39,7 +39,7 @@ class BinderComposite(AbstractComponent):
             self._external_field = [self._external_field]
 
         domain = [(self._backend_field, "=", self.backend_record.id)]
-        for k, v in zip(self._external_field, external_id):
+        for k, v in zip(self._external_field, external_id, strict=False):
             domain.append((k, "=", v))
 
         bindings = self.model.with_context(active_test=False).search(domain)
@@ -89,11 +89,13 @@ class BinderComposite(AbstractComponent):
         :type binding: int
         """
         # Prevent False, None, or "", but not 0
-        assert (
-            external_id or external_id == 0
-        ) and binding, "external_id or binding missing, " "got: %s, %s" % (
-            external_id,
-            binding,
+        assert (external_id or external_id == 0) and binding, (
+            "external_id or binding missing, "
+            "got: %s, %s"
+            % (
+                external_id,
+                binding,
+            )
         )
         # avoid to trigger the export when we modify the `external_id`
         now_fmt = fields.Datetime.now()
@@ -106,6 +108,6 @@ class BinderComposite(AbstractComponent):
             self._external_field = [self._external_field]
 
         values = {self._sync_date_field: now_fmt}
-        values.update(dict(zip(self._external_field, external_id)))
+        values.update(dict(zip(self._external_field, external_id, strict=False)))
 
         binding.with_context(connector_no_export=True).write(values)
