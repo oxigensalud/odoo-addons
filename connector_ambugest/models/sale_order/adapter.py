@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -20,7 +21,8 @@ class SaleOrderAdapter(Component):
                      s.Codigo_Ida_y_Vuelta, s.Servicio_de_vuelta
               from %(schema)s.Odoo_Servicios s
                     left join %(schema)s.Odoo_Aseguradoras_por_Clientes a on
-                       s.Cliente = a.Cliente and s.Cliente_Aseguradora = a.Codigo_Aseguradora,
+                       s.Cliente = a.Cliente and
+                       s.Cliente_Aseguradora = a.Codigo_Aseguradora,
                    %(schema)s."Unidades productivas" c
               where c."Activa_en_AmbuGEST" = 1 and
                     cast(c."Codi UP" as integer) >= 90000 and
@@ -31,7 +33,8 @@ class SaleOrderAdapter(Component):
 
     _sql_update = """update s
                      set %(qset)s
-                     from %(schema)s.Odoo_Servicios s, %(schema)s."Unidades productivas" c
+                     from %(schema)s.Odoo_Servicios s,
+                     %(schema)s."Unidades productivas" c
                      where c."Activa_en_AmbuGEST" = 1 and
                            cast(c."Codi UP" as integer) >= 90000 and
                            s.Cliente = c.Cliente and

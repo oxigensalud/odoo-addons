@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
 <!---->
 <odoo>
     <record id="product_product_only_form_view" model="ir.ui.view">
         <field name="name">product.product.ambugest.connector.form</field>
         <field name="model">product.product</field>
-        <field
-            name="inherit_id"
-            ref="connector_common.view_product_product_connector_form"
-        />
+        <field name="inherit_id" ref="product.product_normal_form_view" />
         <field name="arch" type="xml">
-            <page name="connector" position="attributes">
-                <attribute name="invisible">0</attribute>
-            </page>
-            <page name="connector" position="inside">
-                <group string="Ambugest Bindings">
-                    <field name="ambugest_bind_ids" nolabel="1" />
-                </group>
-            </page>
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page
+                    string="Connectors"
+                    name="connector"
+                    groups="connector.group_connector_manager"
+                >
+                    <group string="Ambugest Bindings">
+                        <field name="ambugest_bind_ids" nolabel="1" />
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 
@@ -39,10 +40,10 @@
     </record>
 
     <record id="ambugest_product_product_view_tree" model="ir.ui.view">
-        <field name="name">ambugest.product.product.tree</field>
+        <field name="name">ambugest.product.product.list</field>
         <field name="model">ambugest.product.product</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="backend_id" />
                 <field name="odoo_id" />
                 <field name="ambugest_empresa" readonly="True" />
@@ -54,13 +55,13 @@
                     string="Resynchronize"
                     icon="fa-refresh fa-lg"
                 />
-            </tree>
+            </list>
         </field>
     </record>
 
     <record id="ambugest_product_product_action" model="ir.actions.act_window">
         <field name="name">Product</field>
         <field name="res_model">ambugest.product.product</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>

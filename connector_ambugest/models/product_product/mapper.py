@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -47,14 +48,14 @@ class ProductProductImportMapper(Component):
     @mapping
     def taxes(self, record):
         tax_ref = "%s.%i_%s" % (
-            "l10n_es",
+            "account",
             self.backend_record.company_id.id,
             "account_tax_template_s_iva0",
         )
-        tax_id = self.env.ref(tax_ref).id
+        tax = self.env.ref(tax_ref)
 
         return {
-            "taxes_id": [(6, False, [tax_id])],
+            "taxes_id": [(6, False, tax.ids)],
             "supplier_taxes_id": [(6, False, [])],
         }
 
@@ -95,7 +96,7 @@ class ProductProductImportMapper(Component):
         if product:
             if len(product) > 1:
                 raise Exception(
-                    "There's more than one existing products "
-                    "with the same Internal reference %s" % record["Odoo_Articulo"]
+                    f"There's more than one existing products with"
+                    f" the same Internal reference {record['Odoo_Articulo']}"
                 )
             return {"odoo_id": (product.id, False, None)}

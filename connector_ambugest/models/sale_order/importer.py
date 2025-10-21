@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -33,10 +34,10 @@ class SaleOrderImporter(Component):
                 order.fields_get(["state"], ["selection"]).get("state").get("selection")
             )
 
-            return _(
-                "The Order %s is %s -> Update not allowed"
-                % (order.name, state_option[order.state])
-            )
+            return _("The Order %(order)s is %(state)s -> Update not allowed") % {
+                "order": order.name,
+                "state": state_option[order.state],
+            }
 
         return None
 
@@ -47,8 +48,8 @@ class SaleOrderImporter(Component):
 
     def _import_finalize(self, binding):
         sale_order = self.component(usage="binder").unwrap_binding(binding)
-        sale_order.onchange_partner_id()
+        sale_order._onchange_partner_id()
         for line in sale_order.order_line:
-            line.product_id_change()
+            line._onchange_product_id()
         sale_order.action_confirm()
-        sale_order.action_done()
+        sale_order.action_lock()

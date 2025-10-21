@@ -8,7 +8,7 @@ from odoo import _
 
 from odoo.addons.component.core import AbstractComponent
 from odoo.addons.connector.exception import IDMissingInBackend
-from odoo.addons.queue_job.exception import NothingToDoJob
+from odoo.addons.queue_job.exception import FailedJobError
 
 _logger = logging.getLogger(__name__)
 
@@ -73,7 +73,7 @@ class AmbugestImporter(AbstractComponent):
                 )
             try:
                 importer.run(external_id)
-            except NothingToDoJob:
+            except FailedJobError:
                 _logger.info(
                     "Dependency import of %s(%s) has been ignored.",
                     binding_model._name,
@@ -144,7 +144,7 @@ class AmbugestImporter(AbstractComponent):
             odoo_link_field = "odoo_id"
             values = internal_data.values(for_create=True)
             if odoo_link_field in values:
-                if isinstance(values[odoo_link_field], (tuple, list)):
+                if isinstance(values[odoo_link_field], (tuple | list)):
                     odoo_id, overwrite, add_fields = values[odoo_link_field]
                     if not overwrite:
                         values = internal_data.values()

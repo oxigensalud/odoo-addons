@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -11,7 +12,8 @@ class SaleOrderLineAdapter(Component):
     _apply_on = "ambugest.sale.order.line"
 
     _sql = """select c.EMPRESA,
-                     l.Fecha_Servicio, l.Codigo_Servicio, l.Servicio_Dia, l.Servicio_Ano,
+                     l.Fecha_Servicio, l.Codigo_Servicio, l.Servicio_Dia,
+                     l.Servicio_Ano,
                      l.Articulo,
                      l.Cantidad
               from %(schema)s.Odoo_Servicios_Cargos l, %(schema)s.Odoo_Servicios s,

@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 import logging
@@ -42,25 +43,35 @@ def api_handle_errors(message=""):
     try:
         yield
     except NetworkRetryableError as err:
-        raise exceptions.UserError(_("{}Network Error:\n\n{}").format(message, err))
+        raise exceptions.UserError(
+            _("%(message)sNetwork Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except (HTTPError, RequestException, RequestConnectionError) as err:
         raise exceptions.UserError(
-            _("{}API / Network Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sAPI / Network Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.OperationalError as err:
         raise exceptions.UserError(
-            _("{}DB operational Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sDB operational Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.IntegrityError as err:
         raise exceptions.UserError(
-            _("{}DB integrity Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sDB integrity Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.InternalError as err:
-        raise exceptions.UserError(_("{}DB internal Error:\n\n{}").format(message, err))
+        raise exceptions.UserError(
+            _("%(message)sDB internal Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
     except pymssql.InterfaceError as err:
         raise exceptions.UserError(
-            _("{}DB interface Error:\n\n{}").format(message, err)
-        )
+            _("%(message)sDB interface Error:\n\n%(error)s")
+            % {"message": message, "error": err}
+        ) from err
 
 
 class CRUDAdapter(AbstractComponent):
@@ -142,14 +153,16 @@ class GenericAdapter(AbstractComponent):
             "select 1 from sys.schemas where name=%s", (self.schema,)
         )
         if not schema_exists:
-            raise pymssql.InternalError("The schema %s does not exist" % self.schema)
+            raise pymssql.InternalError(
+                _("The schema %(schema)s does not exist") % {"schema": self.schema}
+            )
 
         # prepare the sql and execute
         sql = self._sql % dict(schema=self.schema)
 
         values = []
         if filters or fields:
-            sql_l = ["with t as (%s)" % sql]
+            sql_l = [f"with t as ({sql})"]
 
             fields_l = fields or ["*"]
             if fields:
@@ -158,14 +171,14 @@ class GenericAdapter(AbstractComponent):
                         if f not in fields_l:
                             fields_l.append(f)
 
-            sql_l.append("select %s from t" % (", ".join(fields_l),))
+            sql_l.append(f"select {', '.join(fields_l)} from t")
 
             if filters:
                 where = []
                 for k, v in filters.items():
-                    where.append("%s = %%s" % k)
+                    where.append(f"{k} = %s")
                     values.append(v)
-                sql_l.append("where %s" % (" and ".join(where),))
+                sql_l.append(f"where {' and '.join(where)}")
 
             sql = " ".join(sql_l)
 
@@ -182,7 +195,7 @@ class GenericAdapter(AbstractComponent):
             id_t = tuple([rec[f] for f in self._id])
             if id_t in uniq:
                 raise pymssql.IntegrityError(
-                    "Unexpected error: ID duplicated: %s - %s" % (self._id, id_t)
+                    f"Unexpected error: ID duplicated: {self._id} - {id_t}"
                 )
             uniq.add(id_t)
 
@@ -217,7 +230,8 @@ class GenericAdapter(AbstractComponent):
 
         if len(res) > 1:
             raise pymssql.IntegrityError(
-                "Unexpected error: Returned more the one rows:\n%s" % ("\n".join(res),)
+                f"Unexpected error: Returned more the "
+                f"one rows:\n{chr(10).join(str(r) for r in res)}"
             )
 
         return res and res[0] or []
@@ -234,7 +248,9 @@ class GenericAdapter(AbstractComponent):
             "select 1 from sys.schemas where name=%s", (self.schema,)
         )
         if not schema_exists:
-            raise pymssql.InternalError("The schema %s does not exist" % self.schema)
+            raise pymssql.InternalError(
+                _("The schema %(schema)s does not exist") % {"schema": self.schema}
+            )
 
         # get id fieldnames and values
         id_d = dict(zip(self._id, _id, strict=False))
@@ -254,8 +270,8 @@ class GenericAdapter(AbstractComponent):
         # get the set data
         qset_l = []
         for k, (k9, _v) in qset_map_d.items():
-            qset_l.append("%(field)s = %%(%(field9)s)s" % dict(field=k, field9=k9))
-        qset = "%s" % (", ".join(qset_l),)
+            qset_l.append(f"{k} = %({k9})s")
+        qset = ", ".join(qset_l)
 
         # prepare the sql with base strucrture
         sql = self._sql_update % dict(schema=self.schema, qset=qset)
@@ -271,13 +287,13 @@ class GenericAdapter(AbstractComponent):
         count = cr.rowcount
         if count == 0:
             raise Exception(
-                _("The record does not exist in %s: %s")
-                % (self.backend_record.name, id_d)
+                _("The record does not exist in %(backend)s: %(id)s")
+                % {"backend": self.backend_record.name, "id": id_d}
             )
         elif count > 1:
             conn.rollback()
             raise pymssql.IntegrityError(
-                "Unexpected error: Returned more the one rows: with ID: %s" % (id_d,)
+                f"Unexpected error: Returned more the one rows: with ID: {id_d}"
             )
         conn.commit()
         cr.close()

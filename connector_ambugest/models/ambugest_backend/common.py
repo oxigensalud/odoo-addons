@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 import logging
@@ -39,18 +40,18 @@ class AmbugestBackend(models.Model):
             ("production", "In Production"),
         ]
 
-    name = fields.Char("Name", required=True)
+    name = fields.Char(required=True)
 
-    server = fields.Char("Server", required=True)
-    port = fields.Integer("Port", required=True)
+    server = fields.Char(required=True)
+    port = fields.Integer(required=True)
 
-    database = fields.Char("Database", required=True)
-    schema = fields.Char("Schema", required=True)
+    database = fields.Char(required=True)
+    schema = fields.Char(required=True)
 
-    version = fields.Text("Version", readonly=True)
+    version = fields.Text(readonly=True)
 
-    username = fields.Char("Username", required=True)
-    password = fields.Char("Password", required=True)
+    username = fields.Char(required=True)
+    password = fields.Char(required=True)
 
     company_id = fields.Many2one(
         comodel_name="res.company",
@@ -64,8 +65,8 @@ class AmbugestBackend(models.Model):
 
     ambugest_company_id = fields.Integer("Ambugest company ID", required=True)
 
-    active = fields.Boolean(string="Active", default=True)
-    state = fields.Selection(selection="_select_state", string="State", default="draft")
+    active = fields.Boolean(default=True)
+    state = fields.Selection(selection="_select_state", default="draft")
 
     import_services_since_date = fields.Datetime("Import Services since")
     import_customers_since_date = fields.Datetime("Import Customers since")
@@ -76,7 +77,8 @@ class AmbugestBackend(models.Model):
         string="Timezone",
         required=True,
         default=lambda self: self._context.get("tz") or self.env.user.tz or "UTC",
-        help="This field is used in order to define in which timezone the backend will work.",
+        help="This field is used in order to "
+        "define in which timezone the backend will work.",
     )
 
     def button_reset_to_draft(self):
@@ -143,13 +145,14 @@ class AmbugestBackend(models.Model):
         self.search(domain).import_services_since()
 
     def tz_to_utc(self, dt):
-        t = pytz.timezone(self.tz).localize(dt)
-        t = t.astimezone(pytz.utc)
-        t = t.replace(tzinfo=None)
-        return t
+        datetime_local = pytz.timezone(self.tz).localize(dt)
+        datetime_utc = datetime_local.astimezone(pytz.utc)
+        datetime_utc_naive = datetime_utc.replace(tzinfo=None)
+        return datetime_utc_naive
 
     def tz_to_local(self, dt):
         local_tz = pytz.timezone(self.tz)
         datetime_utc = pytz.utc.localize(dt)
         datetime_local = datetime_utc.astimezone(local_tz)
-        return datetime_local
+        datetime_local_naive = datetime_local.replace(tzinfo=None)
+        return datetime_local_naive

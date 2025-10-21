@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -33,8 +34,8 @@ class SaleOrderLineImportMapper(Component):
         binder = self.binder_for("ambugest.product.product")
         product = binder.to_internal(external_id, unwrap=True)
         assert product, (
-            "product_id %s should have been imported in "
-            "ProductProductImporter._import_dependencies" % (external_id,)
+            f"product_id {external_id} should have been "
+            f"imported in ProductProductImporter._import_dependencies"
         )
 
         return {"product_id": product.id}

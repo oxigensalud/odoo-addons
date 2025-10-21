@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 
@@ -81,8 +82,8 @@ class ResPartnerImportMapper(Component):
         if partner:
             if len(partner) > 1:
                 raise Exception(
-                    "There's more than one existing partner "
-                    "with the same Internal reference %s" % reference
+                    f"There's more than one existing partner"
+                    f" with the same Internal reference {reference}"
                 )
             return {"odoo_id": (partner.id, False, {"to_review": True})}
 

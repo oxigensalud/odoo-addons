@@ -14,6 +14,17 @@ class SaleOrder(models.Model):
         string="Ambugest Bindings",
     )
 
+    def action_confirm(self):
+        for rec in self:
+            super(SaleOrder, rec).action_confirm()
+            self._event("on_confirm_order").notify(rec)
+        return True
+
+    def action_cancel(self):
+        res = super().action_cancel()
+        self._event("on_cancel_order").notify(self)
+        return res
+
 
 class SaleOrderBinding(models.Model):
     _name = "ambugest.sale.order"

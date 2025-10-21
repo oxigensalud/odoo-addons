@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
 <!---->
 <odoo>
@@ -36,10 +37,10 @@
     </record>
 
     <record id="ambugest_res_partner_view_tree" model="ir.ui.view">
-        <field name="name">ambugest.res.partner.tree</field>
+        <field name="name">ambugest.res.partner.list</field>
         <field name="model">ambugest.res.partner</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="backend_id" />
                 <field name="odoo_id" />
                 <field name="ambugest_empresa" />
@@ -51,13 +52,13 @@
                     string="Resynchronize"
                     icon="fa-refresh fa-lg"
                 />
-            </tree>
+            </list>
         </field>
     </record>
 
     <record id="ambugest_res_partner_action" model="ir.actions.act_window">
         <field name="name">Customers</field>
         <field name="res_model">ambugest.res.partner</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>
