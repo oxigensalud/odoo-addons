@@ -21,8 +21,8 @@
                 <span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
                 <span t-if="o.partner_id.city" t-field="o.partner_id.city" />
                 <span t-if="o.partner_id.country_id">(<span
-                        t-field="o.partner_id.country_id"
-                    />)
+                    t-field="o.partner_id.country_id"
+                />)
                 </span>
             </div>
         </p>

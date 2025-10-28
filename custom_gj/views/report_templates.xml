@@ -3,7 +3,6 @@
      Eric Antones <eantones@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
 <odoo>
-
     <template id="external_layout_gj">
         <div
             t-attf-class="header o_company_#{company.id}_layout"
@@ -29,8 +28,8 @@
                         </div>
                     </p>
                     <p t-if="company.partner_id.vat"><t
-                            t-esc="company.partner_id.country_id.vat_label or 'TIN'"
-                        />:
+                        t-esc="company.partner_id.country_id.vat_label or 'TIN'"
+                    />:
                         <span t-field="company.partner_id.vat" />
                     </p>
                     <p>
@@ -70,8 +69,7 @@
             <t t-raw="0" />
         </div>
 
-        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
-        </div>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout" />
     </template>
 
     <template id="external_layout_adda">
@@ -129,37 +127,32 @@
         <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
             <div class="text-center" style="font-size: 10px;">
                 <ul class="list-inline mb4">
-                    <li t-if="company.name" class="list-inline-item d-inline"><span
-                            class="o_force_ltr"
-                            t-field="company.name"
-                        /></li>
-                    <li t-if="company.phone" class="list-inline-item d-inline"><span
-                            class="o_force_ltr"
-                            t-field="company.phone"
-                        /></li>
-                    <li t-if="company.email" class="list-inline-item d-inline"><span
-                            t-field="company.email"
-                        /></li>
-                    <li t-if="company.website" class="list-inline-item d-inline"><span
-                            t-field="company.website"
-                        /></li>
+                    <li t-if="company.name" class="list-inline-item d-inline">
+                        <span class="o_force_ltr" t-field="company.name" />
+                    </li>
+                    <li t-if="company.phone" class="list-inline-item d-inline">
+                        <span class="o_force_ltr" t-field="company.phone" />
+                    </li>
+                    <li t-if="company.email" class="list-inline-item d-inline">
+                        <span t-field="company.email" />
+                    </li>
+                    <li t-if="company.website" class="list-inline-item d-inline">
+                        <span t-field="company.website" />
+                    </li>
                     <li t-if="company.vat" class="list-inline-item d-inline"><t
-                            t-esc="company.country_id.vat_label or 'TIN'"
-                        />: <span t-field="company.vat" /></li>
+                        t-esc="company.country_id.vat_label or 'TIN'"
+                    />: <span t-field="company.vat" /></li>
                 </ul>
                 <ul class="list-inline mb4">
-                    <li t-if="company.street" class="list-inline-item d-inline"><span
-                            class="o_force_ltr"
-                            t-field="company.street"
-                        /></li>
-                    <li t-if="company.zip" class="list-inline-item d-inline"><span
-                            class="o_force_ltr"
-                            t-field="company.zip"
-                        /></li>
-                    <li t-if="company.state_id" class="list-inline-item d-inline"><span
-                            class="o_force_ltr"
-                            t-field="company.state_id"
-                        /></li>
+                    <li t-if="company.street" class="list-inline-item d-inline">
+                        <span class="o_force_ltr" t-field="company.street" />
+                    </li>
+                    <li t-if="company.zip" class="list-inline-item d-inline">
+                        <span class="o_force_ltr" t-field="company.zip" />
+                    </li>
+                    <li t-if="company.state_id" class="list-inline-item d-inline">
+                        <span class="o_force_ltr" t-field="company.state_id" />
+                    </li>
                 </ul>
 
                 <div name="financial_infos">
@@ -184,5 +177,4 @@
         <field name="sequence">110</field>
         <field name="view_id" ref="custom_gj.external_layout_adda" />
     </record>
-
 </odoo>
