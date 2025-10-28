@@ -6,7 +6,7 @@
         inherit_id="account.report_invoice_document"
     >
         <xpath expr="//div[@id='informations']" position="after">
-             <div t-if="o.invoice_origin and len(o.invoice_origin)>12" name="origin">
+            <div t-if="o.invoice_origin and len(o.invoice_origin)>12" name="origin">
                 <strong>Source:</strong>
                 <p class="m-0" t-field="o.invoice_origin" />
             </div>
