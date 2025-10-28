@@ -9,7 +9,7 @@
             <form string='Unposted entries'>
                 <field name="fiscalyear_lock_date" invisible="1" />
                 <sheet>
-                        <p
+                    <p
                     >Change draft entries date to "Lock Date for All Users" + 1 day?</p>
                 </sheet>
                 <footer>
@@ -61,9 +61,10 @@
                     class="o_form_label"
                     attrs="{'invisible':[('show_change_date_msg','=',False)]}"
                 >
-                    <strong><p>Draft entries date changed successfully!</p></strong>
+                    <strong>
+                        <p>Draft entries date changed successfully!</p>
+                    </strong>
                 </span>
-
             </xpath>
         </field>
     </record>

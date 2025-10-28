@@ -32,7 +32,7 @@
                 <attribute name="string">Total (€)</attribute>
             </xpath>
             <xpath expr="//field[@name='amount_total_signed']" position="after">
-                 <field
+                <field
                     name="amount_total"
                     string="Total (currency)"
                     sum="Total"
@@ -53,5 +53,4 @@
             </field>
         </field>
     </record>
-
 </odoo>
