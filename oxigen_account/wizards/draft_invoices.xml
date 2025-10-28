@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 ACSONE SA/NV
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="view_change_draft_date" model="ir.ui.view">
@@ -55,12 +56,9 @@
             ref="account_lock_date_update.account_update_lock_date_form_view"
         />
         <field name="arch" type="xml">
-            <xpath expr="//group[@id='main']" position="before">
+            <xpath expr="//group[@id='soft_lock_dates']" position="before">
                 <field name="show_change_date_msg" invisible="1" />
-                <span
-                    class="o_form_label"
-                    attrs="{'invisible':[('show_change_date_msg','=',False)]}"
-                >
+                <span class="o_form_label" invisible="show_change_date_msg == False">
                     <strong>
                         <p>Draft entries date changed successfully!</p>
                     </strong>

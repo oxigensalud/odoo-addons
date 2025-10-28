@@ -1,3 +1,7 @@
+# Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
+
 from dateutil import relativedelta
 
 from odoo import api, fields, models
@@ -32,8 +36,8 @@ class AccountUpdateLockDate(models.TransientModel):
             ]
         )
         return {
-            "view_mode": "tree",
-            "view_type": "tree",
+            "view_mode": "list",
+            "view_type": "list",
             "name": "Unposted Entries",
             "res_model": "account.move",
             "type": "ir.actions.act_window",
