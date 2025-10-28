@@ -5,12 +5,12 @@
 <odoo>
     <template
         id="report_invoice_document_inherit_sale_inherit_custom_gj"
-        inherit_id="sale.report_invoice_document_inherit_sale"
+        inherit_id="sale.report_saleorder_document"
     >
-        <xpath expr="//div[@t-field='o.partner_id']" position="attributes">
+        <xpath expr="//div[@t-field='doc.partner_id']" position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
-        <xpath expr="//div[@t-field='o.partner_id']" position="after">
+        <xpath expr="//div[@t-field='doc.partner_id']" position="after">
             <t t-call="custom_gj.report_partner_address" />
         </xpath>
     </template>

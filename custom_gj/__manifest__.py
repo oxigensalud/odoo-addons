@@ -4,8 +4,8 @@
 
 {
     "name": "GJ Customizations",
-    "version": "14.0.1.0.1",
-    "author": "NuoBiT Solutions, S.L., Eric Antones",
+    "version": "18.0.1.0.0",
+    "author": "NuoBiT Solutions SL",
     "license": "AGPL-3",
     "category": "Custom",
     "website": "https://github.com/OCA/oxigen.odo-adodns",
@@ -16,5 +16,4 @@
         "views/report_invoice.xml",
         "views/invoice_report_templates.xml",
     ],
-    "installable": True,
 }

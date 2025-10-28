@@ -13,15 +13,15 @@
     <template id="report_partner_address">
         <p>
             <div>
-                <strong t-field="o.partner_id.name" style="font-size: larger;" />
+                <strong t-field="doc.partner_id.name" style="font-size: larger;" />
             </div>
-            <div t-field="o.partner_id.street" />
-            <div t-if="o.partner_id.street2" t-field="o.partner_id.street2" />
+            <div t-field="doc.partner_id.street" />
+            <div t-if="doc.partner_id.street2" t-field="doc.partner_id.street2" />
             <div>
-                <span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
-                <span t-if="o.partner_id.city" t-field="o.partner_id.city" />
-                <span t-if="o.partner_id.country_id">(<span
-                    t-field="o.partner_id.country_id"
+                <span t-if="doc.partner_id.zip" t-field="doc.partner_id.zip" />
+                <span t-if="doc.partner_id.city" t-field="doc.partner_id.city" />
+                <span t-if="doc.partner_id.country_id">(<span
+                    t-field="doc.partner_id.country_id"
                 />)
                 </span>
             </div>

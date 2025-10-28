@@ -7,11 +7,11 @@
         id="report_invoice_document_inherit_custom_gj"
         inherit_id="account.report_invoice_document"
     >
-        <xpath expr="//p[@t-field='o.invoice_origin']/.." position="attributes">
+        <xpath expr="//div[@t-field='o.invoice_origin']/.." position="attributes">
             <attribute name="class">col-xs-2 hidden</attribute>
         </xpath>
 
-        <xpath expr="//p[@t-field='o.partner_id.ref']/.." position="attributes">
+        <xpath expr="//div[@t-field='o.partner_id.ref']/.." position="attributes">
             <attribute name="class">col-xs-2 hidden</attribute>
         </xpath>
 
