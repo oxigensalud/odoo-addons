@@ -1,10 +1,10 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
-import json
 
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
-from odoo.tools import date_utils
+from odoo.tools import formatLang
 
 
 class AccountMove(models.Model):
@@ -14,7 +14,7 @@ class AccountMove(models.Model):
     def _onchange_ref(self):
         for move in self.filtered(lambda m: m.move_type != "entry"):
             move.payment_reference = move.ref
-            move._onchange_payment_reference()
+            move._inverse_payment_reference()
 
     @api.constrains("ref", "move_type", "partner_id", "journal_id", "state")
     def _check_duplicate_supplier_reference(self):
@@ -29,7 +29,7 @@ class AccountMove(models.Model):
         if not moves:
             return
 
-        self.env["account.move"].flush(
+        self.env["account.move"].flush_model(
             [
                 "ref",
                 "move_type",
@@ -39,8 +39,8 @@ class AccountMove(models.Model):
                 "commercial_partner_id",
             ]
         )
-        self.env["account.journal"].flush(["company_id"])
-        self.env["res.partner"].flush(["commercial_partner_id"])
+        self.env["account.journal"].flush_model(["company_id"])
+        self.env["res.partner"].flush_model(["commercial_partner_id"])
 
         # /!\ Computed stored fields are not yet inside the database.
         self._cr.execute(
@@ -69,11 +69,7 @@ class AccountMove(models.Model):
                 )
                 % "\n".join(
                     duplicated_moves.mapped(
-                        lambda m: "%(partner)s - %(ref)s"
-                        % {
-                            "ref": m.ref,
-                            "partner": m.partner_id.display_name,
-                        }
+                        lambda m: f"{m.partner_id.display_name} - {m.ref}"
                     )
                 )
             )
@@ -82,21 +78,78 @@ class AccountMove(models.Model):
     def _compute_payments_widget_reconciled_info(self):
         res = super()._compute_payments_widget_reconciled_info()
         for move in self.filtered(
-            lambda l: l.state != "posted" and l.is_invoice(include_receipts=True)
+            lambda moves: moves.state != "posted"
+            and moves.is_invoice(include_receipts=True)
         ):
             payments_widget_vals = {
                 "title": _("Less Payment"),
                 "outstanding": False,
                 "content": [],
             }
-            payments_widget_vals["content"] = move._get_reconciled_info_JSON_values()
+
+            reconciled_vals = []
+            reconciled_partials = move.sudo()._get_all_reconciled_invoice_partials()
+            for reconciled_partial in reconciled_partials:
+                counterpart_line = reconciled_partial["aml"]
+                if counterpart_line.move_id.ref:
+                    reconciliation_ref = (
+                        f"{counterpart_line.move_id.name} "
+                        f"({counterpart_line.move_id.ref})"
+                    )
+                else:
+                    reconciliation_ref = counterpart_line.move_id.name
+                if (
+                    counterpart_line.amount_currency
+                    and counterpart_line.currency_id
+                    != counterpart_line.company_id.currency_id
+                ):
+                    foreign_currency = counterpart_line.currency_id
+                else:
+                    foreign_currency = False
+
+                reconciled_vals.append(
+                    {
+                        "name": counterpart_line.name,
+                        "journal_name": counterpart_line.journal_id.name,
+                        "company_name": counterpart_line.journal_id.company_id.name
+                        if counterpart_line.journal_id.company_id != move.company_id
+                        else False,
+                        "amount": reconciled_partial["amount"],
+                        "currency_id": move.company_id.currency_id.id
+                        if reconciled_partial["is_exchange"]
+                        else reconciled_partial["currency"].id,
+                        "date": counterpart_line.date,
+                        "partial_id": reconciled_partial["partial_id"],
+                        "account_payment_id": counterpart_line.payment_id.id,
+                        "payment_method_name": (
+                            counterpart_line.payment_id.payment_method_line_id.name
+                        ),
+                        "move_id": counterpart_line.move_id.id,
+                        "is_refund": counterpart_line.move_id.move_type
+                        in ["in_refund", "out_refund"],
+                        "ref": reconciliation_ref,
+                        # these are necessary for the
+                        # views to change depending on the values
+                        "is_exchange": reconciled_partial["is_exchange"],
+                        "amount_company_currency": formatLang(
+                            self.env,
+                            abs(counterpart_line.balance),
+                            currency_obj=counterpart_line.company_id.currency_id,
+                        ),
+                        "amount_foreign_currency": foreign_currency
+                        and formatLang(
+                            self.env,
+                            abs(counterpart_line.amount_currency),
+                            currency_obj=foreign_currency,
+                        ),
+                    }
+                )
+            payments_widget_vals["content"] = reconciled_vals
 
             if payments_widget_vals["content"]:
-                move.invoice_payments_widget = json.dumps(
-                    payments_widget_vals, default=date_utils.json_default
-                )
+                move.invoice_payments_widget = payments_widget_vals
             else:
-                move.invoice_payments_widget = json.dumps(False)
+                move.invoice_payments_widget = False
         return res
 
 

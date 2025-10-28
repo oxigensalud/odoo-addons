@@ -15,6 +15,7 @@
                 <p class="m-0" t-field="o.ref" />
             </div>
         </xpath>
+
         <xpath
             expr="//div[@id='informations']/div[@name='origin']"
             position="attributes"

@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='ref']" position="attributes">
                 <attribute
-                    name="attrs"
-                >{'invisible':[('move_type', 'not in', ('in_invoice', 'in_receipt', 'in_refund'))], 'required':[('move_type', 'in', ('in_invoice', 'in_receipt', 'in_refund'))]}</attribute>
+                    name="required"
+                >move_type in ('in_invoice', 'in_receipt', 'in_refund')</attribute>
             </xpath>
             <xpath expr="//button[@name='button_draft']" position="after">
                 <button
@@ -16,7 +16,7 @@
                     string="Reset to Draft (maintaining reconciled items)"
                     type="object"
                     groups="account.group_account_invoice"
-                    attrs="{'invisible' : [('show_reset_to_draft_button', '=', False)]}"
+                    invisible="show_reset_to_draft_button == False"
                     context="{'dont_unreconcile_items': True}"
                 />
             </xpath>
@@ -28,10 +28,16 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_total_signed']" position="attributes">
+            <xpath
+                expr="//list/field[@name='amount_total_in_currency_signed']"
+                position="attributes"
+            >
                 <attribute name="string">Total (€)</attribute>
             </xpath>
-            <xpath expr="//field[@name='amount_total_signed']" position="after">
+            <xpath
+                expr="//list/field[@name='amount_total_in_currency_signed']"
+                position="after"
+            >
                 <field
                     name="amount_total"
                     string="Total (currency)"
@@ -43,14 +49,14 @@
         </field>
     </record>
 
-    <record id="oxigen_view_account_invoice_filter" model="ir.ui.view">
-        <field name="name">account.invoice.select - oxigen</field>
-        <field name="model">account.move</field>
-        <field name="inherit_id" ref="account.view_account_invoice_filter" />
-        <field name="arch" type="xml">
-            <field name="date" position="after">
-                <field name="line_ids" string="Invoice Line" />
-            </field>
-        </field>
-    </record>
+    <!--    <record id="oxigen_view_account_invoice_filter" model="ir.ui.view">-->
+    <!--        <field name="name">account.invoice.select - oxigen</field>-->
+    <!--        <field name="model">account.move</field>-->
+    <!--        <field name="inherit_id" ref="account.view_account_invoice_filter" />-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <field name="date" position="after">-->
+    <!--                <field name="line_ids" string="Invoice Line" />-->
+    <!--            </field>-->
+    <!--        </field>-->
+    <!--    </record>-->
 </odoo>

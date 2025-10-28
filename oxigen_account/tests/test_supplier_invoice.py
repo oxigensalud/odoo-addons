@@ -1,3 +1,7 @@
+# Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
+
 from datetime import timedelta
 
 from odoo import fields
@@ -11,13 +15,11 @@ from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 class TestSupplierInvoice(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls, chart_template_ref=None):
-        super().setUpClass(chart_template_ref=chart_template_ref)
+        super().setUpClass()
 
         # ENVIRONMENTS
         cls.account_account = cls.env["account.account"]
-        cls.account_move = cls.env["account.move"].with_context(
-            {"tracking_disable": True}
-        )
+        cls.account_move = cls.env["account.move"].with_context(tracking_disable=True)
 
         # INSTANCES
         cls.partner = cls.env.ref("base.res_partner_2")
@@ -25,27 +27,29 @@ class TestSupplierInvoice(AccountTestInvoicingCommon):
         cls.account = cls.account_account.search(
             [
                 (
-                    "user_type_id",
+                    "account_type",
                     "=",
-                    cls.env.ref("account.data_account_type_receivable").id,
+                    "asset_receivable",
                 )
             ],
             limit=1,
         )
+
+    def test_check_unique_supplier_invoice_number_insensitive(self):
         # Invoice with unique reference 'ABC123'
-        cls.invoice = cls.account_move.create(
+        move1 = self.account_move.create(
             {
-                "partner_id": cls.partner.id,
+                "partner_id": self.partner.id,
                 "invoice_date": fields.Date.today(),
                 "move_type": "in_invoice",
                 "ref": "ABC123",
-                "invoice_line_ids": [(0, 0, {"partner_id": cls.partner.id})],
+                "invoice_line_ids": [(0, 0, {"partner_id": self.partner.id})],
             }
         )
+        move1.action_post()
 
-    def test_check_unique_supplier_invoice_number_insensitive(self):
         # A new invoice instance with an existing supplier_invoice_number
-        move = self.account_move.create(
+        move2 = self.account_move.create(
             {
                 "partner_id": self.partner.id,
                 "move_type": "in_invoice",
@@ -55,12 +59,4 @@ class TestSupplierInvoice(AccountTestInvoicingCommon):
             }
         )
         with self.assertRaises(ValidationError):
-            move.action_post()
-        # A new invoice instance with a new supplier_invoice_number
-        self.account_move.create(
-            {
-                "partner_id": self.partner.id,
-                "move_type": "in_invoice",
-                "ref": "ABC123bis",
-            }
-        )
+            move2.action_post()
