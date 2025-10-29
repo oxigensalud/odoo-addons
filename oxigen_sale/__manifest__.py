@@ -6,7 +6,7 @@
     "summary": "Customizations for Oxigen in Sale application",
     "version": "14.0.1.0.0",
     "author": "ForgeFlow",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Sales",
     "depends": ["sale", "sale_margin"],
     "installable": True,
