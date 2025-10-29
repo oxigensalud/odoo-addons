@@ -6,7 +6,7 @@
     "summary": "Customizations for Oxigen in Base",
     "version": "14.0.1.0.0",
     "author": "ForgeFlow",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Generic Modules/Base",
     "depends": ["base"],
     "installable": True,
