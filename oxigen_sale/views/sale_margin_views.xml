@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
     <record model="ir.ui.view" id="oxigen_sale_margin_sale_order">
         <field name="name">oxigen.sale.order.margin.view.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale_margin.sale_margin_sale_order" />
         <field name="arch" type="xml">
             <xpath
-                expr="//div[@class='text-nowrap']/span[@class='oe_inline']"
+                expr="//div[hasclass('d-flex', 'float-end')]/div/span[hasclass('oe_inline')]"
                 position="attributes"
             >
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='margin']" position="after">
-                <span
-                    class="oe_inline"
-                    attrs="{'invisible': [('total_purchase_price', '=', 0)]}"
-                >
-                        <field name="total_purchase_price" invisible="1" />
-                        (<field
+                <span class="oe_inline" invisible="total_purchase_price == 0">
+                    <field name="total_purchase_price" invisible="1" />
+                    (<field
                     name="oxigen_margin_percent"
                     nolabel="1"
                     class="oe_inline"
                     widget="percentage"
                 />)
-                 </span>
+                </span>
             </xpath>
         </field>
     </record>
@@ -34,12 +34,12 @@
         <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='margin_percent']" position="attributes">
-                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='margin_percent']" position="after">
                 <field
                     name="oxigen_margin_percent"
-                    attrs="{'invisible': [('purchase_price', '=', 0)]}"
+                    invisible="purchase_price == 0"
                     optional="hide"
                     widget="percentage"
                 />

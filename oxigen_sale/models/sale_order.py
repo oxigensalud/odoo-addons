@@ -6,11 +6,11 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     oxigen_margin_percent = fields.Float(
-        "Margin (%)",
+        "Oxigen Margin (%)",
         compute="_compute_oxigen_margin_percent",
         store=True,
         groups="base.group_user",
-        group_operator="avg",
+        aggregator="avg",
         help="Custom %Margin calculated as Margin/Cost",
     )
 
@@ -29,7 +29,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     oxigen_margin_percent = fields.Float(
-        "Margin (%)", compute="_compute_oxigen_margin_percent", store=True
+        "Oxigen Margin (%)", compute="_compute_oxigen_margin_percent", store=True
     )
 
     total_purchase_price = fields.Float(
