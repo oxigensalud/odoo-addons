@@ -11,5 +11,10 @@
     "category": "Sales",
     "depends": ["sale", "sale_margin"],
     "license": "AGPL-3",
-    "data": ["views/sale_views.xml", "views/sale_margin_views.xml"],
+    "data": [
+        "views/sale_views.xml",
+        "views/sale_margin_views.xml",
+        "reports/invoice_report_templates.xml",
+        "reports/templates.xml",
+    ],
 }
