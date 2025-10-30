@@ -1,1 +1,5 @@
-from . import repair, repair_line, repair_fee, product_product, product_template
+from . import repair
+
+# from . import repair_line
+from . import product_product
+from . import product_template

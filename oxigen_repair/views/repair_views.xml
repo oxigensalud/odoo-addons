@@ -5,44 +5,19 @@
         <field name="model">repair.order</field>
         <field name="inherit_id" ref="repair.view_repair_order_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//button[@name='action_repair_cancel'][1]"
-                position="attributes"
-            >
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath
-                expr="//button[@name='action_repair_cancel'][2]"
-                position="attributes"
-            >
-                <attribute name="invisible">1</attribute>
-            </xpath>
             <xpath expr="//button[@name='action_repair_cancel_draft']" position="after">
                 <button
                     name="action_repair_cancel_draft"
                     string="Set to Draft"
                     type="object"
-                    attrs="{'invisible':['|',('invoice_method','=','b4repair'), ('state', 'not in',('under_repair'))]}"
-                />
-                <button
-                    name="action_repair_cancel"
-                    string="Cancel Repair"
-                    type="object"
-                    confirm="Draft invoices for this order will be cancelled. Do you confirm the action?"
-                    attrs="{'invisible':['|', ('state', 'in',  ('cancel','done','2binvoiced')), ('invoice_state', '!=', 'draft')]}"
-                />
-                <button
-                    name="action_repair_cancel"
-                    string="Cancel Repair"
-                    type="object"
-                    attrs="{'invisible': ['|', ('state','in', ('cancel','done','2binvoiced')), ('invoice_state', '=', 'draft')]}"
+                    invisible="state not in ('under_repair')"
                 />
             </xpath>
 
             <xpath expr="//field[@name='partner_id']" position="before">
                 <field name="distance_km" />
             </xpath>
-            <xpath expr="//field[@name='guarantee_limit']" position="after">
+            <xpath expr="//field[@name='company_id']" position="after">
                 <field name="list_date" />
             </xpath>
         </field>
@@ -53,15 +28,10 @@
         <field name="model">repair.order</field>
         <field name="inherit_id" ref="repair.view_repair_order_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='guarantee_limit']" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </xpath>
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="lot_id" />
                 <field name="distance_km" />
                 <field name="list_date" />
-                <field name="amount_total" />
-                <field name="guarantee_limit" />
             </xpath>
         </field>
     </record>
