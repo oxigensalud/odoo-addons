@@ -53,20 +53,22 @@ Authors
 -------
 
 * ForgeFlow
+* NuoBiT Solutions SL
 
 Contributors
 ------------
 
-- ForgeFlow:
+- `ForgeFlow <https://www.forgeflow.com>`__:
 
 ..
 
    - Lois Rilo <lois.rilo@forgeflow.com>
 
-- `NuoBiT Solutions S.L. <https://www.nuobit.com>`__:
+- `NuoBiT <https://www.nuobit.com>`__:
 
-  - Frank Cespedes <fcespedes@nuobit.com>
-  - Eric Antones <eantones@nuobit.com>
+  - Frank Cespedes fcespedes@nuobit.com
+  - Eric Antones eantones@nuobit.com
+  - Deniz Gallo dgallo@nuobit.com
 
 Maintainers
 -----------

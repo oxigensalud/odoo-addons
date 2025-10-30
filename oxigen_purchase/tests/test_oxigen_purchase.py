@@ -1,4 +1,5 @@
 # Copyright 2021 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import fields
@@ -28,10 +29,10 @@ class TestOxigenPurchase(common.TransactionCase):
         self.test_product = self.product_obj.create(
             {
                 "name": "Test Product 1",
-                "type": "product",
+                "type": "consu",
                 "list_price": 150.0,
                 "route_ids": [(6, 0, route_buy.ids)],
-                "seller_ids": [(0, 0, {"name": self.vendor_1.id, "price": 20.0})],
+                "seller_ids": [(0, 0, {"partner_id": self.vendor_1.id, "price": 20.0})],
             }
         )
 
@@ -95,12 +96,12 @@ class TestOxigenPurchase(common.TransactionCase):
         # Validate first shipment and add reference
         self.picking = self.po.picking_ids[0]
         self.picking.partner_ref = "ref 12"
-        self.picking.move_lines.quantity_done = 2
+        self.picking.move_ids.quantity = 2
 
         # create the backorder
         backorder_wizard_dict = self.picking.button_validate()
         backorder_wizard = self.env[backorder_wizard_dict["res_model"]].with_context(
-            backorder_wizard_dict["context"]
+            **backorder_wizard_dict["context"]
         )
         backorder_wizard.process()
 

@@ -7,7 +7,7 @@ from odoo import fields, models
 class Picking(models.Model):
     _inherit = "stock.picking"
     # Rename standard `Reference` label to not have duplicated labels
-    name = fields.Char(string="Name")
+    name = fields.Char()
 
     def write(self, vals):
         if "partner_ref" in vals:
