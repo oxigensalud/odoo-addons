@@ -12,33 +12,25 @@
                 expr="//group[@name='opportunity_partner']/label[@for='email_from']"
                 position="attributes"
             >
-                <attribute
-                    name="attrs"
-                >{'invisible': [('is_generic_customer', '=', True)]}</attribute>
+                <attribute name="invisible">is_generic_customer == True</attribute>
             </xpath>
             <xpath
                 expr="//group[@name='opportunity_partner']/div/field[@name='email_from']"
                 position="attributes"
             >
-                <attribute
-                    name="attrs"
-                >{'invisible': [('is_generic_customer', '=', True)]}</attribute>
+                <attribute name="invisible">is_generic_customer == True</attribute>
             </xpath>
             <xpath
                 expr="//group[@name='opportunity_partner']/label[@for='phone']"
                 position="attributes"
             >
-                <attribute
-                    name="attrs"
-                >{'invisible': [('is_generic_customer', '=', True)]}</attribute>
+                <attribute name="invisible">is_generic_customer == True</attribute>
             </xpath>
             <xpath
                 expr="//group[@name='opportunity_partner']/div/field[@name='phone']"
                 position="attributes"
             >
-                <attribute
-                    name="attrs"
-                >{'invisible': [('is_generic_customer', '=', True)]}</attribute>
+                <attribute name="invisible">is_generic_customer == True</attribute>
             </xpath>
         </field>
     </record>
@@ -52,14 +44,10 @@
                 <field name="is_generic_customer" invisible="1" />
             </field>
             <field name="email_from" position="attributes">
-                <attribute
-                    name="attrs"
-                >{'invisible': [('is_generic_customer', '=', True)]}</attribute>
+                <attribute name="invisible">is_generic_customer == True</attribute>
             </field>
             <field name="phone" position="attributes">
-                <attribute
-                    name="attrs"
-                >{'invisible': [('is_generic_customer', '=', True)]}</attribute>
+                <attribute name="invisible">is_generic_customer == True</attribute>
             </field>
         </field>
     </record>

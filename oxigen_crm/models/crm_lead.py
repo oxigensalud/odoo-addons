@@ -1,4 +1,5 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 from odoo import api, fields, models
@@ -24,14 +25,14 @@ class Lead(models.Model):
         for rec in self:
             rec.is_generic_customer = rec.partner_id.id in generic_crm_customer_ids
 
-    def _get_partner_email_update(self):
+    def _get_partner_email_update(self, force_void=True):
         self.ensure_one()
         if self.is_generic_customer:
             return False
-        return super()._get_partner_email_update()
+        return super()._get_partner_email_update(force_void=force_void)
 
-    def _get_partner_phone_update(self):
+    def _get_partner_phone_update(self, force_void=True):
         self.ensure_one()
         if self.is_generic_customer:
             return False
-        return super()._get_partner_phone_update()
+        return super()._get_partner_phone_update(force_void=force_void)
