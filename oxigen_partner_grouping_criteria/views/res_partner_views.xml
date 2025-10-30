@@ -11,7 +11,7 @@
                 expr="//page[@name='sales_purchases']//group[@name='sale']"
                 position="inside"
             >
-                 <field
+                <field
                     name="sale_invoicing_grouping_criteria_id"
                     string="Sales Invoicing Grouping Criteria"
                 />
@@ -22,7 +22,6 @@
             >
                 <attribute name="invisible">1</attribute>
             </xpath>
-
         </field>
     </record>
 </odoo>
