@@ -6,11 +6,11 @@
         <field name="priority" eval="1" />
         <field name="inherit_id" ref="fleet.fleet_vehicle_view_form" />
         <field name="arch" type="xml">
-             <xpath expr="//field[@name='tag_ids']" position="attributes">
-                 <attribute
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute
                     name="options"
                 >{'color_field': 'color', 'no_create_edit': False}</attribute>
-             </xpath>
+            </xpath>
         </field>
     </record>
 </odoo>
