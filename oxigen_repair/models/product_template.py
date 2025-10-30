@@ -4,9 +4,9 @@ from odoo import _, api, fields, models
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    repair_count = fields.Float(
+    repair_count = fields.Integer(
         compute_sudo=True,
-        compute="_compute_repair",
+        compute="_compute_repair_count",
         string="Repairs",
         help="Number of Repair Orders where the product appears as a Part",
     )
@@ -18,6 +18,10 @@ class ProductTemplate(models.Model):
     def _compute_repair(self):
         for product in self:
             product.in_repair_ids = product.mapped("product_variant_ids.in_repair_ids")
+
+    @api.depends("product_variant_ids.in_repair_ids.state")
+    def _compute_repair_count(self):
+        for product in self:
             product.repair_count = len(
                 product.in_repair_ids.filtered(
                     lambda x: x.state not in ("draft", "cancel")

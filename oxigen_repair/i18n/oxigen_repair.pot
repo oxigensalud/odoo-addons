@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 09:32+0000\n"
-"PO-Revision-Date: 2022-01-18 09:32+0000\n"
+"POT-Creation-Date: 2026-09-14 08:04+0000\n"
+"PO-Revision-Date: 2026-09-14 08:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,16 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: oxigen_repair
-#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
-msgid ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" aria-label=\"Values set here are company-specific.\" "
-"groups=\"base.group_multi_company\" role=\"img\"/>"
-msgstr ""
-
-#. module: oxigen_repair
+#. odoo-python
 #: code:addons/oxigen_repair/models/repair.py:0
-#, python-format
 msgid "Cannot delete a finished Repair Order."
 msgstr ""
 
@@ -47,13 +39,9 @@ msgid ""
 msgstr ""
 
 #. module: oxigen_repair
-#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: oxigen_repair
-#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__id
-msgid "ID"
+#: model:ir.model.fields,field_description:oxigen_repair.field_product_product__in_repair_ids
+#: model:ir.model.fields,field_description:oxigen_repair.field_product_template__in_repair_ids
+msgid "In Repair"
 msgstr ""
 
 #. module: oxigen_repair
@@ -62,89 +50,20 @@ msgid "Kilometers"
 msgstr ""
 
 #. module: oxigen_repair
-#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: oxigen_repair
 #: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__list_date
 msgid "Lists date"
 msgstr ""
 
 #. module: oxigen_repair
+#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__repair_reference_manual
 #: model:ir.model.fields,field_description:oxigen_repair.field_res_company__repair_reference_manual
 #: model:ir.model.fields,field_description:oxigen_repair.field_res_config_settings__repair_reference_manual
 msgid "Manual repair reference"
 msgstr ""
 
 #. module: oxigen_repair
-#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__fees_lines
-msgid "Operations"
-msgstr ""
-
-#. module: oxigen_repair
-#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__operations
-msgid "Parts"
-msgstr ""
-
-#. module: oxigen_repair
-#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
-msgid "Repair"
-msgstr ""
-
-#. module: oxigen_repair
-#: model:ir.model,name:oxigen_repair.model_repair_order
-msgid "Repair Order"
-msgstr ""
-
-#. module: oxigen_repair
-#: code:addons/oxigen_repair/models/repair.py:0
-#, python-format
-msgid "Repair must be canceled in order to reset it to draft."
-msgstr ""
-
-#. module: oxigen_repair
-#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
-msgid "Repair orders"
-msgstr ""
-
-#. module: oxigen_repair
-#: model:ir.model.fields,help:oxigen_repair.field_res_company__repair_reference_manual
-#: model:ir.model.fields,help:oxigen_repair.field_res_config_settings__repair_reference_manual
-msgid ""
-"Repair orders of this company are created with an empty reference: the user "
-"fills it in and it is never assigned from the sequence, neither when the "
-"form opens nor when the order is saved."
-msgstr ""
-
-#. module: oxigen_repair
-#: model_terms:ir.ui.view,arch_db:oxigen_repair.view_repair_order_form
-msgid "Set to Draft"
-msgstr ""
-
-#. module: oxigen_repair
-#: model:ir.actions.act_window,name:oxigen_repair.res_config_settings_action
-#: model:ir.ui.menu,name:oxigen_repair.res_config_settings_menu
-msgid "Settings"
-msgstr ""
-
-#. module: oxigen_mrp_repair
-#: code:addons/oxigen_mrp_repair/models/mrp_repair.py:59
-#, python-format
-msgid "Repair %s with lot %s of product %s must be finished before creating a new Repair order for the same lot."
-msgstr ""
-
-#. module: oxigen_repair
-#: code:addons/oxigen_repair/models/repair_fee.py:0
-#: code:addons/oxigen_repair/models/repair_line.py:0
-#, python-format
-msgid "Please select a Customer"
-msgstr ""
-
-#. module: oxigen_repair
-#: model:ir.model.fields,field_description:oxigen_repair.field_product_product__repair_count
-#: model:ir.model.fields,field_description:oxigen_repair.field_product_template__repair_count
-msgid "Repairs"
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.oxigen_view_repair_order_form_filter
+msgid "Not Draft"
 msgstr ""
 
 #. module: oxigen_repair
@@ -154,21 +73,65 @@ msgid "Number of Repair Orders where the product appears as a Part"
 msgstr ""
 
 #. module: oxigen_repair
-#: model_terms:ir.ui.view,arch_db:oxigen_repair.oxigen_view_repair_order_form_filter
-msgid "Not Draft"
+#: model:ir.model,name:oxigen_repair.model_product_template
+msgid "Product"
 msgstr ""
 
 #. module: oxigen_repair
+#: model:ir.model,name:oxigen_repair.model_product_product
+msgid "Product Variant"
+msgstr ""
+
+#. module: oxigen_repair
+#. odoo-python
 #: code:addons/oxigen_repair/models/repair.py:0
-#, python-format
+msgid ""
+"Repair %(repair)s with lot %(lot)s of product %(product)s must be finished "
+"before creating a new Repair Order for the same lot."
+msgstr ""
+
+#. module: oxigen_repair
+#: model:ir.model,name:oxigen_repair.model_repair_order
+msgid "Repair Order"
+msgstr ""
+
+#. module: oxigen_repair
+#. odoo-python
+#: code:addons/oxigen_repair/models/product_product.py:0
+#: code:addons/oxigen_repair/models/product_template.py:0
+msgid "Repair Orders"
+msgstr ""
+
+#. module: oxigen_repair
+#: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__name
+msgid "Repair Reference"
+msgstr ""
+
+#. module: oxigen_repair
+#: model:ir.model.fields,help:oxigen_repair.field_repair_order__repair_reference_manual
+#: model:ir.model.fields,help:oxigen_repair.field_res_company__repair_reference_manual
+#: model:ir.model.fields,help:oxigen_repair.field_res_config_settings__repair_reference_manual
+msgid ""
+"Repair orders of this company are created with an empty reference: the user "
+"fills it in and it is never assigned from the sequence, neither when the "
+"form opens nor when the order is saved."
+msgstr ""
+
+#. module: oxigen_repair
+#: model:ir.model.fields,field_description:oxigen_repair.field_product_product__repair_count
+#: model:ir.model.fields,field_description:oxigen_repair.field_product_template__repair_count
+msgid "Repairs"
+msgstr ""
+
+#. module: oxigen_repair
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.view_repair_order_form
+msgid "Set to Draft"
+msgstr ""
+
+#. module: oxigen_repair
+#. odoo-python
+#: code:addons/oxigen_repair/models/repair.py:0
 msgid ""
 "The repair reference of company %s is manual: fill it in, it is never "
 "assigned automatically."
-msgstr ""
-
-#. module: oxigen_repair
-#: code:addons/oxigen_repair/models/product_product.py:0
-#: code:addons/oxigen_repair/models/product_template.py:0
-#, python-format
-msgid "Repair Orders"
 msgstr ""

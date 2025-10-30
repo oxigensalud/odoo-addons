@@ -1,39 +1,22 @@
 # Copyright 2022 ForgeFlow, S.L.
 # Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
 
-class OxigenRepair(models.Model):
+class RepairOrder(models.Model):
     _description = "Repair Order"
-    _inherit = ["repair.order"]
+    _inherit = "repair.order"
 
-    @api.model
-    def _default_name(self):
-        if self._repair_reference_company().repair_reference_manual:
-            return False
-        return self.env["ir.sequence"].next_by_code("repair.order")
-
-    name = fields.Char(default=_default_name)
-    distance_km = fields.Integer(string="Kilometers", group_operator="max")
+    name = fields.Char(readonly=False)
+    repair_reference_manual = fields.Boolean(
+        related="company_id.repair_reference_manual"
+    )
+    distance_km = fields.Integer(string="Kilometers", aggregator="max")
     list_date = fields.Datetime(string="Lists date")
-    operations = fields.One2many(
-        states={
-            "draft": [("readonly", False)],
-            "confirmed": [("readonly", False)],
-            "under_repair": [("readonly", False)],
-        }
-    )
-
-    fees_lines = fields.One2many(
-        states={
-            "draft": [("readonly", False)],
-            "confirmed": [("readonly", False)],
-            "under_repair": [("readonly", False)],
-        }
-    )
 
     @api.model
     def _repair_reference_company(self, vals=None):
@@ -48,33 +31,56 @@ class OxigenRepair(models.Model):
         return self.env["res.company"].browse(company_id)
 
     @api.model
-    def create(self, vals):
-        # Core create() turns an empty or "/"-prefixed name into the next
-        # sequence number: refuse it first when the company's reference is
-        # manual. Write never numbers, so nothing else is needed.
-        company = self._repair_reference_company(vals)
-        name = vals.get("name")
-        if company.repair_reference_manual and (not name or name.startswith("/")):
-            raise ValidationError(
-                _(
-                    "The repair reference of company %s is manual: fill it in, "
-                    "it is never assigned automatically."
+    def _repair_reference_placeholder(self):
+        # The "New" the core defaults the reference to and replaces by the
+        # sequence number in create(), in the language of the user.
+        return self._fields["name"].default(self)
+
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+        if (
+            "name" in res
+            and self._repair_reference_company(res).repair_reference_manual
+        ):
+            res["name"] = False
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        # Core create() turns an empty or placeholder name into the next
+        # number of the operation type sequence: refuse it first when the
+        # company's reference is manual.
+        placeholder = self._repair_reference_placeholder()
+        for vals in vals_list:
+            company = self._repair_reference_company(vals)
+            name = vals.get("name")
+            if company.repair_reference_manual and (not name or name == placeholder):
+                raise ValidationError(
+                    _(
+                        "The repair reference of company %s is manual: fill it in, "
+                        "it is never assigned automatically."
+                    )
+                    % company.display_name
                 )
-                % company.display_name
-            )
-        return super().create(vals)
+        return super().create(vals_list)
 
-    def action_repair_cancel_draft(self):
-        """if MO in under_repair or cancelled states, it can be set again to draft"""
-
-        if self.filtered(lambda repair: repair.state not in ["cancel", "under_repair"]):
-            raise UserError(_("Repair must be canceled in order to reset it to draft."))
-        self.mapped("operations").write({"state": "draft"})
-        return self.write({"state": "draft"})
+    def write(self, vals):
+        manual_names = {}
+        if vals.get("picking_type_id") and "name" not in vals:
+            manual_names = {
+                repair: repair.name
+                for repair in self.filtered("repair_reference_manual")
+            }
+        res = super().write(vals)
+        for repair, name in manual_names.items():
+            if repair.name != name:
+                repair.name = name
+        return res
 
     def unlink(self):
         for rec in self:
-            if rec.state in ("done", "2binvoiced"):
+            if rec.state == "done":
                 raise UserError(_("Cannot delete a finished Repair Order."))
 
         return super().unlink()
@@ -86,17 +92,22 @@ class OxigenRepair(models.Model):
                 [
                     ("product_id", "=", self.product_id.id),
                     ("lot_id", "=", self.lot_id.id),
-                    ("state", "in", ("draft", "confirmed", "under_repair", "ready")),
+                    ("state", "in", ("draft", "confirmed", "under_repair")),
                 ],
                 limit=1,
             )
             if ro:
                 raise UserError(
                     _(
-                        "Repair %s with lot %s of product %s must be finished before "
+                        "Repair %(repair)s with lot %(lot)s of "
+                        "product %(product)s must be finished before "
                         "creating a new Repair Order for the same lot."
                     )
-                    % (ro.name, self.lot_id.name, self.product_id.name)
+                    % {
+                        "repair": ro.name,
+                        "lot": self.lot_id.name,
+                        "product": self.product_id.name,
+                    }
                 )
 
     def copy(self, default=None):

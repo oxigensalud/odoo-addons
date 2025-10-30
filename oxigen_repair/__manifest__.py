@@ -1,4 +1,5 @@
 # Copyright 2021 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
@@ -9,8 +10,7 @@
     "author": "ForgeFlow",
     "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Inventory/Inventory",
-    "depends": ["repair"],
-    "installable": True,
+    "depends": ["repair", "base_repair_config"],
     "license": "AGPL-3",
     "data": [
         "views/repair_views.xml",

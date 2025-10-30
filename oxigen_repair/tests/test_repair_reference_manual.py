@@ -1,4 +1,5 @@
 # Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo.exceptions import ValidationError
@@ -6,51 +7,50 @@ from odoo.tests import common
 
 
 class TestRepairReferenceManual(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.company = self.env.company
-        self.other_company = self.env["res.company"].create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.company = cls.env.company
+        cls.other_company = cls.env["res.company"].create(
             {"name": "Test company with sequence reference"}
         )
-        sequences = self.env["ir.sequence"].search([("code", "=", "repair.order")])
-        self.assertEqual(len(sequences), 1)
-        self.sequence = sequences
-        self.product = self.env["product.product"].create(
-            {"name": "Test repair product", "type": "product"}
+        cls.product = cls.env["product.product"].create(
+            {"name": "Test repair product", "type": "consu", "is_storable": True}
         )
-        # shared location (no company): valid for any company's repair order
-        self.location = self.env["stock.location"].create(
-            {"name": "Test repair location", "usage": "internal", "company_id": False}
-        )
-        self.Repair = self.env["repair.order"]
+        cls.Repair = cls.env["repair.order"]
+        cls.placeholder = cls.Repair._repair_reference_placeholder()
 
     def _repair_vals(self, company, **extra):
-        vals = {
-            "product_id": self.product.id,
-            "product_uom": self.product.uom_id.id,
-            "location_id": self.location.id,
-            "company_id": company.id,
-        }
+        vals = {"product_id": self.product.id, "company_id": company.id}
         vals.update(extra)
         return vals
 
-    def _next_number(self):
+    def _picking_type(self, company):
+        # default repair operation type of the company: core numbers the
+        # order from its sequence
+        picking_type_id = self.Repair.with_company(company).default_get(
+            ["picking_type_id"]
+        )["picking_type_id"]
+        return self.env["stock.picking.type"].browse(picking_type_id)
+
+    def _next_number(self, company=None):
+        sequence = self._picking_type(company or self.company).sequence_id
         # computed field, cached: drop the cache to read the real next value
-        self.sequence.invalidate_cache(fnames=["number_next_actual"])
-        return self.sequence.number_next_actual
+        sequence.invalidate_recordset(["number_next_actual"])
+        return sequence.number_next_actual
 
     def _assert_numbered(self, name):
         self.assertTrue(name)
-        self.assertFalse(name.startswith("/"))
+        self.assertNotEqual(name, self.placeholder)
 
     def test_01_flag_off_default_and_create_numbered(self):
         self.company.repair_reference_manual = False
         before = self._next_number()
-        self._assert_numbered(self.Repair.default_get(["name"])["name"])
-        self.assertEqual(self._next_number(), before + 1)
+        self.assertEqual(self.Repair.default_get(["name"])["name"], self.placeholder)
+        self.assertEqual(self._next_number(), before)
         repair = self.Repair.create(self._repair_vals(self.company))
         self._assert_numbered(repair.name)
-        self.assertEqual(self._next_number(), before + 2)
+        self.assertEqual(self._next_number(), before + 1)
 
     def test_02_flag_on_default_blank_sequence_untouched(self):
         self.company.repair_reference_manual = True
@@ -67,13 +67,13 @@ class TestRepairReferenceManual(common.TransactionCase):
         self.assertEqual(repair.name, "AMB-2026-001")
         self.assertEqual(self._next_number(), before)
 
-    def test_04_flag_on_empty_or_slash_refused_on_create(self):
+    def test_04_flag_on_empty_or_placeholder_refused_on_create(self):
         self.company.repair_reference_manual = True
         before = self._next_number()
         for vals in (
             self._repair_vals(self.company),
             self._repair_vals(self.company, name=""),
-            self._repair_vals(self.company, name="/"),
+            self._repair_vals(self.company, name=self.placeholder),
         ):
             with self.assertRaises(ValidationError):
                 self.Repair.create(vals)
@@ -83,9 +83,11 @@ class TestRepairReferenceManual(common.TransactionCase):
         self.company.repair_reference_manual = True
         self.other_company.repair_reference_manual = False
         Repair = self.Repair.with_company(self.other_company)
-        self._assert_numbered(Repair.default_get(["name"])["name"])
+        before = self._next_number(self.other_company)
+        self.assertEqual(Repair.default_get(["name"])["name"], self.placeholder)
         repair = Repair.create(self._repair_vals(self.other_company))
         self._assert_numbered(repair.name)
+        self.assertEqual(self._next_number(self.other_company), before + 1)
 
     def test_07_settings_write_the_company_flag(self):
         settings = self.env["res.config.settings"].create(
@@ -100,27 +102,63 @@ class TestRepairReferenceManual(common.TransactionCase):
         self.assertFalse(self.company.repair_reference_manual)
 
     def test_08_flagged_company_from_context_default(self):
-        # user in a company without the flag, form opened for a flagged one
+        # user in a company without the flag, order created for a flagged
+        # one through the default of company_id (the operation type must be
+        # the one of that company, as the form fills it)
         self.company.repair_reference_manual = False
         self.other_company.repair_reference_manual = True
-        before = self._next_number()
+        before = self._next_number(self.other_company)
         Repair = self.Repair.with_context(default_company_id=self.other_company.id)
         self.assertFalse(Repair.default_get(["name"]).get("name"))
-        self.assertEqual(self._next_number(), before)
-        vals = self._repair_vals(self.other_company)
+        self.assertEqual(self._next_number(self.other_company), before)
+        vals = self._repair_vals(
+            self.other_company,
+            picking_type_id=self._picking_type(self.other_company).id,
+        )
         del vals["company_id"]
         with self.assertRaises(ValidationError):
             Repair.create(vals)
-        self.assertEqual(self._next_number(), before)
+        self.assertEqual(self._next_number(self.other_company), before)
 
     def test_09_unflagged_company_from_context_default(self):
-        # user in a flagged company, form opened for a company with the sequence
+        # user in a flagged company, order created for a company with the
+        # sequence through the default of company_id
         self.company.repair_reference_manual = True
         self.other_company.repair_reference_manual = False
         Repair = self.Repair.with_context(default_company_id=self.other_company.id)
-        self._assert_numbered(Repair.default_get(["name"])["name"])
-        vals = self._repair_vals(self.other_company)
+        self.assertEqual(Repair.default_get(["name"])["name"], self.placeholder)
+        vals = self._repair_vals(
+            self.other_company,
+            picking_type_id=self._picking_type(self.other_company).id,
+        )
         del vals["company_id"]
         repair = Repair.create(vals)
         self.assertEqual(repair.company_id, self.other_company)
         self._assert_numbered(repair.name)
+
+    def _other_picking_type(self, company):
+        return self.env["stock.picking.type"].create(
+            {
+                "name": "Test repair operation type",
+                "code": "repair_operation",
+                "sequence_code": "TRO",
+                "company_id": company.id,
+                "warehouse_id": self._picking_type(company).warehouse_id.id,
+            }
+        )
+
+    def test_10_flag_on_operation_type_change_keeps_name(self):
+        self.company.repair_reference_manual = True
+        repair = self.Repair.create(
+            self._repair_vals(self.company, name="AMB-2026-001")
+        )
+        repair.write({"picking_type_id": self._other_picking_type(self.company).id})
+        self.assertEqual(repair.name, "AMB-2026-001")
+
+    def test_11_flag_off_operation_type_change_numbered_again(self):
+        self.company.repair_reference_manual = False
+        repair = self.Repair.create(self._repair_vals(self.company))
+        name = repair.name
+        repair.write({"picking_type_id": self._other_picking_type(self.company).id})
+        self._assert_numbered(repair.name)
+        self.assertNotEqual(repair.name, name)
