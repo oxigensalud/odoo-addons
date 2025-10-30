@@ -24,14 +24,14 @@
                     type="object"
                     attrs="{'invisible':['|',('invoice_method','=','b4repair'), ('state', 'not in',('under_repair'))]}"
                 />
-                   <button
+                <button
                     name="action_repair_cancel"
                     string="Cancel Repair"
                     type="object"
                     confirm="Draft invoices for this order will be cancelled. Do you confirm the action?"
                     attrs="{'invisible':['|', ('state', 'in',  ('cancel','done','2binvoiced')), ('invoice_state', '!=', 'draft')]}"
                 />
-                   <button
+                <button
                     name="action_repair_cancel"
                     string="Cancel Repair"
                     type="object"
@@ -39,23 +39,22 @@
                 />
             </xpath>
 
-
             <xpath expr="//field[@name='partner_id']" position="before">
                 <field name="distance_km" />
             </xpath>
             <xpath expr="//field[@name='guarantee_limit']" position="after">
-                 <field name="list_date" />
+                <field name="list_date" />
             </xpath>
         </field>
     </record>
 
-     <record id="view_repair_order_tree" model="ir.ui.view">
+    <record id="view_repair_order_tree" model="ir.ui.view">
         <field name="name">repair.tree- oxigen_repair</field>
         <field name="model">repair.order</field>
         <field name="inherit_id" ref="repair.view_repair_order_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='guarantee_limit']" position="attributes">
-                 <attribute name="invisible">True</attribute>
+                <attribute name="invisible">True</attribute>
             </xpath>
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="lot_id" />
@@ -63,17 +62,16 @@
                 <field name="list_date" />
                 <field name="amount_total" />
                 <field name="guarantee_limit" />
-
-        </xpath>
+            </xpath>
         </field>
-     </record>
+    </record>
     <record id="oxigen_view_repair_order_form_filter" model="ir.ui.view">
         <field name="name">repair.select</field>
         <field name="model">repair.order</field>
         <field name="inherit_id" ref="repair.view_repair_order_form_filter" />
         <field name="arch" type="xml">
             <field name="product_id" position="after">
-            <filter
+                <filter
                     string="Not Draft"
                     domain="[('state', 'not in', ('draft','cancel'))]"
                     name="not_draft"

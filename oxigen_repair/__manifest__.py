@@ -6,7 +6,7 @@
     "summary": "Custumizations for Oxigen in Repairs application",
     "version": "14.0.1.0.0",
     "author": "ForgeFlow",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Inventory/Inventory",
     "depends": ["repair"],
     "installable": True,
