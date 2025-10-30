@@ -77,7 +77,7 @@ class OxigenRepair(models.Model):
             if rec.state in ("done", "2binvoiced"):
                 raise UserError(_("Cannot delete a finished Repair Order."))
 
-        return super(OxigenRepair, self).unlink()
+        return super().unlink()
 
     @api.onchange("lot_id")
     def onchange_lot_id(self):
@@ -102,4 +102,4 @@ class OxigenRepair(models.Model):
     def copy(self, default=None):
         default = dict(default or {})
         default.update({"lot_id": ""})
-        return super(OxigenRepair, self).copy(default)
+        return super().copy(default)

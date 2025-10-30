@@ -12,4 +12,4 @@ class RepairFee(models.Model):
     def onchange_product_id(self):
         if not self.repair_id.partner_id:
             raise UserError(_("Please select a Customer"))
-        super(RepairFee, self).onchange_product_id()
+        super().onchange_product_id()
