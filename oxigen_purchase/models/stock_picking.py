@@ -30,4 +30,4 @@ class Picking(models.Model):
 
                     rec.purchase_id.partner_ref = ", ".join(l_pref)
 
-        return super(Picking, self).write(vals)
+        return super().write(vals)

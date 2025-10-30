@@ -7,7 +7,7 @@ from odoo.tests import common
 
 class TestOxigenPurchase(common.TransactionCase):
     def setUp(self):
-        super(TestOxigenPurchase, self).setUp()
+        super().setUp()
 
         self.product_obj = self.env["product.product"]
         self.partner_obj = self.env["res.partner"]

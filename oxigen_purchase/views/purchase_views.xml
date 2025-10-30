@@ -5,7 +5,7 @@
         <field name="inherit_id" ref="purchase.purchase_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="attributes">
-               <attribute
+                <attribute
                     name="context"
                 >{'res_partner_search_mode': 'supplier', 'show_vat': True,'search_default_supplier':1, 'search_default_type_company':1}</attribute>
             </xpath>
