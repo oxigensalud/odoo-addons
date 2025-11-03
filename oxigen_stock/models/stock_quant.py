@@ -2,7 +2,8 @@
 # Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
-from odoo import models
+from odoo import _, models
+from odoo.tools import float_compare
 
 
 class StockQuant(models.Model):
@@ -49,3 +50,49 @@ class StockQuant(models.Model):
             # not worth implementing.
             pass
         return quants
+
+    def action_apply_inventory(self):
+        if not self.exists():
+            return super().action_apply_inventory()
+
+        if self.env.user.has_group("stock.group_stock_manager"):
+            return super().action_apply_inventory()
+
+        self.ensure_one()
+
+        inventory_quants = self.filtered(
+            lambda quant: quant.product_id.tracking in ["lot", "serial"]
+            and not quant.lot_id
+            and quant.inventory_diff_quantity != 0
+        )
+
+        serial_quants = self.filtered(
+            lambda quant: float_compare(
+                quant.inventory_quantity,
+                1,
+                precision_rounding=quant.product_uom_id.rounding,
+            )
+            > 0
+            and quant.product_id.tracking == "serial"
+            and quant.lot_id
+        )
+
+        if inventory_quants and not serial_quants:
+            wiz_lines = [
+                (0, 0, {"product_id": product.id, "tracking": product.tracking})
+                for product in inventory_quants.mapped("product_id")
+            ]
+            wiz = self.env["stock.track.confirmation"].create(
+                {"quant_ids": [(6, 0, self.ids)], "tracking_line_ids": wiz_lines}
+            )
+            return {
+                "name": _("Tracked Products in Inventory Adjustment"),
+                "type": "ir.actions.act_window",
+                "view_mode": "form",
+                "views": [(False, "form")],
+                "res_model": "stock.track.confirmation",
+                "target": "new",
+                "res_id": wiz.id,
+            }
+
+        return super().action_apply_inventory()

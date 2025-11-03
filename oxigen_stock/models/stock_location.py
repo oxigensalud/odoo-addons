@@ -11,6 +11,12 @@ class StockLocation(models.Model):
 
     name = fields.Char(translate=True)
 
+    display_name = fields.Char(
+        compute="_compute_display_name",
+        recursive=True,
+        store=True,
+    )
+
     @api.depends("name", "location_id.complete_name")
     def _compute_complete_name(self):
         # we set the method as in v11 where complete_name has the full path
