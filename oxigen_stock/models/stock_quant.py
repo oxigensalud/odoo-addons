@@ -1,4 +1,5 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 from odoo import models
@@ -15,6 +16,7 @@ class StockQuant(models.Model):
         package_id=None,
         owner_id=None,
         strict=False,
+        qty=0,
     ):
         quants = super()._gather(
             product_id,
@@ -23,6 +25,7 @@ class StockQuant(models.Model):
             package_id=package_id,
             owner_id=owner_id,
             strict=strict,
+            qty=qty,
         )
         # Adjust reservation to be first FIFO/FEFO and then use location name
         # alphabetically

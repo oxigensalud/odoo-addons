@@ -23,16 +23,15 @@ class StockLocation(models.Model):
             else:
                 location.complete_name = location.name
 
-    def name_get(self):
-        # v11 method
-        ret_list = []
+    @api.depends("name", "location_id", "location_id.display_name", "usage")
+    def _compute_display_name(self):
+        """Compute display name as hierarchical path, skipping 'view' usage."""
         for location in self:
-            orig_location = location
-            name = location.name
-            while location.location_id and location.usage != "view":
-                location = location.location_id
+            name = location.name or ""
+            current_location = location
+            while current_location.location_id and current_location.usage != "view":
+                current_location = current_location.location_id
                 if not name:
                     raise UserError(_("You have to set a name for this location."))
-                name = location.name + "/" + name
-            ret_list.append((orig_location.id, name))
-        return ret_list
+                name = f"{current_location.name}/{name}"
+            location.display_name = name

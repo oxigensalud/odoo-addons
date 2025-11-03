@@ -24,7 +24,7 @@
             <attribute name="t-if">False</attribute>
         </xpath>
         <xpath
-            expr='//p[normalize-space(@t-if)="description !=&apos;&apos; and description != move_line.product_id.name"]'
+            expr="//p[contains(@t-if, 'description !=') and contains(@t-if, 'move_line.product_id.name')]"
             position="attributes"
         >
             <attribute name="t-if">False</attribute>

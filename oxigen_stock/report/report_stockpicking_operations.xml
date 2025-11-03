@@ -47,7 +47,7 @@
             </tr>
         </xpath>
         <!--    If stock move has more than one line we add stock move info (demand and reserved) and then we will print stock move lines -->
-        <xpath expr="// table[1]/tbody/t/t" position="before">
+        <xpath expr="// table[1]/tbody" position="before">
             <t
                 t-if="o.state == 'assigned' and o.picking_type_code == 'internal' and len(move.move_line_ids)==1"
             >
@@ -96,13 +96,13 @@
             </tr>
         </xpath>
         <xpath
-            expr="//table[1]/tbody/t/t//span[@t-field='ml.product_id.display_name']"
+            expr="//table[1]/tbody//span[@t-field='ml.product_id.display_name']"
             position="attributes"
         >
             <attribute name="t-if">False</attribute>
         </xpath>
         <xpath
-            expr="//table[1]/tbody/t/t//span[@t-field='ml.product_id.display_name']"
+            expr="//table[1]/tbody  //span[@t-field='ml.product_id.display_name']"
             position="after"
         >
             <span
@@ -110,7 +110,7 @@
             />
         </xpath>
         <!--    Stock move lines info, some changes depending on whether there's only one stock move line-->
-        <xpath expr="//table[1]/tbody/t/t/tr" position="after">
+        <xpath expr="//table[1]/tbody/tr" position="after">
             <tr
                 t-if="o.state == 'assigned' and o.picking_type_code == 'internal' and ((has_detailed_op and ml.qty_done) or (not has_detailed_op and ml.product_uom_qty))"
                 t-att-style="style"
@@ -168,22 +168,22 @@
         </xpath>
 
         <!--    We want that when state=ready if there are defined detailed operations, only these are shown for that move-->
-        <xpath expr="//table[1]/tbody/t/t" position="after">
+        <xpath expr="//table[1]/tbody" position="after">
             <t
                 t-set="has_detailed_op"
                 t-value="any(move_line.qty_done for move_line in move.move_line_ids)"
             />
         </xpath>
-        <xpath expr="//table[1]/tbody/t/t/tr" position="attributes">
+        <xpath expr="//table[1]/tbody/tr" position="attributes">
             <attribute
                 name="t-if"
             >(o.state != 'assigned' or o.picking_type_code != 'internal') and ((has_detailed_op and ml.qty_done) or (not has_detailed_op and ml.product_uom_qty))
             </attribute>
         </xpath>
-        <xpath expr="//table[1]/tbody/t/t/tr/td[2]" position="attributes">
+        <xpath expr="//table[1]/tbody/tr/td[2]" position="attributes">
             <attribute name="t-if">False</attribute>
         </xpath>
-        <xpath expr="// table[1]/tbody/t/t/tr/td[2]" position="after">
+        <xpath expr="// table[1]/tbody/tr/td[2]" position="after">
             <td>
                 <span t-if="has_detailed_op and ml.qty_done" t-field="ml.qty_done" />
                 <span t-else="" t-field="ml.product_uom_qty" />
