@@ -8,7 +8,7 @@ class WizStockBarcodesRead(models.AbstractModel):
     _inherit = "wiz.stock.barcodes.read"
 
     def _prepare_lot_domain(self):
-        lot = self.env["stock.production.lot"]
+        lot = self.env["stock.lot"]
         nos_size = lot.fields_get("nos", "size")["nos"]["size"]
         if len(self.barcode) == nos_size:
             domain = [
@@ -18,7 +18,7 @@ class WizStockBarcodesRead(models.AbstractModel):
             ]
             if self.product_id:
                 domain.append(("product_id", "=", self.product_id.id))
-            lot = self.env["stock.production.lot"].search(domain)
+            lot = self.env["stock.lot"].search(domain)
         if not lot:
             domain = super()._prepare_lot_domain()
         return domain

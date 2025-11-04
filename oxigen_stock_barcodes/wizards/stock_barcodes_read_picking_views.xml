@@ -15,10 +15,14 @@
                 <button
                     name="action_confirm_picking"
                     type="object"
-                    t-att-class="'btn pull-right' + (record.is_pending.raw_value == false ? ' btn-primary' : ' btn-secondary')"
-                    attrs="{'invisible': [('do_show_action_confirm', '=', False)]}"
-                    context="{'wiz_barcode_id': parent.id, 'picking_id': picking_id}"
-                >Confirm and Validate</button>
+                    icon="fa-check-double"
+                    class="btn btn-secondary w-100 oe_kanban_action_button btn-sm text-uppercase d-flex justify-content-center align-items-center fs-2"
+                    invisible="do_show_action_confirm == False"
+                    confirm="Are you sure to confirm and validate the picking?"
+                    data-hotkey="'shift+c'"
+                >
+                    <span class="d-none d-lg-block">Confirm and Validate</span>
+                </button>
             </xpath>
         </field>
     </record>
