@@ -10,4 +10,4 @@ class StockPickingImportSerials(models.TransientModel):
 
     def _prepare_additional_tracking_values(self, data, company):
         res = super()._prepare_additional_tracking_values(data, company)
-        return {**res, **dict(zip(["nos", "dn"], data))}
+        return {**res, **dict(zip(["nos", "dn"], data, strict=False))}

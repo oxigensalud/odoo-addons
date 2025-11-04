@@ -10,7 +10,7 @@
     "category": "Warehouse Management",
     "license": "AGPL-3",
     "author": "NuoBiT Solutions, S.L.",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "depends": [
         "stock_picking_import_serials",
         "oxigen_stock_alternate_lot",
