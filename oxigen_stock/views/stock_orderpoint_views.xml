@@ -10,22 +10,4 @@
             </field>
         </field>
     </record>
-    <!--    <record-->
-    <!--        id="oxigen_view_warehouse_orderpoint_tree_editable_config"-->
-    <!--        model="ir.ui.view"-->
-    <!--    >-->
-    <!--        <field-->
-    <!--            name="name"-->
-    <!--        >oxigen.stock.warehouse.orderpoint.tree.editable.config</field>-->
-    <!--        <field name="model">stock.warehouse.orderpoint</field>-->
-    <!--        <field-->
-    <!--            name="inherit_id"-->
-    <!--            ref="stock.view_warehouse_orderpoint_tree_editable_config"-->
-    <!--        />-->
-    <!--        <field name="arch" type="xml">-->
-    <!--            <field name="product_id" position="before">-->
-    <!--                <field name="name" optional="hide" />-->
-    <!--            </field>-->
-    <!--        </field>-->
-    <!--    </record>-->
 </odoo>

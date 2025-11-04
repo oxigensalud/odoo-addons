@@ -24,7 +24,7 @@ class StockLocation(models.Model):
         for location in self:
             if location.location_id.complete_name:
                 location.complete_name = (
-                    f"{location.location_id.complete_name}" f"/{location.name}"
+                    f"{location.location_id.complete_name}/{location.name}"
                 )
             else:
                 location.complete_name = location.name
