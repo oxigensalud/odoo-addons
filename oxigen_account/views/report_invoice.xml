@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="report_assets_common" inherit_id="account.report_invoice_document">
+    <template
+        priority="20"
+        id="report_assets_common"
+        inherit_id="account.report_invoice_document"
+    >
         <xpath expr="//div[@id='informations']" position="after">
              <div t-if="o.invoice_origin and len(o.invoice_origin)>12" name="origin">
                 <strong>Source:</strong>
