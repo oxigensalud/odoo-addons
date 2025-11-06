@@ -1,13 +1,14 @@
 # Copyright NuoBiT - Eric Antones <eantones@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
-from odoo import api, models
+from odoo import _, api, models
 
 from odoo.addons.report_xlsx_helper.report.report_xlsx_format import FORMATS
 
 
 def insert_after(lst, item, new_items):
-    if not isinstance(new_items, (list, tuple)):
+    if not isinstance(new_items, (list | tuple)):
         new_items = (new_items,)
     for i, e in enumerate(lst):
         if e == item:
@@ -45,7 +46,7 @@ class AccountAsset(models.Model):
             "date_transfer": {
                 "header": {
                     "type": "string",
-                    "value": AssetReport._("Asset Transfer Date"),
+                    "value": _("Asset Transfer Date"),
                 },
                 "asset": {
                     "value": AssetReport._render("asset.date_transfer or ''"),
