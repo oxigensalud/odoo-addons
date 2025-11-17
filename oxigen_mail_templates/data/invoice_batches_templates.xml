@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="invoice_batch_email_template" model="mail.template">
         <field name="name">Lote de factura Oxigen Salud S.A.</field>
         <field name="model_id" ref="account.model_account_move" />
@@ -12,8 +11,8 @@
         >"${'Oxigen Salud S.A.' | safe}" &lt;${'facturacion@oxigensalud.com' | safe}&gt;</field>
         <field name="partner_to">${object.invoice_batch_email_partner_id.id}</field>
         <field name="body_html" type="html">
-<div style="margin: 0px; padding: 0px;">
-    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px;">
         Dear ${object.partner_id.name}
         % if object.partner_id.parent_id:
             (${object.partner_id.parent_id.name})
@@ -29,7 +28,7 @@
             (with reference: ${object.invoice_origin} )
         % endif
         amounting in <strong
-                    >${format_amount(object.amount_total, object.currency_id)}</strong>
+                >${format_amount(object.amount_total, object.currency_id)}</strong>
         from ${object.company_id.name}.
         % if object.payment_state in ('paid', 'in_payment'):
             This invoice is already paid.
@@ -38,7 +37,7 @@
             % if object.payment_reference:
                 <br /><br />
                 Please use the following communication for your payment: <strong
-                    >${object.payment_reference}</strong>.
+                >${object.payment_reference}</strong>.
             % endif
         % endif
         <br /><br />
@@ -48,7 +47,8 @@
             ${object.invoice_user_id.signature | safe}
         % endif
     </p>
-</div></field>
+            </div>
+        </field>
         <field
             name="report_template"
             ref="account_invoice_report_service.action_report_invoice_delivery"
@@ -59,5 +59,4 @@
         <field name="lang">${object.partner_id.lang}</field>
         <field name="auto_delete" eval="False" />
     </record>
-
 </odoo>
