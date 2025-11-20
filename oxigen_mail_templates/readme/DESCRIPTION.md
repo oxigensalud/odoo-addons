@@ -1,3 +1,1 @@
-- [ForgeFlow](https://www.forgeflow.com)
-- [NuoBiT](https://www.nuobit.com):
-  - Deniz Gallo <dgallo@nuobit.com>
+Customizations for Oxigen in Templates
