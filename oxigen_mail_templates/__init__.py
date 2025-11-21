@@ -1,9 +1,12 @@
 def _pre_init_hook(env):
-    env.cr.execute("""
+    env.cr.execute(
+        """
         SELECT id, create_uid, write_uid, create_date, write_date
         FROM mail_template
         WHERE name->>'en_US' = %s
-    """, ('Lote de factura Oxigen Salud S.A.',))
+    """,
+        ("Lote de factura Oxigen Salud S.A.",),
+    )
 
     data = env.cr.fetchone()
     if data:

@@ -28,10 +28,7 @@ Oxigen Mail Templates
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-- `ForgeFlow <https://www.forgeflow.com>`__
-- `NuoBiT <https://www.nuobit.com>`__:
-
-  - Deniz Gallo dgallo@nuobit.com
+Customizations for Oxigen in Templates
 
 **Table of contents**
 
@@ -60,7 +57,10 @@ Authors
 Contributors
 ------------
 
-Customizations for Oxigen in Templates
+- `ForgeFlow <https://www.forgeflow.com>`__
+- `NuoBiT <https://www.nuobit.com>`__:
+
+  - Deniz Gallo dgallo@nuobit.com
 
 Maintainers
 -----------

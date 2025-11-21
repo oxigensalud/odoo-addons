@@ -9,10 +9,7 @@
     "author": "NuoBiT Solutions SL, ForgeFlow",
     "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Accounting",
-    "depends": [
-        "account_invoice_batches",
-        "account_invoice_report_service"
-    ],
+    "depends": ["account_invoice_batches"],
     "data": ["data/invoice_batches_templates.xml"],
     "pre_init_hook": "_pre_init_hook",
     "license": "AGPL-3",
