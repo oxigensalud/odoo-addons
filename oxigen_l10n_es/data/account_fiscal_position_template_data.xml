@@ -60,7 +60,6 @@
         <field name="tax_dest_id" ref="account_tax_template_p_iva21nd_ic_bi" />
     </record>
 
-
     <!-- Retención IRPF 15% -->
 
     <record id="fptt_irpf15_nd4_nd4" model="account.fiscal.position.tax.template">
@@ -99,15 +98,14 @@
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_irpf15" />
     </record>
 
-
     <!-- DUA -->
 
-     <!--     4% -->
+    <!--     4% -->
     <record id="fptt_dua_4nd_s" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es_dua.fp_dua" />
         <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_nd" />
         <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
-   </record>
+    </record>
 
     <record id="fptt_dua_4nd_bc" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es_dua.fp_dua" />
@@ -158,5 +156,4 @@
         <field name="tax_src_id" ref="account_tax_template_p_iva0_nd_bi" />
         <field name="tax_dest_id" ref="l10n_es_dua.account_tax_template_p_dua0" />
     </record>
-
 </odoo>

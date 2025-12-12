@@ -284,7 +284,7 @@
         />
     </record>
 
-     <record
+    <record
         id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_36"
         model="l10n.es.aeat.map.tax.line"
     >
@@ -307,7 +307,7 @@
         />
     </record>
 
-     <record
+    <record
         id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_37"
         model="l10n.es.aeat.map.tax.line"
     >
@@ -358,7 +358,7 @@
         />
     </record>
 
-     <record
+    <record
         id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_40"
         model="l10n.es.aeat.map.tax.line"
     >
@@ -384,7 +384,7 @@
         />
     </record>
 
-     <record
+    <record
         id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_41"
         model="l10n.es.aeat.map.tax.line"
     >

@@ -27,7 +27,7 @@
         <field name="position_id" ref="oxigen_fp_extra" />
         <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_nd" />
         <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
-   </record>
+    </record>
 
     <record
         id="fptt_oxigen_fp_extra_nd4_bc"
@@ -107,11 +107,8 @@
     <!-- Prorrata -->
     <!-- ************************************************************* -->
 
-     <!--     4% -->
-     <record
-        id="fptt_oxigen_fp_extra_pr4s"
-        model="account.fiscal.position.tax.template"
-    >
+    <!--     4% -->
+    <record id="fptt_oxigen_fp_extra_pr4s" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="oxigen_fp_extra" />
         <field
             name="tax_src_id"
@@ -220,135 +217,119 @@
     <!-- ************************************************************* -->
 
     <record id="fptt_oxigen_fp_extra_4b" model="account.fiscal.position.tax.template">
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_bc" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
-        </record>
-        <record
-        id="fptt_oxigen_fp_extra_4s"
-        model="account.fiscal.position.tax.template"
-    >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_sc" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_bc" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
+    </record>
+    <record id="fptt_oxigen_fp_extra_4s" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_sc" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_4_inv"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_bi" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
-        </record>
-        <record
-        id="fptt_oxigen_fp_extra_10b"
-        model="account.fiscal.position.tax.template"
-    >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_bc" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
-        </record>
-        <record
-        id="fptt_oxigen_fp_extra_10s"
-        model="account.fiscal.position.tax.template"
-    >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_sc" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva4_bi" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
+    </record>
+    <record id="fptt_oxigen_fp_extra_10b" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_bc" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
+    </record>
+    <record id="fptt_oxigen_fp_extra_10s" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_sc" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_10_inv"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_bi" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
-        </record>
-        <record
-        id="fptt_oxigen_fp_extra_21b"
-        model="account.fiscal.position.tax.template"
-    >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva21_bc" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
-        </record>
-        <record
-        id="fptt_oxigen_fp_extra_21s"
-        model="account.fiscal.position.tax.template"
-    >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva21_sc" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva10_bi" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
+    </record>
+    <record id="fptt_oxigen_fp_extra_21b" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva21_bc" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
+    </record>
+    <record id="fptt_oxigen_fp_extra_21s" model="account.fiscal.position.tax.template">
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva21_sc" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_21_inv"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva21_bi" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_p_iva21_bi" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_p_iva0_ns_b" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_4b"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva4b" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva4b" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_4s"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva4s" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva4s" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_10b"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva10b" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva10b" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_10s"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva10s" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva10s" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_21b"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21b" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21b" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_21s"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21s" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns" />
-        </record>
-        <record
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21s" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns" />
+    </record>
+    <record
         id="fptt_oxigen_fp_extra_ventas_21isp"
         model="account.fiscal.position.tax.template"
     >
-            <field name="position_id" ref="oxigen_fp_extra" />
-            <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21isp" />
-            <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
-        </record>
+        <field name="position_id" ref="oxigen_fp_extra" />
+        <field name="tax_src_id" ref="l10n_es.account_tax_template_s_iva21isp" />
+        <field name="tax_dest_id" ref="l10n_es.account_tax_template_s_iva_ns_b" />
+    </record>
 
     <!-- ************************************************************* -->
     <!-- Fiscal Position Account Templates -->
     <!-- ************************************************************* -->
-
 
     <record id="fpat_extra_acc_1" model="account.fiscal.position.account.template">
         <field name="position_id" ref="oxigen_fp_extra" />

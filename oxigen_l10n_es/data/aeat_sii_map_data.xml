@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
     <record
         id="l10n_es_aeat_sii_oca.aeat_sii_map_line_SFRND"
         model="aeat.sii.map.lines"
@@ -32,7 +31,7 @@
     </record>
 
     <record id="l10n_es_dua_sii.aeat_sii_map_line_DUA" model="aeat.sii.map.lines">
-         <field
+        <field
             name="taxes"
             eval="[(6, 0, [
                 ref('l10n_es_dua.account_tax_template_p_dua0'),

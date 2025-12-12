@@ -114,7 +114,6 @@
                 (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_2')),
             ]"
         />
-
     </record>
 
     <record
@@ -311,7 +310,6 @@
                 (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_2')),
             ]"
         />
-
     </record>
 
     <record

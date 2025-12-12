@@ -2,7 +2,6 @@ from odoo import models
 
 
 class OxigenWizardUpdateChartsAccounts(models.TransientModel):
-
     _inherit = "wizard.update.charts.accounts"
 
     def _check_consistency(self):
