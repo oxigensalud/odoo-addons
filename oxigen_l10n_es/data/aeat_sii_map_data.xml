@@ -5,36 +5,36 @@
         model="aeat.sii.map.lines"
     >
         <field
-            name="taxes"
+            name="tax_xmlid_ids"
             eval="[(6, 0, [
-                ref('l10n_es.account_tax_template_p_iva4_nd'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva4_nd_bc'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva4_nd_bi'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in'),
-                ref('l10n_es.account_tax_template_p_iva5_nd'),
-                ref('l10n_es.account_tax_template_p_iva10_nd'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva10_nd_bc'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva10_nd_bi'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in'),
-                ref('l10n_es.account_tax_template_p_iva0_nd'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva0_nd_bc'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva0_nd_bi'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc'),
-                ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in'),
+                ref('p_iva4_nd'),
+                ref('p_iva4_nd_bc'),
+                ref('p_iva4_nd_bi'),
+                ref('p_iva4nd_ic_bi'),
+                ref('p_iva4nd_ic_bc'),
+                ref('p_iva4nd_sp_in'),
+                ref('p_iva5_nd'),
+                ref('p_iva10_nd'),
+                ref('p_iva10_nd_bc'),
+                ref('p_iva10_nd_bi'),
+                ref('p_iva10nd_ic_bi'),
+                ref('p_iva10nd_ic_bc'),
+                ref('p_iva10nd_sp_in'),
+                ref('p_iva0_nd'),
+                ref('p_iva0_nd_bc'),
+                ref('p_iva0_nd_bi'),
+                ref('p_iva21nd_ic_bi'),
+                ref('p_iva21nd_ic_bc'),
+                ref('p_iva21nd_sp_in'),
             ])]"
         />
     </record>
 
-    <record id="l10n_es_dua_sii.aeat_sii_map_line_DUA" model="aeat.sii.map.lines">
+    <record id="l10n_es_aeat_sii_oca.aeat_sii_map_line_DUA" model="aeat.sii.map.lines">
         <field
-            name="taxes"
+            name="tax_xmlid_ids"
             eval="[(6, 0, [
-                ref('l10n_es_dua.account_tax_template_p_dua0'),
+                ref('p_dua_exempt'),
             ])]"
         />
     </record>

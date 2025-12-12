@@ -5,19 +5,19 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('s_igf21_r134a')),
+                (4, ref('s_igf21_r134a_regen')),
+                (4, ref('s_igf21_r410a')),
+                (4, ref('s_igf21_r438a')),
+                (4, ref('s_igf21_r404a')),
+                (4, ref('s_igf21_r422d')),
+                (4, ref('s_igf21_r422a')),
+                (4, ref('s_igf21_r449a')),
+                (4, ref('s_igf21_r407c')),
+                (4, ref('s_igf21_r452a')),
+                (4, ref('s_igf21_r32')),
             ]"
         />
     </record>
@@ -27,19 +27,19 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('s_igf21_r134a')),
+                (4, ref('s_igf21_r134a_regen')),
+                (4, ref('s_igf21_r410a')),
+                (4, ref('s_igf21_r438a')),
+                (4, ref('s_igf21_r404a')),
+                (4, ref('s_igf21_r422d')),
+                (4, ref('s_igf21_r422a')),
+                (4, ref('s_igf21_r449a')),
+                (4, ref('s_igf21_r407c')),
+                (4, ref('s_igf21_r452a')),
+                (4, ref('s_igf21_r32')),
             ]"
         />
     </record>
@@ -49,26 +49,26 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_2')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_sp_in')),
+                (4, ref('p_iva4_sp_in_1')),
+                (4, ref('p_iva10_sp_in_1')),
+                (4, ref('p_iva21_sp_in_1')),
+                (4, ref('p_iva4_ic_bc_2')),
+                (4, ref('p_iva10_ic_bc_2')),
+                (4, ref('p_iva21_ic_bc_2')),
+                (4, ref('p_iva4_ic_bi_2')),
+                (4, ref('p_iva10_ic_bi_2')),
+                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -78,26 +78,26 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_2')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_sp_in')),
+                (4, ref('p_iva4_sp_in_1')),
+                (4, ref('p_iva10_sp_in_1')),
+                (4, ref('p_iva21_sp_in_1')),
+                (4, ref('p_iva4_ic_bc_2')),
+                (4, ref('p_iva10_ic_bc_2')),
+                (4, ref('p_iva21_ic_bc_2')),
+                (4, ref('p_iva4_ic_bi_2')),
+                (4, ref('p_iva10_ic_bi_2')),
+                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -107,14 +107,14 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_2')),
+                (4, ref('p_iva4_sp_ex_1')),
+                (4, ref('p_iva10_sp_ex_1')),
+                (4, ref('p_iva21_sp_ex_1')),
+                (4, ref('p_iva4_isp_2')),
+                (4, ref('p_iva10_isp_2')),
+                (4, ref('p_iva21_isp_2')),
             ]"
         />
     </record>
@@ -124,14 +124,14 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_2')),
+                (4, ref('p_iva4_sp_ex_1')),
+                (4, ref('p_iva10_sp_ex_1')),
+                (4, ref('p_iva21_sp_ex_1')),
+                (4, ref('p_iva4_isp_2')),
+                (4, ref('p_iva10_isp_2')),
+                (4, ref('p_iva21_isp_2')),
             ]"
         />
     </record>
@@ -141,19 +141,19 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('s_igf21_r134a')),
+                (4, ref('s_igf21_r134a_regen')),
+                (4, ref('s_igf21_r410a')),
+                (4, ref('s_igf21_r438a')),
+                (4, ref('s_igf21_r404a')),
+                (4, ref('s_igf21_r422d')),
+                (4, ref('s_igf21_r422a')),
+                (4, ref('s_igf21_r449a')),
+                (4, ref('s_igf21_r407c')),
+                (4, ref('s_igf21_r452a')),
+                (4, ref('s_igf21_r32')),
             ]"
         />
     </record>
@@ -163,32 +163,32 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_2')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_sp_in')),
+                (4, ref('p_iva4_sp_in_1')),
+                (4, ref('p_iva10_sp_in_1')),
+                (4, ref('p_iva21_sp_in_1')),
+                (4, ref('p_iva4_ic_bc_2')),
+                (4, ref('p_iva10_ic_bc_2')),
+                (4, ref('p_iva21_ic_bc_2')),
+                (4, ref('p_iva4_ic_bi_2')),
+                (4, ref('p_iva10_ic_bi_2')),
+                (4, ref('p_iva21_ic_bi_2')),
+                (4, ref('p_iva4_sp_ex_1')),
+                (4, ref('p_iva10_sp_ex_1')),
+                (4, ref('p_iva21_sp_ex_1')),
+                (4, ref('p_iva4_isp_2')),
+                (4, ref('p_iva10_isp_2')),
+                (4, ref('p_iva21_isp_2')),
             ]"
         />
     </record>
@@ -198,19 +198,19 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('s_igf21_r134a')),
+                (4, ref('s_igf21_r134a_regen')),
+                (4, ref('s_igf21_r410a')),
+                (4, ref('s_igf21_r438a')),
+                (4, ref('s_igf21_r404a')),
+                (4, ref('s_igf21_r422d')),
+                (4, ref('s_igf21_r422a')),
+                (4, ref('s_igf21_r449a')),
+                (4, ref('s_igf21_r407c')),
+                (4, ref('s_igf21_r452a')),
+                (4, ref('s_igf21_r32')),
             ]"
         />
     </record>
@@ -220,32 +220,32 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_2')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_sp_in')),
+                (4, ref('p_iva4_sp_in_1')),
+                (4, ref('p_iva10_sp_in_1')),
+                (4, ref('p_iva21_sp_in_1')),
+                (4, ref('p_iva4_ic_bc_2')),
+                (4, ref('p_iva10_ic_bc_2')),
+                (4, ref('p_iva21_ic_bc_2')),
+                (4, ref('p_iva4_ic_bi_2')),
+                (4, ref('p_iva10_ic_bi_2')),
+                (4, ref('p_iva21_ic_bi_2')),
+                (4, ref('p_iva4_sp_ex_1')),
+                (4, ref('p_iva10_sp_ex_1')),
+                (4, ref('p_iva21_sp_ex_1')),
+                (4, ref('p_iva4_isp_2')),
+                (4, ref('p_iva10_isp_2')),
+                (4, ref('p_iva21_isp_2')),
             ]"
         />
     </record>
@@ -255,14 +255,14 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+                (4, ref('p_iva4_isp_1')),
+                (4, ref('p_iva10_isp_1')),
+                (4, ref('p_iva21_isp_1')),
+                (4, ref('p_iva4_sp_ex_2')),
+                (4, ref('p_iva10_sp_ex_2')),
+                (4, ref('p_iva21_sp_ex_2')),
             ]"
         />
     </record>
@@ -272,14 +272,14 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+                (4, ref('p_iva4_isp_1')),
+                (4, ref('p_iva10_isp_1')),
+                (4, ref('p_iva21_isp_1')),
+                (4, ref('p_iva4_sp_ex_2')),
+                (4, ref('p_iva10_sp_ex_2')),
+                (4, ref('p_iva21_sp_ex_2')),
             ]"
         />
     </record>
@@ -289,15 +289,15 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
 
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_1')),
+                (4, ref('p_iva4_sp_in_2')),
+                (4, ref('p_iva10_sp_in_2')),
+                (4, ref('p_iva21_sp_in_2')),
+                (4, ref('p_iva4_ic_bc_1')),
+                (4, ref('p_iva10_ic_bc_1')),
+                (4, ref('p_iva21_ic_bc_1')),
             ]"
         />
     </record>
@@ -307,15 +307,15 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
 
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_1')),
+                (4, ref('p_iva4_sp_in_2')),
+                (4, ref('p_iva10_sp_in_2')),
+                (4, ref('p_iva21_sp_in_2')),
+                (4, ref('p_iva4_ic_bc_1')),
+                (4, ref('p_iva10_ic_bc_1')),
+                (4, ref('p_iva21_ic_bc_1')),
             ]"
         />
     </record>
@@ -325,11 +325,11 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_1')),
+                (4, ref('p_iva4_ic_bi_1')),
+                (4, ref('p_iva10_ic_bi_1')),
+                (4, ref('p_iva21_ic_bi_1')),
             ]"
         />
     </record>
@@ -339,11 +339,11 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_1')),
+                (4, ref('p_iva4_ic_bi_1')),
+                (4, ref('p_iva10_ic_bi_1')),
+                (4, ref('p_iva21_ic_bi_1')),
             ]"
         />
     </record>
@@ -353,23 +353,23 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+                (4, ref('p_iva4_sp_in_2')),
+                (4, ref('p_iva10_sp_in_2')),
+                (4, ref('p_iva21_sp_in_2')),
+                (4, ref('p_iva4_ic_bc_1')),
+                (4, ref('p_iva10_ic_bc_1')),
+                (4, ref('p_iva21_ic_bc_1')),
+                (4, ref('p_iva4_ic_bi_1')),
+                (4, ref('p_iva10_ic_bi_1')),
+                (4, ref('p_iva21_ic_bi_1')),
+                (4, ref('p_iva4_isp_1')),
+                (4, ref('p_iva10_isp_1')),
+                (4, ref('p_iva21_isp_1')),
+                (4, ref('p_iva4_sp_ex_2')),
+                (4, ref('p_iva10_sp_ex_2')),
+                (4, ref('p_iva21_sp_ex_2')),
             ]"
         />
     </record>
@@ -379,23 +379,23 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_in_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bc_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_ic_bi_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_isp_1')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10_sp_ex_2')),
-                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+                (4, ref('p_iva4_sp_in_2')),
+                (4, ref('p_iva10_sp_in_2')),
+                (4, ref('p_iva21_sp_in_2')),
+                (4, ref('p_iva4_ic_bc_1')),
+                (4, ref('p_iva10_ic_bc_1')),
+                (4, ref('p_iva21_ic_bc_1')),
+                (4, ref('p_iva4_ic_bi_1')),
+                (4, ref('p_iva10_ic_bi_1')),
+                (4, ref('p_iva21_ic_bi_1')),
+                (4, ref('p_iva4_isp_1')),
+                (4, ref('p_iva10_isp_1')),
+                (4, ref('p_iva21_isp_1')),
+                (4, ref('p_iva4_sp_ex_2')),
+                (4, ref('p_iva10_sp_ex_2')),
+                (4, ref('p_iva21_sp_ex_2')),
             ]"
         />
     </record>
@@ -405,19 +405,19 @@
         model="l10n.es.aeat.map.tax.line"
     >
         <field
-            name="tax_ids"
+            name="tax_xmlid_ids"
             eval="[
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
-                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('s_igf21_r134a')),
+                (4, ref('s_igf21_r134a_regen')),
+                (4, ref('s_igf21_r410a')),
+                (4, ref('s_igf21_r438a')),
+                (4, ref('s_igf21_r404a')),
+                (4, ref('s_igf21_r422d')),
+                (4, ref('s_igf21_r422a')),
+                (4, ref('s_igf21_r449a')),
+                (4, ref('s_igf21_r407c')),
+                (4, ref('s_igf21_r452a')),
+                (4, ref('s_igf21_r32')),
             ]"
         />
     </record>

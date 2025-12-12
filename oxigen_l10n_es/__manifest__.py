@@ -1,11 +1,12 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 {
     "name": "Oxigen Localization",
     "summary": "Customizations to PGCE for Oxigen",
-    "version": "14.0.1.0.9",
-    "author": "ForgeFlow",
+    "version": "18.0.1.0.0",
+    "author": "ForgeFlow, NuoBiT Solutions SL",
     "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Accounting/Localizations/Account Charts",
     "depends": [
@@ -14,23 +15,17 @@
         "l10n_es_aeat_mod322",
         "l10n_es_aeat_mod349",
         "l10n_es_special_prorate",
-        "account_chart_update",
-        "l10n_es_dua_sii",
+        "l10n_es_aeat_sii_oca",
     ],
-    "installable": True,
     "license": "AGPL-3",
+    "post_init_hook": "post_init_hook",
     "data": [
-        "data/account_chart_template_data.xml",
-        "data/account_tax_data.xml",
-        "data/legacy_account_tax_data.xml",
-        "data/tax_code_map_mod303_202107_data.xml",
+        "data/l10n.es.aeat.map.tax.line.tax.csv",
+        "data/l10n.es.aeat.map.tax.line.csv",
         "data/tax_code_map_mod303_2023_data.xml",
         "data/tax_code_map_mod303_202410_data.xml",
         "data/tax_code_map_mod322_2023_data.xml",
         "data/aeat_349_map_data.xml",
-        "data/account_fiscal_position_template_data.xml",
-        "data/oxigen_fiscal_position_extracomunitaria.xml",
         "data/aeat_sii_map_data.xml",
-        "data/fiscal_position_rege.xml",
     ],
 }
