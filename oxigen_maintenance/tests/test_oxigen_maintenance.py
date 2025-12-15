@@ -17,7 +17,7 @@ class TestOxigenMaintenance(common.TransactionCase):
         self.maintenance_request_obj = self.env["maintenance.request"]
         self.maintenance_plan_obj = self.env["maintenance.plan"]
         self.maintenance_equipment_obj = self.env["maintenance.equipment"]
-        self.cron = self.env.ref("maintenance.maintenance_requests_cron")
+        self.cron = self.env.ref("maintenance_plan.maintenance_requests_cron")
         self.weekly_kind = self.env.ref("maintenance_plan.maintenance_kind_weekly")
         self.weekly_kind.name = "Weekly"
 

@@ -1,4 +1,5 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 from odoo import api, fields, models
@@ -12,7 +13,7 @@ class MaintenancePlan(models.Model):
         return self.env["hr.employee"].search([("user_id", "=", self.env.uid)], limit=1)
 
     employee_id = fields.Many2one(
-        "hr.employee", string="Employee", default=_default_employee_get
+        comodel_name="hr.employee", string="Employee", default=_default_employee_get
     )
 
     contract_ids = fields.Many2many(
