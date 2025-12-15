@@ -4,7 +4,7 @@
 from odoo.tests import common
 
 
-class TestMaintenanceSecurity(common.SavepointCase):
+class TestMaintenanceSecurity(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

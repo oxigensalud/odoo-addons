@@ -1,4 +1,5 @@
 # Copyright 2023 Dixmit
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
@@ -10,7 +11,7 @@ class MaintenanceRequest(models.Model):
 
     company_id = fields.Many2one(default=lambda r: False)
     customer_id = fields.Many2one(
-        "res.partner", compute="_compute_customer", store=True
+        comodel_name="res.partner", compute="_compute_customer", store=True
     )
 
     @api.depends("equipment_id")
@@ -26,7 +27,7 @@ class MaintenanceRequest(models.Model):
     def activity_update(self):
         if self.env.user.has_group("base_maintenance_group.group_maintenance_user"):
             try:
-                self.equipment_id.check_access_rule("read")
+                self.equipment_id.check_access("read")
             except AccessError:
                 self = self.sudo()
         return super().activity_update()

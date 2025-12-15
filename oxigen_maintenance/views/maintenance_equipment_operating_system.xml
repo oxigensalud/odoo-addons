@@ -15,7 +15,7 @@
                         name="web_ribbon"
                         title="Archived"
                         bg_color="bg-danger"
-                        attrs="{'invisible': [('active', '=', True)]}"
+                        invisible="active == True"
                     />
                     <group>
                         <field name="name" />
@@ -42,12 +42,12 @@
     <record model="ir.ui.view" id="maintenance_equipment_operating_system_tree_view">
         <field
             name="name"
-        >maintenance.equipment.operating.system.tree (in oxigen_maintenance)</field>
+        >maintenance.equipment.operating.system.list (in oxigen_maintenance)</field>
         <field name="model">maintenance.equipment.operating.system</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -57,7 +57,7 @@
     >
         <field name="name">Operating Systems</field>
         <field name="res_model">maintenance.equipment.operating.system</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>

@@ -35,7 +35,7 @@
         </field>
     </record>
     <record id="hr_equipment_request_view_tree" model="ir.ui.view">
-        <field name="name">maintenance.request.view.tree.inherit - oxigen</field>
+        <field name="name">maintenance.request.view.list.inherit - oxigen</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree" />
         <field name="arch" type="xml">
@@ -48,14 +48,14 @@
         </field>
     </record>
     <record id="maintenance.hr_equipment_request_action" model="ir.actions.act_window">
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">list,kanban,form</field>
         <field name="view_id" eval="False" />
     </record>
     <record
         id="maintenance.hr_equipment_todo_request_action_from_dashboard"
         model="ir.actions.act_window"
     >
-        <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+        <field name="view_mode">list,kanban,form,pivot,graph,calendar</field>
         <field name="view_id" eval="False" />
     </record>
 </odoo>

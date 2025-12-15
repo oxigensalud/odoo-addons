@@ -11,7 +11,7 @@
                 <field name="maintenance_plan_visible" invisible="1" />
                 <field
                     name="maintenance_plan_ids"
-                    attrs="{'invisible': [('maintenance_plan_visible','=',False)]}"
+                    invisible="maintenance_plan_visible == False"
                     widget="many2many_tags"
                 />
             </field>

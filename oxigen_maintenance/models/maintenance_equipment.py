@@ -1,4 +1,5 @@
 # Copyright 2021 ForgeFlow S.L.
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 from odoo import _, fields, models
@@ -15,7 +16,7 @@ class MaintenanceEquipment(models.Model):
     )
     # Specific fields only for IT
     operating_system_id = fields.Many2one(
-        "maintenance.equipment.operating.system",
+        comodel_name="maintenance.equipment.operating.system",
         groups="oxigen_maintenance.group_maintenance_it",
         tracking=True,
     )
@@ -34,7 +35,6 @@ class MaintenanceEquipment(models.Model):
     phone_line = fields.Char(
         groups="oxigen_maintenance.group_maintenance_it",
         tracking=True,
-        string="Phone Line",
     )
     phone_extension = fields.Char(
         groups="oxigen_maintenance.group_maintenance_it",
@@ -87,8 +87,8 @@ class MaintenanceEquipment(models.Model):
     )
     customer_id = fields.Many2one("res.partner")
     parent_id = fields.Many2one(
-        "maintenance.equipment",
-        "Parent Equipment",
+        comodel_name="maintenance.equipment",
+        string="Parent Equipment",
         index=True,
         ondelete="restrict",
         tracking=True,
@@ -103,7 +103,11 @@ class MaintenanceEquipment(models.Model):
             maintenance_plan, next_maintenance_date
         )
         kind = maintenance_plan.maintenance_kind_id.name or _("Unspecified kind")
-        res["name"] = _("%s - %s - %s") % (kind, self.name, maintenance_plan.name)
+        res["name"] = _("%(kind)s - %(name)s - %(plan)s") % {
+            "kind": kind,
+            "name": self.name,
+            "plan": maintenance_plan.name,
+        }
 
         if maintenance_plan.employee_id:
             res["employee_id"] = maintenance_plan.employee_id.id
@@ -158,13 +162,13 @@ class MaintenanceEquipment(models.Model):
                     )
                 )
             new_project = self.env["project.project"].create(
-                self._prepare_project_from_equipment_values(values)
+                self._prepare_project_from_equipment_values()
             )
             values["project_id"] = new_project.id
         return super().write(values)
 
-    def _prepare_project_from_equipment_values(self, values):
-        res = super()._prepare_project_from_equipment_values(values)
+    def _prepare_project_from_equipment_values(self):
+        res = super()._prepare_project_from_equipment_values()
         if self.name:
             res["name"] = self.name
         return res
