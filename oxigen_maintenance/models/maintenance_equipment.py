@@ -99,8 +99,7 @@ class MaintenanceEquipment(models.Model):
     )
 
     def _prepare_request_from_plan(self, maintenance_plan, next_maintenance_date):
-
-        res = super(MaintenanceEquipment, self)._prepare_request_from_plan(
+        res = super()._prepare_request_from_plan(
             maintenance_plan, next_maintenance_date
         )
         kind = maintenance_plan.maintenance_kind_id.name or _("Unspecified kind")

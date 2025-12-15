@@ -7,7 +7,7 @@ from odoo.tests import common
 
 class TestOxigenMaintenance(common.TransactionCase):
     def setUp(self):
-        super(TestOxigenMaintenance, self).setUp()
+        super().setUp()
         self.env = self.env(
             context=dict(
                 self.env.context,

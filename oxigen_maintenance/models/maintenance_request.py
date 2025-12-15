@@ -29,4 +29,4 @@ class MaintenanceRequest(models.Model):
                 self.equipment_id.check_access_rule("read")
             except AccessError:
                 self = self.sudo()
-        return super(MaintenanceRequest, self).activity_update()
+        return super().activity_update()
