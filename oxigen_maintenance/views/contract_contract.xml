@@ -7,7 +7,6 @@
         <field name="model">contract.contract</field>
         <field name="inherit_id" ref="contract.contract_contract_form_view" />
         <field name="arch" type="xml">
-
             <field name="equipment_ids" position="after">
                 <field name="maintenance_plan_visible" invisible="1" />
                 <field

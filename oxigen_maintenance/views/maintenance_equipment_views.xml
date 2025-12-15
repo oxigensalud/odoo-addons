@@ -17,42 +17,42 @@
     </record>
 
     <record id="hr_equipment_view_form" model="ir.ui.view">
-    <field name="name">equipment.form</field>
-    <field name="model">maintenance.equipment</field>
-     <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
-    <field name="arch" type="xml">
-          <xpath
+        <field name="name">equipment.form</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <xpath
                 expr="//group[@name='maintenance_plans']//field[@name='name']"
                 position="after"
             >
-              <field name="employee_id" />
-              <field name="contract_ids" />
-          </xpath>
-          <field name="company_id" position="after">
-            <field name="operating_system_id" />
-          </field>
-          <notebook position="inside">
-            <page
+                <field name="employee_id" />
+                <field name="contract_ids" />
+            </xpath>
+            <field name="company_id" position="after">
+                <field name="operating_system_id" />
+            </field>
+            <notebook position="inside">
+                <page
                     name="it_data"
                     string="Phone Data"
                     groups="oxigen_maintenance.group_maintenance_it"
                 >
-                <group>
                     <group>
-                        <field name="phone_imei_1" />
-                        <field name="phone_imei_2" />
-                        <field name="phone_pin" />
-                        <field name="phone_active_pin" />
-                        <field name="phone_puk" />
+                        <group>
+                            <field name="phone_imei_1" />
+                            <field name="phone_imei_2" />
+                            <field name="phone_pin" />
+                            <field name="phone_active_pin" />
+                            <field name="phone_puk" />
+                        </group>
+                        <group>
+                            <field name="phone_line" />
+                            <field name="phone_extension" />
+                            <field name="phone_icc_code" />
+                        </group>
                     </group>
-                    <group>
-                        <field name="phone_line" />
-                        <field name="phone_extension" />
-                        <field name="phone_icc_code" />
-                    </group>
-                </group>
-            </page>
-          </notebook>
+                </page>
+            </notebook>
         </field>
     </record>
     <record id="project_hr_equipment_view_form" model="ir.ui.view">

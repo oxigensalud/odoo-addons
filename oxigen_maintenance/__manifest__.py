@@ -6,7 +6,7 @@
     "summary": "Customizations for Oxigen in Maintenance",
     "version": "14.0.1.3.0",
     "author": "ForgeFlow",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Maintenance",
     "depends": [
         "stock",
