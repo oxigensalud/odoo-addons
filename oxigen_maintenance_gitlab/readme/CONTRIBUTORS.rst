@@ -1,2 +1,0 @@
-* Dixmit
-  * Enric Tobella

@@ -7,7 +7,6 @@ from odoo import fields, models
 
 
 class MaintenanceRequest(models.Model):
-
     _inherit = "maintenance.request"
 
     gitlab_id = fields.Integer(related="project_id.gitlab_id")

@@ -8,7 +8,7 @@
     "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "author": "Dixmit",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "depends": [
         "maintenance_project",
     ],

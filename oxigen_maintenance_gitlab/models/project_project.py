@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class ProjectProject(models.Model):
-
     _inherit = "project.project"
 
     gitlab_id = fields.Integer(help="Id of the project for gitlab", copy=False)
