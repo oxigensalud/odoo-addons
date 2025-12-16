@@ -61,6 +61,7 @@ Authors
 -------
 
 * Dixmit
+* NuoBiT Solutions SL
 
 Contributors
 ------------
@@ -68,6 +69,10 @@ Contributors
 - Dixmit
 
   - Enric Tobella
+
+- `NuoBiT <https://www.nuobit.com>`__:
+
+  - Deniz Gallo dgallo@nuobit.com
 
 Maintainers
 -----------

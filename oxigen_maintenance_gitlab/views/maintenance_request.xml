@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2023 Dixmit
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record model="ir.ui.view" id="maintenance_request_form_view">
@@ -21,7 +22,7 @@
                     type="object"
                     icon="fa-gitlab"
                     string="Send to Gitlab"
-                    attrs="{'invisible': ['|', ('gitlab_issue_url', '!=', False), ('gitlab_id', '=', 0)]}"
+                    invisible="gitlab_issue_url != False or gitlab_id == 0"
                 />
             </xpath>
             <field name="project_id" position="after">
@@ -29,7 +30,7 @@
                 <field name="gitlab_issue_id" invisible="1" />
                 <field
                     name="gitlab_issue_url"
-                    attrs="{'invisible':[('gitlab_issue_url', '=', False)]}"
+                    invisible="gitlab_issue_url != False"
                     widget="url"
                 />
             </field>
