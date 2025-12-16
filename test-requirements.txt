@@ -1,0 +1,2 @@
+odoo-addon-maintenance_equipment_contract@git+https://github.com/OCA/maintenance.git@refs/pull/535/head#subdirectory=maintenance_equipment_contract
+odoo-addon-maintenance_team_hierarchy@git+https://github.com/OCA/maintenance.git@refs/pull/517/head#subdirectory=maintenance_team_hierarchy
