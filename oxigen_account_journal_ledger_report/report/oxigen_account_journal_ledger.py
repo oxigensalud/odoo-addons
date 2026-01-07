@@ -226,7 +226,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             raise BadRequest(_("Nothing to export."))
         data = []
         for row in result:
-            data.append(dict(zip(headers, row)))
+            data.append(dict(zip(headers, row, strict=False)))
         return headers, data
 
     def generate_csv_report(self, file, data, objs):

@@ -20,10 +20,10 @@
                 </sheet>
                 <footer>
                     <button
-                        name="button_export_csv"
-                        string="Export CSV"
-                        type="object"
-                    />
+                    name="button_export_csv"
+                    string="Export CSV"
+                    type="object"
+                />
                     or
                     <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
