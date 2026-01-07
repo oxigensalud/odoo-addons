@@ -1,5 +1,4 @@
-# Copyright NuoBiT Solutions, S.L. (<https://www.nuobit.com>)
-# Frank Cespedes <fcespedes@nuobit.com>
+# Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import datetime
 
@@ -83,7 +82,8 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                        sum(l.debit) as debit, sum(l.credit) as credit
                 from all_previous_entries l, account_account a
                 where l.account_id = a.id
-                    and substring(a.code, 1, 1) not in ('6', '7') and substring(a.code, 1, 3)
+                    and substring(a.code, 1, 1) not in ('6', '7')
+                    and substring(a.code, 1, 3)
                      not in ('129')
                 group by l.company_id, l.account_id, l.partner_id
             ),
@@ -100,7 +100,8 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 where l.account_id = a.id
                     and ra.company_id = l.company_id
                     and ra.code = '129000000'
-                    and (substring(a.code, 1, 1) in ('6', '7') or substring(a.code, 1, 3)
+                    and (substring(a.code, 1, 1) in ('6', '7')
+                    or substring(a.code, 1, 3)
                      in ('129'))
                 group by l.company_id, ra.id
             ),
@@ -124,9 +125,11 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                        e.item_id,
                        e.account_id, e.partner_id, e.tax_line_id,
                        e.ref,
-                       (case when e.debit - e.credit >= 0 then round(e.debit - e.credit, 2)
+                       (case when e.debit - e.credit >= 0
+                       then round(e.debit - e.credit, 2)
                         else 0 end) as debit,
-                       (case when e.debit - e.credit < 0 then round(e.credit - e.debit, 2)
+                       (case when e.debit - e.credit < 0
+                       then round(e.credit - e.debit, 2)
                         else 0 end) as credit
                 from open_entries e
                 where round(e.debit, 2) != round(e.credit, 2)
@@ -136,9 +139,11 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                        e.item_id,
                        e.account_id, e.partner_id, e.tax_line_id,
                        e.ref,
-                       (case when e.debit - e.credit >= 0 then round(e.debit - e.credit, 2)
+                       (case when e.debit - e.credit >= 0
+                       then round(e.debit - e.credit, 2)
                         else 0 end) as debit,
-                       (case when e.debit - e.credit < 0 then round(e.credit - e.debit, 2)
+                       (case when e.debit - e.credit < 0
+                       then round(e.credit - e.debit, 2)
                         else 0 end) as credit
                 from pl_entry e
                 where round(e.debit, 2) != round(e.credit, 2)
@@ -188,7 +193,9 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                    a."name" as account_name,
                    l.partner_id,
                    (case when l.partner_id is not null then
-                        substring(a.code, 1, length(a.code)-length(l.partner_id::varchar))
+                        substring(
+                            a.code, 1, length(a.code)-length(l.partner_id::varchar
+                            ))
                          || l.partner_id::varchar
                     else a.code
                     end) as account_partner,

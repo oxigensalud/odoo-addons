@@ -1,5 +1,4 @@
-# Copyright NuoBiT Solutions, S.L. (<https://www.nuobit.com>)
-# Frank Cespedes <fcespedes@nuobit.com>
+# Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, fields, models
@@ -34,9 +33,10 @@ class OxigenAccountJournalLedgerWizard(models.TransientModel):
             if invalid_companies:
                 raise UserError(
                     _(
-                        "You don't have permission to access the following companies: %s"
-                        % invalid_companies.mapped("name")
+                        "You don't have permission to "
+                        "access the following companies: %(companies)s"
                     )
+                    % {"companies": ", ".join(invalid_companies.mapped("name"))}
                 )
 
     def _print_report(self, report_type):
