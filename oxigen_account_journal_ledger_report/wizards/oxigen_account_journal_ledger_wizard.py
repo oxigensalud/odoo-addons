@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, fields, models
@@ -42,21 +43,20 @@ class OxigenAccountJournalLedgerWizard(models.TransientModel):
     def _print_report(self, report_type):
         self.ensure_one()
         report_name = "report_oxigen_account_journal_ledger_csv"
-        return (
-            self.env["ir.actions.report"]
-            .search(
-                [("report_name", "=", report_name), ("report_type", "=", report_type)],
-                limit=1,
-            )
-            .report_action(
-                self,
-                data={
-                    "company_ids": self.company_ids.ids,
-                    "date_from": self.date_from,
-                    "date_to": self.date_to,
-                },
-            )
+        report = self.env["ir.actions.report"].search(
+            [("report_name", "=", report_name), ("report_type", "=", report_type)],
+            limit=1,
         )
+
+        action = report.report_action(
+            self,
+            data={
+                "company_ids": self.company_ids.ids,
+                "date_from": self.date_from,
+                "date_to": self.date_to,
+            },
+        )
+        return action
 
     def button_export_csv(self):
         self.ensure_one()

@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import datetime
 
@@ -255,10 +256,10 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             row = {k: _smart_convert(v) for k, v in row.items()}
             file.writerow(row)
 
-    def create_csv_report(self, docids, data):
-        csv_content, file_type = super().create_csv_report(docids, data)
-        try:
-            encoded_content = csv_content.encode("windows-1252")
-        except UnicodeEncodeError:
-            encoded_content = _smart_convert_to_ansi(csv_content)
-        return encoded_content, file_type
+    # def create_csv_report(self, docids, data):
+    #     csv_content, file_type = super().create_csv_report(docids, data)
+    #     try:
+    #         encoded_content = csv_content.encode("windows-1252")
+    #     except UnicodeEncodeError:
+    #         encoded_content = _smart_convert_to_ansi(csv_content)
+    #     return encoded_content, file_type
