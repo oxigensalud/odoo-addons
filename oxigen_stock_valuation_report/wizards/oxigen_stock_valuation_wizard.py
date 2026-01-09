@@ -1,5 +1,5 @@
-# Copyright NuoBiT Solutions, S.L. (<https://www.nuobit.com>)
-# Frank Cespedes <fcespedes@nuobit.com>
+# Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import fields, models
@@ -17,26 +17,20 @@ class OxigenStockValuationWizard(models.TransientModel):
     )
     date = fields.Date(required=True)
 
-    def _print_report(self, report_type):
+    def _print_report(self):
         self.ensure_one()
-        report_name = "report_oxigen_stock_valuation_xlsx"
-        return (
-            self.env["ir.actions.report"]
-            .search(
-                [("report_name", "=", report_name), ("report_type", "=", report_type)],
-                limit=1,
-            )
-            .report_action(
-                self,
-                data={
-                    "company_id": self.company_id.id,
-                    "date": self.date,
-                    "tz": self.env.context["tz"],
-                },
-            )
+        report = self.env.ref(
+            "oxigen_stock_valuation_report.report_oxigen_stock_valuation_xlsx_action"
+        )
+        return report.report_action(
+            self,
+            data={
+                "company_id": self.company_id.id,
+                "date": self.date,
+                "tz": self.env.context["tz"],
+            },
         )
 
     def button_export_xlsx(self):
         self.ensure_one()
-        report_type = "xlsx"
-        return self._print_report(report_type)
+        return self._print_report()

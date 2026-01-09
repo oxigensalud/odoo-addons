@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-17 15:18+0000\n"
+"POT-Creation-Date: 2026-10-29 09:32+0000\n"
 "PO-Revision-Date: 2024-05-17 15:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -52,15 +52,14 @@ msgid "Detailed Inventory Valuation"
 msgstr "Valoración detallada del inventario"
 
 #. module: oxigen_stock_valuation_report
+#. odoo-python
 #: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
 #: model:ir.actions.report,name:oxigen_stock_valuation_report.report_oxigen_stock_valuation_xlsx_action
-#, python-format
 msgid "Detailed Stock Valuation"
 msgstr "Valoración detallada del stock"
 
 #. module: oxigen_stock_valuation_report
 #: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__display_name
-#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_report_report_oxigen_stock_valuation_xlsx__display_name
 msgid "Display Name"
 msgstr "Nombre a mostrar"
 
@@ -70,10 +69,9 @@ msgid "Export XLSX"
 msgstr "Exportar XLSX"
 
 #. module: oxigen_stock_valuation_report
-#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard____last_update
-#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_report_report_oxigen_stock_valuation_xlsx____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
+#: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__id
+msgid "ID"
+msgstr ""
 
 #. module: oxigen_stock_valuation_report
 #: model:ir.model.fields,field_description:oxigen_stock_valuation_report.field_oxigen_stock_valuation_wizard__write_uid
@@ -86,14 +84,14 @@ msgid "Last Updated on"
 msgstr "Última actualización en"
 
 #. module: oxigen_stock_valuation_report
+#. odoo-python
 #: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
-#, python-format
-msgid "Missing required fields %s"
-msgstr "Faltan campos obligatorios %s"
+msgid "Missing required fields: %s"
+msgstr "Faltan campos obligatorios: %s"
 
 #. module: oxigen_stock_valuation_report
+#. odoo-python
 #: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
-#, python-format
 msgid "Nothing to export."
 msgstr "Nada que exportar."
 
@@ -103,8 +101,8 @@ msgid "Oxigen Stock Valuation Wizard"
 msgstr "Asistente de valoración de stock de Oxigen"
 
 #. module: oxigen_stock_valuation_report
+#. odoo-python
 #: code:addons/oxigen_stock_valuation_report/report/oxigen_stock_valuation.py:0
-#, python-format
 msgid "You do not have the necessary permissions to view this report."
 msgstr "No tiene los permisos necesarios para ver este informe."
 
