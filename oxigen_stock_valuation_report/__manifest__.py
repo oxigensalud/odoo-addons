@@ -8,7 +8,7 @@
     "valuation reports for Oxigen.",
     "version": "14.0.1.0.0",
     "author": "Nuobit Solutions, S.L.",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Accounting",
     "depends": ["account", "report_xlsx"],
     "license": "AGPL-3",
