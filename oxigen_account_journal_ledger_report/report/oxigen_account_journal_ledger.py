@@ -81,12 +81,12 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 where m.id = l.move_id
                     and m.state = 'posted'
                     and m.company_id in %(company_ids)s
-                    and m."date" < %(date_from)s
+                    and m.date < %(date_from)s
                 group by m.company_id, l.account_id, l.partner_id, l.tax_line_id
             ),
             open_entries as (
                 select l.company_id,
-                      -1 AS entry_id, %(entry)s as entry, %(date_from)s::"date" as date,
+                      -1 AS entry_id, %(entry)s as entry, %(date_from)s::date as "date",
                       -1 as item_id,
                        l.account_id, l.partner_id, null::integer as tax_line_id,
                        null::text as ref,
@@ -100,7 +100,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             ),
             pl_entry as (
                 select l.company_id,
-                      -2 AS entry_id, %(entry)s as entry, %(date_from)s::"date" as date,
+                      -2 AS entry_id, %(entry)s as entry, %(date_from)s::date as "date",
                       -2 as item_id,
                        ra.id as account_id, null::integer as partner_id,
                        null::integer as tax_line_id,
@@ -118,7 +118,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             ),
             period_entries as (
                 select m.company_id,
-                       m.id AS entry_id, m."name" as entry, m."date",
+                       m.id AS entry_id, m.name as entry, m.date,
                        l.id as item_id,
                        l.account_id, l.partner_id, l.tax_line_id,
                        l.ref,
@@ -128,7 +128,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 where m.id = l.move_id
                     and m.state = 'posted'
                     and m.company_id in %(company_ids)s
-                    and m."date" between %(date_from)s and %(date_to)s
+                    and m.date between %(date_from)s and %(date_to)s
             ),
             all_entries as (
                 select e.company_id, '0-Opening' as type,
@@ -169,7 +169,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             ),
             partner_all_entries as (
                 select l.company_id, l.type,
-                       l.entry_id, l.entry, l."date",
+                       l.entry_id, l.entry, l.date,
                        l.item_id,
                        l.account_id,
                        (case when substring(a.code, 1, 3) in (
@@ -179,29 +179,29 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                                 '4310', '4312') then l.partner_id
                         else null end) as partner_id,
                        l.tax_line_id,
-                       l."ref",
+                       l.ref,
                        l.debit, l.credit
                 from all_entries l, account_account_company a
                 where l.account_id = a.id and l.company_id = a.company_id
             ),
             grouped_all_entries as (
                  select l.company_id, l.type,
-                       l.entry_id, l.entry, l."date",
+                       l.entry_id, l.entry, l.date,
                        l.item_id,
                        l.account_id,
                        l.partner_id,
                        l.tax_line_id,
-                       l."ref",
+                       l.ref,
                        sum(l.debit) as debit, sum(l.credit) as credit
                  from partner_all_entries l
-                 group by l.company_id, l.type, l.entry_id, l.entry, l."date",
-                          l.item_id, l.account_id, l.partner_id, l.tax_line_id, l."ref"
+                 group by l.company_id, l.type, l.entry_id, l.entry, l.date,
+                          l.item_id, l.account_id, l.partner_id, l.tax_line_id, l.ref
             )
             select l.company_id, l.type,
-                   l.entry_id, l.entry, l."date",
+                   l.entry_id, l.entry, l.date,
                    l.item_id,
                    a.code as account,
-                   a."name" as account_name,
+                   a.name as account_name,
                    l.partner_id,
                    (case when l.partner_id is not null then
                         substring(
@@ -212,12 +212,12 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                     else a.code
                     end) as account_partner,
                    (case when l.partner_id is not null then
-                        p."name"
-                    else a."name"
+                        p.name
+                    else a.name
                     end) as account_name_partner,
-                   p."name" as partner,
+                   p.name as partner,
                    p.vat as partner_vat,
-                   replace(replace(l."ref", CHR(13), ' '), CHR(10), ' ') as "ref",
+                   replace(replace(l.ref, CHR(13), ' '), CHR(10), ' ') as ref,
                    (case when l.debit - l.credit >= 0 then
                         round(l.debit - l.credit, 2) else 0 end) as debit,
                    (case when l.debit - l.credit < 0 then
