@@ -69,7 +69,8 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 a.code_store->>r.res_company_id::text as code,
                 a.name->>%(lang)s as name
                 from account_account a
-                    join account_account_res_company_rel r on a.id = r.account_account_id
+                    join account_account_res_company_rel r
+                    on a.id = r.account_account_id
             ),
             all_previous_entries as (
                 select m.company_id,
@@ -110,7 +111,8 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 where l.account_id = a.id and l.company_id = a.company_id
                     and ra.company_id = l.company_id
                     and ra.code = '129000000'
-                    and (substring(a.code, 1, 1) in ('6', '7') or substring(a.code, 1, 3)
+                    and (substring(a.code, 1, 1) in ('6', '7')
+                    or substring(a.code, 1, 3)
                      in ('129'))
                 group by l.company_id, ra.id
             ),
@@ -235,7 +237,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 "date_from": params["date_from"],
                 "date_to": params["date_to"],
                 "entry": params["entry"],
-                "lang": lang
+                "lang": lang,
             },
         )
         headers = [desc[0] for desc in self.env.cr.description]
