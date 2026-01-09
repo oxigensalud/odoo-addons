@@ -63,7 +63,15 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
         params = self._prepare_params(data)
         lang = self.env.lang or "en_US"
         query = """
-            with all_previous_entries as (
+            with account_account_company as (
+                select a.id,
+                r.res_company_id as company_id,
+                a.code_store->>r.res_company_id::text as code,
+                a.name->>%(lang)s as name
+                from account_account a
+                    join account_account_res_company_rel r on a.id = r.account_account_id
+            ),
+            all_previous_entries as (
                 select m.company_id,
                        l.account_id, l.partner_id, l.tax_line_id,
                        sum(l.debit) as debit, sum(l.credit) as credit
@@ -82,10 +90,10 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                        l.account_id, l.partner_id, null::integer as tax_line_id,
                        null::text as ref,
                        sum(l.debit) as debit, sum(l.credit) as credit
-                from all_previous_entries l, account_account a
-                where l.account_id = a.id
-                    and substring(a.code_store->>'1', 1, 1) not in ('6', '7')
-                    and substring(a.code_store->>'1', 1, 3)
+                from all_previous_entries l, account_account_company a
+                where l.account_id = a.id and l.company_id = a.company_id
+                    and substring(a.code, 1, 1) not in ('6', '7')
+                    and substring(a.code, 1, 3)
                      not in ('129')
                 group by l.company_id, l.account_id, l.partner_id
             ),
@@ -97,17 +105,12 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                        null::integer as tax_line_id,
                        null::text as ref,
                        sum(l.debit) as debit, sum(l.credit) as credit
-                from all_previous_entries l
-                join account_account a
-			        on l.account_id = a.id
-			    join account_account_res_company_rel acr
-			        on a.id = acr.account_account_id
-			    join account_account ra
-			        on ra.id = acr.account_account_id
-                where acr.res_company_id = l.company_id
-                    and ra.code_store->>'1' = '129000000'
-                    and (substring(a.code_store->>'1', 1, 1) in ('6', '7')
-                    or substring(a.code_store->>'1', 1, 3)
+                from all_previous_entries l, account_account_company a,
+                     account_account_company ra
+                where l.account_id = a.id and l.company_id = a.company_id
+                    and ra.company_id = l.company_id
+                    and ra.code = '129000000'
+                    and (substring(a.code, 1, 1) in ('6', '7') or substring(a.code, 1, 3)
                      in ('129'))
                 group by l.company_id, ra.id
             ),
@@ -167,17 +170,17 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                        l.entry_id, l.entry, l."date",
                        l.item_id,
                        l.account_id,
-                       (case when substring(a.code_store->>'1', 1, 3) in (
+                       (case when substring(a.code, 1, 3) in (
                                 '400', '410', '411', '430', '433', '465', '407', '413'
                                 ) then l.partner_id
-                             when substring(a.code_store->>'1', 1, 4) in (
+                             when substring(a.code, 1, 4) in (
                                 '4310', '4312') then l.partner_id
                         else null end) as partner_id,
                        l.tax_line_id,
                        l."ref",
                        l.debit, l.credit
-                from all_entries l, account_account a
-                where l.account_id = a.id
+                from all_entries l, account_account_company a
+                where l.account_id = a.id and l.company_id = a.company_id
             ),
             grouped_all_entries as (
                  select l.company_id, l.type,
@@ -195,20 +198,20 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             select l.company_id, l.type,
                    l.entry_id, l.entry, l."date",
                    l.item_id,
-                   a.code_store->>'1' as account,
+                   a.code as account,
                    a."name" as account_name,
                    l.partner_id,
                    (case when l.partner_id is not null then
                         substring(
-                            a.code_store->>'1', 1,
-                            length(a.code_store->>'1')-length(l.partner_id::varchar
+                            a.code, 1,
+                            length(a.code)-length(l.partner_id::varchar
                             ))
                          || l.partner_id::varchar
-                    else a.code_store->>'1'
+                    else a.code
                     end) as account_partner,
                    (case when l.partner_id is not null then
                         p."name"
-                    else a."name"->>%(lang)s
+                    else a."name"
                     end) as account_name_partner,
                    p."name" as partner,
                    p.vat as partner_vat,
@@ -220,10 +223,10 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
             from grouped_all_entries l
                     left join res_partner p on l.partner_id = p.id
                     left join account_tax t on l.tax_line_id = t.id,
-                 account_account a
-            where l.account_id = a.id
+                 account_account_company a
+            where l.account_id = a.id and l.company_id = a.company_id
                 and l.debit != l.credit
-            order by l.company_id, l.type, l.entry, l.item_id, a.code_store->>'1'
+            order by l.company_id, l.type, l.entry, l.item_id, a.code
         """
         self.env.cr.execute(
             query,
@@ -232,7 +235,7 @@ class OxigenAccountJournalLedgerReport(models.AbstractModel):
                 "date_from": params["date_from"],
                 "date_to": params["date_to"],
                 "entry": params["entry"],
-                "lang": lang,
+                "lang": lang
             },
         )
         headers = [desc[0] for desc in self.env.cr.description]
