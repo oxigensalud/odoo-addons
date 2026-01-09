@@ -40,14 +40,11 @@ class OxigenAccountJournalLedgerWizard(models.TransientModel):
                     % {"companies": ", ".join(invalid_companies.mapped("name"))}
                 )
 
-    def _print_report(self, report_type):
+    def _print_report(self):
         self.ensure_one()
-        report_name = "report_oxigen_account_journal_ledger_csv"
-        report = self.env["ir.actions.report"].search(
-            [("report_name", "=", report_name), ("report_type", "=", report_type)],
-            limit=1,
+        report = self.env.ref(
+            "oxigen_account_journal_ledger_report.report_oxigen_account_journal_ledger_csv_action"
         )
-
         action = report.report_action(
             self,
             data={
@@ -60,5 +57,4 @@ class OxigenAccountJournalLedgerWizard(models.TransientModel):
 
     def button_export_csv(self):
         self.ensure_one()
-        report_type = "csv"
-        return self._print_report(report_type)
+        return self._print_report()
