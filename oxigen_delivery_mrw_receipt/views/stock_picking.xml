@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_picking_form" model="ir.ui.view">
-            <field name="name">stock.picking.form.inherit</field>
-            <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="stock.view_picking_form" />
-            <field name="arch" type="xml">
-                <xpath expr="//header" position="inside">
-                    <button
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
                     name="action_open_immediate_mrw_wizard"
                     class="oe_highlight"
                     attrs="{'invisible': ['|', '|', '|', ('delivery_type', '!=', 'mrw'), ('picking_type_code', '!=', 'incoming'), ('carrier_tracking_ref', '!=', False), ('state', '!=', 'assigned')]}"
                     string="Manage MRW incoming"
                     type="object"
                 />
-                </xpath>
-            </field>
+            </xpath>
+        </field>
     </record>
     <record id="view_picking_withcarrier_in_form2" model="ir.ui.view">
         <field name="model">stock.picking</field>
