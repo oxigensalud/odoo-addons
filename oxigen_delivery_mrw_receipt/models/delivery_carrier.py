@@ -11,7 +11,7 @@ class DeliveryCarrier(models.Model):
     def _prepare_mrw_shipping(self, picking):
         res = super()._prepare_mrw_shipping(picking)
         sending_partner = picking.partner_id
-        receiving_partner = picking.location_dest_id.get_warehouse().partner_id
+        receiving_partner = picking.location_dest_id.warehouse_id.partner_id
         if picking.picking_type_code == "incoming":
             res["DatosRecogida"] = {
                 "Direccion": self.mrw_address(

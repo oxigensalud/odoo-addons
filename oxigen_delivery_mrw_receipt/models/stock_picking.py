@@ -25,7 +25,7 @@ class StockPicking(models.Model):
             )
             self.message_post(body=msg)
         else:
-            super().send_to_shipper()
+            return super().send_to_shipper()
 
     def pricelist_send_shipping(self, pickings):
         res = super().pricelist_send_shipping()
