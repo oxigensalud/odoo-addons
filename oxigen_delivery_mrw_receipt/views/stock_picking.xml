@@ -9,7 +9,7 @@
                 <button
                     name="action_open_immediate_mrw_wizard"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', '|', '|', ('delivery_type', '!=', 'mrw'), ('picking_type_code', '!=', 'incoming'), ('carrier_tracking_ref', '!=', False), ('state', '!=', 'assigned')]}"
+                    invisible="delivery_type != 'mrw' or picking_type_code != 'incoming' or carrier_tracking_ref != False or state != 'assigned'"
                     string="Manage MRW incoming"
                     type="object"
                 />
@@ -18,13 +18,15 @@
     </record>
     <record id="view_picking_withcarrier_in_form2" model="ir.ui.view">
         <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form" />
-        <field name="groups_id" eval="[(4, ref('base.group_no_one'))]" />
+        <field
+            name="inherit_id"
+            ref="delivery_state.view_picking_withcarrier_out_form"
+        />
         <field name="arch" type="xml">
             <group name="delivery_tracking" position="attributes">
                 <attribute
-                    name="attrs"
-                >{'invisible': ['|', '&amp;','&amp;',('carrier_id', '=', False),('picking_type_code', '=', 'outgoing'), ('state', '=', 'done'), '&amp;', '&amp;',('carrier_id', '=', False),('picking_type_code', '=', 'incoming'), ('delivery_type', '!=', 'mrw')]}
+                    name="invisible"
+                >carrier_id == False or picking_type_code == 'outgoing' and delivery_type != 'mrw' and state != 'done' and carrier_id == False and picking_type_code == 'incoming' and delivery_type != 'mrw'
                 </attribute>
             </group>
             <xpath expr="//div[@name='tracking']" position="inside">
@@ -34,17 +36,7 @@
                     class="fa fa-arrow-right oe_link"
                     name="cancel_shipment"
                     string="Cancel"
-                    attrs="{'invisible':[
-                        '|',
-                        '|',
-                        '|',
-                        '|',
-                        ('carrier_tracking_ref','=',False),
-                        ('delivery_type','in', ['fixed', 'base_on_rule']),
-                        ('delivery_type','=',False),
-                        ('state','=','done'),
-                        ('delivery_type', '!=', 'mrw'),]
-                    }"
+                    invisible="carrier_tracking_ref == False or delivery_type in ['fixed', 'base_on_rule'] or delivery_type == False or state == 'done' or delivery_type != 'mrw'"
                 />
             </xpath>
         </field>
@@ -57,21 +49,9 @@
         />
         <field name="arch" type="xml">
             <xpath expr="//group[@name='delivery_tracking']" position="attributes">
-                <attribute name="attrs">{
-                    'invisible': [
-                        '|',
-                        '|',
-                        ('carrier_id', '=', False),
-                        ('delivery_type', '!=', 'mrw'),
-                        '|',
-                        '&amp;',
-                        ('picking_type_code', '!=', 'incoming'),
-                        ('state', '!=', 'done'),
-                        '&amp;',
-                        ('picking_type_code', '!=', 'incoming'),
-                        ('state', '=', 'draft')
-                    ]
-                }</attribute>
+                <attribute name="invisible">
+                    carrier_id == False or delivery_type != 'mrw' or picking_type_code != 'incoming' or state != 'done' and picking_type_code != 'incoming' and state == 'draft'
+                </attribute>
             </xpath>
         </field>
     </record>
