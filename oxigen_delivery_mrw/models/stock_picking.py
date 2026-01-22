@@ -1,4 +1,5 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
@@ -10,7 +11,7 @@ class StockPicking(models.Model):
 
     def action_open_immediate_mrw_wizard(self):
         self.ensure_one()
-        view_id = self.env.ref("oxigen_delivery_mrw.view_immediate_transfer_mrw").id
+        view_id = self.env.ref("oxigen_delivery_mrw.view_number_package_validate").id
         ctx = self._context.copy()
         ctx["default_pick_ids"] = [(4, p.id) for p in self]
         ctx["default_immediate_transfer_line_ids"] = []
@@ -18,7 +19,7 @@ class StockPicking(models.Model):
             "name": _("Create MRW Shipping"),
             "type": "ir.actions.act_window",
             "view_mode": "form",
-            "res_model": "stock.immediate.transfer",
+            "res_model": "stock.number.package.validate.wizard",
             "view_id": view_id,
             "views": [(view_id, "form")],
             "target": "new",

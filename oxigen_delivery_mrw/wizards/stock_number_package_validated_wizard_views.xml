@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_number_package_validate" model="ir.ui.view">
+        <field name="name">stock.number.package.validate.wizardr.view.form</field>
+        <field name="model">stock.number.package.validate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Immediate transfer?">
+                <field name="pick_ids" invisible="1" />
+                <field name="stock_number_package_validation_line_ids" invisible="1">
+                    <list create="0" delete="0" editable="top">
+                        <field name="picking_id" />
+                    </list>
+                </field>
+                <group>
+                    <field name="number_of_packages" />
+                </group>
+                <footer>
+                    <button
+                        name="mrw_send_shipping"
+                        string="Create MRW Shipping"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

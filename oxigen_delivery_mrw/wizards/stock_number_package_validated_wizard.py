@@ -1,11 +1,12 @@
 # Copyright 2022 ForgeFlow, S.L.
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>1
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import _, models
 from odoo.exceptions import UserError
 
 
-class StockImmediateTransfer(models.TransientModel):
-    _inherit = "stock.immediate.transfer"
+class StockNumberPackageValidateWiz(models.TransientModel):
+    _inherit = "stock.number.package.validate.wizard"
 
     def mrw_send_shipping(self):
         if len(self.pick_ids) > 1:
@@ -15,6 +16,7 @@ class StockImmediateTransfer(models.TransientModel):
         return True
 
     def process(self):
-        super(
-            StockImmediateTransfer, self.with_context(skip_mrw_immediate_wizard=True)
+        return super(
+            StockNumberPackageValidateWiz,
+            self.with_context(skip_mrw_immediate_wizard=True),
         ).process()
