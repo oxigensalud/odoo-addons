@@ -1,0 +1,2 @@
+odoo-addon-delivery_mrw@git+https://github.com/OCA/l10n-spain.git@refs/pull/4758/head#subdirectory=delivery_mrw
+odoo-addon-oxigen_delivery_mrw@git+https://github.com/oxigensalud/odoo-addons.git@refs/pull/196/head#subdirectory=oxigen_delivery_mrw
