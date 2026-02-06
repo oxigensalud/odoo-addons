@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+<!-- Copyright NuoBiT Solutions SL - Kilian Niubo <kniubo@nuobit.com>
+     Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl) -->
 <odoo>
     <record id="product_template_form_view" model="ir.ui.view">
@@ -10,13 +11,12 @@
         />
         <field name="arch" type="xml">
             <xpath
-                expr="//group[@name='shop']/group/field[@name='is_published']"
+                expr="//group[@name='extra_info']/field[@name='is_published']"
                 position="after"
             >
                 <field name="professional_product" />
                 <field name="medical_prescription_required" />
                 <field name="website_ribbon_id" position="move" />
-                <field name="inventory_availability" position="move" />
                 <field name="website_sequence" position="move" />
                 <field name="website_name" position="move" />
                 <field name="public_description" position="move" />
