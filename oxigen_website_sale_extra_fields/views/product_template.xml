@@ -27,7 +27,7 @@
                 <field name="accessory_product_ids" position="move" />
                 <field name="slug_name" position="move" />
             </xpath>
-             <field name="public_description" position="attributes">
+            <field name="public_description" position="attributes">
                 <attribute name="string">Product description</attribute>
             </field>
             <field name="public_short_description" position="attributes">
