@@ -1,3 +1,4 @@
+# Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, models
@@ -14,8 +15,8 @@ class L10nEsAeatMod322Report(models.AbstractModel):
         )
         if not prorate_year:
             raise ValidationError(
-                _("Prorate not found in company %s in the year %s")
-                % (company.display_name, year)
+                _("Prorate not found in company %(company)s in the year %(year)s")
+                % {"company": company.display_name, "year": year}
             )
         if prorate_year.state not in ("closed", "finale"):
             raise ValidationError(_("Prorrate year is not closed"))
@@ -39,10 +40,16 @@ class L10nEsAeatMod322Report(models.AbstractModel):
             if rec.date_start.year != rec.year or rec.date_end.year != rec.year:
                 raise ValidationError(
                     _(
-                        "The year: %s of the model 322 and the year of "
-                        "date start and date end (%s, %s) must be the same."
-                        % (rec.year, rec.date_start.year, rec.date_end.year)
+                        "The year: %(year)s of the model 322 and the year of "
+                        "date start and date end "
+                        "(%(date_start_year)s, %(date_end_year)s) "
+                        "must be the same."
                     )
+                    % {
+                        "year": rec.year,
+                        "date_start_year": rec.date_start.year,
+                        "date_end_year": rec.date_end.year,
+                    }
                 )
 
     def _eligible_prorate_period(self):
