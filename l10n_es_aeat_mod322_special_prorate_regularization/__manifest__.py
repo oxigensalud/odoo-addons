@@ -4,7 +4,7 @@
     "version": "14.0.1.0.0",
     "category": "Accounting",
     "author": "Dixmit",
-    "website": "https://github.com/oxigensalud/odoo-community-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "license": "AGPL-3",
     "depends": [
         "l10n_es_aeat_vat_special_prorrate",
