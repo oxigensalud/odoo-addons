@@ -1,0 +1,5 @@
+odoo-addon-l10n_es_aeat_mod322@git+https://github.com/OCA/l10n-spain.git@refs/pull/4836/head#subdirectory=l10n_es_aeat_mod322
+odoo-addon-l10n_es_special_prorate@git+https://github.com/nuobit/odoo-addons.git@refs/pull/800/head#subdirectory=l10n_es_special_prorate
+odoo-addon-oxigen_l10n_es@git+https://github.com/oxigensalud/odoo-addons.git@refs/pull/201/head#subdirectory=oxigen_l10n_es
+odoo-addon-account_asset_management_extension@git+https://github.com/nuobit/odoo-addons.git@refs/pull/754/head#subdirectory=account_asset_management_extension
+odoo-addon-account_asset_tax_consistency@git+https://github.com/nuobit/odoo-addons.git@refs/pull/797/head#subdirectory=account_asset_tax_consistency
