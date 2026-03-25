@@ -13,7 +13,7 @@
         "maintenance_project",
     ],
     "external_dependencies": {
-        "python": ["gitlab"],
+        "python": ["python-gitlab"],
     },
     "data": [
         "views/maintenance_request.xml",
