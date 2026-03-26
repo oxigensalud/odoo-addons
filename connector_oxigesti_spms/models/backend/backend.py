@@ -1,4 +1,5 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import fields, models
@@ -71,7 +72,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_partner_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_partner_since(self):
@@ -101,7 +104,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_product_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_product_since(self):
@@ -131,7 +136,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_sale_order_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_sale_order_since(self):
@@ -161,7 +168,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_spms_context_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_spms_context_since(self):
@@ -191,7 +200,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_spms_lot_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_spms_lot_since(self):
@@ -221,7 +232,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_spms_prescription_type_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_spms_prescription_type_since(self):
@@ -251,7 +264,9 @@ class OxigestiSPMSBackend(models.Model):
             backend.import_spms_suspension_reason_since_date = fields.Datetime.now()
             domain = []
             if last_since_date:
-                domain.append(("Fecha_Modifica", ">=", last_since_date))
+                domain.append(
+                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                )
             binding.import_data(backend, domain=domain)
 
     def action_export_spms_suspension_reason_since(self):

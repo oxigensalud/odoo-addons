@@ -1,4 +1,5 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.addons.component.core import Component
@@ -20,6 +21,10 @@ class OxigestiSpmsSaleOrderExportMapper(Component):
     @mapping
     def Odoo_Fecha_Generado_Albaran(self, record):
         if record.state in ["sale", "done"]:
-            return {"Odoo_Fecha_Generado_Albaran": record["date_order"]}
+            return {
+                "Odoo_Fecha_Generado_Albaran": self.backend_record.tz_to_local(
+                    record["date_order"]
+                )
+            }
         else:
             return
