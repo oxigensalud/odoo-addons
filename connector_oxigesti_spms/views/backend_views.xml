@@ -39,6 +39,10 @@
                                 domain="[('id', 'in', allowed_company_ids)]"
                             />
                             <field
+                                name="user_id"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                            <field
                                 name="lang_ids"
                                 attrs="{'readonly': [('state', '!=', 'draft')]}"
                                 widget="many2many_tags"
