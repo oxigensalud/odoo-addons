@@ -1,4 +1,5 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _
 from odoo.exceptions import ValidationError
@@ -34,7 +35,7 @@ class OxigestiSPMSSaleOrderAdapter(Component):
     def search_read(self, domain=None):
         orders = super().search_read(domain=domain)
         if orders:
-            order_ids = [x["Id"] for x in orders if "Id"]
+            order_ids = [x["Id"] for x in orders]
             line_adapter = self.component(
                 usage="backend.adapter", model_name="oxigesti.spms.sale.order.line"
             )
@@ -47,8 +48,7 @@ class OxigestiSPMSSaleOrderAdapter(Component):
             for line in lines:
                 lines_d.setdefault(line["FacturaId"], []).append(line)
 
-            if lines_d:
-                for order in orders:
-                    order["lines"] = lines_d[order["Id"]]
+            for order in orders:
+                order["lines"] = lines_d.get(order["Id"], [])
 
         return orders
