@@ -1,5 +1,9 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+from odoo import _
+from odoo.exceptions import ValidationError
+
 from odoo.addons.component.core import Component
 
 
@@ -23,8 +27,17 @@ class OxigestiSPMSSaleOrderRecordDirectImporter(Component):
 
     _apply_on = "oxigesti.spms.sale.order"
 
-    def _import_dependencies(self, external_data, sync_date):
+    def _validate_data(self, data):
+        if not data.get("oxigesti_spms_order_lines_ids"):
+            raise ValidationError(_("Sale order has no lines, cannot be imported"))
 
+    def _validate_create_data(self, data):
+        self._validate_data(data)
+
+    def _validate_update_data(self, data):
+        self._validate_data(data)
+
+    def _import_dependencies(self, external_data, sync_date):
         # Partners
         external_partner_id = external_data["UnidadeLocalSalude"]
         self._import_dependency(
