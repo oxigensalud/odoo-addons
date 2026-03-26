@@ -1,4 +1,5 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo.addons.component.core import Component
 from odoo.addons.connector.components.mapper import changed_by, mapping
@@ -31,9 +32,12 @@ class OxigestiSpmsSaleOrderImporterMapper(Component):
     _usage = "import.mapper"
 
     direct = [
-        ("DataFactura", "date_order"),
         ("Invoice_Id", "client_order_ref"),
     ]
+
+    @mapping
+    def date_order(self, record):
+        return {"date_order": self.backend_record.tz_to_utc(record["DataFactura"])}
 
     children = [
         ("lines", "oxigesti_spms_order_lines_ids", "oxigesti.spms.sale.order.line")
