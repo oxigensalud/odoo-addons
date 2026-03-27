@@ -1,5 +1,9 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+
+from odoo import _
+from odoo.exceptions import ValidationError
 
 from odoo.addons.component.core import Component
 from odoo.addons.connector.components.mapper import mapping, only_create
@@ -55,3 +59,13 @@ class ConnectorOxigestiSpmsImporterMapper(Component):
     @mapping
     def spms_information(self, record):
         return {"spms_information": True}
+
+    @only_create
+    @mapping
+    def country_id(self, record):
+        code = record["Pais"]
+        if code:
+            country = self.env["res.country"].search([("code", "=", code)])
+            if not country:
+                raise ValidationError(_("Country with code '%s' not found") % code)
+            return {"country_id": country.id}
