@@ -1,7 +1,9 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.addons.component.core import Component
+from odoo.addons.connector.components.mapper import mapping
 
 
 class OxigestiSpmsResPartnerExportMapper(Component):
@@ -18,3 +20,8 @@ class OxigestiSpmsResPartnerExportMapper(Component):
         ("vat", "NIF"),
         ("ref", "CodigoConvencao"),
     ]
+
+    @mapping
+    def country(self, record):
+        if record.country_id:
+            return {"Pais": record.country_id.code}
