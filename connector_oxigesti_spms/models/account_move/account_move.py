@@ -10,7 +10,7 @@ class AccountMove(models.Model):
     def write(self, vals):
         old_states = {x: x.state for x in self}
         res = super().write(vals)
-        for rec in self:
+        for rec in self.filtered(lambda x: x.move_type == "out_invoice"):
             if "state" in vals:
                 old_state = old_states[rec]
                 if old_state != vals["state"]:
