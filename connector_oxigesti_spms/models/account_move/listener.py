@@ -13,7 +13,7 @@ class OXigestiSPMSAccountInvoiceListener(Component):
 
     _apply_on = "account.move"
 
-    def on_validated_invoice(self, record):
+    def on_validate_out_invoice(self, record):
         record.ensure_one()
         for order in record.invoice_line_ids.sale_line_ids.order_id:
             invoices = order.invoice_ids.filtered(
@@ -33,7 +33,7 @@ class OXigestiSPMSAccountInvoiceListener(Component):
                 binding.ensure_one()
                 binding.export_invoice_data(record)
 
-    def on_cancel_invoice(self, record):
+    def on_cancel_out_invoice(self, record):
         record.ensure_one()
         for order in record.invoice_line_ids.mapped("sale_line_ids.order_id"):
             binding = order.oxigesti_spms_bind_ids

@@ -16,7 +16,7 @@ class AccountMove(models.Model):
                 if old_state != vals["state"]:
                     if vals["state"] in ["draft", "cancel"]:
                         if old_state not in ["draft", "cancel"]:
-                            rec._event("on_cancel_invoice").notify(rec)
+                            rec._event("on_cancel_out_invoice").notify(rec)
                     elif vals["state"] == "posted":
-                        rec._event("on_validated_invoice").notify(rec)
+                        rec._event("on_validate_out_invoice").notify(rec)
         return res
