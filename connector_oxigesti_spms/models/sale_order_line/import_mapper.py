@@ -32,7 +32,7 @@ class OxigestiSpmsSaleOrderLineImporterMapper(Component):
     def spms_start_date(self, record):
         value = record["DataInicio"]
         if value:
-            value = self.backend_record.tz_to_local(value).date()
+            value = self.backend_record.utc_to_local(value).date()
         return {"spms_start_date": value}
 
     @only_create
@@ -40,7 +40,7 @@ class OxigestiSpmsSaleOrderLineImporterMapper(Component):
     def spms_end_date(self, record):
         value = record["DataFim"]
         if value:
-            value = self.backend_record.tz_to_local(value).date()
+            value = self.backend_record.utc_to_local(value).date()
         return {"spms_end_date": value}
 
     @changed_by("product_id")
