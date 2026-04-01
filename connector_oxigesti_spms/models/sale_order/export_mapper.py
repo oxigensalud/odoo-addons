@@ -21,10 +21,6 @@ class OxigestiSpmsSaleOrderExportMapper(Component):
     @mapping
     def Odoo_Fecha_Generado_Albaran(self, record):
         if record.state in ["sale", "done"]:
-            return {
-                "Odoo_Fecha_Generado_Albaran": self.backend_record.tz_to_local(
-                    record["date_order"]
-                )
-            }
+            return {"Odoo_Fecha_Generado_Albaran": record["date_order"]}
         else:
             return
