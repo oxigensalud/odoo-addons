@@ -47,9 +47,14 @@
                                 attrs="{'readonly': [('state', '!=', 'draft')]}"
                                 widget="many2many_tags"
                             />
+                        </group>
+                        <group>
                             <field
                                 name="tz"
-                                colspan="4"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                            <field
+                                name="server_tz"
                                 attrs="{'readonly': [('state', '!=', 'draft')]}"
                             />
                         </group>
