@@ -32,15 +32,11 @@
                         />
                     </h1>
                     <group>
-                        <group col="4">
+                        <group>
                             <field
                                 name="company_id"
                                 attrs="{'readonly': [('state', '!=', 'draft')]}"
                                 domain="[('id', 'in', allowed_company_ids)]"
-                            />
-                            <field
-                                name="user_id"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
                             />
                             <field
                                 name="lang_ids"
@@ -48,15 +44,23 @@
                                 widget="many2many_tags"
                             />
                         </group>
-                        <group>
-                            <field
-                                name="tz"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
-                            <field
-                                name="server_tz"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
+                        <group col="1">
+                            <group>
+                                <field
+                                    name="user_id"
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                />
+                            </group>
+                            <group>
+                                <field
+                                    name="tz"
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                />
+                                <field
+                                    name="server_tz"
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                />
+                            </group>
                         </group>
                         <group>
                             <field
