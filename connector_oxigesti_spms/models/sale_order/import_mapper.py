@@ -37,7 +37,7 @@ class OxigestiSpmsSaleOrderImporterMapper(Component):
 
     @mapping
     def date_order(self, record):
-        return {"date_order": self.backend_record.tz_to_utc(record["DataFactura"])}
+        return {"date_order": record["DataFactura"]}
 
     children = [
         ("lines", "oxigesti_spms_order_lines_ids", "oxigesti.spms.sale.order.line")

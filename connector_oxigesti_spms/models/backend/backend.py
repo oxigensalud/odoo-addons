@@ -73,7 +73,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
@@ -105,7 +105,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
@@ -137,7 +137,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
@@ -169,7 +169,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
@@ -201,7 +201,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
@@ -233,7 +233,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
@@ -265,7 +265,7 @@ class OxigestiSPMSBackend(models.Model):
             domain = []
             if last_since_date:
                 domain.append(
-                    ("Fecha_Modifica", ">=", backend.tz_to_local(last_since_date))
+                    ("Fecha_Modifica", ">=", backend.utc_to_server_tz(last_since_date))
                 )
             binding.import_data(backend, domain=domain)
 
