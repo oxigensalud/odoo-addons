@@ -1,4 +1,5 @@
 # Copyright 2025 NuoBiT - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo.addons.component.core import Component
 from odoo.addons.connector.components.mapper import changed_by, mapping, only_create
@@ -29,12 +30,18 @@ class OxigestiSpmsSaleOrderLineImporterMapper(Component):
     @only_create
     @mapping
     def spms_start_date(self, record):
-        return {"spms_start_date": record["DataInicio"]}
+        value = record["DataInicio"]
+        if value:
+            value = self.backend_record.tz_to_local(value).date()
+        return {"spms_start_date": value}
 
     @only_create
     @mapping
     def spms_end_date(self, record):
-        return {"spms_end_date": record["DataFim"]}
+        value = record["DataFim"]
+        if value:
+            value = self.backend_record.tz_to_local(value).date()
+        return {"spms_end_date": value}
 
     @changed_by("product_id")
     @mapping
