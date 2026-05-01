@@ -9,11 +9,18 @@ class WooCommerceWPMLProductTemplateAdapter(Component):
 
     def prepare_meta_data(self, data):
         video_gallery_fields = [k for k in data.keys() if k.startswith("video_gallery")]
+        previous_context = self.env.context
         if video_gallery_fields:
-            self.env.context = {"video_gallery_fields": video_gallery_fields}
-        return super(WooCommerceWPMLProductTemplateAdapter, self).prepare_meta_data(
-            data
-        )
+            self.env.context = {
+                **self.env.context,
+                "video_gallery_fields": video_gallery_fields,
+            }
+        try:
+            return super(WooCommerceWPMLProductTemplateAdapter, self).prepare_meta_data(
+                data
+            )
+        finally:
+            self.env.context = previous_context
 
     def _prepare_meta_data_fields(self):
         meta_data_fields = super()._prepare_meta_data_fields()
