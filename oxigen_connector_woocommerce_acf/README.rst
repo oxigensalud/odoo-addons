@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ================================
 Oxigen Connector WooCommerce ACF
 ================================
@@ -13,7 +17,7 @@ Oxigen Connector WooCommerce ACF
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-oxigensalud%2Fodoo--addons-lightgray.png?logo=github
@@ -40,10 +44,9 @@ To use this module, you need to install Advanced Custom Fields (https://www.adva
 * Create a new field group (+ Add New)
 * Create the follow fields:
     * "professional_product" as boolean field in product.
-    * "medical_description_required" as boolean field in product.
+    * "medical_prescription_required" as boolean field in product.
 * In the same page, in settings, create the rule:
    * Post type is equal to Product
-
 
 Bug Tracker
 ===========
