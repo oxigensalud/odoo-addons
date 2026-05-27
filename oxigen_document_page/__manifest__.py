@@ -3,7 +3,8 @@
 
 {
     "name": "Oxigen Document Page",
-    "summary": "Generate a random 10-digit numeric reference for new document pages",
+    "summary": "Oxigen customizations on document pages: 10-digit reference "
+    "auto-generation and archive wizard with mandatory reason.",
     "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "author": "NuoBiT Solutions SL",
@@ -12,5 +13,8 @@
     "depends": [
         "document_page_reference",
     ],
-    "data": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "wizards/document_page_archive_wizard.xml",
+    ],
 }

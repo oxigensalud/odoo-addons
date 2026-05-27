@@ -1,9 +1,12 @@
-This module changes how the ``reference`` field of document pages is auto-filled.
+This module bundles Oxigen-specific customizations on document pages.
 
-By default, the OCA module ``document_page_reference`` generates a new reference
-from a slug of the document title (e.g. ``i_t_108_01_documentacion_y_liberacion``).
-For environments migrating from a legacy DMS such as KmKEY — where each document
-has a 10-digit numeric Id — this default is unsuitable.
+Reference auto-generation
+-------------------------
+
+Changes how the ``reference`` field is auto-filled. By default, the OCA module
+``document_page_reference`` generates a new reference from a slug of the
+document title. For environments migrating from a legacy DMS such as KmKEY —
+where each document has a 10-digit numeric Id — this default is unsuitable.
 
 With this module installed:
 
@@ -14,7 +17,9 @@ With this module installed:
 * Existing document pages keep their current reference.
 * Uniqueness is enforced via the existing ``_check_reference`` constraint.
 
-Caveat: documents whose reference is purely numeric cannot be targeted by the
-``${ref}`` Jinja link mechanism of ``document_page_reference``, because Jinja
-parses a pure-digit ``${...}`` expression as an integer literal instead of a
-variable lookup. Alphabetical references keep working as before.
+Archive wizard with mandatory reason
+------------------------------------
+
+Replaces the one-click ``Archive`` / ``Unarchive`` action on document pages
+with a wizard that requires the user to enter a reason. Every change of state
+on a controlled document is logged in the chatter with who changed it and why.

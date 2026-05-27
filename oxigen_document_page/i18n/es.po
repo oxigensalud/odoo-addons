@@ -18,7 +18,119 @@ msgid "Document Page"
 msgstr "Página de documento"
 
 #. module: oxigen_document_page
+#: model:ir.model,name:oxigen_document_page.model_document_page_archive_wizard
+msgid "Archive or unarchive document pages with reason"
+msgstr "Archivar o desarchivar páginas de documento con motivo"
+
+#. module: oxigen_document_page
 #: code:addons/oxigen_document_page/models/document_page.py:0
 #, python-format
 msgid "Could not generate a unique 10-digit reference after %s attempts."
 msgstr "No se pudo generar una referencia única de 10 dígitos tras %s intentos."
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/models/document_page.py:0
+#: model:ir.model.fields,field_description:oxigen_document_page.field_document_page_archive_wizard__archive
+#, python-format
+msgid "Archive"
+msgstr "Archivar"
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/models/document_page.py:0
+#, python-format
+msgid "Unarchive"
+msgstr "Desarchivar"
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/models/document_page.py:0
+#, python-format
+msgid "Cannot archive document(s) that are already archived:\n%s"
+msgstr "No se pueden archivar documentos que ya están archivados:\n%s"
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/models/document_page.py:0
+#, python-format
+msgid "Cannot unarchive document(s) that are already active:\n%s"
+msgstr "No se pueden desarchivar documentos que ya están activos:\n%s"
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/wizards/document_page_archive_wizard.py:0
+#, python-format
+msgid "archived"
+msgstr "archivado"
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/wizards/document_page_archive_wizard.py:0
+#, python-format
+msgid "unarchived"
+msgstr "desarchivado"
+
+#. module: oxigen_document_page
+#: code:addons/oxigen_document_page/wizards/document_page_archive_wizard.py:0
+#, python-format
+msgid ""
+"<strong>Document %(action)s.</strong><br/><strong>Reason:</strong> "
+"%(reason)s"
+msgstr ""
+"<strong>Documento %(action)s.</strong><br/><strong>Motivo:</strong> "
+"%(reason)s"
+
+#. module: oxigen_document_page
+#: model:ir.model.fields,field_description:oxigen_document_page.field_document_page_archive_wizard__reason
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: oxigen_document_page
+#: model:ir.model.fields,help:oxigen_document_page.field_document_page_archive_wizard__reason
+msgid ""
+"Reason for archiving or unarchiving. Will be logged in the chatter of each "
+"affected document for traceability."
+msgstr ""
+"Motivo del archivado o desarchivado. Se registrará en el chatter de cada "
+"documento afectado para trazabilidad."
+
+#. module: oxigen_document_page
+#: model:ir.model.fields,help:oxigen_document_page.field_document_page_archive_wizard__archive
+msgid ""
+"True when the wizard archives the documents; False when it unarchives them."
+msgstr ""
+"Verdadero cuando el asistente archiva los documentos; falso cuando los "
+"desarchiva."
+
+#. module: oxigen_document_page
+#: model:ir.model.fields,field_description:oxigen_document_page.field_document_page_archive_wizard__document_page_ids
+msgid "Document Pages"
+msgstr "Páginas de documento"
+
+#. module: oxigen_document_page
+#: model_terms:ir.ui.view,arch_db:oxigen_document_page.document_page_archive_wizard_form
+msgid ""
+"You are about to archive the selected document page(s). Please provide a "
+"reason — it will be logged in the document chatter for traceability."
+msgstr ""
+"Va a archivar las páginas de documento seleccionadas. Indique un motivo — "
+"quedará registrado en el chatter del documento para trazabilidad."
+
+#. module: oxigen_document_page
+#: model_terms:ir.ui.view,arch_db:oxigen_document_page.document_page_archive_wizard_form
+msgid ""
+"You are about to unarchive the selected document page(s). Please provide a "
+"reason — it will be logged in the document chatter for traceability."
+msgstr ""
+"Va a desarchivar las páginas de documento seleccionadas. Indique un motivo "
+"— quedará registrado en el chatter del documento para trazabilidad."
+
+#. module: oxigen_document_page
+#: model_terms:ir.ui.view,arch_db:oxigen_document_page.document_page_archive_wizard_form
+msgid "e.g. Replaced by procedure P-016 revision 03"
+msgstr "ej. Sustituido por el procedimiento P-016 revisión 03"
+
+#. module: oxigen_document_page
+#: model_terms:ir.ui.view,arch_db:oxigen_document_page.document_page_archive_wizard_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: oxigen_document_page
+#: model_terms:ir.ui.view,arch_db:oxigen_document_page.document_page_archive_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
