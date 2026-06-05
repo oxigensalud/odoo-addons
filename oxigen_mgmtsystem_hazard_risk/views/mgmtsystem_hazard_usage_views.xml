@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2026 NuoBiT Solutions, S.L. - Deniz Gallo <dgallo@nuobit.com>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record
+        id="mgmtsystem_hazard.open_mgmtsystem_hazard_usage_list"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Detectabilities</field>
+    </record>
+
+    <record id="mgmtsystem_hazard.menu_open_hazard_usage" model="ir.ui.menu">
+        <field name="name">Detectabilities</field>
+    </record>
+
+    <record id="view_mgmtsystem_hazard_usage_form" model="ir.ui.view">
+        <field name="name">mgmtsystem.hazard.usage.form.detectability</field>
+        <field name="model">mgmtsystem.hazard.usage</field>
+        <field
+            name="inherit_id"
+            ref="mgmtsystem_hazard.view_mgmtsystem_hazard_usage_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Detectability</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_mgmtsystem_hazard_usage_filter" model="ir.ui.view">
+        <field name="name">mgmtsystem.hazard.usage.search.detectability</field>
+        <field name="model">mgmtsystem.hazard.usage</field>
+        <field
+            name="inherit_id"
+            ref="mgmtsystem_hazard.view_mgmtsystem_hazard_usage_filter"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="attributes">
+                <attribute name="string">Detectabilities</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
