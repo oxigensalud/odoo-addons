@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2026 NuoBiT Solutions, S.L. - Deniz Gallo <dgallo@nuobit.com>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <!--
+        Force the English source of the four formula descriptions that mention
+        the third risk factor to read "Detectability (C)" instead of the
+        upstream "Usage (C)". Plain <record> overrides are skipped because the
+        upstream records are loaded with noupdate="1", so a <function> call is
+        used to perform a direct write that bypasses noupdate.
+    -->
+
+    <function
+        model="mgmtsystem.hazard.risk.computation"
+        name="write"
+        eval="[
+            [ref('mgmtsystem_hazard_risk.risk_computation_a_times_b_times_c')],
+            {'description': 'Risk = Probability (A) x Severity (B) x Detectability (C)'},
+        ]"
+    />
+
+    <function
+        model="mgmtsystem.hazard.risk.computation"
+        name="write"
+        eval="[
+            [ref('mgmtsystem_hazard_risk.risk_computation_a_times_b_plus_c')],
+            {'description': 'Risk = ( Probability (A) x Severity (B) ) + Detectability (C)'},
+        ]"
+    />
+
+    <function
+        model="mgmtsystem.hazard.risk.computation"
+        name="write"
+        eval="[
+            [ref('mgmtsystem_hazard_risk.risk_computation_a_plus_b_times_c')],
+            {'description': 'Risk = ( Probability (A) + Severity (B) ) x Detectability (C)'},
+        ]"
+    />
+
+    <function
+        model="mgmtsystem.hazard.risk.computation"
+        name="write"
+        eval="[
+            [ref('mgmtsystem_hazard_risk.risk_computation_a_plus_b_plus_c')],
+            {'description': 'Risk = Probability (A) + Severity (B) + Detectability (C)'},
+        ]"
+    />
+
+</odoo>
