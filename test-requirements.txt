@@ -29,6 +29,7 @@ odoo14-addon-l10n_pt_sale_spms@git+https://github.com/oxigensalud/odoo-community
 odoo14-addon-website_sale_variant@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_variant
 odoo14-addon-website_sale_extra_fields@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_extra_fields
 odoo14-addon-tools_mimetypes_extension@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/tools_mimetypes_extension
+odoo14-addon-mgmtsystem_hazard_risk_extension@git+https://github.com/nuobit/odoo-addons.git@14.0-add-mgmtsystem_hazard_risk_extension#subdirectory=setup/mgmtsystem_hazard_risk_extension
 odoo14-addon-website_sale_product_document@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_product_document
 odoo14-addon-website_sale_variant@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_variant
 odoo14-addon-website_sale_extra_fields@git+https://github.com/nuobit/odoo-addons.git@14.0#subdirectory=setup/website_sale_extra_fields
