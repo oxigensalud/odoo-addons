@@ -2,3 +2,4 @@ stock-logistics-barcode
 account-invoicing
 partner-contact
 l10n-spain
+management-system
