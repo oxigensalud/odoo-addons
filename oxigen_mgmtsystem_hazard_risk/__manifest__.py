@@ -15,6 +15,7 @@
         "data/mgmtsystem_hazard_risk_computation_data.xml",
         "views/mgmtsystem_hazard_usage_views.xml",
     ],
+    "post_init_hook": "post_init_hook",
     "uninstall_hook": "uninstall_hook",
     "license": "AGPL-3",
 }
