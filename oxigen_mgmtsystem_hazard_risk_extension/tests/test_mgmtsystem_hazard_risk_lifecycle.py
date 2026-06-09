@@ -1,10 +1,12 @@
 # Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo.tests import TransactionCase, standalone, tagged
 from odoo.tools.misc import mute_logger
 
-MODULE = "oxigen_mgmtsystem_hazard_risk"
+MODULE = "oxigen_mgmtsystem_hazard_risk_extension"
+GENERIC_MODULE = "mgmtsystem_hazard_risk_extension"
 LANGUAGES = ("es_ES", "ca_ES")
 
 FORMULA_XMLIDS = (
@@ -41,12 +43,12 @@ ORIGINAL = {
     "es_ES": {
         "field": "Ocupación / Uso",
         "list": "Ocupaciones / Usos",
-        "formula_word": "Usage",
+        "formula_word": "Uso",
     },
     "ca_ES": {
         "field": "Occupation / Usage",
         "list": "Occupations / Usages",
-        "formula_word": "Usage",
+        "formula_word": "Ús",
     },
 }
 
@@ -131,6 +133,10 @@ def test_mgmtsystem_hazard_risk_lifecycle(env):
     _assert_visible_wording(env, DETECTABILITY)
 
     _module(env, "mgmtsystem_hazard_risk").button_immediate_upgrade()
+    env = _refresh(env)
+    _assert_visible_wording(env, DETECTABILITY)
+
+    _module(env, GENERIC_MODULE).button_immediate_upgrade()
     env = _refresh(env)
     _assert_visible_wording(env, DETECTABILITY)
 
