@@ -375,19 +375,14 @@ ul.auto-toc {
 !! source digest: sha256:6455fe495f3f7d466f3ac18d19a27eea66157000bf278b8cf6caf3e01a8ae11e
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/oxigensalud/odoo-addons/tree/14.0/oxigen_mgmtsystem_hazard_risk"><img alt="oxigensalud/odoo-addons" src="https://img.shields.io/badge/github-oxigensalud%2Fodoo--addons-lightgray.png?logo=github" /></a></p>
-<p>This module adapts the third factor of the hazard risk evaluation so it is
-presented to the user as <em>Detectability</em> instead of <em>Occupation / Usage</em>.</p>
-<p>To keep the wording consistent across languages, the change is applied at the
-English source: the field labels are redefined through inheritance, the
-action, menu, form title and search title for the master-data list are
-renamed, and the source text of the four formula descriptions that mention
-the third factor is updated. On top of that, the risk computation
-description is made translatable so the formula text can be localized as a
-complete phrase in Catalan and Spanish.</p>
-<p>The addon does not change the technical field name, formulas, XML IDs, views
-or risk calculation behavior. An uninstall hook restores the upstream
-wording on removal, and preserves any value the user may have customized
-manually.</p>
+<p>This module presents the third factor of the hazard risk evaluation to the
+user as <em>Detectability</em> instead of <em>Occupation / Usage</em>.</p>
+<p>The wording is changed in the field labels, the related configuration menu and
+list, and the risk formula descriptions, including their Catalan and Spanish
+translations.</p>
+<p>It does not change the technical field, the formulas or the risk calculation;
+it only adapts the wording shown to the user, and the original wording is
+restored when the module is uninstalled.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
