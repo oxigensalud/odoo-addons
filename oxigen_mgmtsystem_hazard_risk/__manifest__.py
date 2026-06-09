@@ -1,4 +1,4 @@
-# Copyright 2026 NuoBiT Solutions, S.L. - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
@@ -15,7 +15,6 @@
         "data/mgmtsystem_hazard_risk_computation_data.xml",
         "views/mgmtsystem_hazard_usage_views.xml",
     ],
-    "installable": True,
-    "license": "AGPL-3",
     "uninstall_hook": "uninstall_hook",
+    "license": "AGPL-3",
 }
