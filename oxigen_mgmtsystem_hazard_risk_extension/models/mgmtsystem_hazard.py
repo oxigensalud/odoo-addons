@@ -1,4 +1,5 @@
 # Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
@@ -30,10 +31,3 @@ class MgmtsystemHazardResidualRisk(models.Model):
         comodel_name="mgmtsystem.hazard.usage",
         string="Detectability",
     )
-
-
-class MgmtsystemHazardRiskComputation(models.Model):
-    _inherit = "mgmtsystem.hazard.risk.computation"
-
-    # Minimal technical enabler for translating visible formula descriptions.
-    description = fields.Text(translate=True)

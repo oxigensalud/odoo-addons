@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* oxigen_mgmtsystem_hazard_risk
+# 	* oxigen_mgmtsystem_hazard_risk_extension
 #
 msgid ""
 msgstr ""
@@ -12,47 +12,37 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: oxigen_mgmtsystem_hazard_risk
-#: model:ir.model.fields,field_description:oxigen_mgmtsystem_hazard_risk.field_mgmtsystem_hazard__usage_id
-#: model:ir.model.fields,field_description:oxigen_mgmtsystem_hazard_risk.field_mgmtsystem_hazard_usage__name
-#: model:ir.model.fields,field_description:oxigen_mgmtsystem_hazard_risk.field_mgmtsystem_hazard_residual_risk__usage_id
-#: model_terms:ir.ui.view,arch_db:oxigen_mgmtsystem_hazard_risk.view_mgmtsystem_hazard_usage_form
+#. module: oxigen_mgmtsystem_hazard_risk_extension
+#: model:ir.model.fields,field_description:oxigen_mgmtsystem_hazard_risk_extension.field_mgmtsystem_hazard__usage_id
+#: model:ir.model.fields,field_description:oxigen_mgmtsystem_hazard_risk_extension.field_mgmtsystem_hazard_usage__name
+#: model:ir.model.fields,field_description:oxigen_mgmtsystem_hazard_risk_extension.field_mgmtsystem_hazard_residual_risk__usage_id
+#: model_terms:ir.ui.view,arch_db:oxigen_mgmtsystem_hazard_risk_extension.view_mgmtsystem_hazard_usage_form
 msgid "Detectability"
 msgstr "Detectabilidad"
 
-#. module: oxigen_mgmtsystem_hazard_risk
+#. module: oxigen_mgmtsystem_hazard_risk_extension
 #: model:ir.actions.act_window,name:mgmtsystem_hazard.open_mgmtsystem_hazard_usage_list
 #: model:ir.ui.menu,name:mgmtsystem_hazard.menu_open_hazard_usage
-#: model_terms:ir.ui.view,arch_db:oxigen_mgmtsystem_hazard_risk.view_mgmtsystem_hazard_usage_filter
+#: model_terms:ir.ui.view,arch_db:oxigen_mgmtsystem_hazard_risk_extension.view_mgmtsystem_hazard_usage_filter
 msgid "Detectabilities"
 msgstr "Detectabilidades"
 
-#. module: oxigen_mgmtsystem_hazard_risk
-#: model:mgmtsystem.hazard.risk.computation,description:mgmtsystem_hazard_risk.risk_computation_a_times_b
-msgid "Risk = Probability (A) x Severity (B)"
-msgstr "Riesgo = Probabilidad (A) x Severidad (B)"
-
-#. module: oxigen_mgmtsystem_hazard_risk
-#: model:mgmtsystem.hazard.risk.computation,description:mgmtsystem_hazard_risk.risk_computation_a_plus_b
-msgid "Risk = Probability (A) + Severity (B)"
-msgstr "Riesgo = Probabilidad (A) + Severidad (B)"
-
-#. module: oxigen_mgmtsystem_hazard_risk
+#. module: oxigen_mgmtsystem_hazard_risk_extension
 #: model:mgmtsystem.hazard.risk.computation,description:mgmtsystem_hazard_risk.risk_computation_a_times_b_times_c
 msgid "Risk = Probability (A) x Severity (B) x Detectability (C)"
 msgstr "Riesgo = Probabilidad (A) x Severidad (B) x Detectabilidad (C)"
 
-#. module: oxigen_mgmtsystem_hazard_risk
+#. module: oxigen_mgmtsystem_hazard_risk_extension
 #: model:mgmtsystem.hazard.risk.computation,description:mgmtsystem_hazard_risk.risk_computation_a_times_b_plus_c
 msgid "Risk = ( Probability (A) x Severity (B) ) + Detectability (C)"
 msgstr "Riesgo = ( Probabilidad (A) x Severidad (B) ) + Detectabilidad (C)"
 
-#. module: oxigen_mgmtsystem_hazard_risk
+#. module: oxigen_mgmtsystem_hazard_risk_extension
 #: model:mgmtsystem.hazard.risk.computation,description:mgmtsystem_hazard_risk.risk_computation_a_plus_b_times_c
 msgid "Risk = ( Probability (A) + Severity (B) ) x Detectability (C)"
 msgstr "Riesgo = ( Probabilidad (A) + Severidad (B) ) x Detectabilidad (C)"
 
-#. module: oxigen_mgmtsystem_hazard_risk
+#. module: oxigen_mgmtsystem_hazard_risk_extension
 #: model:mgmtsystem.hazard.risk.computation,description:mgmtsystem_hazard_risk.risk_computation_a_plus_b_plus_c
 msgid "Risk = Probability (A) + Severity (B) + Detectability (C)"
 msgstr "Riesgo = Probabilidad (A) + Severidad (B) + Detectabilidad (C)"
