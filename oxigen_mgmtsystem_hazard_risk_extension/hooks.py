@@ -1,4 +1,5 @@
 # Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 """Install/uninstall hooks that keep the Detectability relabel reversible.
 
@@ -19,9 +20,9 @@ case verified on a real database):
                translations are already stored.
 * PARENT -u  -> the relabel survives: upgrading a dependency makes Odoo
                cascade-upgrade this (dependent) addon, which re-applies last.
-* UNINSTALL  -> every overridden record goes back to the dependency's own
-               original value, in every language, nothing left behind, and
-               with no manual follow-up step.
+* UNINSTALL  -> the Oxigen-specific relabel disappears, and the generic
+               mgmtsystem_hazard_risk_extension translations become visible
+               again for the risk formulas.
 
 Design rules honoured here:
 
@@ -38,10 +39,14 @@ from odoo.tools.convert import convert_file
 
 _logger = logging.getLogger(__name__)
 
-_MODULE = "oxigen_mgmtsystem_hazard_risk"
+_MODULE = "oxigen_mgmtsystem_hazard_risk_extension"
+_GENERIC_MODULE = "mgmtsystem_hazard_risk_extension"
+_DESCRIPTION_NAME = "mgmtsystem.hazard.risk.computation,description"
+_TRANSLATION_LANGS = ("ca_ES", "es_ES")
 
 # The dependency modules that own every record this addon relabels.
 _OWNER_MODULES = ("mgmtsystem_hazard", "mgmtsystem_hazard_risk")
+_TRANSLATION_RESTORE_MODULES = _OWNER_MODULES + (_GENERIC_MODULE,)
 
 # Navigation records (owned by mgmtsystem_hazard) whose translations this addon
 # forces. Referenced by XML ID only -- no wording is copied here. Listed so the
@@ -60,6 +65,35 @@ _OWNER_NOUPDATE_DATA = (
     "mgmtsystem_hazard_risk",
     "data/mgmtsystem_hazard_risk_computation.xml",
 )
+_FORMULA_XMLIDS = (
+    "mgmtsystem_hazard_risk.risk_computation_a_times_b_times_c",
+    "mgmtsystem_hazard_risk.risk_computation_a_times_b_plus_c",
+    "mgmtsystem_hazard_risk.risk_computation_a_plus_b_times_c",
+    "mgmtsystem_hazard_risk.risk_computation_a_plus_b_plus_c",
+)
+
+
+def _formula_ids(env):
+    return [
+        record.id
+        for record in (
+            env.ref(xmlid, raise_if_not_found=False) for xmlid in _FORMULA_XMLIDS
+        )
+        if record
+    ]
+
+
+def _delete_formula_translations(env):
+    formula_ids = _formula_ids(env)
+    if formula_ids:
+        env["ir.translation"].search(
+            [
+                ("type", "=", "model"),
+                ("name", "=", _DESCRIPTION_NAME),
+                ("res_id", "in", formula_ids),
+                ("lang", "in", _TRANSLATION_LANGS),
+            ]
+        ).unlink()
 
 
 def post_init_hook(cr, _registry):
@@ -79,6 +113,7 @@ def post_init_hook(cr, _registry):
     updates (a ``-u`` does not re-run post_init, but it does not undo them).
     """
     env = api.Environment(cr, SUPERUSER_ID, {})
+    _delete_formula_translations(env)
     env["ir.module.module"].search([("name", "=", _MODULE)])._update_translations(
         overwrite=True
     )
@@ -105,8 +140,9 @@ def uninstall_hook(cr, _registry):
     # res_id), so this addon's rows on the owner field labels would be orphaned.
     #
     # So we delete (a) every translation attributed to this addon and (b) every
-    # translation on the navigation records it forced (by XML ID). They then
-    # fall back to the owner's own value, restored in STEP 3.
+    # translation on the navigation records and formulas it forced (by XML ID).
+    # They then fall back to the owner's/generic addon's own values, restored in
+    # STEP 3.
     translation.search([("module", "=", _MODULE)]).unlink()
     for xmlid in _OWNER_NAV_XMLIDS:
         record = env.ref(xmlid, raise_if_not_found=False)
@@ -114,6 +150,7 @@ def uninstall_hook(cr, _registry):
             translation.search(
                 [("name", "=", "%s,name" % record._name), ("res_id", "=", record.id)]
             ).unlink()
+    _delete_formula_translations(env)
 
     # STEP 2 -- Reload the owner's ``noupdate`` data from its own file.
     #
@@ -142,15 +179,16 @@ def uninstall_hook(cr, _registry):
     #    built-in post-uninstall reload.)
     #  * ``_update_translations(overwrite=True)`` then re-imports the owners' own
     #    PO files over anything still forced, restoring their translations.
-    owners = env["ir.module.module"].search(
-        [("name", "in", _OWNER_MODULES), ("state", "=", "installed")]
+    modules = env["ir.module.module"].search(
+        [("name", "in", _TRANSLATION_RESTORE_MODULES), ("state", "=", "installed")]
     )
-    if owners:
+    if modules:
         _logger.info(
             "Enforcing an update of %s to restore the original wording modified "
             "by %s, which is being uninstalled.",
-            ", ".join(owners.mapped("name")),
+            ", ".join(modules.mapped("name")),
             _MODULE,
         )
+        owners = modules.filtered(lambda module: module.name in _OWNER_MODULES)
         owners.button_upgrade()
-        owners._update_translations(overwrite=True)
+        modules._update_translations(overwrite=True)
