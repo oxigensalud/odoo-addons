@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- Repurpose the entity for change control: hide the original Reviews
+         menu and expose a fresh action + menu reading as Change Control
+         Record. Fresh records avoid the stale translations that renaming the
+         already-translated OCA action/menu would leave behind. -->
+    <record id="mgmtsystem_review.menu_open_review" model="ir.ui.menu">
+        <field name="active" eval="False" />
+    </record>
+
+    <record id="action_change_control_record" model="ir.actions.act_window">
+        <field name="name">Change Control Record</field>
+        <field name="res_model">mgmtsystem.review</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="view_id" ref="mgmtsystem_review.view_mgmtsystem_review_tree" />
+        <field
+            name="search_view_id"
+            ref="mgmtsystem_review.view_mgmtsystem_review_filter"
+        />
+        <field name="context">{"search_default_current": 1}</field>
+    </record>
+
+    <menuitem
+        id="menu_change_control_record"
+        action="action_change_control_record"
+        parent="mgmtsystem.menu_mgmtsystem_main"
+        sequence="50"
+        groups="mgmtsystem.group_mgmtsystem_manager"
+    />
+
+    <!-- Form: rename, relabel fields and hide the Inputs tab -->
+    <record id="view_mgmtsystem_review_form" model="ir.ui.view">
+        <field name="name">mgmtsystem.review.form.inherit.change.control</field>
+        <field name="model">mgmtsystem.review</field>
+        <field name="inherit_id" ref="mgmtsystem_review.view_mgmtsystem_review_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="string">Change Control Record</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Change Subject</attribute>
+            </xpath>
+            <xpath expr="//label[@for='name']" position="attributes">
+                <attribute name="string">Change Subject</attribute>
+            </xpath>
+            <xpath expr="//field[@name='reference']" position="attributes">
+                <attribute name="string">Change Control No.</attribute>
+            </xpath>
+            <xpath expr="//page[field[@name='response_ids']]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[field[@name='line_ids']]" position="attributes">
+                <attribute name="string">Change Control Sections</attribute>
+            </xpath>
+            <xpath expr="//page[field[@name='conclusion']]" position="attributes">
+                <attribute name="string">Effectiveness / Closure</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Tree: relabel the reference column -->
+    <record id="view_mgmtsystem_review_tree" model="ir.ui.view">
+        <field name="name">mgmtsystem.review.tree.inherit.change.control</field>
+        <field name="model">mgmtsystem.review</field>
+        <field name="inherit_id" ref="mgmtsystem_review.view_mgmtsystem_review_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='reference']" position="attributes">
+                <attribute name="string">Change Control No.</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Lines: relabel columns to match the change control form -->
+    <record id="view_mgmtsystem_review_line_tree" model="ir.ui.view">
+        <field name="name">mgmtsystem.review.line.tree.inherit.change.control</field>
+        <field name="model">mgmtsystem.review.line</field>
+        <field
+            name="inherit_id"
+            ref="mgmtsystem_review.view_mgmtsystem_review_line_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Section</attribute>
+            </xpath>
+            <xpath expr="//field[@name='decision']" position="attributes">
+                <attribute name="string">Content</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Lines: relabel the edit popup too -->
+    <record id="view_mgmtsystem_review_line_form" model="ir.ui.view">
+        <field name="name">mgmtsystem.review.line.form.inherit.change.control</field>
+        <field name="model">mgmtsystem.review.line</field>
+        <field
+            name="inherit_id"
+            ref="mgmtsystem_review.view_mgmtsystem_review_line_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Section</attribute>
+            </xpath>
+            <xpath expr="//field[@name='decision']" position="attributes">
+                <attribute name="string">Content</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
