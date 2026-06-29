@@ -16,9 +16,7 @@ class WooCommerceWPMLProductTemplateAdapter(Component):
                 "video_gallery_fields": video_gallery_fields,
             }
         try:
-            return super(WooCommerceWPMLProductTemplateAdapter, self).prepare_meta_data(
-                data
-            )
+            return super().prepare_meta_data(data)
         finally:
             self.env.context = previous_context
 
