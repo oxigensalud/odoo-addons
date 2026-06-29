@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ================================
 Oxigen Connector WooCommerce ACF
 ================================
@@ -17,18 +13,25 @@ Oxigen Connector WooCommerce ACF
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-oxigensalud%2Fodoo--addons-lightgray.png?logo=github
-    :target: https://github.com/oxigensalud/odoo-addons/tree/14.0/oxigen_connector_woocommerce_acf
-    :alt: oxigensalud/odoo-addons
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Foxigen.odo--adodns-lightgray.png?logo=github
+    :target: https://github.com/OCA/oxigen.odo-adodns/tree/18.0/oxigen_connector_woocommerce_acf
+    :alt: OCA/oxigen.odo-adodns
+.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
+    :target: https://translation.odoo-community.org/projects/oxigen.odo-adodns-18-0/oxigen.odo-adodns-18-0-oxigen_connector_woocommerce_acf
+    :alt: Translate me on Weblate
+.. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/oxigen.odo-adodns&target_branch=18.0
+    :alt: Try me on Runboat
 
-|badge1| |badge2| |badge3|
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 Customizations for Oxigen in Connector WooCommerce
 
-* Export fields created with Advanced Custom Fields (https://www.advancedcustomfields.com/) on WooCommerce.
+- Export fields created with Advanced Custom Fields
+  (https://www.advancedcustomfields.com/) on WooCommerce.
 
 **Table of contents**
 
@@ -38,23 +41,29 @@ Customizations for Oxigen in Connector WooCommerce
 Usage
 =====
 
-To use this module, you need to install Advanced Custom Fields (https://www.advancedcustomfields.com/) plugin on WooCommerce:
+To use this module, you need to install Advanced Custom Fields
+(https://www.advancedcustomfields.com/) plugin on WooCommerce:
 
-* Go to ACF menu
-* Create a new field group (+ Add New)
-* Create the follow fields:
-    * "professional_product" as boolean field in product.
-    * "medical_prescription_required" as boolean field in product.
-* In the same page, in settings, create the rule:
-   * Post type is equal to Product
+- Go to ACF menu
+
+- Create a new field group (+ Add New)
+
+- Create the follow fields:
+
+  - "professional_product" as boolean field in product.
+  - "medical_prescription_required" as boolean field in product.
+
+- In the same page, in settings, create the rule:
+
+  - Post type is equal to Product
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/oxigensalud/odoo-addons/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/oxigen.odo-adodns/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/oxigensalud/odoo-addons/issues/new?body=module:%20oxigen_connector_woocommerce_acf%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/oxigen.odo-adodns/issues/new?body=module:%20oxigen_connector_woocommerce_acf%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -62,20 +71,30 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * NuoBiT Solutions SL
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `NuoBiT <https://www.nuobit.com>`__:
+- `NuoBiT <https://www.nuobit.com>`__:
 
-  * Kilian Niubo <kniubo@nuobit.com>
+  - Kilian Niubo <kniubo@nuobit.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
-This module is part of the `oxigensalud/odoo-addons <https://github.com/oxigensalud/odoo-addons/tree/14.0/oxigen_connector_woocommerce_acf>`_ project on GitHub.
+This module is maintained by the OCA.
 
-You are welcome to contribute.
+.. image:: https://odoo-community.org/logo.png
+   :alt: Odoo Community Association
+   :target: https://odoo-community.org
+
+OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.
+
+This module is part of the `OCA/oxigen.odo-adodns <https://github.com/OCA/oxigen.odo-adodns/tree/18.0/oxigen_connector_woocommerce_acf>`_ project on GitHub.
+
+You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
