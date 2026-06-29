@@ -7,7 +7,7 @@
     "Export fields created with Advanced Custom Fields (ACF).",
     "version": "14.0.1.0.0",
     "author": "NuoBiT Solutions, S.L.",
-    "website": "https://github.com/oxigensalud/odoo-addons",
+    "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Product",
     "depends": ["oxigen_website_sale_extra_fields", "connector_woocommerce_wpml"],
     "license": "AGPL-3",
