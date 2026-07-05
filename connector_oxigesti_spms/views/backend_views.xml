@@ -13,13 +13,13 @@
                         type="object"
                         class="oe_highlight"
                         string="Check Connection"
-                        attrs="{'invisible':[('state', 'not in', ['draft'])]}"
+                        invisible="state not in ['draft']"
                     />
                     <button
                         name="button_reset_to_draft"
                         type="object"
                         string="Reset To draft Connection"
-                        attrs="{'invisible':[('state', 'in', ['draft'])]}"
+                        invisible="state in ['draft']"
                     />
                     <field name="state" widget="statusbar" readonly="1" />
                 </header>
@@ -28,74 +28,52 @@
                         <field
                             name="name"
                             class="oe_inline"
-                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            readonly="state != 'draft'"
                         />
                     </h1>
                     <group>
                         <group>
                             <field
                                 name="company_id"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                readonly="state != 'draft'"
                                 domain="[('id', 'in', allowed_company_ids)]"
                             />
                             <field
                                 name="lang_ids"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                readonly="state != 'draft'"
                                 widget="many2many_tags"
                             />
                         </group>
                         <group col="1">
                             <group>
-                                <field
-                                    name="user_id"
-                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
-                                />
+                                <field name="user_id" readonly="state != 'draft'" />
                             </group>
                             <group>
-                                <field
-                                    name="tz"
-                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
-                                />
-                                <field
-                                    name="server_tz"
-                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
-                                />
+                                <field name="tz" readonly="state != 'draft'" />
+                                <field name="server_tz" readonly="state != 'draft'" />
                             </group>
                         </group>
                         <group>
-                            <field
-                                name="db_name"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
-                        </group>
-                        <group>
-                            <field
-                                name="db_user"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
-                            <field
-                                name="db_password"
-                                password="True"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
+                            <group>
+                                <field name="db_name" readonly="state != 'draft'" />
+                            </group>
+                            <group>
+                                <field name="db_user" readonly="state != 'draft'" />
+                                <field
+                                    name="db_password"
+                                    password="True"
+                                    readonly="state != 'draft'"
+                                />
+                            </group>
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field
-                                name="db_host"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
-                            <field
-                                name="db_port"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
+                            <field name="db_host" readonly="state != 'draft'" />
+                            <field name="db_port" readonly="state != 'draft'" />
                         </group>
                         <group>
-                            <field
-                                name="db_schema"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
+                            <field name="db_schema" readonly="state != 'draft'" />
                         </group>
                         <group>
                             <field name="version" />
@@ -399,22 +377,22 @@
     </record>
 
     <record id="view_tree_oxigesti_spms_backend" model="ir.ui.view">
-        <field name="name">oxigesti.spms.backend.tree</field>
+        <field name="name">oxigesti.spms.backend.list</field>
         <field name="model">oxigesti.spms.backend</field>
         <field name="arch" type="xml">
-            <tree string="Oxigesti SPMS Backends">
+            <list string="Oxigesti SPMS Backends">
                 <field name="name" />
                 <field name="db_user" />
                 <field name="db_host" />
                 <field name="db_port" />
                 <field name="state" />
-            </tree>
+            </list>
         </field>
     </record>
 
     <record id="oxigesti_spms_backend_action" model="ir.actions.act_window">
         <field name="name">Oxigesti Backends</field>
         <field name="res_model">oxigesti.spms.backend</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>
