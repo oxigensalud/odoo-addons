@@ -136,5 +136,6 @@
         <field name="name">Customers</field>
         <field name="res_model">oxigesti.res.partner</field>
         <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
     </record>
 </odoo>
