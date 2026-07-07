@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
 # Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
 from odoo import api, models
@@ -17,4 +18,4 @@ class ProductTemplate(models.Model):
         "product_template_image_ids.sequence",
     )
     def _compute_woocommerce_write_date(self):
-        super()._compute_woocommerce_write_date()
+        return super()._compute_woocommerce_write_date()
