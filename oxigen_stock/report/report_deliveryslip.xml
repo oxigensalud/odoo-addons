@@ -6,7 +6,7 @@
         inherit_id="stock.report_delivery_document"
     >
         <xpath
-            expr="//table[@name='stock_move_table']//tr[@t-as='move']//span[@t-field='move.description_picking']"
+            expr="//table[@name='stock_move_table']//tr[@t-as='move']//p[contains(@t-if, 'description_picking')]"
             position="attributes"
         >
             <attribute name="t-if">False</attribute>
