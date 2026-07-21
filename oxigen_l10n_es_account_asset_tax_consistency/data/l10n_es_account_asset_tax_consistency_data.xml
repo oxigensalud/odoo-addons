@@ -115,10 +115,9 @@
         <field name="apply_to_asset">always</field>
     </record>
     <!--    	IVA Soportado no deducible 5% (servicios corrientes)-->
-    <record
-        id="oxigen_l10n_es.account_tax_template_p_iva5_nd"
-        model="account.tax.template"
-    >
+    <!-- oxigen_l10n_es no longer clones this template: the rule targets the
+         official l10n_es one. -->
+    <record id="l10n_es.account_tax_template_p_iva5_nd" model="account.tax.template">
         <field name="apply_to_asset">never</field>
     </record>
 </odoo>
