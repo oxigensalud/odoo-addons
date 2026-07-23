@@ -13,9 +13,12 @@ def _same_shape(tax, template):
     """Is the tax functionally identical to the official template?"""
 
     def sig(lines):
+        # Template repartition lines carry no sequence field (only the
+        # real ones do); each side sorts by the ordering key it has.
+        key = "sequence" if "sequence" in lines._fields else "id"
         return [
             (line.repartition_type, line.factor_percent, bool(line.account_id))
-            for line in lines.sorted("sequence")
+            for line in lines.sorted(key)
         ]
 
     return (
