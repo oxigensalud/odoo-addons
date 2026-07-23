@@ -59,6 +59,9 @@ COMPANY_MODEL = {
 
 
 def _rep_sig(lines):
+    # Template repartition lines carry no sequence field (only the real
+    # ones do); sort by the ordering key the model actually has.
+    key = "sequence" if "sequence" in lines._fields else "id"
     return [
         (
             line.repartition_type,
@@ -66,7 +69,7 @@ def _rep_sig(lines):
             line.account_id.id,
             tuple(sorted(line.tag_ids.ids)),
         )
-        for line in lines.sorted("sequence")
+        for line in lines.sorted(key)
     ]
 
 
