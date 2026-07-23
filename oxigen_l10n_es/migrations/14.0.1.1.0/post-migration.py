@@ -227,9 +227,21 @@ def migrate(cr, version):
             _drop_owned_children(new)
             _repoint(env, model, new.id, old.id)
             env.cache.invalidate()
-            new.unlink()
+            # Repoint the extension's xml-id BEFORE deleting the duplicate:
+            # unlink() garbage-collects every ir.model.data row still
+            # pointing at the deleted record, so the reversed order killed
+            # the key silently and every later cross-module reference to
+            # it crashed the update.
             new_imd.write({"res_id": old.id})
             old_imd.unlink()
+            new.unlink()
+            resolved = env.ref("%s.%s" % (NEW_MODULE, name), raise_if_not_found=False)
+            if not resolved or resolved.id != old.id:
+                raise RuntimeError(
+                    "ND handover: %s.%s does not resolve to the kept record"
+                    " %s after the swap (got %s)"
+                    % (NEW_MODULE, name, old.id, resolved and resolved.id)
+                )
             _logger.info(
                 "ND handover: %s (%s) kept as record %s under %s",
                 name,
