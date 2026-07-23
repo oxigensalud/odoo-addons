@@ -16,15 +16,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
            ]"
         />
     </record>
@@ -45,15 +36,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -74,15 +56,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -103,15 +76,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -132,15 +96,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
            ]"
         />
     </record>
@@ -161,15 +116,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -190,15 +136,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -219,15 +156,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -245,12 +173,6 @@
                 (4, ref('p_iva10nd_sp_in')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
             ]"
         />
     </record>
@@ -268,12 +190,6 @@
                 (4, ref('p_iva10nd_sp_in')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
             ]"
         />
     </record>
@@ -288,9 +204,6 @@
                 (4, ref('p_iva4nd_ic_bi')),
                 (4, ref('p_iva10nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bi')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -305,9 +218,6 @@
                 (4, ref('p_iva4nd_ic_bi')),
                 (4, ref('p_iva10nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bi')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -328,15 +238,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -357,15 +258,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -387,15 +279,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
@@ -416,15 +299,6 @@
                 (4, ref('p_iva21nd_ic_bi')),
                 (4, ref('p_iva21nd_ic_bc')),
                 (4, ref('p_iva21nd_sp_in')),
-                (4, ref('p_iva4_sp_in_1')),
-                (4, ref('p_iva10_sp_in_1')),
-                (4, ref('p_iva21_sp_in_1')),
-                (4, ref('p_iva4_ic_bc_2')),
-                (4, ref('p_iva10_ic_bc_2')),
-                (4, ref('p_iva21_ic_bc_2')),
-                (4, ref('p_iva4_ic_bi_2')),
-                (4, ref('p_iva10_ic_bi_2')),
-                (4, ref('p_iva21_ic_bi_2')),
             ]"
         />
     </record>
