@@ -149,6 +149,12 @@ def _adopt(env, company, clone, clone_imd, official_imd):
                 value = virgin[fname]
                 field = virgin._fields[fname]
                 identity_vals[fname] = value.id if field.type == "many2one" else value
+            # Repoint the official xml-id to the survivor BEFORE deleting
+            # the virgin instance: unlink() garbage-collects every
+            # ir.model.data row still pointing at the deleted record, so
+            # the reversed order killed the official key silently (the
+            # later write landed on a dead row and affected nothing).
+            official_imd.write({"res_id": clone.id, "noupdate": True})
             _delete_position(env, virgin)
     if not identity_vals:
         template = env.ref("%s.%s" % (TAI_MODULE, TAI_POS))
@@ -170,6 +176,15 @@ def _adopt(env, company, clone, clone_imd, official_imd):
                 "res_id": clone.id,
                 "noupdate": True,
             }
+        )
+    resolved = env.ref(
+        "%s.%s_%s" % (TAI_MODULE, company.id, TAI_POS), raise_if_not_found=False
+    )
+    if not resolved or resolved.id != clone.id:
+        raise RuntimeError(
+            "TAI adoption: %s.%s_%s does not resolve to the adopted position"
+            " %s (got %s)"
+            % (TAI_MODULE, company.id, TAI_POS, clone.id, resolved and resolved.id)
         )
     clone_imd.unlink()
     # The clone's own line xml-ids die with its identity (the records
