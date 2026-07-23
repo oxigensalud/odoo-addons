@@ -4,12 +4,12 @@
         <field
             name="tax_tmpl_ids"
             eval="[
-            (4, ref('account_tax_template_p_iva4nd_ic_bi')),
-            (4, ref('account_tax_template_p_iva4nd_ic_bc')),
-            (4, ref('account_tax_template_p_iva10nd_ic_bi')),
-            (4, ref('account_tax_template_p_iva10nd_ic_bc')),
-            (4, ref('account_tax_template_p_iva21nd_ic_bi')),
-            (4, ref('account_tax_template_p_iva21nd_ic_bc')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva4nd_ic_bi')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva4nd_ic_bc')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva10nd_ic_bi')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva10nd_ic_bc')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva21nd_ic_bi')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva21nd_ic_bc')),
             (4, ref('l10n_es_special_prorate.account_tax_template_p_priva4_ic_bc')),
             (4, ref('l10n_es_special_prorate.account_tax_template_p_priva10_ic_bc')),
             (4, ref('l10n_es_special_prorate.account_tax_template_p_priva21_ic_bc')),
@@ -25,9 +25,9 @@
             eval="[
             (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),
             (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),
-            (4, ref('account_tax_template_p_iva4nd_sp_in')),
-            (4, ref('account_tax_template_p_iva10nd_sp_in')),
-            (4, ref('account_tax_template_p_iva21nd_sp_in')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva4nd_sp_in')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva10nd_sp_in')),
+            (4, ref('l10n_es_extension.account_tax_template_p_iva21nd_sp_in')),
             (4, ref('l10n_es_special_prorate.account_tax_template_p_priva4_sp_in')),
             (4, ref('l10n_es_special_prorate.account_tax_template_p_priva10_sp_in')),
             (4, ref('l10n_es_special_prorate.account_tax_template_p_priva21_sp_in')),

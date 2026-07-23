@@ -4,12 +4,17 @@
 {
     "name": "Oxigen Localization",
     "summary": "Customizations to PGCE for Oxigen",
-    "version": "14.0.1.0.9",
+    "version": "14.0.1.1.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting/Localizations/Account Charts",
     "depends": [
         "l10n_es",
+        # ND handover only: guarantees load order + coexistence for the
+        # 14.0.1.1.0 migration. NEVER remove within the 14 series (version
+        # jumpers run old migrations under the NEWEST manifest). Drop it in
+        # the next major lineage (15+/18): no pending migration there.
+        "l10n_es_extension",
         "l10n_es_aeat_mod303",
         "l10n_es_aeat_mod322",
         "l10n_es_aeat_mod349",
