@@ -30,6 +30,17 @@ def _same_shape(tax, template):
     )
 
 
+def _component_columns(env):
+    """(table, column) pairs that store a tax's own one2many children."""
+    cols = set()
+    for field in env["account.tax"]._fields.values():
+        if field.type == "one2many" and field.inverse_name:
+            comodel = env[field.comodel_name]
+            if comodel._auto and not comodel._abstract and not comodel._transient:
+                cols.add((comodel._table, field.inverse_name))
+    return cols
+
+
 def _ref_count(env, tax_id):
     """References that make a duplicated tax unsafe to delete.
 
@@ -44,6 +55,12 @@ def _ref_count(env, tax_id):
       storage IS the inverse many2one. (restrict ones would abort the
       update loudly by themselves.)
 
+    The tax's own one2many children (its repartition lines) arrive through
+    that same inverse-many2one channel but are components, not references —
+    they die with the record — so their columns are excluded; counting them
+    made this guard refuse every tax (a real tax always carries repartition
+    lines) and the delete branch was unreachable.
+
     Deliberately NOT counted: soft references (fields.Reference,
     many2one_reference, res_model/res_id pairs, ir.property values) —
     standard Odoo deletion does not guard them either and their orphans
@@ -52,6 +69,7 @@ def _ref_count(env, tax_id):
     skipped.
     """
     cr = env.cr
+    excluded = _component_columns(env)
     total = 0
     seen_m2m = set()
     for model_name in env.registry:
@@ -62,6 +80,8 @@ def _ref_count(env, tax_id):
             if not field.store or field.comodel_name != "account.tax":
                 continue
             if field.type == "many2one":
+                if (model._table, field.name) in excluded:
+                    continue
                 table, column = model._table, field.name
             elif field.type == "many2many":
                 if (field.relation, field.column2) in seen_m2m:
