@@ -4,7 +4,7 @@
 {
     "name": "Oxigen Localization",
     "summary": "Customizations to PGCE for Oxigen",
-    "version": "14.0.1.3.0",
+    "version": "14.0.1.4.0",
     "author": "ForgeFlow",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting/Localizations/Account Charts",
@@ -26,7 +26,6 @@
     "data": [
         "data/account_chart_template_data.xml",
         "data/account_tax_data.xml",
-        "data/legacy_account_tax_data.xml",
         "data/tax_code_map_mod303_202107_data.xml",
         "data/tax_code_map_mod303_2023_data.xml",
         "data/tax_code_map_mod303_202410_data.xml",
