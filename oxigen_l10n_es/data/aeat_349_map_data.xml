@@ -10,12 +10,6 @@
             (4, ref('p_iva10nd_ic_bc')),
             (4, ref('p_iva21nd_ic_bi')),
             (4, ref('p_iva21nd_ic_bc')),
-            (4, ref('p_priva4_ic_bc')),
-            (4, ref('p_priva10_ic_bc')),
-            (4, ref('p_priva21_ic_bc')),
-            (4, ref('p_priva4_ic_bi')),
-            (4, ref('p_priva10_ic_bi')),
-            (4, ref('p_priva21_ic_bi')),
         ]"
         />
     </record>
@@ -28,9 +22,6 @@
             (4, ref('p_iva4nd_sp_in')),
             (4, ref('p_iva10nd_sp_in')),
             (4, ref('p_iva21nd_sp_in')),
-            (4, ref('p_priva4_sp_in')),
-            (4, ref('p_priva10_sp_in')),
-            (4, ref('p_priva21_sp_in')),
         ]"
         />
     </record>
