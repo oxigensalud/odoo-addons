@@ -19,12 +19,23 @@ This migration removes the duplication for good:
 
 1. delete the corpses (archived + never used + gates re-checked at run time)
    so the original names are freed;
-2. archive our instances and set ``noupdate=true`` on their xml-ids -- they
-   KEEP the posted history and their ``oxigen`` identity, and ride the
-   end-of-update orphan sweep untouched;
+2. archive our instances, set ``noupdate=true`` on their xml-ids (they keep
+   the posted history and their ``oxigen`` identity, and ride the
+   end-of-update orphan sweep untouched) and RESTORE their original names,
+   stripping the ``OBSOLETE - `` prefix;
 3. delete the obsolete templates -- the data files no longer declare them
    (poda) and the AEAT maps have been requalified to the un-suffixed core
    originals, so nothing references or re-creates them.
+
+The name restoration is a decision, not cosmetics (Eric, 2026-07-23,
+reaffirmed 2026-07-26): the ``OBSOLETE - `` prefix was the disambiguator of
+the DUPLICATED era -- two living records for the same concept needed distinct
+names. With the corpse deleted the prefix loses its reason to exist: the
+survivor IS the tax, merely old, so it must read "as if the 11->14 migration
+had been done right" -- original name, archived. Fidelity gate before
+deleting anything: for every paired instance, our name minus the prefix must
+EQUAL the corpse's original name (measured 174/174 on prod); the unpaired
+rest must all carry the uniform prefix. Any mismatch aborts the migration.
 
 Our instances are ARCHIVED, not deleted, on purpose: posted account moves
 reference them, so the records must survive. Only the unreferenced corpses and
@@ -65,6 +76,8 @@ TEMPLATE_RE = (
 # debris here, repointed, never treated as a blocking reference.
 FILIATION_TABLE = "account_tax_filiation_rel"
 REF_RE = r"^account\.tax,[0-9]+$"
+# The duplicated-era disambiguator to strip when restoring original names.
+OBSOLETE_PREFIX = "OBSOLETE - "
 
 
 def _ids_by_module(cr, module):
@@ -337,13 +350,76 @@ def _delete_corpses(cr, a_ids):
     return cr.rowcount
 
 
+def _assert_name_fidelity(cr):
+    """Every restored name must be provably the original (gate, pre-delete).
+
+    Paired instances: our name minus ``OBSOLETE - `` must EQUAL the corpse's
+    original name (both records still alive here -- this is why the gate runs
+    BEFORE the corpse deletion). Unpaired instances: must carry the uniform
+    prefix, so the strip is well-defined. Counts only in errors.
+    """
+    cr.execute(
+        """
+        SELECT count(*)
+          FROM ir_model_data do2
+          JOIN account_tax to2 ON to2.id = do2.res_id
+          JOIN ir_model_data dc ON dc.model = 'account.tax'
+                               AND dc.module = %s AND dc.name = do2.name
+          JOIN account_tax tc ON tc.id = dc.res_id
+         WHERE do2.model = 'account.tax' AND do2.module = %s AND do2.name ~ %s
+           AND to2.name IS DISTINCT FROM (%s || tc.name)
+        """,
+        (CORE_MODULE, OXIGEN_MODULE, INSTANCE_RE, OBSOLETE_PREFIX),
+    )
+    bad_pairs = cr.fetchone()[0]
+    if bad_pairs:
+        raise RuntimeError(
+            "E-family poda: %s paired instances whose stripped name does NOT"
+            " equal the corpse's original name - refusing to restore" % bad_pairs
+        )
+    cr.execute(
+        """
+        SELECT count(*)
+          FROM ir_model_data do2
+          JOIN account_tax to2 ON to2.id = do2.res_id
+         WHERE do2.model = 'account.tax' AND do2.module = %s AND do2.name ~ %s
+           AND to2.name NOT LIKE %s
+        """,
+        (OXIGEN_MODULE, INSTANCE_RE, OBSOLETE_PREFIX + "%"),
+    )
+    unprefixed = cr.fetchone()[0]
+    if unprefixed:
+        raise RuntimeError(
+            "E-family poda: %s instances without the uniform OBSOLETE prefix"
+            " - the strip would not be well-defined" % unprefixed
+        )
+
+
+def _restore_names(cr, b_ids):
+    """Strip the ``OBSOLETE - `` prefix: original name, archived record.
+
+    The prefix was the disambiguator of the duplicated era; with the corpses
+    deleted the survivor is simply the tax, old and archived, under its
+    name of always (Eric 2026-07-23 / 2026-07-26). ``_assert_name_fidelity``
+    proved the strip yields exactly the corpse's original name where a corpse
+    existed.
+    """
+    cr.execute(
+        "UPDATE account_tax SET name = substr(name, %s)"
+        " WHERE id = ANY(%s) AND name LIKE %s",
+        (len(OBSOLETE_PREFIX) + 1, b_ids, OBSOLETE_PREFIX + "%"),
+    )
+    return cr.rowcount
+
+
 def _archive_instances(cr, b_ids):
     """Archive our E instances and protect them from the orphan sweep.
 
     KEPT under ``oxigen_l10n_es`` (no re-badge): the data-file poda means
     nothing re-creates them, and ``noupdate=true`` stops the end-of-update
-    orphan cleanup from deleting them. They carry posted history and keep the
-    OBSOLETE name -- they ARE obsolete. Returns ``(n_protected, n_archived)``.
+    orphan cleanup from deleting them. They carry posted history; their
+    original names are restored right after (``_restore_names``). Returns
+    ``(n_protected, n_archived)``.
     """
     cr.execute(
         "UPDATE ir_model_data SET noupdate = true"
@@ -402,6 +478,16 @@ def _assert_post_state(cr, b_ids):
     )
     if cr.fetchone()[0]:
         raise RuntimeError("E-family poda: obsolete templates survived the deletion")
+    # No OBSOLETE survivor: every kept instance reads under its original name.
+    cr.execute(
+        "SELECT count(*) FROM account_tax WHERE id = ANY(%s) AND name LIKE %s",
+        (b_ids, OBSOLETE_PREFIX + "%"),
+    )
+    if cr.fetchone()[0]:
+        raise RuntimeError(
+            "E-family poda: some instances still carry the OBSOLETE prefix"
+            " after the name restoration"
+        )
 
 
 def migrate(cr, version):
@@ -428,6 +514,9 @@ def migrate(cr, version):
         )
 
     _assert_no_living_group(cr, a_ids + b_ids)
+    # Name-fidelity gate BEFORE any deletion: it compares against the
+    # corpses, which must still be alive here.
+    _assert_name_fidelity(cr)
 
     n_rep = n_del = 0
     if a_ids:
@@ -436,17 +525,20 @@ def migrate(cr, version):
         n_del = _delete_corpses(cr, a_ids)
 
     n_protect, n_arch = _archive_instances(cr, b_ids)
+    n_restored = _restore_names(cr, b_ids)
     n_tpl = _delete_templates(env, tpl_ids)
     _assert_post_state(cr, b_ids)
 
     _logger.info(
         "E-family poda OK: %s corpses deleted - %s instances archived+protected"
-        " (%s xml-ids noupdate, %s total kept under oxigen) - %s obsolete"
-        " templates deleted - %s filiation rows repointed",
+        " (%s xml-ids noupdate, %s total kept under oxigen) - %s original"
+        " names restored - %s obsolete templates deleted - %s filiation rows"
+        " repointed",
         n_del,
         n_arch,
         n_protect,
         len(b_ids),
+        n_restored,
         n_tpl,
         n_rep,
     )
