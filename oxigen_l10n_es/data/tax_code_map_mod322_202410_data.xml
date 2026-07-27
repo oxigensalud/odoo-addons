@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- AEAT 322 map, 2024-10 generation (in force since October 2024): add
+         the non-deductible VAT family to the boxes where its official
+         analogues sit, per the AEAT model 322 instructions. Box 21/22 holds
+         the TOTAL of intra-community acquisitions of goods and services (a
+         single pair, no rate or current/investment split — unlike the 390):
+         the family's quotas accrue exactly like the official ones, so the
+         nine intra-EU/ISP members join there and on the purchase rows of the
+         base/quota modification boxes (10/11 intragroup, 25/26 rest; the
+         engine splits intragroup vs rest by partner, so the same tax sits on
+         both). No deduction box gets any member: these taxes carry no
+         deduction right, and that block only takes deductible quotas. The
+         six domestic members go nowhere (the 322 has no informative box like
+         the 390's 232). The exempt sale without deduction right joins box 83,
+         anchoring in code a link migrated databases only carried as data. -->
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_21"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_22"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_10_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_11_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_25_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_26_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322.aeat_mod322_2024_10_map_line_83"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field name="tax_xmlid_ids" eval="[(4, ref('s_iva0_sdd'))]" />
+    </record>
+</odoo>
