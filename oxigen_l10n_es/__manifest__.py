@@ -5,7 +5,7 @@
 {
     "name": "Oxigen Localization",
     "summary": "Customizations to PGCE for Oxigen",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "author": "ForgeFlow, NuoBiT Solutions SL",
     "website": "https://github.com/OCA/oxigen.odo-adodns",
     "category": "Accounting/Localizations/Account Charts",

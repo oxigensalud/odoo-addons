@@ -169,40 +169,6 @@
     </record>
 
     <record
-        id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_36"
-        model="l10n.es.aeat.map.tax.line"
-    >
-        <field
-            name="tax_xmlid_ids"
-            eval="[
-                (4, ref('p_iva4nd_ic_bc')),
-                (4, ref('p_iva4nd_sp_in')),
-                (4, ref('p_iva10nd_ic_bc')),
-                (4, ref('p_iva10nd_sp_in')),
-                (4, ref('p_iva21nd_ic_bc')),
-                (4, ref('p_iva21nd_sp_in')),
-            ]"
-        />
-    </record>
-
-    <record
-        id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_37"
-        model="l10n.es.aeat.map.tax.line"
-    >
-        <field
-            name="tax_xmlid_ids"
-            eval="[
-                (4, ref('p_iva4nd_ic_bc')),
-                (4, ref('p_iva4nd_sp_in')),
-                (4, ref('p_iva10nd_ic_bc')),
-                (4, ref('p_iva10nd_sp_in')),
-                (4, ref('p_iva21nd_ic_bc')),
-                (4, ref('p_iva21nd_sp_in')),
-            ]"
-        />
-    </record>
-
-    <record
         id="l10n_es_aeat_mod303.aeat_mod303_2024_10_map_line_80"
         model="l10n.es.aeat.map.tax.line"
     >
