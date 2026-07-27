@@ -15,6 +15,7 @@
         "l10n_es_aeat_mod322",
         "l10n_es_aeat_mod349",
         "l10n_es_aeat_mod390",
+        "l10n_es_extension",
         "l10n_es_special_prorate",
         "l10n_es_aeat_sii_oca",
     ],
