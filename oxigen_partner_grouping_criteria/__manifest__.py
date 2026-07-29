@@ -8,7 +8,7 @@
     "Grouping Criteria' field in the partner view",
     "version": "18.0.1.0.0",
     "author": "ForgeFlow, NuoBiT Solutions SL",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Sales Management",
     "depends": ["sale_order_invoicing_grouping_criteria"],
     "license": "AGPL-3",
