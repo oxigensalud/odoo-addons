@@ -7,7 +7,7 @@
     "summary": "Adds a service number to delivery note on facture XML file",
     "version": "18.0.1.0.0",
     "author": "NuoBiT Solutions SL",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting & Finance",
     "depends": ["l10n_es_facturae_sale_stock", "sale_order_service"],
     "license": "AGPL-3",
