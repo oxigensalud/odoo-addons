@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oxigen_account_journal_ledger_wizard_manager,oxigen_account_journal_ledger_wizard manager,model_oxigen_account_journal_ledger_wizard,account.group_account_manager,1,1,1,1

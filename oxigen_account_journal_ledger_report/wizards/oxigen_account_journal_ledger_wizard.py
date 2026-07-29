@@ -1,0 +1,60 @@
+# Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
+
+
+class OxigenAccountJournalLedgerWizard(models.TransientModel):
+    _name = "oxigen.account.journal.ledger.wizard"
+    _description = "Oxigen Account Journal Ledger Wizard"
+
+    company_ids = fields.Many2many(
+        comodel_name="res.company",
+        relation="oxigen_journal_ledger_wizard_company_rel",
+        column1="oxigen_journal_ledger_wizard_id",
+        column2="company_id",
+        required=True,
+        domain=lambda self: [("id", "in", self.env.user.company_ids.ids)],
+    )
+    date_from = fields.Date(required=True)
+    date_to = fields.Date(required=True)
+
+    @api.constrains("date_from", "date_to")
+    def _check_same_year(self):
+        for rec in self:
+            if rec.date_from.year != rec.date_to.year:
+                raise UserError(_("The dates must be in the same year"))
+
+    @api.constrains("company_ids")
+    def _check_allowed_companies(self):
+        for rec in self:
+            invalid_companies = rec.company_ids - self.env.user.company_ids
+            if invalid_companies:
+                raise UserError(
+                    _(
+                        "You don't have permission to "
+                        "access the following companies: %(companies)s"
+                    )
+                    % {"companies": ", ".join(invalid_companies.mapped("name"))}
+                )
+
+    def _print_report(self):
+        self.ensure_one()
+        report = self.env.ref(
+            "oxigen_account_journal_ledger_report.report_oxigen_account_journal_ledger_csv_action"
+        )
+        action = report.report_action(
+            self,
+            data={
+                "company_ids": self.company_ids.ids,
+                "date_from": self.date_from,
+                "date_to": self.date_to,
+            },
+        )
+        return action
+
+    def button_export_csv(self):
+        self.ensure_one()
+        return self._print_report()
