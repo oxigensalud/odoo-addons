@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_open_immediate_mrw_wizard"
+                    class="oe_highlight"
+                    invisible="delivery_type != 'mrw' or picking_type_code != 'incoming' or carrier_tracking_ref != False or state != 'assigned'"
+                    string="Manage MRW incoming"
+                    type="object"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_picking_withcarrier_in_form2" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field
+            name="inherit_id"
+            ref="delivery_state.view_picking_withcarrier_out_form"
+        />
+        <field name="arch" type="xml">
+            <group name="delivery_tracking" position="attributes">
+                <attribute
+                    name="invisible"
+                >carrier_id == False or picking_type_code == 'outgoing' and delivery_type != 'mrw' and state != 'done' and carrier_id == False and picking_type_code == 'incoming' and delivery_type != 'mrw'
+                </attribute>
+            </group>
+            <xpath expr="//div[@name='tracking']" position="inside">
+                <!-- extra button that is visible outside of "done" to cancel pickups -->
+                <button
+                    type='object'
+                    class="fa fa-arrow-right oe_link"
+                    name="cancel_shipment"
+                    string="Cancel"
+                    invisible="carrier_tracking_ref == False or delivery_type in ['fixed', 'base_on_rule'] or delivery_type == False or state == 'done' or delivery_type != 'mrw'"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_picking_withcarrier_in_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field
+            name="inherit_id"
+            ref="delivery_state.view_picking_withcarrier_out_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='delivery_tracking']" position="attributes">
+                <attribute name="invisible">
+                    carrier_id == False or delivery_type != 'mrw' or picking_type_code != 'incoming' or state != 'done' and picking_type_code != 'incoming' and state == 'draft'
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

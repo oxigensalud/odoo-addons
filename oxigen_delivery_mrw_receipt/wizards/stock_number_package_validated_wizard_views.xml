@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html) -->
+<odoo>
+    <record id="mrw_view_immediate_transfer_out" model="ir.ui.view">
+        <field name="name">stock.number.package.validate.wizard.view.form.mrw</field>
+        <field name="model">stock.number.package.validate.wizard</field>
+        <field
+            name="inherit_id"
+            ref="oxigen_delivery_mrw.view_number_package_validate"
+        />
+        <field name="arch" type="xml">
+            <field name="pick_ids" position="after">
+                <field name="mrw_is_in_picking" invisible="1" />
+            </field>
+        </field>
+    </record>
+</odoo>
