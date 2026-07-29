@@ -1,0 +1,34 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_stock_barcodes_gs1
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-15 11:14+0000\n"
+"PO-Revision-Date: 2021-11-15 12:18+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: oxigen_stock_barcodes_gs1
+#: code:addons/oxigen_stock_barcodes_gs1/wizard/stock_barcodes_read_picking.py:50
+#, python-format
+msgid "Lot/Serial Number not found. Please, create it."
+msgstr "Lot/número de serie no encontrado. Por favor, créelo."
+
+#. module: oxigen_stock_barcodes_gs1
+#: model:ir.model,name:oxigen_stock_barcodes_gs1.model_wiz_stock_barcodes_new_lot
+msgid "Wizard to create new lot from barcode scanner"
+msgstr "Asistente para crear nuevo lote desde el lector de códigos de barras"
+
+#. module: oxigen_stock_barcodes_gs1
+#: model:ir.model,name:oxigen_stock_barcodes_gs1.model_wiz_stock_barcodes_read_picking
+msgid "Wizard to read barcode on picking"
+msgstr "Asistente para leer códigos de barras desde los albaranes"
