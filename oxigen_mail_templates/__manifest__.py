@@ -7,7 +7,7 @@
     "summary": "Customizations for Oxigen in Templates",
     "version": "18.0.1.0.0",
     "author": "NuoBiT Solutions SL, ForgeFlow",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting",
     "depends": ["account_invoice_batches"],
     "data": ["data/invoice_batches_templates.xml"],
