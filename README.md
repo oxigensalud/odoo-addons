@@ -3,7 +3,7 @@
 # Oxigen Salud Odoo Addons
 <!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
 [![Pre-commit Status](https://github.com/oxigensalud/odoo-addons/actions/workflows/pre-commit.yml/badge.svg?branch=18.0)](https://github.com/oxigensalud/odoo-addons/actions/workflows/pre-commit.yml?query=branch%3A18.0)
-[![Build Status](https://github.com/oxigensalud/odoo-addons/actions/workflows/test.yml/badge.svg?branch=18.0)](https://github.com/oxigensaldu/odoo-addons/actions/workflows/test.yml?query=branch%3A18.0)
+[![Build Status](https://github.com/oxigensalud/odoo-addons/actions/workflows/test.yml/badge.svg?branch=18.0)](https://github.com/oxigensalud/odoo-addons/actions/workflows/test.yml?query=branch%3A18.0)
 [![codecov](https://codecov.io/gh/oxigensalud/odoo-addons/branch/18.0/graph/badge.svg)](https://codecov.io/gh/oxigensalud/odoo-addons)
 
 <!-- /!\ do not modify above this line -->
