@@ -8,7 +8,7 @@
     "version": "18.0.1.0.0",
     "category": "Accounting",
     "author": "NuoBiT Solutions SL",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "license": "AGPL-3",
     "depends": [
         "account_asset_report_category",
