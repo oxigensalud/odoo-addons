@@ -7,7 +7,7 @@
     "summary": "Custumizations for Oxigen in Repairs application",
     "version": "18.0.1.0.0",
     "author": "ForgeFlow, NuoBiT Solutions SL",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Inventory/Inventory",
     "depends": ["repair"],
     "license": "AGPL-3",
