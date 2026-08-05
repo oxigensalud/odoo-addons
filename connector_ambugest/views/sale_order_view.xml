@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.ambugest.connector.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page
+                    string="Connectors"
+                    name="connector"
+                    groups="connector.group_connector_manager"
+                >
+                    <group string="Ambugest Bindings">
+                        <field name="ambugest_bind_ids" nolabel="1" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="ambugest_sale_order_view_form" model="ir.ui.view">
+        <field name="name">ambugest.sale.order.view.form</field>
+        <field name="model">ambugest.sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Ambugest Sale order">
+                <group>
+                    <field name="backend_id" />
+                    <field name="odoo_id" readonly="True" />
+                    <field name="ambugest_empresa" readonly="True" />
+                    <field name="ambugest_codiup" readonly="True" />
+                    <field name="ambugest_fecha_servicio" readonly="True" />
+                    <field name="ambugest_codigo_servicio" readonly="True" />
+                    <field name="ambugest_servicio_dia" readonly="True" />
+                    <field name="ambugest_servicio_ano" readonly="True" />
+                    <field name="sync_date" readonly="True" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="ambugest_sale_order_view_tree" model="ir.ui.view">
+        <field name="name">ambugest.sale.order.view.list</field>
+        <field name="model">ambugest.sale.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="backend_id" />
+                <field name="odoo_id" />
+                <field name="ambugest_empresa" readonly="True" />
+                <field name="ambugest_codiup" readonly="True" />
+                <field name="ambugest_fecha_servicio" readonly="True" />
+                <field name="ambugest_codigo_servicio" readonly="True" />
+                <field name="ambugest_servicio_dia" readonly="True" />
+                <field name="ambugest_servicio_ano" readonly="True" />
+                <field name="sync_date" />
+                <button
+                    name="resync"
+                    type="object"
+                    string="Resynchronize"
+                    icon="fa-refresh fa-lg"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="ambugest_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="res_model">ambugest.sale.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
