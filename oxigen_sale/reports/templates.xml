@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+    <template id="report_partner_vat">
+        <p t-if="o.partner_id.vat" class="mt16">
+            <t t-esc="o.company_id.country_id.vat_label or 'TIN'" />:
+            <span t-field="o.partner_id.vat" />
+        </p>
+    </template>
+
+    <template id="report_partner_address">
+        <p>
+            <div>
+                <strong t-field="doc.partner_id.name" style="font-size: larger;" />
+            </div>
+            <div t-field="doc.partner_id.street" />
+            <div t-if="doc.partner_id.street2" t-field="doc.partner_id.street2" />
+            <div>
+                <span t-if="doc.partner_id.zip" t-field="doc.partner_id.zip" />
+                <span t-if="doc.partner_id.city" t-field="doc.partner_id.city" />
+                <span t-if="doc.partner_id.country_id">(<span
+                    t-field="doc.partner_id.country_id"
+                />)
+                </span>
+            </div>
+        </p>
+    </template>
+</odoo>
