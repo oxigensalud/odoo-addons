@@ -19,6 +19,7 @@ class OxigestiSPMSSaleOrderAdapter(Component):
        f."Fecha_Modifica",
        f."Invoice_Id"
         FROM dbo.Odoo_SPMS_Facturas f
+        WHERE f."Odoo_Verificado" = 1
     """
 
     _sql_update = """UPDATE c
