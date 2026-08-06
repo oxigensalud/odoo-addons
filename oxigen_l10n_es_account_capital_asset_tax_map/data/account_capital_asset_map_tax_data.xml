@@ -10,11 +10,11 @@
     >
         <field
             name="tax_src_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc"
+            ref="l10n_es_extension.account_tax_template_p_iva4nd_ic_bc"
         />
         <field
             name="tax_dest_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi"
+            ref="l10n_es_extension.account_tax_template_p_iva4nd_ic_bi"
         />
     </record>
     <record
@@ -23,11 +23,11 @@
     >
         <field
             name="tax_src_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc"
+            ref="l10n_es_extension.account_tax_template_p_iva10nd_ic_bc"
         />
         <field
             name="tax_dest_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi"
+            ref="l10n_es_extension.account_tax_template_p_iva10nd_ic_bi"
         />
     </record>
     <record
@@ -36,11 +36,11 @@
     >
         <field
             name="tax_src_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc"
+            ref="l10n_es_extension.account_tax_template_p_iva21nd_ic_bc"
         />
         <field
             name="tax_dest_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi"
+            ref="l10n_es_extension.account_tax_template_p_iva21nd_ic_bi"
         />
     </record>
     <!--    IVA Soportado no deducible (bienes corrientes)-->
@@ -50,11 +50,11 @@
     >
         <field
             name="tax_src_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva4_nd_bc"
+            ref="l10n_es_extension.account_tax_template_p_iva4_nd_bc"
         />
         <field
             name="tax_dest_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva4_nd_bi"
+            ref="l10n_es_extension.account_tax_template_p_iva4_nd_bi"
         />
     </record>
     <record
@@ -63,11 +63,11 @@
     >
         <field
             name="tax_src_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva10_nd_bc"
+            ref="l10n_es_extension.account_tax_template_p_iva10_nd_bc"
         />
         <field
             name="tax_dest_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva10_nd_bi"
+            ref="l10n_es_extension.account_tax_template_p_iva10_nd_bi"
         />
     </record>
     <record
@@ -76,11 +76,11 @@
     >
         <field
             name="tax_src_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva0_nd_bc"
+            ref="l10n_es_extension.account_tax_template_p_iva0_nd_bc"
         />
         <field
             name="tax_dest_id"
-            ref="oxigen_l10n_es.account_tax_template_p_iva0_nd_bi"
+            ref="l10n_es_extension.account_tax_template_p_iva0_nd_bi"
         />
     </record>
 </odoo>

@@ -4,7 +4,7 @@
 {
     "name": "Oxigen - L10n ES - Account Tax Consistency",
     "summary": "This module adds in taxes of l10n_es data account asset tax selection field",
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.0.2",
     "category": "Accounting",
     "author": "NuoBiT Solutions, S.L.",
     "website": "https://github.com/oxigensalud/odoo-addons",
