@@ -50,3 +50,8 @@ class ConnectorOxigestiSpmsImporterMapper(Component):
     @mapping
     def ref(self, record):
         return {"ref": record["CodigoConvencao"]}
+
+    @only_create
+    @mapping
+    def spms_information(self, record):
+        return {"spms_information": True}
