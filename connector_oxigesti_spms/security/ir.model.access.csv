@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oxigesti_spms_backend_user,access.oxigesti.spms.backend.user,model_oxigesti_spms_backend,base.group_user,1,1,1,1
+access_oxigesti_spms_res_partner_user,access.oxigesti.spms.res.partner.user,model_oxigesti_spms_res_partner,base.group_user,1,1,1,1
+access_oxigesti_spms_product_product_user,access.oxigesti.spms.product.product.user,model_oxigesti_spms_product_product,base.group_user,1,1,1,1
+access_oxigesti_spms_sale_order_user,oxigesti.spms.sale.order.user,model_oxigesti_spms_sale_order,base.group_user,1,1,1,1
+access_oxigesti_spms_sale_order_line_user,oxigesti.spms.sale.order.line.user,model_oxigesti_spms_sale_order_line,base.group_user,1,1,1,1
+access_oxigesti_spms_spms_context_user,oxigesti.spms.spms.context.user,model_oxigesti_spms_spms_context,base.group_user,1,1,1,1
+access_oxigesti_spms_spms_lot_user,oxigesti.spms.spms.lot.user,model_oxigesti_spms_spms_lot,base.group_user,1,1,1,1
+access_oxigesti_spms_spms_prescription_type_user,oxigesti.spms.spms.prescription.type.user,model_oxigesti_spms_spms_prescription_type,base.group_user,1,1,1,1
+access_oxigesti_spms_spms_suspension_reason_user,oxigesti.spms.spms.suspension.reason.user,model_oxigesti_spms_spms_suspension_reason,base.group_user,1,1,1,1
