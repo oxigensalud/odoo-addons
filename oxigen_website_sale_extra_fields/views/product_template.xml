@@ -10,6 +10,11 @@
             ref="website_sale_extra_fields.product_template_form_view"
         />
         <field name="arch" type="xml">
+            <!-- Upstream sizes this box for a couple of fields; with all the
+                 shop fields below it needs the full page width -->
+            <group name="extra_info" position="attributes">
+                <attribute name="colspan">2</attribute>
+            </group>
             <xpath
                 expr="//group[@name='extra_info']/field[@name='is_published']"
                 position="after"
