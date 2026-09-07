@@ -114,6 +114,12 @@ msgstr "Las órdenes de reparación de esta compañía se crean con la referenci
 msgid "Set to Draft"
 msgstr "Volver a borrador"
 
+#. module: oxigen_repair
+#: model:ir.actions.act_window,name:oxigen_repair.res_config_settings_action
+#: model:ir.ui.menu,name:oxigen_repair.res_config_settings_menu
+msgid "Settings"
+msgstr "Ajustes"
+
 #. module: oxigen_mrp_repair
 #: code:addons/oxigen_mrp_repair/models/mrp_repair.py:59
 #, python-format
