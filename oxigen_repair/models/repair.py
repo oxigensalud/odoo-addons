@@ -1,8 +1,9 @@
 # Copyright 2022 ForgeFlow, S.L.
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class OxigenRepair(models.Model):
@@ -11,6 +12,8 @@ class OxigenRepair(models.Model):
 
     @api.model
     def _default_name(self):
+        if self._repair_reference_company().repair_reference_manual:
+            return False
         return self.env["ir.sequence"].next_by_code("repair.order")
 
     name = fields.Char(default=_default_name)
@@ -31,6 +34,35 @@ class OxigenRepair(models.Model):
             "under_repair": [("readonly", False)],
         }
     )
+
+    @api.model
+    def _repair_reference_company(self, vals=None):
+        """Company the repair order gets: the one in vals, else its default.
+
+        The default of company_id is resolved the way the record will get it
+        (context, ir.default, field default), not read from self.env.company.
+        """
+        company_id = (vals or {}).get("company_id") or self.default_get(
+            ["company_id"]
+        ).get("company_id")
+        return self.env["res.company"].browse(company_id)
+
+    @api.model
+    def create(self, vals):
+        # Core create() turns an empty or "/"-prefixed name into the next
+        # sequence number: refuse it first when the company's reference is
+        # manual. Write never numbers, so nothing else is needed.
+        company = self._repair_reference_company(vals)
+        name = vals.get("name")
+        if company.repair_reference_manual and (not name or name.startswith("/")):
+            raise ValidationError(
+                _(
+                    "The repair reference of company %s is manual: fill it in, "
+                    "it is never assigned automatically."
+                )
+                % company.display_name
+            )
+        return super().create(vals)
 
     def action_repair_cancel_draft(self):
         """if MO in under_repair or cancelled states, it can be set again to draft"""

@@ -22,6 +22,23 @@ msgid "Cannot delete a finished Repair Order."
 msgstr ""
 
 #. module: oxigen_repair
+#: model:ir.model,name:oxigen_repair.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: oxigen_repair
+#: model:ir.model,name:oxigen_repair.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: oxigen_repair
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
+msgid ""
+"Create the repair orders of the current company with an empty reference: the"
+" user fills it in and it is never assigned from the sequence."
+msgstr ""
+
+#. module: oxigen_repair
 #: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__display_name
 msgid "Display Name"
 msgstr ""
@@ -47,6 +64,12 @@ msgid "Lists date"
 msgstr ""
 
 #. module: oxigen_repair
+#: model:ir.model.fields,field_description:oxigen_repair.field_res_company__repair_reference_manual
+#: model:ir.model.fields,field_description:oxigen_repair.field_res_config_settings__repair_reference_manual
+msgid "Manual repair reference"
+msgstr ""
+
+#. module: oxigen_repair
 #: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__fees_lines
 msgid "Operations"
 msgstr ""
@@ -54,6 +77,11 @@ msgstr ""
 #. module: oxigen_repair
 #: model:ir.model.fields,field_description:oxigen_repair.field_repair_order__operations
 msgid "Parts"
+msgstr ""
+
+#. module: oxigen_repair
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
+msgid "Repair"
 msgstr ""
 
 #. module: oxigen_repair
@@ -65,6 +93,20 @@ msgstr ""
 #: code:addons/oxigen_repair/models/repair.py:0
 #, python-format
 msgid "Repair must be canceled in order to reset it to draft."
+msgstr ""
+
+#. module: oxigen_repair
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
+msgid "Repair orders"
+msgstr ""
+
+#. module: oxigen_repair
+#: model:ir.model.fields,help:oxigen_repair.field_res_company__repair_reference_manual
+#: model:ir.model.fields,help:oxigen_repair.field_res_config_settings__repair_reference_manual
+msgid ""
+"Repair orders of this company are created with an empty reference: the user "
+"fills it in and it is never assigned from the sequence, neither when the "
+"form opens nor when the order is saved."
 msgstr ""
 
 #. module: oxigen_repair
@@ -100,6 +142,14 @@ msgstr ""
 #. module: oxigen_repair
 #: model_terms:ir.ui.view,arch_db:oxigen_repair.oxigen_view_repair_order_form_filter
 msgid "Not Draft"
+msgstr ""
+
+#. module: oxigen_repair
+#: code:addons/oxigen_repair/models/repair.py:0
+#, python-format
+msgid ""
+"The repair reference of company %s is manual: fill it in, it is never "
+"assigned automatically."
 msgstr ""
 
 #. module: oxigen_repair
