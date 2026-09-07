@@ -16,6 +16,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: oxigen_repair
+#: model_terms:ir.ui.view,arch_db:oxigen_repair.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\" aria-label=\"Values set here are company-specific.\" "
+"groups=\"base.group_multi_company\" role=\"img\"/>"
+msgstr ""
+
+#. module: oxigen_repair
 #: code:addons/oxigen_repair/models/repair.py:0
 #, python-format
 msgid "Cannot delete a finished Repair Order."
