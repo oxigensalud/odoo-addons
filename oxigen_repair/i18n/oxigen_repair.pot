@@ -114,6 +114,12 @@ msgstr ""
 msgid "Set to Draft"
 msgstr ""
 
+#. module: oxigen_repair
+#: model:ir.actions.act_window,name:oxigen_repair.res_config_settings_action
+#: model:ir.ui.menu,name:oxigen_repair.res_config_settings_menu
+msgid "Settings"
+msgstr ""
+
 #. module: oxigen_mrp_repair
 #: code:addons/oxigen_mrp_repair/models/mrp_repair.py:59
 #, python-format

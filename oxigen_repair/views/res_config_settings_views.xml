@@ -38,4 +38,19 @@
             </xpath>
         </field>
     </record>
+    <record id="res_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'repair', 'bin_size': False}</field>
+    </record>
+    <menuitem
+        id="res_config_settings_menu"
+        name="Settings"
+        parent="repair.repair_menu_config"
+        sequence="0"
+        action="res_config_settings_action"
+        groups="base.group_system"
+    />
 </odoo>
