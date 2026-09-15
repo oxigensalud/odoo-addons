@@ -1,4 +1,5 @@
 # Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import pymssql
@@ -244,18 +245,14 @@ class TestMssqlConnectionRetryable(TransactionCase):
     def test_integrity_error_2627_still_raises_validation_error(self):
         """Replays the create() flow: IntegrityError(2627) from _exec_sql
         must still be caught by create() and re-raised as ValidationError."""
-        try:
+        with self.assertRaises(ValidationError):
             try:
                 with mssql_connection_retryable():
                     raise pymssql.IntegrityError(2627, "trailing-space PK")
             except pymssql.IntegrityError as e:
                 if e.args[0] == 2627:
-                    raise ValidationError(_("fake PK violation"))
+                    raise ValidationError(_("fake PK violation")) from e
                 raise
-        except ValidationError:
-            pass
-        else:
-            self.fail("ValidationError was not raised")
 
     def test_integrity_error_non_2627_still_reraises(self):
         """A non-2627 IntegrityError inside _exec_sql must still reach
@@ -266,7 +263,7 @@ class TestMssqlConnectionRetryable(TransactionCase):
                     raise pymssql.IntegrityError(547, "FK violation")
             except pymssql.IntegrityError as e:
                 if e.args[0] == 2627:
-                    raise ValidationError(_("fake PK"))
+                    raise ValidationError(_("fake PK")) from e
                 raise
         except pymssql.IntegrityError as err:
             self.assertEqual(err.args[0], 547)

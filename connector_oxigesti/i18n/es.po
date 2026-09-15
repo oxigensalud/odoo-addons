@@ -1607,7 +1607,8 @@ msgstr ""
 #. module: connector_oxigesti
 #. odoo-python
 #: code:addons/connector_oxigesti/common/tools.py:0
-msgid "Invalid format, operator not supported %s on domain %s"
+msgid ""
+"Invalid format, operator not supported %(operator)s on domain %(domain)s"
 msgstr ""
 
 #. module: connector_oxigesti
