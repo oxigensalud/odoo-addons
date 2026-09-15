@@ -132,9 +132,6 @@ class SaleOrderImporter(Component):
         # order validation
         binder = self.component(usage="binder")
         sale_order = binder.unwrap_binding(binding)
-        sale_order._onchange_partner_id()
-        for line in sale_order.order_line:
-            line._onchange_product_id()
         sale_order.with_context(skip_reserved_quantity=True).action_confirm()
         sale_order.action_lock()
 
