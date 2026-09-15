@@ -132,7 +132,7 @@ class SaleOrderImporter(Component):
         # order validation
         binder = self.component(usage="binder")
         sale_order = binder.unwrap_binding(binding)
-        sale_order.with_context(skip_reserved_quantity=True).action_confirm()
+        sale_order.action_confirm()
         sale_order.action_lock()
 
         # picking validation
@@ -144,6 +144,7 @@ class SaleOrderImporter(Component):
             adapter = self.component(
                 usage="backend.adapter", model_name="oxigesti.sale.order.line"
             )
+            stock_order_lines.move_ids.picking_id.do_unreserve()
             picking_id = None
             for order_line_id in stock_order_lines:
                 if len(order_line_id.move_ids) > 1:
@@ -153,11 +154,11 @@ class SaleOrderImporter(Component):
                         f"It should be exactly 1."
                     )
                 move_id = order_line_id.move_ids
-                # if move_id.move_line_ids:
-                #     raise AssertionError(
-                #         f"The movement '{move_id}' already has lines. "
-                #         f"It should be empty before inserting the new data"
-                #     )
+                if move_id.move_line_ids:
+                    raise AssertionError(
+                        f"The movement '{move_id}' already has lines. "
+                        f"It should be empty before inserting the new data"
+                    )
                 if not picking_id:
                     picking_id = move_id.picking_id
                 else:
