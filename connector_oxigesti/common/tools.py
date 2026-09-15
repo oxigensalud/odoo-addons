@@ -1,5 +1,6 @@
 # Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
 # Copyright NuoBiT Solutions - Frank Cespedes <fcespedes@nuobit.com>
+# Copyright 2026 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html)
 import hashlib
 
@@ -25,7 +26,7 @@ def domain_prefix_to_infix(domain):
             else:
                 stack.append((stack.pop(), item, stack.pop()))
         else:
-            if not isinstance(item, (tuple, list)):
+            if not isinstance(item, tuple | list):
                 raise ValidationError(_("Unexpected domain clause %s") % item)
             stack.append(item)
         i -= 1
@@ -46,14 +47,17 @@ def domain_infix_to_where(domain):
         return operator
 
     def _domain_infix_to_where_raw(domain, values):
-        if not isinstance(domain, (list, tuple)):
+        if not isinstance(domain, list | tuple):
             raise ValidationError(_("Invalid domain format %s") % domain)
         if len(domain) == 2:
             operator, expr = domain
             if operator not in OP_MAP:
                 raise ValidationError(
-                    _("Invalid format, operator not supported %s on domain %s")
-                    % (operator, domain)
+                    _(
+                        "Invalid format, operator not supported %(operator)s "
+                        "on domain %(domain)s"
+                    )
+                    % {"operator": operator, "domain": domain}
                 )
             values_r, right = _domain_infix_to_where_raw(expr, values)
             return values_r, f"{OP_MAP[operator]} ({right})"
@@ -92,7 +96,7 @@ def domain_to_where(domain):
 
 
 def idhash(external_id):
-    if not isinstance(external_id, (tuple, list)):
+    if not isinstance(external_id, tuple | list):
         raise ValidationError(_("external id must be list or tuple"))
     external_id_hash = hashlib.sha256()
     for e in external_id:
@@ -105,7 +109,7 @@ def idhash(external_id):
         elif e is None:
             pass
         else:
-            raise Exception("Unexpected type for a key: type %s" % type(e))
+            raise Exception(f"Unexpected type for a key: type {type(e)}")
 
         external_id_hash.update(e9.encode("utf8"))
 

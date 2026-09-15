@@ -92,7 +92,7 @@ def mssql_connection_retryable():
     try:
         yield
     except (pymssql.OperationalError, pymssql.InterfaceError) as err:
-        raise NetworkRetryableError("MSSQL connection error: %s" % err) from err
+        raise NetworkRetryableError(f"MSSQL connection error: {err}") from err
 
 
 class CRUDAdapter(AbstractComponent):
@@ -236,7 +236,7 @@ class GenericAdapter(AbstractComponent):
 
             if filters:
                 values, where = domain_to_where(filters)
-                sql_l.append("where %s" % where)
+                sql_l.append(f"where {where}")
 
             sql = " ".join(sql_l)
 
@@ -363,7 +363,7 @@ class GenericAdapter(AbstractComponent):
             elif count > 1:
                 conn.rollback()
                 raise pymssql.IntegrityError(
-                    "Unexpected error: Returned more the one row with ID: %s" % (id_d,)
+                    f"Unexpected error: Returned more the one row with ID: {id_d}"
                 )
             conn.commit()
             cr.close()
@@ -475,8 +475,7 @@ class GenericAdapter(AbstractComponent):
             elif count > 1:
                 conn.rollback()
                 raise pymssql.IntegrityError(
-                    "Unexpected error: Returned more the one row with ID: %s"
-                    % (params,)
+                    f"Unexpected error: Returned more the one row with ID: {params}"
                 )
             conn.commit()
             cr.close()

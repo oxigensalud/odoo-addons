@@ -77,8 +77,8 @@ class OxigestiBackend(models.Model):
         default=lambda self: self.env.ref("base.lang_es"),
         required=True,
     )
-    active = fields.Boolean(string="Active", default=True)
-    state = fields.Selection(selection="_select_state", string="State", default="draft")
+    active = fields.Boolean(default=True)
+    state = fields.Selection(selection="_select_state", default="draft")
     chunk_size = fields.Integer(required=True, default=0)
 
     @api.constrains("chunk_size")
