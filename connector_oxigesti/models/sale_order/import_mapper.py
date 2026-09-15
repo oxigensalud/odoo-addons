@@ -144,16 +144,6 @@ class SaleOrderImportMapper(Component):
 
     @only_create
     @mapping
-    def team_id(self, record):
-        return {"team_id": None}
-
-    @only_create
-    @mapping
-    def user_id(self, record):
-        return {"user_id": None}
-
-    @only_create
-    @mapping
     def service_number(self, record):
         if record["Codigo_Servicio"]:
             return {"service_number": record["Codigo_Servicio"]}
