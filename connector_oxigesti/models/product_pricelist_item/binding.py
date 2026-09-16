@@ -122,7 +122,7 @@ class ProductPricelistItemBinding(models.Model):
         self.ensure_one()
         return (
             self.odoo_partner_id.property_product_pricelist != self.odoo_id.pricelist_id
-            or not self.odoo_id.active
+            or not self.odoo_id.pricelist_id.active
             or not self.odoo_id.product_tmpl_id.active
             or not self.odoo_partner_id.active
         )
