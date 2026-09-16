@@ -4,6 +4,21 @@
      Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
 <odoo noupdate="1">
+    <!--
+        allow_commit: queue_job 18.0 forbids commits inside a job unless its
+        job function allows them, and the export path commits twice: the
+        generic Exporter.run() of connector commits after binding the exported
+        record, and the Oxigesti binder commits right after creating a binding
+        (components_custom/binder.py, wrap_binding) so the binding survives a
+        later failure of the job. Every job function whose method reaches one
+        of them needs it: every export_record, the pricelist item export_chunk,
+        which wraps the bindings itself, and the service and lot import_record,
+        which export products and lots as dependencies. The batch jobs only
+        enqueue, export_delete_record only calls the adapter and the partner
+        import_record has no dependencies, so they never commit.
+        Requires queue_job 18.0.3.1.4 or later, which rebinds the job
+        arguments to the temporary cursor opened by allow_commit.
+    -->
     <record
         id="oxigesti_res_partner_import_batch_job_function"
         model="queue.job.function"
@@ -46,6 +61,7 @@
         <field name="method">export_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <!-- Product Categories -->
     <record
@@ -71,6 +87,7 @@
         <field name="method">export_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <!-- Product by customer -->
     <record
@@ -96,6 +113,7 @@
         <field name="method">export_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <!-- Product Prices by customer -->
     <record
@@ -121,6 +139,7 @@
         <field name="method">export_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <!-- Lots -->
     <record
@@ -140,6 +159,7 @@
         <field name="method">import_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti_lots" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <record
         id="oxigesti_stock_lot_export_batch_job_function"
@@ -158,6 +178,7 @@
         <field name="method">export_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti_lots" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <!-- Services -->
     <record
@@ -177,6 +198,7 @@
         <field name="method">import_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
 
     <!--    EXPORTS-->
@@ -197,6 +219,7 @@
         <field name="method">export_record</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <record
         id="oxigesti_product_pricelist_item_export_chunk_record_job_function"
@@ -209,6 +232,7 @@
         <field name="method">export_chunk</field>
         <field name="channel_id" ref="connector_oxigesti.channel_oxigesti_chunk" />
         <field name="retry_pattern" eval="{1: 10, 5: 30, 10: 60, 15: 300}" />
+        <field name="allow_commit" eval="True" />
     </record>
     <record
         id="oxigesti_product_pricelist_item_export_delete_record_job_function"

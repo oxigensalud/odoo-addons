@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        id="oxigesti_product_product_export_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_product_category_export_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_product_buyerinfo_export_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_product_pricelist_item_export_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_product_pricelist_item_export_chunk_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_stock_lot_export_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_stock_lot_import_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_sale_order_export_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+    <record
+        id="oxigesti_sale_order_import_record_job_function"
+        model="queue.job.function"
+    >
+        <field name="allow_commit" eval="True" />
+    </record>
+</odoo>
