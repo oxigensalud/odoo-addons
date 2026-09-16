@@ -588,6 +588,11 @@ msgid "Compute Price"
 msgstr ""
 
 #. module: connector_oxigesti
+#: model_terms:ir.ui.view,arch_db:connector_oxigesti.oxigesti_backend_view_form
+msgid "Connection"
+msgstr ""
+
+#. module: connector_oxigesti
 #: model_terms:ir.ui.view,arch_db:connector_oxigesti.product_category_view_form_connector_oxigesti
 #: model_terms:ir.ui.view,arch_db:connector_oxigesti.product_pricelist_item_view_form_oxigesti
 #: model_terms:ir.ui.view,arch_db:connector_oxigesti.product_product_only_form_view
@@ -682,6 +687,11 @@ msgstr ""
 msgid ""
 "Creation date of draft/sent orders,\n"
 "Confirmation date of confirmed orders."
+msgstr ""
+
+#. module: connector_oxigesti
+#: model_terms:ir.ui.view,arch_db:connector_oxigesti.oxigesti_backend_view_form
+msgid "Credentials"
 msgstr ""
 
 #. module: connector_oxigesti
@@ -3369,6 +3379,11 @@ msgstr ""
 
 #. module: connector_oxigesti
 #: model_terms:ir.ui.view,arch_db:connector_oxigesti.oxigesti_backend_view_form
+msgid "Synchronization"
+msgstr ""
+
+#. module: connector_oxigesti
+#: model_terms:ir.ui.view,arch_db:connector_oxigesti.oxigesti_backend_view_form
 msgid "Synchronizers"
 msgstr ""
 
@@ -4099,6 +4114,11 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_oxigesti/components/exporter.py:0
 msgid "created"
+msgstr ""
+
+#. module: connector_oxigesti
+#: model_terms:ir.ui.view,arch_db:connector_oxigesti.oxigesti_backend_view_form
+msgid "e.g. Oxigesti"
 msgstr ""
 
 #. module: connector_oxigesti
