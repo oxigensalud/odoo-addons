@@ -35,67 +35,52 @@
                         invisible="active == True"
                     />
                     <field name="active" invisible="1" />
-                    <h1>
-                        <field
-                            name="name"
-                            class="oe_inline"
-                            readonly="state != 'draft'"
-                        />
-                    </h1>
-                    <group col="4">
-                        <field name="company_id" readonly="state != 'draft'" />
-                        <field name="lang_id" readonly="state != 'draft'" />
-                    </group>
+                    <div class="oe_title">
+                        <h1>
+                            <field
+                                name="name"
+                                placeholder="e.g. Oxigesti"
+                                readonly="state != 'draft'"
+                            />
+                        </h1>
+                    </div>
                     <group>
-                        <group col="4">
-                            <field
-                                name="server"
-                                colspan="4"
-                                readonly="state != 'draft'"
-                            />
-                            <field
-                                name="port"
-                                colspan="4"
-                                readonly="state != 'draft'"
-                            />
-                            <field
-                                name="database"
-                                colspan="4"
-                                readonly="state != 'draft'"
-                            />
-                            <field
-                                name="schema"
-                                colspan="4"
-                                readonly="state != 'draft'"
-                            />
+                        <group>
+                            <field name="company_id" readonly="state != 'draft'" />
                         </group>
-                        <group col="4">
-                            <field
-                                name="username"
-                                colspan="4"
-                                readonly="state != 'draft'"
-                            />
-                            <field
-                                name="password"
-                                password="True"
-                                colspan="4"
-                                readonly="state != 'draft'"
-                            />
-                        </group>
-                        <group col="4">
-                            <field name="tz" colspan="4" readonly="state != 'draft'" />
-                        </group>
-                        <group col="4">
-                            <field name="chunk_size" />
-                            <field name="sync_offset" colspan="4" />
+                        <group>
+                            <field name="lang_id" readonly="state != 'draft'" />
                         </group>
                     </group>
                     <group>
-                        <field name="version" colspan="4" />
+                        <group string="Connection">
+                            <field name="server" readonly="state != 'draft'" />
+                            <field name="port" readonly="state != 'draft'" />
+                            <field name="database" readonly="state != 'draft'" />
+                            <field name="schema" readonly="state != 'draft'" />
+                            <field name="tz" readonly="state != 'draft'" />
+                        </group>
+                        <group col="1">
+                            <group string="Credentials">
+                                <field name="username" readonly="state != 'draft'" />
+                                <field
+                                    name="password"
+                                    password="True"
+                                    readonly="state != 'draft'"
+                                />
+                            </group>
+                            <group string="Synchronization">
+                                <field name="chunk_size" />
+                                <field name="sync_offset" />
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="version" />
                     </group>
                     <notebook invisible="state in ['draft']">
                         <page name="synchronizers" string="Synchronizers">
-                            <p class="oe_grey oe_inline">
+                            <p class="text-muted">
                                 By clicking on the buttons,
                                 you will initiate the
                                 synchronizations
@@ -106,7 +91,7 @@
                                 executed as soon
                                 as possible.
                             </p>
-                            <p class="oe_grey oe_inline">
+                            <p class="text-muted">
                                 Once imported,
                                 some types of records,
                                 like the products
