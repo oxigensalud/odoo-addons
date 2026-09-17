@@ -1,0 +1,94 @@
+# Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+# Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+
+from odoo.addons.component.core import Component
+from odoo.addons.connector.components.mapper import changed_by, mapping, only_create
+
+
+def nullif(field):
+    def modifier(self, record, to_attr):
+        value = record[field]
+        return value and value.strip() or None
+
+    return modifier
+
+
+class ProductProductExportMapper(Component):
+    _name = "oxigesti.product.product.export.mapper"
+    _inherit = "oxigesti.export.mapper"
+
+    _apply_on = "oxigesti.product.product"
+
+    direct = [
+        (nullif("barcode"), "CodigoAlternativo"),
+        ("list_price", "Importe"),
+    ]
+
+    @only_create
+    @mapping
+    def CodigoArticulo(self, record):
+        default_code = (
+            record.default_code
+            and record.default_code.strip()
+            and record.default_code
+            or None
+        )
+        if default_code:
+            if record.default_code != record.default_code.strip():
+                raise AssertionError(
+                    f"The Odoo product with Name "
+                    f"'{record.name}' has Internal reference "
+                    f" with leading or trailing "
+                    f"spaces '{record.default_code}'. "
+                    f"Please remove these spaces and requeue the job."
+                )
+        else:
+            raise AssertionError(
+                "The Odoo product with ID %i and Name '%s' "
+                "has no Internal reference. "
+                "Please assign one and requeue the job." % (record.id, record.name)
+            )
+
+        return {"CodigoArticulo": record.default_code}
+
+    @changed_by("display_name")
+    @mapping
+    def DescripcionArticulo(self, record):
+        return {
+            "DescripcionArticulo": record.odoo_id.with_context(
+                lang=self.backend_record.lang_id.code,
+                display_default_code=False,
+            ).display_name[:250]
+        }
+
+    @changed_by("categ_id")
+    @mapping
+    def Categoria(self, record):
+        category = record.categ_id
+        binder = self.binder_for("oxigesti.product.category")
+        external_id = binder.to_external(category, wrap=True)
+        assert external_id, (
+            f"{category}: There's no bond between Odoo category and "
+            f"Oxigesti category, so the Oxigesti ID cannot be obtained. "
+            f"At this stage, the Oxigesti category should have been linked via "
+            f"ProductCategory._export_dependencies. "
+            f"If not, then this category {category}"
+            f" {category.display_name} does not exist in Oxigesti."
+        )
+
+        return {"Categoria": external_id[0]}
+
+    @changed_by("active")
+    @mapping
+    def Archivado(self, record):
+        return {
+            "Archivado": not (
+                record.odoo_id.active and record.odoo_id.product_tmpl_id.active
+            )
+        }
+
+    @mapping
+    def Eliminado(self, record):
+        return {"Eliminado": 0}
