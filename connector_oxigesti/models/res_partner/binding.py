@@ -24,13 +24,13 @@ class ResPartner(models.Model):
     )
 
     def write(self, vals):
-        if self._get_dependent_fields_oxigesti_pricelist_write_date() & set(
-            vals.keys()
+        fields_ = self._get_dependent_fields_oxigesti_pricelist_write_date() & set(vals)
+        if fields_ and any(
+            vals[f] != self._fields[f].convert_to_write(rec[f], rec)
+            for rec in self
+            for f in fields_
         ):
-            for field in self._get_dependent_fields_oxigesti_pricelist_write_date():
-                if field in vals and vals[field] != self[field]:
-                    vals["oxigesti_pricelist_write_date"] = fields.Datetime.now()
-                    break
+            vals["oxigesti_pricelist_write_date"] = fields.Datetime.now()
         return super().write(vals)
 
 
