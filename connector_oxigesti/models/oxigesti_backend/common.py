@@ -95,7 +95,7 @@ class OxigestiBackend(models.Model):
         self.ensure_one()
         with self.work_on("oxigesti.backend") as work:
             component = work.component_by_name(name="oxigesti.adapter.test")
-            with api_handle_errors("Connection failed"):
+            with api_handle_errors(self.env, "Connection failed"):
                 self.version = component.get_version()
 
     def button_check_connection(self):

@@ -33,7 +33,7 @@ _logger = logging.getLogger(__name__)
 
 
 @contextmanager
-def api_handle_errors(message=""):
+def api_handle_errors(env, message=""):
     """Handle error when calling the API
 
     It is meant to be used when a model does a direct
@@ -47,32 +47,32 @@ def api_handle_errors(message=""):
         yield
     except NetworkRetryableError as err:
         raise exceptions.UserError(
-            _("%(message)sNetwork Error:\n\n%(error)s")
+            env._("%(message)sNetwork Error:\n\n%(error)s")
             % {"message": message, "error": err}
         ) from err
     except (HTTPError, RequestException, RequestConnectionError) as err:
         raise exceptions.UserError(
-            _("%(message)sAPI / Network Error:\n\n%(error)s")
+            env._("%(message)sAPI / Network Error:\n\n%(error)s")
             % {"message": message, "error": err}
         ) from err
     except pymssql.OperationalError as err:
         raise exceptions.UserError(
-            _("%(message)sDB operational Error:\n\n%(error)s")
+            env._("%(message)sDB operational Error:\n\n%(error)s")
             % {"message": message, "error": err}
         ) from err
     except pymssql.IntegrityError as err:
         raise exceptions.UserError(
-            _("%(message)sDB integrity Error:\n\n%(error)s")
+            env._("%(message)sDB integrity Error:\n\n%(error)s")
             % {"message": message, "error": err}
         ) from err
     except pymssql.InternalError as err:
         raise exceptions.UserError(
-            _("%(message)sDB internal Error:\n\n%(error)s")
+            env._("%(message)sDB internal Error:\n\n%(error)s")
             % {"message": message, "error": err}
         ) from err
     except pymssql.InterfaceError as err:
         raise exceptions.UserError(
-            _("%(message)sDB interface Error:\n\n%(error)s")
+            env._("%(message)sDB interface Error:\n\n%(error)s")
             % {"message": message, "error": err}
         ) from err
 

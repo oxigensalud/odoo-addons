@@ -151,7 +151,7 @@ class TestMssqlConnectionRetryable(TransactionCase):
         ``api_handle_errors`` context must still surface a UserError
         (its first clause catches ``NetworkRetryableError`` and translates)."""
         with self.assertRaises(UserError):
-            with api_handle_errors("Connection failed"):
+            with api_handle_errors(self.env, "Connection failed"):
                 with mssql_connection_retryable():
                     raise pymssql.OperationalError(
                         "(20003) General SQL Server error: connection failed"
@@ -162,7 +162,7 @@ class TestMssqlConnectionRetryable(TransactionCase):
         on the interactive path (``api_handle_errors`` has a dedicated
         clause for them)."""
         with self.assertRaises(UserError):
-            with api_handle_errors("Operation failed"):
+            with api_handle_errors(self.env, "Operation failed"):
                 with mssql_connection_retryable():
                     raise pymssql.IntegrityError(2627, "PK violation")
 
