@@ -57,9 +57,7 @@ class OxigestiBackend(models.Model):
         comodel_name="res.company",
         index=True,
         required=True,
-        default=lambda self: self.env["res.company"]._company_default_get(
-            "oxigesti.backend"
-        ),
+        default=lambda self: self.env.company,
         string="Company",
     )
     tz = fields.Selection(
