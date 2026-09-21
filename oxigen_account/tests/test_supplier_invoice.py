@@ -1,8 +1,10 @@
-from datetime import timedelta
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields
+import base64
+
 from odoo.exceptions import ValidationError
-from odoo.tests import tagged
+from odoo.tests import Form, tagged
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
@@ -12,55 +14,36 @@ class TestSupplierInvoice(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls, chart_template_ref=None):
         super().setUpClass(chart_template_ref=chart_template_ref)
+        cls.partner_a.property_supplier_payment_term_id = False
 
-        # ENVIRONMENTS
-        cls.account_account = cls.env["account.account"]
-        cls.account_move = cls.env["account.move"].with_context(
-            {"tracking_disable": True}
-        )
-
-        # INSTANCES
-        cls.partner = cls.env.ref("base.res_partner_2")
-        # Account for invoice
-        cls.account = cls.account_account.search(
-            [
-                (
-                    "user_type_id",
-                    "=",
-                    cls.env.ref("account.data_account_type_receivable").id,
-                )
-            ],
-            limit=1,
-        )
-        # Invoice with unique reference 'ABC123'
-        cls.invoice = cls.account_move.create(
+    def _create_invoice(self, reference):
+        with Form(
+            self.env["account.move"].with_context(default_move_type="in_invoice")
+        ) as form:
+            form.partner_id = self.partner_a
+            form.invoice_date = "2017-01-01"
+            form.ref = reference
+            with form.invoice_line_ids.new() as line:
+                line.product_id = self.product_a
+                line.price_unit = 100
+        invoice = form.save()
+        self.env["ir.attachment"].create(
             {
-                "partner_id": cls.partner.id,
-                "invoice_date": fields.Date.today(),
-                "move_type": "in_invoice",
-                "ref": "ABC123",
-                "invoice_line_ids": [(0, 0, {"partner_id": cls.partner.id})],
+                "name": reference + ".txt",
+                "datas": base64.b64encode(b"Synthetic invoice attachment"),
+                "res_model": "account.move",
+                "res_id": invoice.id,
+                "mimetype": "text/plain",
             }
         )
+        return invoice
 
-    def test_check_unique_supplier_invoice_number_insensitive(self):
-        # A new invoice instance with an existing supplier_invoice_number
-        move = self.account_move.create(
-            {
-                "partner_id": self.partner.id,
-                "move_type": "in_invoice",
-                "invoice_date": fields.Date.today() + timedelta(days=-1),
-                "ref": "ABC123",
-                "invoice_line_ids": [(0, 0, {})],
-            }
-        )
+    def test_duplicate_supplier_reference(self):
+        invoice = self._create_invoice("TEST-REF")
+        invoice.action_post()
+        duplicate = self._create_invoice("TEST-REF")
         with self.assertRaises(ValidationError):
-            move.action_post()
-        # A new invoice instance with a new supplier_invoice_number
-        self.account_move.create(
-            {
-                "partner_id": self.partner.id,
-                "move_type": "in_invoice",
-                "ref": "ABC123bis",
-            }
-        )
+            duplicate.action_post()
+        other = self._create_invoice("TEST-OTHER")
+        other.action_post()
+        self.assertEqual(other.state, "posted")
