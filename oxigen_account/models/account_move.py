@@ -1,4 +1,5 @@
 # Copyright 2022 ForgeFlow S.L.
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 import json
 
@@ -9,6 +10,17 @@ from odoo.tools import date_utils
 
 class AccountMove(models.Model):
     _inherit = "account.move"
+
+    def _post(self, soft=True):
+        posted_moves = super()._post(soft=soft)
+        lines = posted_moves.line_ids
+        related_lines = (
+            lines
+            | lines.matched_debit_ids.debit_move_id
+            | lines.matched_credit_ids.credit_move_id
+        )
+        related_lines.expense_id.sheet_id._set_paid_if_fully_reconciled()
+        return posted_moves
 
     @api.onchange("ref")
     def _onchange_ref(self):
