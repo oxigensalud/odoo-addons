@@ -18,6 +18,11 @@ class RepairOrder(models.Model):
     distance_km = fields.Integer(string="Kilometers", aggregator="max")
     list_date = fields.Datetime(string="Lists date")
 
+    @api.depends("product_location_src_id")
+    def _compute_product_location_dest_id(self):
+        for repair in self:
+            repair.product_location_dest_id = repair.product_location_src_id
+
     @api.model
     def _repair_reference_company(self, vals=None):
         """Company the repair order gets: the one in vals, else its default.
