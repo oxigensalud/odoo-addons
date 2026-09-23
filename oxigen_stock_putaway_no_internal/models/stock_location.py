@@ -27,5 +27,5 @@ class StockLocation(models.Model):
             additional_qty=additional_qty,
         )
         if self.usage in self._excluded_location_usages():
-            return putaway_location.location_id
+            return self
         return putaway_location
