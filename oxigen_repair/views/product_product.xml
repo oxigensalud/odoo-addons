@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="product_product_form_view">
+        <field name="name">product.product.form (in oxigen_stock)</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="action_product_product_in_rma_list"
+                    type="object"
+                    icon="fa-list"
+                >
+                    <field name="repair_count" widget="statinfo" />
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
