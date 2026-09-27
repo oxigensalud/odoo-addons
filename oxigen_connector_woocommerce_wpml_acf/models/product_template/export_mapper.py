@@ -3,16 +3,14 @@
 
 from odoo.addons.component.core import Component
 from odoo.addons.connector.components.mapper import mapping
-from odoo.addons.connector_extension.common import tools
+from odoo.addons.connector_woocommerce.common.tools import prepare_html
 
 
 class WooCommerceProductTemplateExportMapper(Component):
     _inherit = "woocommerce.product.template.export.mapper"
 
     def _get_product_additional_information(self, record):
-        if not record.technical_features:
-            return False
-        return tools.color_rgb2hex(record.technical_features)
+        return prepare_html(record.technical_features)
 
     @mapping
     def additional_information(self, record):
