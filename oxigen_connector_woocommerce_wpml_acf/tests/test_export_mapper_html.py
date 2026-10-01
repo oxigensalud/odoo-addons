@@ -26,7 +26,7 @@ class TestExportMapperHtmlACF(WooCommerceWPMLCase):
 
     def test_no_value_reaches_the_meta_as_null(self):
         with self.backend.work_on("woocommerce.product.template") as work:
-            adapter = work.component(usage="backend.adapter")
+            adapter = work.component(usage="adapter")
             data = {"additional_information": None}
             adapter._format_data(data)
         self.assertEqual(
