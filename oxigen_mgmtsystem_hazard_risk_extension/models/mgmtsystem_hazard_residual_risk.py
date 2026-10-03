@@ -5,8 +5,8 @@
 from odoo import fields, models
 
 
-class MgmtsystemHazard(models.Model):
-    _inherit = "mgmtsystem.hazard"
+class MgmtsystemHazardResidualRisk(models.Model):
+    _inherit = "mgmtsystem.hazard.residual_risk"
 
     usage_id = fields.Many2one(
         comodel_name="mgmtsystem.hazard.usage",

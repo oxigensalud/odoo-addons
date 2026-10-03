@@ -4,7 +4,7 @@
 
 from odoo import models
 
-from ..hooks import apply_detectability_translations
+from ..hooks import MODULE
 
 
 class BaseLanguageInstall(models.TransientModel):
@@ -12,5 +12,9 @@ class BaseLanguageInstall(models.TransientModel):
 
     def lang_install(self):
         action = super().lang_install()
-        apply_detectability_translations(self.env, self.lang)
+        # After the load, which installs the language and can leave the
+        # dependencies' wording on the texts this module relabels, their
+        # translations are put back as at install, by the system: the user
+        # loading a language may have no rights on them
+        self.env["ir.translation"].sudo()._force_module_terms(MODULE)
         return action
