@@ -1,6 +1,7 @@
 # Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from odoo.modules.module import get_module_resource
 from odoo.osv import expression
 from odoo.tests.common import SavepointCase, new_test_user, tagged
 
@@ -271,14 +272,22 @@ class TestTranslationHooks(TestWordingCommon):
                 "A + B + C": "Risc = Probabilitat (A) + Severitat (B) + Ús (C)",
             },
         )
+        # mgmtsystem_hazard owns the hazard and usage labels, the action and
+        # the menu. Its published package ships an English PO file, which
+        # gives them back at once; its 14.0 branch ships none, and then they
+        # show their source until the owner is upgraded
+        if get_module_resource("mgmtsystem_hazard", "i18n", "en.po"):
+            label, names = "Occupation / Usage", "Occupations / Usages"
+        else:
+            label, names = "Detectability", "Detectabilities"
         self.assertEqual(
             self._read_wording("en_US"),
             {
-                "hazard label": "Detectability",
-                "usage label": "Detectability",
+                "hazard label": label,
+                "usage label": label,
                 "residual risk label": "Detectability",
-                "action": "Detectabilities",
-                "menu": "Detectabilities",
+                "action": names,
+                "menu": names,
                 "A * B * C": "Risk = Probability (A) x Severity (B) x Usage (C)",
                 "(A * B) + C": "Risk = ( Probability (A) x Severity (B) ) + Usage (C)",
                 "(A + B) * C": "Risk = ( Probability (A) + Severity (B) ) x Usage (C)",
