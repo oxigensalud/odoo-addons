@@ -376,35 +376,35 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/oxigensalud/odoo-addons/tree/14.0/oxigen_mgmtsystem_change_control"><img alt="oxigensalud/odoo-addons" src="https://img.shields.io/badge/github-oxigensalud%2Fodoo--addons-lightgray.png?logo=github" /></a></p>
 <p>This module adapts the OCA management system <strong>Reviews</strong> entity so it acts as
-Oxigen’s <strong>change control record</strong> (Registro de Control de Cambios), following
-the client form F.P.100.01, without building a dedicated model.</p>
+the company’s <strong>change control record</strong>, following its change-control form,
+without building a dedicated model.</p>
 <p>It is a client-specific, cosmetic adaptation on top of the generic behaviour
 added by <tt class="docutils literal">mgmtsystem_review_copy_lines</tt> (duplicating a review copies its
 lines, so a template record can be reused):</p>
 <ul class="simple">
-<li>renames the <em>Reviews</em> menu, action and views to <em>Change Control Record</em>,</li>
-<li>relabels the relevant fields (the reference as the change control number, the
-lines tab as the change control sections, the conclusion as effectiveness /
-closure),</li>
+<li>hides the <em>Reviews</em> menu and adds a <em>Change Control Record</em> action and menu
+in its place,</li>
+<li>relabels the form (the name as the change subject, the lines tab as the
+change control sections, the conclusion as effectiveness / closure), the
+reference as the change control number in the form and the list, and the
+lines as sections with their content,</li>
 <li>hides the <em>Inputs</em> tab (policy, changes and surveys), which does not apply to
 change control.</li>
 </ul>
 <p>Each change control is recorded as a review whose lines hold the sections of
-the F.P.100.01 form (description, reason, scope, type, implementation plan,
-approvals, execution, closure, …). The creator, number, date, participants and
-attached documents are the native review fields.</p>
-<p>The exact field naming and whether some data should become dedicated fields is
-intentionally left to be validated with the quality manager; this module is the
-first, pragmatic version meant to be reviewed in use.</p>
+the company’s change-control form (description, reason, scope, type,
+implementation plan, approvals, execution, closure, …). The creator, number,
+date, participants and attached documents are the native review fields.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#usage" id="toc-entry-1">Usage</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-2">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-3">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-4">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="toc-entry-5">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-6">Maintainers</a></li>
+<li><a class="reference internal" href="#known-issues-roadmap" id="toc-entry-2">Known issues / Roadmap</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-3">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-4">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-5">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-6">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-7">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -413,19 +413,32 @@ first, pragmatic version meant to be reviewed in use.</p>
 <h2><a class="toc-backref" href="#toc-entry-1">Usage</a></h2>
 <ol class="arabic simple">
 <li>Go to <em>Management System &gt; Change Control Record</em>.</li>
-<li>Create a template record with one line per section of the F.P.100.01 form
-(description of the change, reason, scope, type, receiver, department,
-evaluation of the impact, implementation plan, plan approval, notification,
-execution and closure, incidents, review, final approval / effectiveness /
-closure).</li>
+<li>Create a template record with one line per section of the company’s
+change-control form (description of the change, reason, scope, type,
+receiver, department, evaluation of the impact, implementation plan, plan
+approval, notification, execution and closure, incidents, review, final
+approval / effectiveness / closure).</li>
 <li>For each new change control, open the template and use <em>Action &gt; Duplicate</em>:
 the copy keeps all the sections and starts open with its own number.</li>
-<li>Fill in the content of each section, attach the risk analysis / Annex III in
-the chatter, and close the record when the change is finished.</li>
+<li>Fill in the content of each section, attach the risk analysis in the
+chatter, and close the record when the change is finished.</li>
 </ol>
 </div>
+<div class="section" id="known-issues-roadmap">
+<h2><a class="toc-backref" href="#toc-entry-2">Known issues / Roadmap</a></h2>
+<ul class="simple">
+<li>Each change control record is a management system review. The module hides
+the <em>Reviews</em> menu and lists every review, whatever its purpose, under
+<em>Change Control Record</em>, numbered by the same sequence: management reviews
+cannot be kept apart from change controls.</li>
+<li>The sections of a change control are review lines copied from a template
+record, not fields of the record: nothing ensures that a record carries every
+section (a record created without duplicating the template starts with none),
+and a user can rename a section line.</li>
+</ul>
+</div>
 <div class="section" id="bug-tracker">
-<h2><a class="toc-backref" href="#toc-entry-2">Bug Tracker</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/oxigensalud/odoo-addons/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -433,25 +446,26 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h2><a class="toc-backref" href="#toc-entry-3">Credits</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">Credits</a></h2>
 <div class="section" id="authors">
-<h3><a class="toc-backref" href="#toc-entry-4">Authors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">Authors</a></h3>
 <ul class="simple">
-<li>NuoBiT Solutions</li>
-<li>S.L.</li>
+<li>Oxigen Salud SA</li>
+<li>NuoBiT Solutions SL</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h3><a class="toc-backref" href="#toc-entry-5">Contributors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">Contributors</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="https://www.nuobit.com">NuoBiT</a>:<ul>
+<li><a class="reference external" href="https://www.nuobit.com">NuoBiT Solutions SL</a>:<ul>
 <li>Deniz Gallo &lt;<a class="reference external" href="mailto:dgallo&#64;nuobit.com">dgallo&#64;nuobit.com</a>&gt;</li>
+<li>Eric Antones &lt;<a class="reference external" href="mailto:eantones&#64;nuobit.com">eantones&#64;nuobit.com</a>&gt;</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h3><a class="toc-backref" href="#toc-entry-6">Maintainers</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">Maintainers</a></h3>
 <p>This module is part of the <a class="reference external" href="https://github.com/oxigensalud/odoo-addons/tree/14.0/oxigen_mgmtsystem_change_control">oxigensalud/odoo-addons</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
 </div>
