@@ -3,13 +3,15 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Oxigen Mgmtsystem Hazard Risk Extension",
+    "name": "Hazard Risk Detectability",
     "summary": "Show the third hazard risk factor as Detectability",
     "version": "14.0.1.0.0",
-    "author": "NuoBiT",
+    "author": "Oxigen Salud SA, NuoBiT Solutions SL",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Management System",
     "depends": [
+        "mgmtsystem_hazard",
+        "mgmtsystem_hazard_risk",
         "mgmtsystem_hazard_risk_extension",
     ],
     "data": [

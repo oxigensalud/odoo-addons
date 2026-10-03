@@ -5,10 +5,11 @@
 from odoo import fields, models
 
 
-class MgmtsystemHazard(models.Model):
-    _inherit = "mgmtsystem.hazard"
+class MgmtsystemHazardUsage(models.Model):
+    _inherit = "mgmtsystem.hazard.usage"
 
-    usage_id = fields.Many2one(
-        comodel_name="mgmtsystem.hazard.usage",
+    name = fields.Char(
         string="Detectability",
+        required=True,
+        translate=True,
     )

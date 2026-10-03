@@ -2,9 +2,9 @@
    :target: https://odoo-community.org/get-involved?utm_source=readme
    :alt: Odoo Community Association
 
-=======================================
-Oxigen Mgmtsystem Hazard Risk Extension
-=======================================
+=========================
+Hazard Risk Detectability
+=========================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -26,25 +26,86 @@ Oxigen Mgmtsystem Hazard Risk Extension
 
 |badge1| |badge2| |badge3|
 
-This module presents the third factor of the hazard risk evaluation to the
-user as *Detectability* instead of *Occupation / Usage*.
+This module presents the third factor of the hazard risk evaluation as
+*Detectability* instead of *Occupation / Usage*, in English, Spanish and
+Catalan:
 
-The wording is changed in the field labels, the related configuration menu and
-list, and the risk formula descriptions, including their Catalan and Spanish
-translations.
+* in the label of the factor on hazards and on residual risks, and in the label
+  of the name of its values;
+* in the name of the configuration menu that lists those values, and of its
+  action: both records belong to ``mgmtsystem_hazard``, and this module
+  overrides their name;
+* in the description of the four stock risk formulas that use the third
+  factor.
 
-It depends on ``mgmtsystem_hazard_risk_extension`` for the generic translation
-support and stock formula translations.
+It changes no technical field, no formula and no risk calculation.
 
-It does not change the technical field, the formulas or the risk calculation;
-it only adapts the wording shown to the user. When this module is uninstalled,
-the generic stock wording provided by ``mgmtsystem_hazard_risk_extension`` is
-restored.
+When the module is installed, these texts get its wording in English, Spanish
+and Catalan, whatever translations were stored for them. They get it again each
+time a language is loaded or updated with *Load a Translation*, which can
+otherwise bring back the wording of the dependencies.
+
+When the module is uninstalled, the four formulas get back their stock English
+description, unless it was edited in the meantime, its translations of these
+texts are deleted, and the translation files of the three modules it depends on
+are loaded again for every installed language, as an update of them does: what
+this module deleted comes back wherever they translate it, and the stored
+translations are kept, apart from what Odoo's loader writes over them from a
+regional file, such as the Catalan of ten common field labels from the
+``ca_ES.po`` of ``mgmtsystem_hazard``. What comes back only with an update of
+the dependencies is listed under *Known issues / Roadmap*.
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Development
+===========
+
+``i18n/`` holds only this module's two own terms, *Detectability* and
+*Detectabilities*: an export of the module also gives the names and three
+standard field labels of the five models it extends, under this module's ids,
+and those entries must be dropped, because ``_module_terms`` would force them
+and the uninstall would delete their Spanish and Catalan translations, of which
+the dependencies give back only those of their own models.
+
+Known issues / Roadmap
+======================
+
+* After the module is uninstalled, the three labels and the name of the menu
+  and of its action keep this module's English wording, which every language
+  the dependencies leave untranslated also shows: Catalan, and Portuguese for
+  the label on residual risks, which ``mgmtsystem_hazard_risk`` translates
+  into Brazilian Portuguese only. The original wording comes back when
+  ``mgmtsystem_hazard`` and ``mgmtsystem_hazard_risk`` are updated by hand
+  (``-u``); Odoo then also updates every installed module that depends on them,
+  which is why the uninstall does not do it. Spanish comes back at once.
+* The uninstall loads the translation files of ``mgmtsystem_hazard`` again, as
+  an update of that module does, and Odoo's loader writes its regional file
+  ``ca_ES.po`` over the stored translations: a Catalan edited by hand on ten
+  common field labels of its models, such as *Company* and *Created by*, is
+  replaced by that file's.
+* Only the four stock formulas that use the third factor are relabelled: a
+  formula created by a user keeps its own description.
+* Only Spanish and Catalan are translated. In another language, the texts the
+  dependencies translate keep their wording and the others show this module's
+  English wording.
+* The description of the model, *Usage of hazard*, is not changed.
+* A translation of one of these texts edited by hand, in Spanish or Catalan, or
+  in English for a label, is replaced when the module is installed, when a
+  language is loaded and when the module is uninstalled. An English edit of the
+  name of the menu, of its action or of a formula, made while the module is
+  installed, is kept.
+* A translation file imported with the overwrite option, with *Import
+  Translation* or with ``--i18n-import`` and ``--i18n-overwrite``, replaces
+  this module's Spanish or Catalan wording of the three labels and of the name
+  of the menu and of its action, if it translates them, until a language is
+  loaded again.
+* Installing ``mgmtsystem_hazard_risk`` again (``-i``) on a database where it
+  is installed resets the English description of the four formulas to the
+  stock one, until this module is installed again: an update of this module
+  (``-u``) does not rewrite them.
 
 Bug Tracker
 ===========
@@ -62,12 +123,13 @@ Credits
 Authors
 ~~~~~~~
 
-* NuoBiT
+* Oxigen Salud SA
+* NuoBiT Solutions SL
 
 Contributors
 ~~~~~~~~~~~~
 
-* `NuoBiT <https://www.nuobit.com>`__:
+* `NuoBiT Solutions SL <https://www.nuobit.com>`__:
 
   * Deniz Gallo <dgallo@nuobit.com>
   * Eric Antones <eantones@nuobit.com>
