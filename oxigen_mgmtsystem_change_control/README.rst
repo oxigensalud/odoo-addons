@@ -27,28 +27,26 @@ Oxigen Management System Change Control
 |badge1| |badge2| |badge3|
 
 This module adapts the OCA management system **Reviews** entity so it acts as
-Oxigen's **change control record** (Registro de Control de Cambios), following
-the client form F.P.100.01, without building a dedicated model.
+the company's **change control record**, following its change-control form,
+without building a dedicated model.
 
 It is a client-specific, cosmetic adaptation on top of the generic behaviour
 added by ``mgmtsystem_review_copy_lines`` (duplicating a review copies its
 lines, so a template record can be reused):
 
-* renames the *Reviews* menu, action and views to *Change Control Record*,
-* relabels the relevant fields (the reference as the change control number, the
-  lines tab as the change control sections, the conclusion as effectiveness /
-  closure),
+* hides the *Reviews* menu and adds a *Change Control Record* action and menu
+  in its place,
+* relabels the form (the name as the change subject, the lines tab as the
+  change control sections, the conclusion as effectiveness / closure), the
+  reference as the change control number in the form and the list, and the
+  lines as sections with their content,
 * hides the *Inputs* tab (policy, changes and surveys), which does not apply to
   change control.
 
 Each change control is recorded as a review whose lines hold the sections of
-the F.P.100.01 form (description, reason, scope, type, implementation plan,
-approvals, execution, closure, …). The creator, number, date, participants and
-attached documents are the native review fields.
-
-The exact field naming and whether some data should become dedicated fields is
-intentionally left to be validated with the quality manager; this module is the
-first, pragmatic version meant to be reviewed in use.
+the company's change-control form (description, reason, scope, type,
+implementation plan, approvals, execution, closure, …). The creator, number,
+date, participants and attached documents are the native review fields.
 
 **Table of contents**
 
@@ -59,15 +57,27 @@ Usage
 =====
 
 #. Go to *Management System > Change Control Record*.
-#. Create a template record with one line per section of the F.P.100.01 form
-   (description of the change, reason, scope, type, receiver, department,
-   evaluation of the impact, implementation plan, plan approval, notification,
-   execution and closure, incidents, review, final approval / effectiveness /
-   closure).
+#. Create a template record with one line per section of the company's
+   change-control form (description of the change, reason, scope, type,
+   receiver, department, evaluation of the impact, implementation plan, plan
+   approval, notification, execution and closure, incidents, review, final
+   approval / effectiveness / closure).
 #. For each new change control, open the template and use *Action > Duplicate*:
    the copy keeps all the sections and starts open with its own number.
-#. Fill in the content of each section, attach the risk analysis / Annex III in
-   the chatter, and close the record when the change is finished.
+#. Fill in the content of each section, attach the risk analysis in the
+   chatter, and close the record when the change is finished.
+
+Known issues / Roadmap
+======================
+
+* Each change control record is a management system review. The module hides
+  the *Reviews* menu and lists every review, whatever its purpose, under
+  *Change Control Record*, numbered by the same sequence: management reviews
+  cannot be kept apart from change controls.
+* The sections of a change control are review lines copied from a template
+  record, not fields of the record: nothing ensures that a record carries every
+  section (a record created without duplicating the template starts with none),
+  and a user can rename a section line.
 
 Bug Tracker
 ===========
@@ -85,15 +95,16 @@ Credits
 Authors
 ~~~~~~~
 
-* NuoBiT Solutions
-* S.L.
+* Oxigen Salud SA
+* NuoBiT Solutions SL
 
 Contributors
 ~~~~~~~~~~~~
 
-* `NuoBiT <https://www.nuobit.com>`__:
+* `NuoBiT Solutions SL <https://www.nuobit.com>`__:
 
   * Deniz Gallo <dgallo@nuobit.com>
+  * Eric Antones <eantones@nuobit.com>
 
 Maintainers
 ~~~~~~~~~~~

@@ -1,13 +1,14 @@
 # Copyright 2026 NuoBiT Solutions SL - Deniz Gallo <dgallo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
     "name": "Oxigen Management System Change Control",
     "summary": "Adapt the management system Reviews entity to act as the "
-    "Oxigen change control record",
+    "company's change control record",
     "version": "14.0.1.0.0",
     "category": "Management System",
-    "author": "NuoBiT Solutions, S.L.",
+    "author": "Oxigen Salud SA, NuoBiT Solutions SL",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "license": "AGPL-3",
     "depends": [
