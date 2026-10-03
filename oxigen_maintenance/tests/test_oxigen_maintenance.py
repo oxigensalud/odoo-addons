@@ -40,6 +40,7 @@ class TestOxigenMaintenance(common.TransactionCase):
         self.maintenance_plan_2 = self.maintenance_plan_obj.create(
             {
                 "equipment_id": self.equipment_1.id,
+                "start_maintenance_date": today,
                 "interval": 1,
                 "interval_step": "month",
                 "maintenance_plan_horizon": 2,
