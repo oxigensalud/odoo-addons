@@ -13,6 +13,8 @@ class ProductProduct(models.Model):
         "product_tmpl_id.product_template_image_ids",
         "product_tmpl_id.product_template_image_ids.video_url",
         "product_tmpl_id.product_template_image_ids.title",
+        # and its videos are sent numbered in gallery order
+        "product_tmpl_id.product_template_image_ids.sequence",
     )
     def _compute_woocommerce_write_date(self):
         super()._compute_woocommerce_write_date()
