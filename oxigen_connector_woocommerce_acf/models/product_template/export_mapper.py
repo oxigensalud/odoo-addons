@@ -1,4 +1,5 @@
 # Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+# Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
 from odoo.addons.component.core import Component
@@ -24,5 +25,8 @@ class WooCommerceProductTemplateExportMapper(Component):
         product_image_attachments = super()._get_product_image_attachments(record)
         product_img = record.product_template_image_ids.filtered("video_url")
         return product_image_attachments.filtered(
-            lambda x: not any(x.attachment_id.res_id == img.id for img in product_img)
+            lambda x: not (
+                x.attachment_id.res_model == product_img._name
+                and x.attachment_id.res_id in product_img.ids
+            )
         )

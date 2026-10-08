@@ -6,7 +6,7 @@
     "name": "Oxigen Connector WooCommerce ACF",
     "summary": "Customizations for Oxigen in Connector WooCommerce. "
     "Export fields created with Advanced Custom Fields (ACF) on WooCommerce.",
-    "version": "14.0.1.0.2",
+    "version": "14.0.1.0.3",
     "author": "NuoBiT Solutions SL",
     "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Product",
