@@ -15,8 +15,9 @@ OTHER_VIDEO_URL = "https://www.youtube.com/watch?v=bbbbbbbbbbb"
 
 
 class TestProductExportMarking(WooCommerceWPMLCase):
-    """A change to an ACF field the template export sends marks the variations
-    of a variable product, which is exported through them."""
+    """A change to a field the ACF template export reads marks the products
+    that carry it: a simple product is exported as its template, a variable
+    one through its variations."""
 
     def setUp(self):
         super().setUp()
@@ -34,6 +35,23 @@ class TestProductExportMarking(WooCommerceWPMLCase):
         return self.env["product.image"].create(
             {"name": "Gallery image", "image_1920": self._image_data("red"), **values}
         )
+
+    # Simple products
+
+    def test_videos_reordered_marks_simple_template(self):
+        template = self._create_template("WooCommerce simple product")
+        self._create_gallery_image(
+            product_tmpl_id=template.id, video_url=VIDEO_URL, sequence=10
+        )
+        video = self._create_gallery_image(
+            product_tmpl_id=template.id, video_url=OTHER_VIDEO_URL, sequence=20
+        )
+        self._remember_write_dates(template)
+        self.clock.tick(timedelta(seconds=1))
+        video.sequence = 5
+        self.assert_touched(template)
+
+    # Variable products
 
     def test_technical_features_change_marks_variants_of_variable_template(self):
         template = self._create_variable_template()
@@ -67,4 +85,17 @@ class TestProductExportMarking(WooCommerceWPMLCase):
         self._remember_write_dates(template)
         self.clock.tick(timedelta(seconds=1))
         video.title = "Video description"
+        self.assert_touched(template.product_variant_ids)
+
+    def test_videos_reordered_marks_variants_of_variable_template(self):
+        template = self._create_variable_template()
+        self._create_gallery_image(
+            product_tmpl_id=template.id, video_url=VIDEO_URL, sequence=10
+        )
+        video = self._create_gallery_image(
+            product_tmpl_id=template.id, video_url=OTHER_VIDEO_URL, sequence=20
+        )
+        self._remember_write_dates(template)
+        self.clock.tick(timedelta(seconds=1))
+        video.sequence = 5
         self.assert_touched(template.product_variant_ids)
