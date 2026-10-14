@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_07"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_09"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_10_sale"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_11_sale"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_18"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_20"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_25_sale"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_26_sale"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_80"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r134a_regen')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r32')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r404a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r407c')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r410a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r422d')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r438a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r449a')),
+                (4, ref('oxigen_l10n_es.account_tax_template_s_igf21_r452a')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_10_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_11_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_21"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_22"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_25_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_26_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bi')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_53"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod322_extension.aeat_mod322_2025_map_line_54"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_ids"
+            eval="[
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva4nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva10nd_sp_in')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_ic_bc')),
+                (4, ref('oxigen_l10n_es.account_tax_template_p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+</odoo>
