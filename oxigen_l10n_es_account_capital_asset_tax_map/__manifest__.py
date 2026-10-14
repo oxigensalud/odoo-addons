@@ -4,7 +4,7 @@
 {
     "name": "Oxigen Account Capital Asset Tax Map",
     "summary": "This module adds l10n_es data to capital assets tax map",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "category": "Accounting",
     "author": "NuoBiT Solutions, S.L.",
     "website": "https://github.com/oxigensalud/odoo-addons",
