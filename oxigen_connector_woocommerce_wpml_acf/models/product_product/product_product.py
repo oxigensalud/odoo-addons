@@ -17,4 +17,4 @@ class ProductProduct(models.Model):
         "product_tmpl_id.product_template_image_ids.sequence",
     )
     def _compute_woocommerce_write_date(self):
-        super()._compute_woocommerce_write_date()
+        return super()._compute_woocommerce_write_date()
