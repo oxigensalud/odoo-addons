@@ -6,12 +6,12 @@ from io import BytesIO
 
 from PIL import Image
 
-from odoo.addons.component.tests.common import SavepointComponentCase
+from odoo.addons.component.tests.common import TransactionComponentCase
 
 VIDEO_URL = "https://www.youtube.com/watch?v=aaaaaaaaaaa"
 
 
-class TestExportMapperImages(SavepointComponentCase):
+class TestExportMapperImages(TransactionComponentCase):
     """The images the template export sends leave out the gallery images of
     its videos, and only them."""
 
