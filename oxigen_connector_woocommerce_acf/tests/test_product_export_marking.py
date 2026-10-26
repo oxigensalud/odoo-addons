@@ -8,12 +8,12 @@ from io import BytesIO
 from freezegun import freeze_time
 from PIL import Image
 
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 VIDEO_URL = "https://www.youtube.com/watch?v=aaaaaaaaaaa"
 
 
-class TestProductExportMarking(SavepointCase):
+class TestProductExportMarking(TransactionCase):
     """A change to a field the ACF template export reads marks the products
     that carry it: a simple product is exported as its template, a variable
     one through its variations. No backend is needed: the export date of a
