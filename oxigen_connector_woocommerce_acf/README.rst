@@ -22,7 +22,7 @@ Oxigen Connector WooCommerce ACF
 
 |badge1| |badge2| |badge3|
 
-Customizations for Oxigen in Connector WooCommerce
+Customizations in Connector WooCommerce
 
 - Export fields created with Advanced Custom Fields
   (https://www.advancedcustomfields.com/) on WooCommerce.
