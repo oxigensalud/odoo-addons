@@ -5,7 +5,7 @@
 
 {
     "name": "Oxigen Connector WooCommerce WPML ACF",
-    "summary": "Customizations in Oxigen Connector WooCommerce. "
+    "summary": "Customizations in Connector WooCommerce WPML. "
     "Export fields created with Advanced Custom Fields (ACF).",
     "version": "18.0.1.0.0",
     "author": "NuoBiT Solutions SL",
