@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 NuoBiT Solutions SL - Eric Antones <eantones@nuobit.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record
+        id="document_page_procedure.action_procedures"
+        model="ir.actions.act_window"
+    >
+        <field
+            name="domain"
+            eval="[('parent_id', '=', ref('document_page_procedure.document_page_group_procedure'))]"
+        />
+    </record>
+    <record
+        id="document_page_environmental_aspect.action_environmental_aspects"
+        model="ir.actions.act_window"
+    >
+        <field
+            name="domain"
+            eval="[('parent_id', '=', ref('document_page_environmental_aspect.document_page_group_environmental_aspect'))]"
+        />
+    </record>
+    <record
+        id="document_page_work_instruction.work_instructions_action"
+        model="ir.actions.act_window"
+    >
+        <field
+            name="domain"
+            eval="[('parent_id', '=', ref('document_page_work_instruction.document_page_group_work_instructions'))]"
+        />
+    </record>
+    <record id="mgmtsystem_manual.action_manuals" model="ir.actions.act_window">
+        <field
+            name="domain"
+            eval="[('parent_id', '=', ref('mgmtsystem_manual.manuals'))]"
+        />
+        <field
+            name="context"
+            eval="{'default_parent_id': ref('mgmtsystem_manual.manuals')}"
+        />
+    </record>
+</odoo>
