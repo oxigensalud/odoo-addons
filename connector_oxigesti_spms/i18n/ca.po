@@ -620,7 +620,7 @@ msgstr "Connector Oxigesti SPMS"
 #: model:ir.model,name:connector_oxigesti_spms.model_res_partner
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_res_partner__child_ids
 msgid "Contact"
-msgstr "Contacto"
+msgstr "Contacte"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_sale_order__contract_number
@@ -1019,7 +1019,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_spms_prescription_type__display_name
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_spms_suspension_reason__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Nom a mostrar"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_sale_order_line__display_qty_widget
@@ -1976,7 +1976,7 @@ msgstr ""
 #. module: connector_oxigesti_spms
 #: model:ir.model,name:connector_oxigesti_spms.model_account_move
 msgid "Journal Entry"
-msgstr "Asiento contable"
+msgstr "Assentament comptable"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_res_partner__journal_item_count
@@ -2033,7 +2033,7 @@ msgstr "Idiomes"
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_spms_prescription_type____last_update
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_spms_suspension_reason____last_update
 msgid "Last Modified on"
-msgstr "Última modificación"
+msgstr "Última modificació el"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_res_partner__last_website_so_id
@@ -2997,7 +2997,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_product_product__product_variant_id
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_sale_order_line__product_id
 msgid "Product"
-msgstr "Producto"
+msgstr "Producte"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_product_product__attribute_line_ids
@@ -3391,7 +3391,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:connector_oxigesti_spms.oxigesti_spms_spms_context_action
 #: model:ir.model,name:connector_oxigesti_spms.model_spms_context
 msgid "SPMS Context"
-msgstr "Contexto SPMS"
+msgstr "Context SPMS"
 
 #. module: connector_oxigesti_spms
 #: model_terms:ir.ui.view,arch_db:connector_oxigesti_spms.view_form_oxigesti_spms_backend
@@ -3402,7 +3402,7 @@ msgstr "Contextos SPMS"
 #: model:ir.actions.act_window,name:connector_oxigesti_spms.oxigesti_spms_spms_lot_action
 #: model:ir.model,name:connector_oxigesti_spms.model_spms_lot
 msgid "SPMS Lot"
-msgstr "Lote SPMS"
+msgstr "Lot SPMS"
 
 #. module: connector_oxigesti_spms
 #: model_terms:ir.ui.view,arch_db:connector_oxigesti_spms.view_form_oxigesti_spms_backend
@@ -3412,7 +3412,7 @@ msgstr "Lots SPMS"
 #. module: connector_oxigesti_spms
 #: model:ir.model,name:connector_oxigesti_spms.model_spms_prescription_type
 msgid "SPMS Prescription Type"
-msgstr "Tipo de receta SPMS"
+msgstr "Tipus de recepta SPMS"
 
 #. module: connector_oxigesti_spms
 #: model:ir.actions.act_window,name:connector_oxigesti_spms.oxigesti_spms_spms_prescription_type_action
@@ -3423,7 +3423,7 @@ msgstr "Tipus de prescripció SPMS"
 #. module: connector_oxigesti_spms
 #: model:ir.model,name:connector_oxigesti_spms.model_spms_suspension_reason
 msgid "SPMS Suspension Reason"
-msgstr "Razón de suspensión SPMS"
+msgstr "Motiu de suspensió SPMS"
 
 #. module: connector_oxigesti_spms
 #: model:ir.actions.act_window,name:connector_oxigesti_spms.oxigesti_spms_spms_suspension_reason_action
@@ -3477,13 +3477,13 @@ msgstr ""
 #: model:ir.model,name:connector_oxigesti_spms.model_sale_order
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_res_partner__sale_order_ids
 msgid "Sales Order"
-msgstr "Pedido de venta"
+msgstr "Comanda de venda"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model,name:connector_oxigesti_spms.model_sale_order_line
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_product_product__sale_line_warn
 msgid "Sales Order Line"
-msgstr "Línea de pedido de venta"
+msgstr "Línia de comanda de venda"
 
 #. module: connector_oxigesti_spms
 #: model:ir.model.fields,field_description:connector_oxigesti_spms.field_oxigesti_spms_res_partner__team_id
