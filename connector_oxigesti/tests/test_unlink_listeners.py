@@ -29,7 +29,7 @@ class TestUnlinkListeners(TransactionCase):
                 "database": "irrelevant",
                 "schema": "dbo",
                 "username": "irrelevant",
-                "password": "irrelevant",
+                "password": "test_password",
                 "lang_id": self.env.ref("base.lang_en").id,
                 "tz": "UTC",
                 "chunk_size": 0,
