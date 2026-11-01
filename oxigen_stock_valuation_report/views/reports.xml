@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Frank Cespedes <fcespedes@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="report_oxigen_stock_valuation_xlsx_action" model="ir.actions.report">
+        <field name="name">Detailed Stock Valuation</field>
+        <field name="model">oxigen.stock.valuation.wizard</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">report_oxigen_stock_valuation_xlsx</field>
+        <field name="report_type">xlsx</field>
+    </record>
+</odoo>
