@@ -1,0 +1,4 @@
+odoo-addon-partner_review@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=partner_review
+odoo-addon-sale_order_service@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=sale_order_service
+odoo-addon-sale_line_partner_description@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=sale_line_partner_description
+odoo-addon-sale_specific_order_date@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=sale_specific_order_date
