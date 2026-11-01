@@ -1,0 +1,3 @@
+odoo-addon-account_invoice_report_service@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=account_invoice_report_service
+odoo-addon-sale_order_service@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=sale_order_service
+odoo-addon-account_invoice_batches@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=account_invoice_batches
