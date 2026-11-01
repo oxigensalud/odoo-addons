@@ -7,7 +7,7 @@
     "summary": "Alternative serial numbers",
     "version": "18.0.1.0.0",
     "author": "NuoBiT Solutions SL",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Warehouse",
     "depends": ["stock"],
     "license": "AGPL-3",
