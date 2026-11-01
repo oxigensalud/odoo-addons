@@ -1,0 +1,40 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_stock_barcodes_gs1
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 09:32+0000\n"
+"PO-Revision-Date: 2021-11-15 12:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_stock_barcodes_gs1
+#. odoo-python
+#: code:addons/oxigen_stock_barcodes_gs1/wizard/stock_barcodes_read.py:0
+msgid ""
+"The lot %(lot)s has been found but the reference %(ref)s does not match."
+msgstr ""
+
+#. module: oxigen_stock_barcodes_gs1
+#. odoo-python
+#: code:addons/oxigen_stock_barcodes_gs1/wizard/stock_barcodes_read.py:0
+msgid "The next products have the same barcode: %s"
+msgstr ""
+
+#. module: oxigen_stock_barcodes_gs1
+#. odoo-python
+#: code:addons/oxigen_stock_barcodes_gs1/wizard/stock_barcodes_read.py:0
+msgid "This record has inconsistent data. Delete the record and recreate it."
+msgstr ""
+
+#. module: oxigen_stock_barcodes_gs1
+#: model:ir.model,name:oxigen_stock_barcodes_gs1.model_wiz_stock_barcodes_read
+msgid "Wizard to read barcode"
+msgstr ""
