@@ -1,0 +1,1 @@
+odoo-addon-stock_putaway_no_internal@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=stock_putaway_no_internal
