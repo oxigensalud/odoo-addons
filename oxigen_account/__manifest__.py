@@ -7,7 +7,7 @@
     "summary": "Customizations for Oxigen in Invoicing",
     "version": "18.0.1.0.0",
     "author": "ForgeFlow, NuoBiT Solutions SL",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "category": "Accounting",
     "depends": ["account_lock_date_update", "contract"],
     "license": "AGPL-3",
