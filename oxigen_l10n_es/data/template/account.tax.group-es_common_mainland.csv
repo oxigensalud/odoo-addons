@@ -1,0 +1,2 @@
+"id","name","name@es","country_id","tax_payable_account_id","tax_receivable_account_id","sequence"
+"tax_group_gases_refrigerantes","Refrigerant Gases","Gases Refrigerantes","base.es","account_common_4750","account_common_4700","10"

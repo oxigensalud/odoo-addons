@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- AEAT 390 map (exercises up to 2023): add the non-deductible VAT
+         family to the boxes where its official deductible analogues sit.
+         Accrual boxes only (21-26 intra-EU goods, 545-552 intra-EU services,
+         29/30 purchase modifications) plus the informative boxes 232
+         (non-deductible input VAT bases, per the AEAT 390 instructions) and
+         105 (exempt sales without deduction right, s_iva0_sdd). No deduction
+         box gets any member: these taxes carry no deduction right. The
+         service-quota boxes (546/548/552) are measured by OCA through the
+         472 account the family never posts to, so dedicated lines filtered
+         by 477 (the account the family's accrual leg posts to, same
+         mechanism as the official goods-quota lines 22/24/26) are added for
+         them. -->
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_21"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_22"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_23"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_24"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_25"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_26"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_545"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field name="tax_xmlid_ids" eval="[(4, ref('p_iva4nd_sp_in'))]" />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_547"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field name="tax_xmlid_ids" eval="[(4, ref('p_iva10nd_sp_in'))]" />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_551"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field name="tax_xmlid_ids" eval="[(4, ref('p_iva21nd_sp_in'))]" />
+    </record>
+
+    <record id="aeat_mod390_map_line_546_nd" model="l10n.es.aeat.map.tax.line">
+        <field name="map_parent_id" ref="l10n_es_aeat_mod390.aeat_mod390_map" />
+        <field name="field_number">546</field>
+        <field
+            name="name"
+        >Adquisiciones intracomunitarias de servicios - Cuota 4% (IVA no deducible)</field>
+        <field name="move_type">regular</field>
+        <field name="field_type">amount</field>
+        <field name="sum_type">both</field>
+        <field name="inverse" eval="False" />
+        <field
+            name="account_xmlid_ids"
+            eval="[(4, ref('l10n_es_aeat_mod390.common_477'))]"
+        />
+        <field name="tax_xmlid_ids" eval="[(4, ref('p_iva4nd_sp_in'))]" />
+    </record>
+
+    <record id="aeat_mod390_map_line_548_nd" model="l10n.es.aeat.map.tax.line">
+        <field name="map_parent_id" ref="l10n_es_aeat_mod390.aeat_mod390_map" />
+        <field name="field_number">548</field>
+        <field
+            name="name"
+        >Adquisiciones intracomunitarias de servicios - Cuota 10% (IVA no deducible)</field>
+        <field name="move_type">regular</field>
+        <field name="field_type">amount</field>
+        <field name="sum_type">both</field>
+        <field name="inverse" eval="False" />
+        <field
+            name="account_xmlid_ids"
+            eval="[(4, ref('l10n_es_aeat_mod390.common_477'))]"
+        />
+        <field name="tax_xmlid_ids" eval="[(4, ref('p_iva10nd_sp_in'))]" />
+    </record>
+
+    <record id="aeat_mod390_map_line_552_nd" model="l10n.es.aeat.map.tax.line">
+        <field name="map_parent_id" ref="l10n_es_aeat_mod390.aeat_mod390_map" />
+        <field name="field_number">552</field>
+        <field
+            name="name"
+        >Adquisiciones intracomunitarias de servicios - Cuota 21% (IVA no deducible)</field>
+        <field name="move_type">regular</field>
+        <field name="field_type">amount</field>
+        <field name="sum_type">both</field>
+        <field name="inverse" eval="False" />
+        <field
+            name="account_xmlid_ids"
+            eval="[(4, ref('l10n_es_aeat_mod390.common_477'))]"
+        />
+        <field name="tax_xmlid_ids" eval="[(4, ref('p_iva21nd_sp_in'))]" />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_29_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_30_purchase"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_232"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field
+            name="tax_xmlid_ids"
+            eval="[
+                (4, ref('p_iva4nd_ic_bc')),
+                (4, ref('p_iva4nd_ic_bi')),
+                (4, ref('p_iva4nd_sp_in')),
+                (4, ref('p_iva10nd_ic_bc')),
+                (4, ref('p_iva10nd_ic_bi')),
+                (4, ref('p_iva10nd_sp_in')),
+                (4, ref('p_iva21nd_ic_bc')),
+                (4, ref('p_iva21nd_ic_bi')),
+                (4, ref('p_iva21nd_sp_in')),
+                (4, ref('p_iva4_nd_bc')),
+                (4, ref('p_iva4_nd_bi')),
+                (4, ref('p_iva10_nd_bc')),
+                (4, ref('p_iva10_nd_bi')),
+                (4, ref('p_iva0_nd_bc')),
+                (4, ref('p_iva0_nd_bi')),
+            ]"
+        />
+    </record>
+
+    <record
+        id="l10n_es_aeat_mod390.aeat_mod390_map_line_105"
+        model="l10n.es.aeat.map.tax.line"
+    >
+        <field name="tax_xmlid_ids" eval="[(4, ref('s_iva0_sdd'))]" />
+    </record>
+</odoo>
