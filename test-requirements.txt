@@ -1,0 +1,13 @@
+odoo-addon-website_sale_extra_fields@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=website_sale_extra_fields
+odoo-addon-website_sale_variant@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=website_sale_variant
+odoo-addon-website_sale_stock_variant@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=website_sale_stock_variant
+odoo-addon-website_sale_product_document@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=website_sale_product_document
+odoo-addon-tools_mimetypes_extension@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=tools_mimetypes_extension
+odoo-addon-connector_extension@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_extension
+odoo-addon-connector_wordpress@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_wordpress
+odoo-addon-connector_extension_wordpress@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_extension_wordpress
+odoo-addon-connector_woocommerce@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_woocommerce
+odoo-addon-connector_extension_woocommerce@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_extension_woocommerce
+odoo-addon-connector_woocommerce_ast@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_woocommerce_ast
+odoo-addon-connector_woocommerce_wpml@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_woocommerce_wpml
+odoo-addon-connector_wordpress_wpml@git+https://github.com/nuobit/odoo-addons.git@18.0#subdirectory=connector_wordpress_wpml
