@@ -7,7 +7,7 @@
     "author": "NuoBiT Solutions SL",
     "license": "AGPL-3",
     "category": "Connector",
-    "website": "https://github.com/OCA/oxigen.odo-adodns",
+    "website": "https://github.com/oxigensalud/odoo-addons",
     "depends": [
         "connector_extension_mssql",
         "sale_management",
