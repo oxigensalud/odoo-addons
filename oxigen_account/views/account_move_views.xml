@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="oxigen_view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form - oxigen</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="attributes">
+                <attribute
+                    name="required"
+                >move_type in ('in_invoice', 'in_receipt', 'in_refund')</attribute>
+            </xpath>
+            <xpath expr="//button[@name='button_draft']" position="after">
+                <button
+                    name="button_draft"
+                    string="Reset to Draft (maintaining reconciled items)"
+                    type="object"
+                    groups="account.group_account_invoice"
+                    invisible="show_reset_to_draft_button == False"
+                    context="{'dont_unreconcile_items': True}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="oxigen_view_invoice_tree" model="ir.ui.view">
+        <field name="name">oxigen-view_invoice_tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//list/field[@name='amount_total_in_currency_signed']"
+                position="attributes"
+            >
+                <attribute name="string">Total (€)</attribute>
+            </xpath>
+            <xpath
+                expr="//list/field[@name='amount_total_in_currency_signed']"
+                position="after"
+            >
+                <field
+                    name="amount_total"
+                    string="Total (currency)"
+                    sum="Total"
+                    decoration-bf="1"
+                    optional="show"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!--    <record id="oxigen_view_account_invoice_filter" model="ir.ui.view">-->
+    <!--        <field name="name">account.invoice.select - oxigen</field>-->
+    <!--        <field name="model">account.move</field>-->
+    <!--        <field name="inherit_id" ref="account.view_account_invoice_filter" />-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <field name="date" position="after">-->
+    <!--                <field name="line_ids" string="Invoice Line" />-->
+    <!--            </field>-->
+    <!--        </field>-->
+    <!--    </record>-->
+</odoo>
