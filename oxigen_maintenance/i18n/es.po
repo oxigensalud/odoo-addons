@@ -1,0 +1,268 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oxigen_maintenance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-26 16:30+0000\n"
+"PO-Revision-Date: 2024-08-09 16:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oxigen_maintenance
+#. odoo-python
+#: code:addons/oxigen_maintenance/models/maintenance_equipment.py:0
+msgid "%(kind)s - %(name)s - %(plan)s"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__active
+msgid "Active"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_active_pin
+msgid "Active PIN"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model_terms:ir.ui.view,arch_db:oxigen_maintenance.maintenance_equipment_operating_system_form_view
+msgid "Archived"
+msgstr ""
+
+#. module: oxigen_maintenance
+#. odoo-python
+#: code:addons/oxigen_maintenance/models/maintenance_equipment.py:0
+msgid ""
+"Cannot create a new project for this equipment because it is already linked "
+"to a project."
+msgstr ""
+"No se puede crear un nuevo proyecto para este equipo porque ya está "
+"vinculado a un proyecto."
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__company_id
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_request__company_id
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_team__company_id
+msgid "Company"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_contract_contract
+msgid "Contract"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_plan__contract_count
+msgid "Contract Count"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_plan__contract_ids
+#: model_terms:ir.ui.view,arch_db:oxigen_maintenance.maintenance_plan_view_form
+msgid "Contracts"
+msgstr "Contratos"
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__create_project_from_equipment
+msgid "Create Project From Equipment"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__customer_id
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_request__customer_id
+#: model:ir.model.fields.selection,name:oxigen_maintenance.selection__maintenance_equipment__equipment_assign_to__customer
+msgid "Customer"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_plan__employee_id
+#: model_terms:ir.ui.view,arch_db:oxigen_maintenance.maintenance_request_view_form_inherit
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__category_id
+msgid "Equipment Category"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__name
+msgid "Equipment Name"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_extension
+msgid "Extension"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_icc_code
+msgid "ICC Code"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__id
+msgid "ID"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_imei_1
+msgid "IMEI 1"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_imei_2
+msgid "IMEI 2"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_maintenance_equipment
+msgid "Maintenance Equipment"
+msgstr "Equipo de Mantenimiento"
+
+#. module: oxigen_maintenance
+#: model:res.groups,name:oxigen_maintenance.group_maintenance_it
+msgid "Maintenance IT Fields"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_maintenance_plan
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_contract_contract__maintenance_plan_ids
+msgid "Maintenance Plan"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_contract_contract__maintenance_plan_visible
+msgid "Maintenance Plan Visible"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_maintenance_request
+msgid "Maintenance Request"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__maintenance_team_id
+msgid "Maintenance Team"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_maintenance_team
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_res_users__maintenance_team_ids
+msgid "Maintenance Teams"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__model
+msgid "Model"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__my_team_equipment
+msgid "My Team Equipment"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model_terms:ir.ui.view,arch_db:oxigen_maintenance.maintenance_team_view_search
+msgid "My Teams"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment_operating_system__name
+msgid "Name"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_maintenance_equipment_operating_system
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__operating_system_id
+#: model:ir.ui.menu,name:oxigen_maintenance.maintenance_equipment_operating_system_menu
+msgid "Operating System"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.actions.act_window,name:oxigen_maintenance.maintenance_equipment_operating_system_act_window
+msgid "Operating Systems"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_pin
+msgid "PIN"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_puk
+msgid "PUK"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__parent_id
+msgid "Parent Equipment"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model_terms:ir.ui.view,arch_db:oxigen_maintenance.hr_equipment_view_form
+msgid "Phone Data"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__phone_line
+msgid "Phone Line"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__project_id
+msgid "Project"
+msgstr ""
+
+#. module: oxigen_maintenance
+#. odoo-python
+#: code:addons/oxigen_maintenance/models/maintenance_equipment.py:0
+msgid "Unspecified kind"
+msgstr "Tipo sin especificar"
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__equipment_assign_to
+msgid "Used By"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model,name:oxigen_maintenance.model_res_users
+msgid "User"
+msgstr ""
+
+#. module: oxigen_maintenance
+#: model:ir.model.fields,field_description:oxigen_maintenance.field_maintenance_equipment__partner_id
+msgid "Vendor"
+msgstr ""

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="maintenance_team_view_search" model="ir.ui.view">
+        <field name="name">equipment.team-oxigen</field>
+        <field name="model">maintenance.team</field>
+        <field name="inherit_id" ref="maintenance.maintenance_team_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <filter
+                    string="My Teams"
+                    domain="[('member_ids', '=', uid)]"
+                    name="my_teams"
+                />
+                <separator />
+            </xpath>
+        </field>
+    </record>
+</odoo>
