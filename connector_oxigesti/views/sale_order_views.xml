@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT Solutions - Eric Antones <eantones@nuobit.com>
+     Copyright NuoBiT Solutions - Kilian Niubo <kniubo@nuobit.com>
+     Copyright 2025 NuoBiT Solutions - Deniz Gallo <dgallo@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.oxigesti.connector.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page
+                    string="Connectors"
+                    name="connector"
+                    groups="connector.group_connector_manager"
+                >
+                    <group string="Oxigesti Bindings">
+                        <field name="oxigesti_bind_ids" nolabel="1" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="oxigesti_sale_order_view_form" model="ir.ui.view">
+        <field name="name">oxigesti.sale.order.view.form</field>
+        <field name="model">oxigesti.sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Oxigesti Sale order">
+                <group>
+                    <field name="backend_id" />
+                    <field name="odoo_id" readonly="True" />
+                    <field name="external_id_display" readonly="True" />
+                    <field name="sync_date" readonly="True" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="oxigesti_sale_order_view_tree" model="ir.ui.view">
+        <field name="name">oxigesti.sale.order.view.list</field>
+        <field name="model">oxigesti.sale.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="backend_id" />
+                <field name="odoo_id" />
+                <field name="external_id_display" />
+                <field name="sync_date" />
+            </list>
+        </field>
+    </record>
+
+    <record id="oxigesti_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="res_model">oxigesti.sale.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

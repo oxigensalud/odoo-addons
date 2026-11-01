@@ -1,0 +1,5 @@
+odoo-addon-partner_review@git+https://github.com/nuobit/odoo-addons.git@refs/pull/706/head#subdirectory=partner_review
+odoo-addon-sale_order_service@git+https://github.com/nuobit/odoo-addons.git@refs/pull/704/head#subdirectory=sale_order_service
+odoo-addon-sale_line_partner_description@git+https://github.com/nuobit/odoo-addons.git@refs/pull/738/head#subdirectory=sale_line_partner_description
+odoo-addon-sale_specific_order_date@git+https://github.com/nuobit/odoo-addons.git@refs/pull/715/head#subdirectory=sale_specific_order_date
+odoo-addon-oxigen_stock_alternate_lot@git+https://github.com/oxigensalud/odoo-addons.git@refs/pull/170/head#subdirectory=oxigen_stock_alternate_lot
