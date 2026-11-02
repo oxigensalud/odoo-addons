@@ -1,0 +1,4 @@
+odoo-addon-stock_barcodes_gs1@git+https://github.com/OCA/stock-logistics-barcode.git@refs/pull/729/head#subdirectory=stock_barcodes_gs1
+odoo-addon-stock_barcodes_gs1_expiry@git+https://github.com/OCA/stock-logistics-barcode.git@refs/pull/730/head#subdirectory=stock_barcodes_gs1_expiry
+odoo-addon-oxigen_stock_alternate_lot@git+https://github.com/oxigensalud/odoo-addons.git@refs/pull/170/head#subdirectory=oxigen_stock_alternate_lot
+odoo-addon-oxigen_stock_barcodes@git+https://github.com/oxigensalud/odoo-addons.git@refs/pull/184/head#subdirectory=oxigen_stock_barcodes
