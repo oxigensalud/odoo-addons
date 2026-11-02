@@ -1,0 +1,1 @@
+odoo-addon-oxigen_stock_alternate_lot@git+https://github.com/oxigensalud/odoo-addons.git@refs/pull/170/head#subdirectory=oxigen_stock_alternate_lot
